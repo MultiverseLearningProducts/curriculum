@@ -1,0 +1,52 @@
+{
+  "name": "swe-2.0-curriculum",
+  "version": "0.1.0",
+  "description": "Software engineering curriculum (2021)",
+  "main": "index.js",
+  "scripts": {
+    "build": "node ./lib/main.js",
+    "build-win": "docker run -it -v $PWD:/app -w '/app' node:15-alpine npm i && npm run build",
+    "publish": "node ./lib/main.js && git add -A && git commit -m 'rebuild pages' --allow-empty && npm version minor && git push origin master",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/MultiverseLearningProducts/curriculum.git"
+  },
+  "keywords": [
+    "software",
+    "apprenticeships",
+    "Multiverse",
+    "change",
+    "future",
+    "leaders"
+  ],
+  "author": "multiverselearningproducts",
+  "license": "CC-BY-NC-ND-4.0",
+  "bugs": {
+    "url": "https://github.com/MultiverseLearningProducts/curriculum/issues"
+  },
+  "homepage": "https://github.com/MultiverseLearningProducts/curriculum#readme",
+  "dependencies": {
+    "directory-tree": "^2.2.4",
+    "hastscript": "^6.0.0",
+    "mdast-util-to-hast": "^10.0.1",
+    "pg": "^8.5.1",
+    "rehype-document": "^5.1.0",
+    "rehype-format": "^3.1.0",
+    "rehype-stringify": "^8.0.0",
+    "remark-custom-blocks": "^2.5.0",
+    "remark-iframes": "^4.0.4",
+    "remark-parse": "^8.0.3",
+    "remark-rehype": "^7.0.0",
+    "unified": "^9.2.0",
+    "unist-util-visit": "^2.0.3"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.11.5",
+    "babel-core": "^6.0.20",
+    "babel-polyfill": "^6.0.16",
+    "babel-preset-es2015": "^6.0.15",
+    "babel-preset-stage-0": "^6.0.15"
+  }
+}

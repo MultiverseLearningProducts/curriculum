@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Foundations -> Unit 1 -> 1.1</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="/swe/favicon.ico">
+    <link rel="stylesheet" href="/swe/modest.css">
+    <link rel="stylesheet" href="/swe/prism.css">
+    <link rel="stylesheet" href="/swe/style.css">
+  </head>
+  <body>
+    <h1>Foundations -> Unit 1 -> 1.1</h1>
+    <h2>Before we start</h2>
+    <p>You must have familiarity with basic JavaScript concepts, specifically:</p>
+    <ul>
+      <li><a href="https://www.w3schools.com/js/js_syntax.asp">JavaScript Syntax</a></li>
+      <li><a href="https://www.w3schools.com/js/js_datatypes.asp">JavaScript Data Types</a></li>
+      <li><a href="https://www.w3schools.com/js/js_variables.asp">JavaScript Variables</a></li>
+      <li><a href="https://www.w3schools.com/js/js_arrays.asp">JavaScript Arrays</a></li>
+      <li><a href="https://www.w3schools.com/js/js_array_methods.asp">JavaScript Array Methods</a></li>
+      <li><a href="https://www.w3schools.com/js/js_arrow_function.asp">JavaScript Arrow Functions</a></li>
+      <li><a href="https://www.codecademy.com/articles/what-is-node">An overview of Node</a> - also watch the first 5.30 minutes of <a href="https://www.youtube.com/watch?v=EIQgVdoYb0M">An Introduction to Node in Visual Studio Code</a></li>
+      <li>There is a great article on the <a href="https://community.multiverse.io/topics/16826/feed">Community Hub</a> which compares statically typed languages (like JavaScript) and dynamically typed languages (like Java) - well worth a read!</li>
+    </ul>
+    <p>You must also be confident using Git to clone, add, commit and push to your Git repository.</p>
+    <h2>Overview of the Unit</h2>
+    <p>Day one enables the cohort to get their computer set up so that they can write JavaScript using Node.js. We introduce the concepts of Arrays, Objects and functions in Javascript.</p>
+    <h1>1.1.1 Setup (could also be done prior to course)</h1>
+    <p>(Note that if students are unable to install software to their computer, it is possible to use the online editor <a href="https://repl.it/">Repl.it</a> to create and run JavaScript and Node.js instead).</p>
+    <p>Please install the following:</p>
+    <ul>
+      <li><a href="https://code.visualstudio.com/">VSCode</a> - this is a code editor</li>
+      <li><a href="https://nodejs.org/en/">Node</a> - Node.js is an open-source, cross-platform, back-end, JavaScript runtime environment that executes JavaScript code outside a web browser. Check if this is already installed by typing <code>node</code> on a Command Promt. If not, then select the LTS version.</li>
+      <li>Enable <code>Auto Save</code> in VSCode via <code>File -> Auto Save</code></li>
+      <li>Install <a href="https://jsdoc.app/">JsDoc</a> (an API documentation generator for JavaScript) by typing the following command in your command prompt after you have installed Node: <code>npm install -g jsdoc</code></li>
+      <li>Ensure you have the Chrome browser installed</li>
+    </ul>
+    <p>Validate your setup as follows:</p>
+    <ol>
+      <li>Create a new folder called <code>coursework</code> under the <code>Documents</code> folder in your home directory</li>
+      <li>Open VSCode and select <code>File->Open Folder</code> - select your <code>coursework</code> folder</li>
+      <li>In the <code>coursework</code> folder, create a new file (<code>File->New File</code>) called <code>script.js</code> with the following content:</li>
+    </ol>
+    <pre><code class="language-js">console.log('hello from JavaScript');
+</code></pre>
+    <ol start="4">
+      <li>Check your code has been saved by looking at the timestamp for the file in <code>File Explorer</code></li>
+      <li>Using a Command Prompt, type <code>node script.js</code>. You should see the console log output. Here we are running the JavaScript server-side, i.e. within Node.</li>
+    </ol>
+    <script src="/swe/prism.js"></script>
+    <script src="/swe/tabbed-code-blocks.js"></script>
+  </body>
+</html>

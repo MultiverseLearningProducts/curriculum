@@ -1,0 +1,119 @@
+openapi: 3.0.0
+info:
+  title: Airports API
+  description: Get all your airport data here https://raw.githubusercontent.com/WhiteHatLearningProducts/airports/master/airportsData.json 
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000
+    description: if you are using NodeJS your dev port might be 3000
+  - url: http://localhost:8080
+    description: if you are using Spring your dev port will be 8080
+  - url: https://airports-api.whitehatcoaches.org.uk
+    description: this is the production baseURL
+paths:
+  '/airports':
+    get:
+      summary: Returns a list of all the airports
+      description: |
+        blar blar 28,000 airports etc
+
+        * you can also use
+        * markdown in this section
+
+        ![airport](https://twistedsifter.com/wp-content/uploads/2014/11/mexico-city-international-airport-drone-video.jpg)
+
+        Including images!
+      responses:
+        200:
+          description: an array of JSON objects that represent each airport
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    icao:
+                      type: string
+                    iata:
+                      type: string
+                    name:
+                      type: string
+                    city:
+                      type: string
+                    state:
+                      type: string
+                    country:
+                      type: string
+                    elevation:
+                      type: integer
+                    lat:
+                      type: number
+                      format: double
+                    lon:
+                      type: number
+                      format: double
+                    tz:
+                      type: string
+                  example:
+                    icao: "00AK"
+                    iata: ""
+                    name: "Lowell Field"
+                    city: "Anchor Point"
+                    state: "Alaska"
+                    country: "US"
+                    elevation: 450
+                    lat: 59.94919968
+                    lon: -151.695999146
+                    tz: "America/Anchorage"
+    post:
+      summary: Create a new airport
+      description: Add to the list of airports using this route
+      requestBody:
+        content:
+          'application/json':
+            schema:
+              properties:
+                icao:
+                  type: string
+                iata:
+                  type: string
+                name:
+                  type: string
+                city:
+                  type: string
+                state:
+                  type: string
+                country:
+                  type: string
+                elevation:
+                  type: integer
+                lat:
+                  type: number
+                  format: double
+                lon:
+                  type: number
+                  format: double
+                tz:
+                  type: string
+              required:
+                - icao
+                - name
+                - city
+      responses:
+        201:
+          description: Resource created successfully
+          content:
+            'application/json': {}
+        415:
+          description: Unsupported Media Type
+          content:
+            'application/json': {}
+        400:
+          description: Bad request
+          content:
+            'application/json': {}
+        409:
+          description: Conflict - an airport with that icao already exists
+          content:
+            'application/json': {}
