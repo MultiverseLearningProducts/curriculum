@@ -4,6 +4,7 @@
   "description": "Software engineering curriculum (2021)",
   "main": "index.js",
   "scripts": {
+    "makebook": "node ./lib/make-book.js",
     "build": "node ./lib/main.js",
     "build-win": "docker run -it -v $PWD:/app -w '/app' node:15-alpine npm i && npm run build",
     "publish": "node ./lib/main.js && git add -A && git commit -m 'rebuild pages' --allow-empty && npm version minor && git push origin master",
@@ -30,8 +31,10 @@
   "dependencies": {
     "directory-tree": "^2.2.4",
     "hastscript": "^6.0.0",
+    "markdown-pdf": "^10.0.0",
     "mdast-util-to-hast": "^10.0.1",
     "pg": "^8.5.1",
+    "puppeteer": "^8.0.0",
     "rehype-document": "^5.1.0",
     "rehype-format": "^3.1.0",
     "rehype-stringify": "^8.0.0",
