@@ -1,6 +1,6 @@
 {
   "name": "swe-2.0-curriculum",
-  "version": "0.21.0",
+  "version": "0.22.0",
   "description": "Software engineering curriculum (2021)",
   "main": "index.js",
   "scripts": {
