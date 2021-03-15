@@ -49,6 +49,7 @@ html::before {
     color: var(--mv-gray);
     top: 1rem;
     right: 1rem;
+    opacity: 0.5;
 }
 
 body {
@@ -63,11 +64,13 @@ body::before {
     content: '';
     display: block;
     background-image: url('https://multiverselearningproducts.github.io/curriculum/branding/mv_peek_molten.svg');
-    background-position: 0rem 0rem;
     background-size: 100% auto;
-    height: 2rem;
+    background-repeat: no-repeat;
+    height: 11rem;
     width: 24rem;
-    position:relative;
+    position: relative;
+    top: -171px;
+    right: -480px;
 }
 
 h1, h2, h3, h4 {
