@@ -6,6 +6,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="shortcut icon" type="image/x-icon" href="/curriculum/favicon.ico">
         <link rel="stylesheet" href="/curriculum/style.css">
+        <script src="/curriculum/js/highlight.min.js"></script>
+        <script src="/curriculum/js/bash.min.js"></script>
+        <script src="/curriculum/js/java.min.js"></script>
+        <script src="/curriculum/js/javascript.min.js"></script>
+        <script src="/curriculum/js/sql.min.js"></script>
     </head>
     <body>
         <h1>SQL Joins</h1>
@@ -20,15 +25,15 @@
 <p>No. The way this is done is by creating a separate table for the menus. When we create a row in the 'menus' table we create a special field to store the id of the restaurant we want the menu to be associated with. The convention is to call the field something like 'restaurant_id'. This is why databases that have tables like this are called 'relational databases'.</p>
 <p>We can use the <a href="https://www.w3schools.com/sql/sql_foreignkey.asp">FOREIGN KEY</a> keyword to form a strong link between 2 tables. A FOREIGN KEY must refer to the PRIMARY KEY in another table. Take a look at the UML diagram again, you can see that there is a 1 to many relationship between the Restaurant and its Menus. In a relational database, this is implemented by multiple rows in the MENUS table pointing to a specific RESTAURANT row id.</p>
 <p>This means that the MENUS table (child) needs a column which links it to the RESTAURANTS table (parent). If we declare this new column as a FOREIGN KEY, then if an attempt is made to delete the associated restaurant row we will get an error. Here is an example of how to add a FOREIGN KEY:</p>
-<pre><code class="language-sql">CREATE TABLE MENUS (id INT PRIMARY KEY, title TEXT, restaurant_id INT, FOREIGN KEY (restaurant_id) REFERENCES RESTAURANTS(id))
+<pre><code class="language-sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> MENUS (<span class="hljs-keyword">id</span> <span class="hljs-built_in">INT</span> PRIMARY <span class="hljs-keyword">KEY</span>, title <span class="hljs-built_in">TEXT</span>, restaurant_id <span class="hljs-built_in">INT</span>, <span class="hljs-keyword">FOREIGN</span> <span class="hljs-keyword">KEY</span> (restaurant_id) <span class="hljs-keyword">REFERENCES</span> RESTAURANTS(<span class="hljs-keyword">id</span>))
 </code></pre>
 <p>How do we use the association we just created? When we query our database we are going to use the 'JOIN' keyword in SQL.</p>
 <p>Read about the <a href="https://www.w3schools.com/sql/sql_join.asp">SQL Join command</a> to understand its syntax.</p>
 <p>Now read the query below:</p>
-<pre><code class="language-sql">SELECT restaurants.name, menus.name 
-FROM restaurants 
-JOIN menus ON restaurants.id = menus.restaurant_id 
-WHERE restaurants.id = 1;
+<pre><code class="language-sql"><span class="hljs-keyword">SELECT</span> restaurants.name, menus.name 
+<span class="hljs-keyword">FROM</span> restaurants 
+<span class="hljs-keyword">JOIN</span> menus <span class="hljs-keyword">ON</span> restaurants.id = menus.restaurant_id 
+<span class="hljs-keyword">WHERE</span> restaurants.id = <span class="hljs-number">1</span>;
 </code></pre>
 <p>This statement selects the columns we want to retrieve from both tables; the restaurants table and the menus table. Notice now we have mixed fields coming from different tables, we have to name our columns with both the <code>table_name.field_name</code> i.e. <code>menus.name</code>. Use the <code>JOIN</code> keyword to make an association between the primary key from one table and the foreign key of another. In this example the primary key is the restaurants table id and the menus table restaurant_id. Can you explain why 'restaurant_id' is referred to as the foreign key?</p>
 <h2>Assignment</h2>
@@ -49,5 +54,6 @@ WHERE restaurants.id = 1;
 <p>Research the different types of SQL JOIN function there are.</p>
 <h2>Additional resources</h2>
 
+        <script>hljs.highlightAll()</script>
     </body>
 </html>

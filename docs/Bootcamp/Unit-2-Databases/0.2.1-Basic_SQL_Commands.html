@@ -6,6 +6,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="shortcut icon" type="image/x-icon" href="/curriculum/favicon.ico">
         <link rel="stylesheet" href="/curriculum/style.css">
+        <script src="/curriculum/js/highlight.min.js"></script>
+        <script src="/curriculum/js/bash.min.js"></script>
+        <script src="/curriculum/js/java.min.js"></script>
+        <script src="/curriculum/js/javascript.min.js"></script>
+        <script src="/curriculum/js/sql.min.js"></script>
     </head>
     <body>
         <h1>Basic SQL commands</h1>
@@ -42,17 +47,17 @@
 </tbody>
 </table>
 <p>The SQL command to create the above table would be:</p>
-<pre><code class="language-sql">CREATE TABLE COMPANIES(id INTEGER, 
-                          name TEXT, 
-                          location TEXT,
-                          numEmployees INTEGER);
+<pre><code class="language-sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> COMPANIES(<span class="hljs-keyword">id</span> <span class="hljs-built_in">INTEGER</span>, 
+                          <span class="hljs-keyword">name</span> <span class="hljs-built_in">TEXT</span>, 
+                          location <span class="hljs-built_in">TEXT</span>,
+                          numEmployees <span class="hljs-built_in">INTEGER</span>);
 </code></pre>
 <p>It's important to note that the syntax for creating tables and naming of data types does vary slightly between different database vendors.</p>
 <p>A column (or set of columns) marked as a <strong>PRIMARY KEY</strong> is a column (or set of columns) that has to be unique i.e. you cannot insert rows with the same value in this column/s and cannot be null. It is good practice to have a PRIMARY KEY on each table. The syntax for adding a PRIMARY KEY is as follows:</p>
-<pre><code class="language-sql">CREATE TABLE COMPANIES(id INTEGER PRIMARY KEY, 
-                          name TEXT, 
-                          location TEXT,
-                          numEmployees INTEGER);
+<pre><code class="language-sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> COMPANIES(<span class="hljs-keyword">id</span> <span class="hljs-built_in">INTEGER</span> PRIMARY <span class="hljs-keyword">KEY</span>, 
+                          <span class="hljs-keyword">name</span> <span class="hljs-built_in">TEXT</span>, 
+                          location <span class="hljs-built_in">TEXT</span>,
+                          numEmployees <span class="hljs-built_in">INTEGER</span>);
 </code></pre>
 <p>Here, we are specifying that the <code>id</code> column is the PRIMARY KEY i.e. has to have unique values.</p>
 <p>An alternative to creating your own unique identifier to populate an <code>id</code> column is to use an AUTO INCREMENTing number. SQL provides <a href="https://www.w3schools.com/sql/sql_autoincrement.asp">a way to to do this</a>.</p>
@@ -75,10 +80,10 @@
 </ol>
 <p>You should also be aware of 2 SQLite specific SQL statements which will help you.</p>
 <p>The <code>PRAGMA</code> command describes a table by listing its columns and indicating which column is the primary key.</p>
-<pre><code class="language-sql">PRAGMA table_info(CUSTOMERS);
+<pre><code class="language-sql"><span class="hljs-keyword">PRAGMA</span> table_info(CUSTOMERS);
 </code></pre>
 <p>The following command lists all the tables in the database:</p>
-<pre><code class="language-sql">SELECT name FROM sqlite_master WHERE type='table'
+<pre><code class="language-sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">name</span> <span class="hljs-keyword">FROM</span> sqlite_master <span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">type</span>=<span class="hljs-string">'table'</span>
 </code></pre>
 <h3>Assignment extension tasks</h3>
 <p>Explore the SQL documentation for the <code>SUM</code>, <code>COUNT</code> and <code>GROUP BY</code> aggregate functions</p>
@@ -86,5 +91,6 @@
 <h2>Additional resources</h2>
 <p><a href="https://www.mongodb.com/nosql-explained/nosql-vs-sql">NoSQL versus SQL databases</a></p>
 
+        <script>hljs.highlightAll()</script>
     </body>
 </html>
