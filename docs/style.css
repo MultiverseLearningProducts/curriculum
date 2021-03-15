@@ -77,16 +77,30 @@ h1, h2, h3, h4 {
     font-family: 'TimesNRMTPro-Cond';
 }
 
+h1::before {
+    content: '';
+    display: block;
+    background-image: url('https://multiverselearningproducts.github.io/curriculum/branding/mv_supernova_tada.svg');
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    height: 5rem;
+    width: 5rem;
+    position: relative;
+    top: 0rem;
+    left: -1rem;
+}
+
 h1::after {
     content: '';
+    display: block;
     background-image: url('https://multiverselearningproducts.github.io/curriculum/branding/mv_electron_underline.svg');
     background-size: 100% auto;
     background-repeat: no-repeat;
-    height: 1rem;
+    height: 5rem;
     width: 24rem;
     position:relative;
-    bottom: -1rem;
-    right: -12rem;
+    bottom: 2rem;
+    right: -10rem;
 }
 
 :root {
