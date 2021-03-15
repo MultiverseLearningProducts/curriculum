@@ -35,7 +35,8 @@
 
 html {
     font-family: 'AtlasGrotesk-Regular';
-    padding-top: 12rem;
+    padding: 12rem 0;
+    margin: auto;
     background-image: url('https://multiverselearningproducts.github.io/curriculum/branding/bg.svg');
     background-position: top center;
     background-size: 100% auto;
@@ -45,15 +46,14 @@ html {
 body {
     max-width: 48rem;
     line-height: 1.45;
-    margin-top: 6rem;
+    margin: 6rem auto 36rem;
     background-color: var(--mv-white-dwarf);
     box-shadow: 1px 1px 12px -3px rgba(0,0,0,0.8);
     padding: 1rem;
 }
 body::before {
-    content: ' ';
-    background-image: url('https://multiverselearningproducts.github.io/curriculum/branding/mv_text_logo_ultraviolet.svg');
-    background-position: top 1rem;
+    content: url('https://multiverselearningproducts.github.io/curriculum/branding/mv_text_logo_ultraviolet.svg');
+    background-position: top center;
     background-size: 50% auto;
 }
 
