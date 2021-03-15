@@ -77,6 +77,11 @@ h1, h2, h3, h4 {
     font-family: 'TimesNRMTPro-Cond';
 }
 
+h1 {
+    margin-block-start: 0;
+    margin-block-end: -3rem;
+}
+
 h1::before {
     content: '';
     display: block;
@@ -86,8 +91,8 @@ h1::before {
     height: 5rem;
     width: 5rem;
     position: relative;
-    top: 0rem;
-    left: -1rem;
+    top: 2.5rem;
+    left: -3rem;
 }
 
 h1::after {
