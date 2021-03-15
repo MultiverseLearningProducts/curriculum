@@ -77,10 +77,16 @@ h1, h2, h3, h4 {
     font-family: 'TimesNRMTPro-Cond';
 }
 
-h2 {
-    background-image: url('https://multiverselearningproducts.github.io/curriculum/branding/Multiverse_Notations_RGB_Coral-06.png');
+h1::after {
+    content: '';
+    background-image: url('https://multiverselearningproducts.github.io/curriculum/branding/mv_electron_underline.svg');
     background-size: 100% auto;
-    background-position: center 1rem;
+    background-repeat: no-repeat;
+    height: 1rem;
+    width: 24rem;
+    position:relative;
+    bottom: -1rem;
+    right: -12rem;
 }
 
 :root {
