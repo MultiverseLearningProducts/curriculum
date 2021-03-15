@@ -105,7 +105,7 @@ h1::after {
     width: 24rem;
     position:relative;
     bottom: 2rem;
-    right: -10rem;
+    right: 0rem;
 }
 
 :root {
