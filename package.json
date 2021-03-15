@@ -31,6 +31,8 @@
   "dependencies": {
     "directory-tree": "^2.2.4",
     "hastscript": "^6.0.0",
+    "highlight.js": "^9.18.5",
+    "lodash.template": "^4.5.0",
     "markdown-pdf": "^10.0.0",
     "mdast-util-to-hast": "^10.0.1",
     "puppeteer": "^8.0.0",

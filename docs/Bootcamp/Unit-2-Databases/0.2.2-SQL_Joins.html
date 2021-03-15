@@ -1,56 +1,53 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>SQL Joins</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/x-icon" href="/curriculum/favicon.ico">
-    <link rel="stylesheet" href="/curriculum/modest.css">
-    <link rel="stylesheet" href="/curriculum/prism.css">
-    <link rel="stylesheet" href="/curriculum/style.css">
-  </head>
-  <body>
-    <h1>SQL Joins</h1>
-    <h2>Learning Objectives</h2>
-    <ul>
-      <li>Relate data across tables using the SQL Join command and Foreign Keys</li>
-    </ul>
-    <h2>Pre-requisites</h2>
-    <p>Familiarity with Basic SQL Commands</p>
-    <h2>Lesson</h2>
-    <p>It is great to be able to save a restaurant in our database. However our data model requires our restaurants to also have menus associated with them. A restaurant might have many menus; for example a main menu, a set menu, a wine menu (wine list) and best of all the dessert menu! How can we store one or more menu items on the restaurant? We could make a new field on the restaurant table called 'menu'. But what would we do if we wanted to add a 2nd menu 'menu2'? And a third 'menu3'?</p>
-    <p>No. The way this is done is by creating a separate table for the menus. When we create a row in the 'menus' table we create a special field to store the id of the restaurant we want the menu to be associated with. The convention is to call the field something like 'restaurant_id'. This is why databases that have tables like this are called 'relational databases'.</p>
-    <p>We can use the <a href="https://www.w3schools.com/sql/sql_foreignkey.asp">FOREIGN KEY</a> keyword to form a strong link between 2 tables. A FOREIGN KEY must refer to the PRIMARY KEY in another table. Take a look at the UML diagram again, you can see that there is a 1 to many relationship between the Restaurant and its Menus. In a relational database, this is implemented by multiple rows in the MENUS table pointing to a specific RESTAURANT row id.</p>
-    <p>This means that the MENUS table (child) needs a column which links it to the RESTAURANTS table (parent). If we declare this new column as a FOREIGN KEY, then if an attempt is made to delete the associated restaurant row we will get an error. Here is an example of how to add a FOREIGN KEY:</p>
-    <pre><code class="language-sql">CREATE TABLE MENUS (id INT PRIMARY KEY, title TEXT, restaurant_id INT, FOREIGN KEY (restaurant_id) REFERENCES RESTAURANTS(id))
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title> SQL Joins</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" type="image/x-icon" href="/curriculum/favicon.ico">
+        <link rel="stylesheet" href="/curriculum/style.css">
+    </head>
+    <body>
+        <h1>SQL Joins</h1>
+<h2>Learning Objectives</h2>
+<ul>
+<li>Relate data across tables using the SQL Join command and Foreign Keys</li>
+</ul>
+<h2>Pre-requisites</h2>
+<p>Familiarity with Basic SQL Commands</p>
+<h2>Lesson</h2>
+<p>It is great to be able to save a restaurant in our database. However our data model requires our restaurants to also have menus associated with them. A restaurant might have many menus; for example a main menu, a set menu, a wine menu (wine list) and best of all the dessert menu! How can we store one or more menu items on the restaurant? We could make a new field on the restaurant table called 'menu'. But what would we do if we wanted to add a 2nd menu 'menu2'? And a third 'menu3'?</p>
+<p>No. The way this is done is by creating a separate table for the menus. When we create a row in the 'menus' table we create a special field to store the id of the restaurant we want the menu to be associated with. The convention is to call the field something like 'restaurant_id'. This is why databases that have tables like this are called 'relational databases'.</p>
+<p>We can use the <a href="https://www.w3schools.com/sql/sql_foreignkey.asp">FOREIGN KEY</a> keyword to form a strong link between 2 tables. A FOREIGN KEY must refer to the PRIMARY KEY in another table. Take a look at the UML diagram again, you can see that there is a 1 to many relationship between the Restaurant and its Menus. In a relational database, this is implemented by multiple rows in the MENUS table pointing to a specific RESTAURANT row id.</p>
+<p>This means that the MENUS table (child) needs a column which links it to the RESTAURANTS table (parent). If we declare this new column as a FOREIGN KEY, then if an attempt is made to delete the associated restaurant row we will get an error. Here is an example of how to add a FOREIGN KEY:</p>
+<pre><code class="language-sql">CREATE TABLE MENUS (id INT PRIMARY KEY, title TEXT, restaurant_id INT, FOREIGN KEY (restaurant_id) REFERENCES RESTAURANTS(id))
 </code></pre>
-    <p>How do we use the association we just created? When we query our database we are going to use the 'JOIN' keyword in SQL.</p>
-    <p>Read about the <a href="https://www.w3schools.com/sql/sql_join.asp">SQL Join command</a> to understand its syntax.</p>
-    <p>Now read the query below:</p>
-    <pre><code class="language-sql">SELECT restaurants.name, menus.name 
+<p>How do we use the association we just created? When we query our database we are going to use the 'JOIN' keyword in SQL.</p>
+<p>Read about the <a href="https://www.w3schools.com/sql/sql_join.asp">SQL Join command</a> to understand its syntax.</p>
+<p>Now read the query below:</p>
+<pre><code class="language-sql">SELECT restaurants.name, menus.name 
 FROM restaurants 
 JOIN menus ON restaurants.id = menus.restaurant_id 
 WHERE restaurants.id = 1;
 </code></pre>
-    <p>This statement selects the columns we want to retrieve from both tables; the restaurants table and the menus table. Notice now we have mixed fields coming from different tables, we have to name our columns with both the <code>table_name.field_name</code> i.e. <code>menus.name</code>. Use the <code>JOIN</code> keyword to make an association between the primary key from one table and the foreign key of another. In this example the primary key is the restaurants table id and the menus table restaurant_id. Can you explain why 'restaurant_id' is referred to as the foreign key?</p>
-    <h2>Assignment</h2>
-    <p>Modify your tables to include these relationships:</p>
-    <ul>
-      <li>add a <code>restaurant_id</code> column to the Menu table and mark it as a FOREIGN KEY</li>
-      <li>add a <code>menu_id</code> column to the MenuItem table and mark it as a FOREIGN KEY</li>
-    </ul>
-    <p>Note that Repl may not accurately support the foreign key constraint (i.e. may allow you to delete linked data) - to be checked.</p>
-    <p>Write some JOIN statements that do the following:</p>
-    <ul>
-      <li>SELECT a restaurant, a menu and all the menu items using a JOIN statement</li>
-      <li>SELECT all the restaurants with a count of the number of menus each restaurant has</li>
-      <li>SELECT all the menus, with the total cost of all the menu items summed, and have the list in descending order (most expensive first)</li>
-    </ul>
-    <p>Share your Repl with your coach via Slack.</p>
-    <h3>Assignment extension tasks</h3>
-    <p>Research the different types of SQL JOIN function there are.</p>
-    <h2>Additional resources</h2>
-    <script src="/curriculum/prism.js"></script>
-    <script src="/curriculum/tabbed-code-blocks.js"></script>
-  </body>
+<p>This statement selects the columns we want to retrieve from both tables; the restaurants table and the menus table. Notice now we have mixed fields coming from different tables, we have to name our columns with both the <code>table_name.field_name</code> i.e. <code>menus.name</code>. Use the <code>JOIN</code> keyword to make an association between the primary key from one table and the foreign key of another. In this example the primary key is the restaurants table id and the menus table restaurant_id. Can you explain why 'restaurant_id' is referred to as the foreign key?</p>
+<h2>Assignment</h2>
+<p>Modify your tables to include these relationships:</p>
+<ul>
+<li>add a <code>restaurant_id</code> column to the Menu table and mark it as a FOREIGN KEY</li>
+<li>add a <code>menu_id</code> column to the MenuItem table and mark it as a FOREIGN KEY</li>
+</ul>
+<p>Note that Repl may not accurately support the foreign key constraint (i.e. may allow you to delete linked data) - to be checked.</p>
+<p>Write some JOIN statements that do the following:</p>
+<ul>
+<li>SELECT a restaurant, a menu and all the menu items using a JOIN statement</li>
+<li>SELECT all the restaurants with a count of the number of menus each restaurant has</li>
+<li>SELECT all the menus, with the total cost of all the menu items summed, and have the list in descending order (most expensive first)</li>
+</ul>
+<p>Share your Repl with your coach via Slack.</p>
+<h3>Assignment extension tasks</h3>
+<p>Research the different types of SQL JOIN function there are.</p>
+<h2>Additional resources</h2>
+
+    </body>
 </html>
