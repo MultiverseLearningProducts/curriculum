@@ -42,6 +42,12 @@ html {
     background-size: 100% auto;
     background-repeat: repeat-y;
 }
+html::before {
+    content: 'Multiverse Software Engineering Curriculum';
+    text-align: right;
+    font-size: .25rem;
+    color: var(--mv-gray);
+}
 
 body {
     max-width: 48rem;
@@ -52,8 +58,10 @@ body {
     padding: 1rem;
 }
 body::before {
-    content: url('https://multiverselearningproducts.github.io/curriculum/branding/mv_text_logo_ultraviolet.svg');
-    background-position: top center;
+    content: ' ';
+    display: block;
+    background-image: url('https://multiverselearningproducts.github.io/curriculum/branding/mv_text_logo_ultraviolet.svg');
+    background-position: -12rem 0rem;
     background-size: 50% auto;
 }
 
