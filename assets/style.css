@@ -58,7 +58,7 @@ body {
     margin: 6rem auto 36rem;
     background-color: var(--mv-white-dwarf);
     box-shadow: 1px 1px 12px -3px rgba(0,0,0,0.8);
-    padding: 0 2rem;
+    padding: 0 2rem 10.688rem;
 }
 body::before {
     content: '';
