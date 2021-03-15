@@ -4,7 +4,7 @@ Welcome to the Software Engineering Programme (SWE)! We are excited you are join
 
 * __5 week bootcamp__ prepares you to enter the workplace ready for your first challenges. We cover the basics of the software development life cycle and begin to understand the role of a software developer. As well as learning the basics of programming in HTML and Javascript, you will take on coding challenges and gain practical experience of the entire software stack.
 
-[Bootcamp](/curriculum/bootcamp/index.html)
+[Bootcamp](/curriculum/Bootcamp/index.html)
 
 * __Module 1:__ A 2 week bootcamp that builds and expands on the RESTful concept introduced in the 5-week bootcamp. Topics covered include: HTTP/HTTPS, RESTful API best practices, Building out a RESTful API, Securing an API using Basic Auth, Sessions, and Securing an API with OAuth
 
