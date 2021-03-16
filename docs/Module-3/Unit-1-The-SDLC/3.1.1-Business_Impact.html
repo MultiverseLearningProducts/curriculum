@@ -15,7 +15,7 @@
     </head>
     <body>
         <h1>Business Impact</h1>
-<section class="tabbed-code-block"><nav><a href="#javascript" onclick="selectCodeBlock('javascript')" class="unselected">Javascript</a><a href="#java" onclick="selectCodeBlock('java')" class="unselected">Java</a></nav><article class="tabbed-code-block"><pre><code class="language-javascript"><span class="hljs-comment">/**
+<section class="tabbed-code-block"><nav><a href="#javascript" onclick="selectCodeBlock.bind(this, 'javascript')" class="unselected">Javascript</a><a href="#java" onclick="selectCodeBlock.bind(this, 'java')" class="unselected">Java</a></nav><article class="tabbed-code-block"><pre><code class="language-javascript"><span class="hljs-comment">/**
 * npm install -g swagger-node-codegen
 * snc airports_config.yaml -o airports-node
 * cd into the airports-node folder and start the server with npm start
