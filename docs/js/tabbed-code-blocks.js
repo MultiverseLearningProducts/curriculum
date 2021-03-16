@@ -11,7 +11,7 @@ function setActiveTab() {
 window.onload = function () {
     window.location.hash = localStorage.getItem('lang-pref') || '#javascript'
     setActiveTab()
-    selectCodeBlock(window.location.hash)
+    selectCodeBlock(window.location.hash.substring(1))
     window.addEventListener('hashchange', setActiveTab)
 }
 
