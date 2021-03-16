@@ -133,9 +133,16 @@ hr {
     padding: 1rem 1.5rem .5rem;
     border:#242456 1px solid;
     border-radius: 3px 3px 0px 0px;
-    background-color: var(--mv-gray);
     text-decoration: none;
     font-family: monospace;
+}
+.tabbed-code-block nav a.active::before {
+    content: '';
+    display: block;
+    background-image: url('https://multiverselearningproducts.github.io/curriculum/branding/mv_supernova_tada.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: -5rem;
 }
 .tabbed-code-block nav a:not(:first-child) {
     transform: translateX(-1px);
