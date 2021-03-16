@@ -29,6 +29,8 @@
 //     window.addEventListener('hashchange', setActiveTab)
 // }
 
+hljs.highlightAll()
+
 function selectCodeBlock(lang) {
     console.log(lang, window.location.hash)
     const isActive = `#${lang}` === window.location.hash

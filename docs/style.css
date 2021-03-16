@@ -126,6 +126,15 @@ hr {
 .tabbed-code-block nav {
     display: flex;
     align-items: center;
+    margin-bottom: -14px;
+}
+.tabbed-code-block nav a {
+    padding: 1rem 1.5rem .5rem;
+    border:#242456 1px solid;
+    border-radius: 3px 3px 0px 0px;
+    background-color: var(--mv-gray);
+    text-decoration: none;
+    font-family: monospace;
 }
 .tabbed-code-block article {
     position: relative;
@@ -135,6 +144,9 @@ hr {
     top: 0;
     left: 0;
     right: 0;
+}
+.tabbed-code-block article pre code {
+    border-radius: 0 3px 3px 3px;
 }
 .hljs {
     padding: 1rem;
