@@ -17,7 +17,7 @@ window.onload = function () {
 hljs.highlightAll()
 
 function selectCodeBlock(lang) {
-    const blocks = [...document.querySelectorAll('code.hljs')]
+    const blocks = [...document.querySelectorAll('.tabbed-code-block article pre code')]
     blocks.forEach(block => {
         block.classList.remove('selected', 'unselected')
         block.classList.contains(`language-${lang}`) ? block.classList.add('selected') : block.classList.add('unselected')
