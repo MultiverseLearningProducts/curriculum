@@ -1,0 +1,179 @@
+@font-face {
+    font-family: 'TimesNRMTPro-Cond';
+    src: url('https://multiverselearningproducts.github.io/curriculum/fonts/TimesNRMTPro-Cond.otf') format('opentype');
+}
+@font-face {
+    font-family: 'AtlasGrotesk-Bold';
+    src: url('https://multiverselearningproducts.github.io/curriculum/fonts/AtlasGrotesk-Bold.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'AtlasGrotesk-BoldItalic';
+    src: url('https://multiverselearningproducts.github.io/curriculum/fonts/AtlasGrotesk-BoldItalic.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'AtlasGrotesk-Medium';
+    src: url('https://multiverselearningproducts.github.io/curriculum/fonts/AtlasGrotesk-Medium.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'AtlasGrotesk-Regular';
+    src: url('https://multiverselearningproducts.github.io/curriculum/fonts/AtlasGrotesk-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'AtlasGrotesk-RegularItalic';
+    src: url('https://multiverselearningproducts.github.io/curriculum/fonts/AtlasGrotesk-RegularItalic.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html {
+    font-family: 'AtlasGrotesk-Regular';
+    padding: 12rem 0;
+    margin: auto;
+    background-image: url('https://multiverselearningproducts.github.io/curriculum/branding/bg.svg');
+    background-position: top center;
+    background-size: 100% auto;
+    background-repeat: repeat-y;
+}
+html::before {
+    content: 'Software Engineering Curriculum 2.0';
+    position: fixed;
+    font-size: .75rem;
+    color: var(--mv-gray);
+    top: 1rem;
+    right: 1rem;
+    opacity: 0.5;
+}
+
+body {
+    max-width: 48rem;
+    line-height: 1.45;
+    margin: 6rem auto 36rem;
+    background-color: var(--mv-white-dwarf);
+    box-shadow: 1px 1px 12px -3px rgba(0,0,0,0.8);
+    padding: 0 2rem 10.688rem;
+    border-radius: 3px;
+}
+body::before {
+    content: '';
+    display: block;
+    background-image: url('https://multiverselearningproducts.github.io/curriculum/branding/mv_peek_molten.svg');
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    height: 11rem;
+    width: 24rem;
+    position: relative;
+    top: -171px;
+    right: -480px;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'TimesNRMTPro-Cond';
+}
+
+h1 {
+    margin-block-start: 0;
+    margin-block-end: -3rem;
+}
+
+h1::before {
+    content: '';
+    display: block;
+    background-image: url('https://multiverselearningproducts.github.io/curriculum/branding/mv_supernova_tada.svg');
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    height: 5rem;
+    width: 5rem;
+    position: relative;
+    top: 2.5rem;
+    left: -3rem;
+}
+
+h1::after {
+    content: '';
+    display: block;
+    background-image: url('https://multiverselearningproducts.github.io/curriculum/branding/mv_electron_underline.svg');
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    height: 5rem;
+    width: 24rem;
+    position:relative;
+    bottom: 2rem;
+    right: 0rem;
+}
+
+:root {
+    --mv-ultraviolet: #4D61F4;
+    --mv-supernova: #FFE352;
+    --mv-white-dwarf: #f4f4f4;
+    --mv-molten: #FF7C66;
+    --mv-electron: #64ABFF;
+    --mv-deep-space: #242456;
+    --mv-aurora: #59D8A1;
+    --mv-gray: #C8C8D5; 
+}
+
+hr {
+    border: solid 1px var(--mv-gray);
+}
+
+.tabbed-code-block {
+    display: flex;
+    justify-content: flex-start;
+    padding-left: .5em;
+    position: relative;
+}
+.tabbed-code-block a {
+    font-family: 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace;
+    box-sizing: border-box;
+    padding: .6em 1em;
+    border: solid .3em hsl(0, 0%, 33%);
+    border-radius: .5em .5em 0 0;
+    background-color: hsl(0, 0%, 66%);
+    color: hsl(0, 0%, 33%);
+    text-decoration: none;
+    margin-right: -.3em;
+    transform: translate(0, .25em);
+}
+.tabbed-code-block a.active {
+    border-bottom-color: black;
+    background-color:black;
+    color: white;
+    box-shadow: -2px 0px 2px -1px hsl(0, 0%, 16%), inset 0 1.3em 0 -1em var(--mv-aurora);
+    z-index: 1;
+}
+pre[class*="selected"] {
+    margin: 0 0 .5em 0;
+}
+pre.selected {
+    display: block;
+}
+pre.unselected {
+    display: none;
+}
+.hljs {
+    padding: 1rem;
+    border-radius: 3px;
+}
+table {
+    width: 100%;
+    table-layout: fixed;
+}
+table, th, td {
+    border: 1px solid var(--mv-gray);
+    border-collapse: collapse;
+}
+th, td {
+    padding: 1rem;
+    vertical-align: top;
+}
+th {
+    background-color: var(--mv-gray);
+}
