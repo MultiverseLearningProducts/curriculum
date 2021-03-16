@@ -126,6 +126,7 @@ hr {
 .tabbed-code-block nav {
     display: flex;
     align-items: center;
+    margin-top: 14px;
     margin-bottom: -14px;
 }
 .tabbed-code-block nav a {
@@ -135,6 +136,9 @@ hr {
     background-color: var(--mv-gray);
     text-decoration: none;
     font-family: monospace;
+}
+.tabbed-code-block nav a:not(:first-child) {
+    transform: translateX(-1px);
 }
 .tabbed-code-block article {
     position: relative;
