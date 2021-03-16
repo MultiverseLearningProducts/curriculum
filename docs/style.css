@@ -122,41 +122,19 @@ h1::after {
 
 hr {
     border: solid 1px var(--mv-gray);
-}
-
-.tabbed-code-block {
+} 
+.tabbed-code-block nav {
     display: flex;
-    justify-content: flex-start;
-    padding-left: .5em;
+    align-items: center;
+}
+.tabbed-code-block article {
     position: relative;
 }
-.tabbed-code-block a {
-    font-family: 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace;
-    box-sizing: border-box;
-    padding: .6em 1em;
-    border: solid .3em hsl(0, 0%, 33%);
-    border-radius: .5em .5em 0 0;
-    background-color: hsl(0, 0%, 66%);
-    color: hsl(0, 0%, 33%);
-    text-decoration: none;
-    margin-right: -.3em;
-    transform: translate(0, .25em);
-}
-nav.tabbed-code-block a.active {
-    border-bottom-color: black;
-    background-color:black;
-    color: white;
-    box-shadow: -2px 0px 2px -1px hsl(0, 0%, 16%), inset 0 1.3em 0 -1em var(--mv-aurora);
-    z-index: 1;
-}
-article.tabbed-code-block pre[class*="selected"] {
-    margin: 0 0 .5em 0;
-}
-article.tabbed-code-block pre.selected {
-    display: block;
-}
-article.tabbed-code-block pre.unselected {
-    display: none;
+.tabbed-code-block article pre {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
 }
 .hljs {
     padding: 1rem;
