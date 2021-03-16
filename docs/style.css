@@ -59,6 +59,7 @@ body {
     background-color: var(--mv-white-dwarf);
     box-shadow: 1px 1px 12px -3px rgba(0,0,0,0.8);
     padding: 0 2rem 10.688rem;
+    border-radius: 3px;
 }
 body::before {
     content: '';
@@ -156,6 +157,10 @@ pre.selected {
 }
 pre.unselected {
     display: none;
+}
+.hljs {
+    padding: 1rem;
+    border-radius: 3px;
 }
 table {
     width: 100%;

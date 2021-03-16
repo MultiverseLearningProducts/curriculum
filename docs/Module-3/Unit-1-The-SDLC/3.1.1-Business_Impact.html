@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+    <head>
+        <meta charset="utf-8">
+        <title> Business Impact</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="shortcut icon" type="image/x-icon" href="/curriculum/favicon.ico"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/an-old-hope.min.css">
+        <link rel="stylesheet" href="/curriculum/style.css"/>
+        <script src="/curriculum/js/highlight.min.js"></script>
+        <script src="/curriculum/js/bash.min.js"></script>
+        <script src="/curriculum/js/java.min.js"></script>
+        <script src="/curriculum/js/javascript.min.js"></script>
+        <script src="/curriculum/js/sql.min.js"></script>
+    </head>
+    <body>
+        <h1>Business Impact</h1>
+<section><nav class="tabbed-code-block"><a href="#javascript">Javascript</a><a href="#java">Java</a></nav><article><pre><code class="language-javascript"><span class="hljs-comment">/**
+* npm install -g swagger-node-codegen
+* snc airports_config.yaml -o airports-node
+* cd into the airports-node folder and start the server with npm start
+*/</span>
+
+npm start
+</code></pre>
+<pre><code class="language-java"><span class="hljs-comment">/*
+  download swagger-codegen-cli-3.0.24.jar from https://repo1.maven.org/maven2/io/swagger/codegen/v3/swagger-codegen-cli/3.0.24/swagger-codegen-cli-3.0.24.jar
+
+  in the same folder create a config.json file with the following as its contents:
+
+  {
+    &quot;basePackage&quot;: &quot;org.whitehat&quot;,
+    &quot;configPackage&quot;: &quot;org.whitehat.app.config&quot;
+  }
+
+  now run the command below
+
+  java -jar swagger-codegen-cli-3.0.24.jar generate \
+    -i $PWD/airports-config.yaml \
+    -l spring \
+    -o airports-java \
+    -c $PWD/config.json \
+    -DhideGenerationTimestamp=true
+*/</span>
+</code></pre>
+</article></section>
+        <script>hljs.highlightAll()</script>
+    </body>
+</html>
