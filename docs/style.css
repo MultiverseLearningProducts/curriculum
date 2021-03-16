@@ -147,21 +147,14 @@ hr {
 .tabbed-code-block article {
     position: relative;
 }
-.tabbed-code-block article pre {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-}
 .tabbed-code-block article pre code {
     border-radius: 0 3px 3px 3px;
-    transition: opacity .2s;
 }
 .tabbed-code-block article pre code.selected {
-    opacity: 1;
+    display: block;
 }
 .tabbed-code-block article pre code.unselected {
-    opacity: 0;
+    display: none;
 }
 .hljs {
     padding: 1rem;
