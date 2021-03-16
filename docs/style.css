@@ -131,18 +131,15 @@ hr {
 }
 .tabbed-code-block nav a {
     padding: 1rem 1.5rem .5rem;
-    border:#242456 1px solid;
+    border:#1c1d21 1px solid;
     border-radius: 3px 3px 0px 0px;
     text-decoration: none;
     font-family: monospace;
+    color: var(--mv-gray);
 }
-.tabbed-code-block nav a.active::before {
-    content: '';
-    display: block;
-    background-image: url('https://multiverselearningproducts.github.io/curriculum/branding/mv_supernova_tada.svg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: -5rem;
+.tabbed-code-block nav a.active {
+    background-color: #1c1d21;
+    color: var(--mv-molten);
 }
 .tabbed-code-block nav a:not(:first-child) {
     transform: translateX(-1px);
@@ -158,6 +155,13 @@ hr {
 }
 .tabbed-code-block article pre code {
     border-radius: 0 3px 3px 3px;
+    transition: opacity .2s;
+}
+.tabbed-code-block article pre code.selected {
+    opacity: 1;
+}
+.tabbed-code-block article pre code.unselected {
+    opacity: 0;
 }
 .hljs {
     padding: 1rem;
