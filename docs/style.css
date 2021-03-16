@@ -142,20 +142,20 @@ hr {
     margin-right: -.3em;
     transform: translate(0, .25em);
 }
-.tabbed-code-block a.active {
+nav.tabbed-code-block a.active {
     border-bottom-color: black;
     background-color:black;
     color: white;
     box-shadow: -2px 0px 2px -1px hsl(0, 0%, 16%), inset 0 1.3em 0 -1em var(--mv-aurora);
     z-index: 1;
 }
-pre[class*="selected"] {
+article.tabbed-code-block pre[class*="selected"] {
     margin: 0 0 .5em 0;
 }
-pre.selected {
+article.tabbed-code-block pre.selected {
     display: block;
 }
-pre.unselected {
+article.tabbed-code-block pre.unselected {
     display: none;
 }
 .hljs {

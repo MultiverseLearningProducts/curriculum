@@ -18,7 +18,7 @@ function setActiveTab() {
 }
 function setActiveTabContent() {
     const blocks = [
-        ...document.querySelectorAll('nav.tabbed-code-block + pre'),
+        ...document.querySelectorAll('article.tabbed-code-block + pre'),
         ...document.querySelectorAll('pre + pre')
     ]
     blocks.forEach(displayActiveBlockContent)
