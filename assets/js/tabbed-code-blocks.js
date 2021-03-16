@@ -11,6 +11,7 @@ function setActiveTab() {
 window.onload = function () {
     window.location.hash = localStorage.getItem('lang-pref') || '#javascript'
     setActiveTab()
+    selectCodeBlock(window.location.hash)
     window.addEventListener('hashchange', setActiveTab)
 }
 
@@ -22,5 +23,4 @@ function selectCodeBlock(lang) {
         block.classList.remove('selected', 'unselected')
         block.classList.contains(`language-${lang}`) ? block.classList.add('selected') : block.classList.add('unselected')
     })
-    setActiveTab()
 }
