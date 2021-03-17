@@ -2,7 +2,7 @@
 <html lang="en-GB">
     <head>
         <meta charset="utf-8">
-        <title> Database access using Node.js</title>
+        <title> Database access using Node.js</title>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link rel="shortcut icon" type="image/x-icon" href="/curriculum/favicon.ico"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/an-old-hope.min.css">
@@ -101,7 +101,8 @@ try {
 </code></pre>
 <p>In the lines above we import the <code>sqlite3</code> package then access a constructor on the <code>sqlite3</code> object and use the <code>new</code> keyword to instantiate a new instance of our database for our program. We can pass some config to our <code>Database</code> constructor, here we are passing in a relative path to where the database file either already exists, or where we would like it to be created and with what name.</p>
 <p>The code uses a <a href="https://www.w3schools.com/jsref/jsref_try_catch.asp">try/finally</a> block to ensure that the statement and database are closed regardless of whether an error occurs. This is best practice to avoid memory leaks.</p>
-<p>The code also makes use of <strong>Prepared Statements</strong> which are key for ensure your database applications are not vulnerable to <a href="https://portswigger.net/web-security/sql-injection">SQL injection attacks</a>.</p>
+<p>The code also makes use of <a href="https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html">Prepared Statements</a> which are key for ensure your database applications are not vulnerable to <a href="https://portswigger.net/web-security/sql-injection">SQL injection attacks</a>. Watch this video to find out more about this kind of attack</p>
+<p>!(https://youtu.be/wX6tszfgYp4)</p>
 <h2>Assignment</h2>
 <ol>
 <li>Write Node.js code to create a new, persistent database containing the tables described by the UML diagram in the <a href="https://multiverselearningproducts.github.io/curriculum/Bootcamp/Unit-2-Databases/0.2.2-SQL_Joins.html">SQL Joins</a> lesson. Ensure you create FOREIGN KEYs as appropriate.</li>

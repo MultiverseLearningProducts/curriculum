@@ -2,7 +2,7 @@
 <html lang="en-GB">
     <head>
         <meta charset="utf-8">
-        <title> Populating databases from JSON</title>
+        <title> Populating databases from JSON</title>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link rel="shortcut icon" type="image/x-icon" href="/curriculum/favicon.ico"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/an-old-hope.min.css">
@@ -89,7 +89,7 @@ describe(<span class="hljs-string">&#x27;SQLite3&#x27;</span>, <span class="hljs
 </code></pre>
 <h3>Load the JSON data into database tables using Node.js</h3>
 <p>Now we have the data loaded, we need to loop through the array of airports and use the airport object to form an SQL insert query.</p>
-<p>To prevent <a href="https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html">SQL Injection attacks</a>, we always use Prepared Statements to do database inserts. Prepared statements ensure that an attacker is not able to change the intent of a query, even if SQL commands are inserted by an attacker into our seed file or as user input.</p>
+<p>We make use of <a href="https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html">Prepared Statements</a> which are key for ensure your database applications are not vulnerable to <a href="https://portswigger.net/web-security/sql-injection">SQL injection attacks</a>.</p>
 <pre><code class="language-SQL">db.prepare(&quot;INSERT INTO airports (icao, iata, name, city, state, country, elevation, lat, lon, tz) VALUES (?,?,?,?,?,?,?,?,?,?)&quot;);
 </code></pre>
 <p>All the &quot;?&quot; are placeholders for the different values that we will be inserting as we iterate over our array of data. When you call <code>db.run</code> the first argument is the string above, and the second argument is an array of all the values you want to store. The &quot;?&quot; are substituated with the data hence your values have to be in the same order as the database columns.</p>
