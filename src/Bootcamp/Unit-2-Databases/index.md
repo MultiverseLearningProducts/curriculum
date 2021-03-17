@@ -4,6 +4,9 @@ This Unit focuses on relational databases and how to use Node.js to create, read
 ## Outstanding work
   * Fix TODOs
   * Check if slides in Basic SQL Commands section still required and if so why embedding not working
+  * Where to locate assets?
+  * Solution code location?
+  * Navigation
 
 ## End of Unit formative assessment
 [SQL Quiz](https://www.w3schools.com/quiztest/quiztest.asp?qtest=SQL)
