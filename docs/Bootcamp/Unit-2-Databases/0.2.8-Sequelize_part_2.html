@@ -2,7 +2,7 @@
 <html lang="en-GB">
     <head>
         <meta charset="utf-8">
-        <title> Sequelize - part 2</title>
+        <title> Sequelize - part 2</title>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link rel="shortcut icon" type="image/x-icon" href="/curriculum/favicon.ico"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/an-old-hope.min.css">
@@ -16,11 +16,11 @@
     <body>
         <h1>Sequelize - part 2</h1>
 <h2>Pre-requisites</h2>
-<p>Sequelize - part 1</p>
+<p><a href="https://multiverselearningproducts.github.io/curriculum/Bootcamp/0.2.7-Sequelize_part_1.">Sequelize - part 1</a></p>
 <h2>Learning Objectives</h2>
 <p>Understand how to add Sequelize relationships to represent FOREIGN KEY constraints.</p>
 <h2>Lesson</h2>
-<p>To connect tables in <code>sequelize</code> your model definitions simply need to specify their relationships using the <code>hasMany</code> or <code>belongsTo</code> functions. For example, we simply add the following 2 lines to the <code>Restaurant</code> class:</p>
+<p>To connect tables in Sequelize your model definitions simply need to specify their relationships using the <code>hasMany</code> or <code>belongsTo</code> functions. For example, we simply add the following 2 lines to the Restaurant class:</p>
 <pre><code class="language-javascript">Restaurant.hasMany(Menu, {<span class="hljs-attr">as</span>: <span class="hljs-string">&#x27;menus&#x27;</span>, <span class="hljs-attr">foreignKey</span>: <span class="hljs-string">&#x27;restaurant_id&#x27;</span>})
 Menu.belongsTo(Restaurant, {<span class="hljs-attr">foreignKey</span>: <span class="hljs-string">&#x27;restaurant_id&#x27;</span>})
 </code></pre>
@@ -53,7 +53,7 @@ describe(<span class="hljs-string">&#x27;Relationships&#x27;</span>, <span class
 
 })
 </code></pre>
-<p>Note that the <code>sequelize</code> library is build using promises, so we can use async await in our code.</p>
+<p>Note that the Sequelize library is build using promises, so we can use async await in our code.</p>
 <h2>Assignment</h2>
 <ul>
 <li>Configure the relationships between the Restaurant, Menu and Menu Item model classes</li>
