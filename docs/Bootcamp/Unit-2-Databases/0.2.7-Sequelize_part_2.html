@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+    <head>
+        <meta charset="utf-8">
+        <title> Sequelize - part 2</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="shortcut icon" type="image/x-icon" href="/curriculum/favicon.ico"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/an-old-hope.min.css">
+        <link rel="stylesheet" href="/curriculum/style.css"/>
+        <script src="/curriculum/js/highlight.min.js"></script>
+        <script src="/curriculum/js/bash.min.js"></script>
+        <script src="/curriculum/js/java.min.js"></script>
+        <script src="/curriculum/js/javascript.min.js"></script>
+        <script src="/curriculum/js/sql.min.js"></script>
+    </head>
+    <body>
+        <h1>Sequelize - part 2</h1>
+<h2>Pre-requisites</h2>
+<p>Sequelize - part 1</p>
+<h2>Learning Objectives</h2>
+<p>Understand how to add Sequelize relationships to represent FOREIGN KEY constraints.</p>
+<h2>Lesson</h2>
+<p>To connect tables in <code>sequelize</code> your model definitions simply need to specify their relationships using the <code>hasMany</code> or <code>belongsTo</code> functions. For example, we simply add the following 2 lines to the <code>Restaurant</code> class:</p>
+<pre><code class="language-javascript">Restaurant.hasMany(Menu, {<span class="hljs-attr">as</span>: <span class="hljs-string">&#x27;menus&#x27;</span>, <span class="hljs-attr">foreignKey</span>: <span class="hljs-string">&#x27;restaurant_id&#x27;</span>})
+Menu.belongsTo(Restaurant, {<span class="hljs-attr">foreignKey</span>: <span class="hljs-string">&#x27;restaurant_id&#x27;</span>})
+</code></pre>
+<p>Sequelize will do all the hard work of creating the new foreign key columns!</p>
+<p>We can test the relationships have been setup correctly using the following code:</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">const</span> {sequelize} = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./sequelize_index&#x27;</span>);
+<span class="hljs-keyword">const</span> {Restaurant} = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./Restaurant&#x27;</span>);
+<span class="hljs-keyword">const</span> {Menu} = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./Menu&#x27;</span>);
+<span class="hljs-keyword">const</span> {MenuItem} = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./MenuItem&#x27;</span>)
+
+
+describe(<span class="hljs-string">&#x27;Relationships&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+    beforeAll(<span class="hljs-keyword">async</span> () =&gt; {
+        <span class="hljs-keyword">await</span> sequelize.sync({ <span class="hljs-attr">force</span>: <span class="hljs-literal">true</span> });
+    })
+    
+    test(<span class="hljs-string">&#x27;restaurants have menus&#x27;</span>, <span class="hljs-keyword">async</span> () =&gt; {
+        <span class="hljs-keyword">const</span> restaurant = <span class="hljs-keyword">await</span> Restaurant.create({<span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Ronalds&#x27;</span>, <span class="hljs-attr">image</span>: <span class="hljs-string">&#x27;http://some.image.url&#x27;</span>})
+        <span class="hljs-keyword">const</span> menu = <span class="hljs-keyword">await</span> Menu.create({<span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;set 1&#x27;</span>});
+        <span class="hljs-keyword">await</span> restaurant.addMenu(menu);
+        <span class="hljs-keyword">const</span> menus = <span class="hljs-keyword">await</span> restaurant.getMenus();
+        <span class="hljs-keyword">const</span> menuItem = <span class="hljs-keyword">await</span> MenuItem.create({<span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;egg&#x27;</span>, <span class="hljs-attr">price</span>: <span class="hljs-number">2.00</span>});
+        <span class="hljs-keyword">await</span> menus[<span class="hljs-number">0</span>].addMenuItem(menuItem);
+        <span class="hljs-keyword">const</span> menuItems = <span class="hljs-keyword">await</span> menus[<span class="hljs-number">0</span>].getMenuItems();
+
+        expect(menuItems.length).toBe(<span class="hljs-number">1</span>);
+
+        expect(menus[<span class="hljs-number">0</span>].title).toBe(<span class="hljs-string">&#x27;set 1&#x27;</span>);
+    })
+
+})
+</code></pre>
+<p>Note that the <code>sequelize</code> library is build using promises, so we can use async await in our code.</p>
+<h2>Assignment</h2>
+<ul>
+<li>Configure the relationships between the Restaurant, Menu and Menu Item model classes</li>
+<li>Write unit tests that prove your relationships are all correctly connected</li>
+</ul>
+<h2>Assignment extention tasks</h2>
+<p>TODO</p>
+<h2>Additional resources</h2>
+
+        <script src="/curriculum/js/tabbed-code-blocks.js"></script>
+    </body>
+</html>

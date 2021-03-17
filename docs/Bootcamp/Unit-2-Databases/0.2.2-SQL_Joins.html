@@ -2,7 +2,7 @@
 <html lang="en-GB">
     <head>
         <meta charset="utf-8">
-        <title> SQL Joins</title>
+        <title> SQL Joins</title>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link rel="shortcut icon" type="image/x-icon" href="/curriculum/favicon.ico"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/an-old-hope.min.css">
@@ -40,19 +40,25 @@
 </code></pre>
 <p>Notice now we have mixed fields coming from different tables, we therefore have to name our columns with both the <code>table_name.field_name</code> i.e. <code>MENUS.name</code>. In this example the PRIMARY KEY is the RESTAURANTS table id and the MENUS table restaurant_id. Can you explain why 'restaurant_id' is referred to as the foreign key?</p>
 <h2>Assignment</h2>
-<p>Modify your tables as follows:</p>
+<ol>
+<li>Modify your tables as follows:
 <ul>
 <li>add a <code>restaurant_id</code> column to the MENU table and mark it as a FOREIGN KEY</li>
 <li>add a <code>menu_id</code> column to the MENU_ITEM table and mark it as a FOREIGN KEY</li>
-</ul>
+</ul></li>
+</ol>
 <p>Be aware that Repl does not fully support the foreign key constraint (i.e. may allow you to delete linked data)..</p>
-<p>Write some JOIN statements that do the following:</p>
+<ol start="2">
+<li>Write some JOIN statements that do the following:</li>
+</ol>
 <ul>
 <li>SELECT a restaurant, a menu and all the menu items using a JOIN statement</li>
 <li>SELECT all the restaurants with a count of the number of menus each restaurant has</li>
 <li>SELECT all the menus, with the total cost of all the menu items summed, and have the list in descending order (most expensive first)</li>
 </ul>
-<p>Share your Repl with your coach via Slack.</p>
+<ol start="3">
+<li>Share your Repl with your coach via Slack.</li>
+</ol>
 <h3>Assignment extension tasks</h3>
 <p>Research the different types of SQL JOIN function there are.</p>
 <h2>Additional resources</h2>

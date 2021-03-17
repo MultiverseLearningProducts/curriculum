@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+    <head>
+        <meta charset="utf-8">
+        <title> Sequelize - part 1</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="shortcut icon" type="image/x-icon" href="/curriculum/favicon.ico"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/an-old-hope.min.css">
+        <link rel="stylesheet" href="/curriculum/style.css"/>
+        <script src="/curriculum/js/highlight.min.js"></script>
+        <script src="/curriculum/js/bash.min.js"></script>
+        <script src="/curriculum/js/java.min.js"></script>
+        <script src="/curriculum/js/javascript.min.js"></script>
+        <script src="/curriculum/js/sql.min.js"></script>
+    </head>
+    <body>
+        <h1>Sequelize - part 1</h1>
+<h2>Pre-requisites</h2>
+<p>TODO</p>
+<h2>Learning Objectives</h2>
+<p>Learn the ORM pattern for the most popular SQL ORM available for Node.js - <a href="https://www.npmjs.com/package/sequelize">Sequelize</a>.</p>
+<h2>Lesson</h2>
+<p>It is possible to build an Object Relational Mapping (ORM) tool from scratch for each project but it is time consuming and requires careful management of resources. Your app will have a much more solid foundation if it is built with a commercial ORM framework such as Sequelize.</p>
+<h3>Installing Sequelize</h3>
+<p>Sequelize is a promise-based Node.js ORM for multiple database including SQLite.</p>
+<p>To install Sequelize run:<br>
+<code>npm install sequelize</code></p>
+<p>You must also ensure you have the the driver installed for SQLite:<br>
+<code>npm install sqlite3</code></p>
+<p>Create a file named <code>sequelize_index.js</code> with the following content:</p>
+<pre><code class="language-js"><span class="hljs-keyword">const</span> {Sequelize, DataTypes, Model} = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;sequelize&#x27;</span>);
+
+<span class="hljs-keyword">const</span> sequelize = <span class="hljs-keyword">new</span> Sequelize(<span class="hljs-string">&#x27;database&#x27;</span>, <span class="hljs-string">&#x27;username&#x27;</span>, <span class="hljs-string">&#x27;password&#x27;</span>, {
+    <span class="hljs-attr">dialect</span>: <span class="hljs-string">&#x27;sqlite&#x27;</span>,
+    <span class="hljs-attr">storage</span>: <span class="hljs-string">&#x27;./restaurants-seq.sqlite&#x27;</span>
+});
+
+ <span class="hljs-built_in">module</span>.exports={sequelize, DataTypes, Model};
+</code></pre>
+<p>This file contains code that would otherwise be duplicated in the individual model classes. It sets up a connection to the database and imports Sequelize types. You can also see that it would be very easy to specify a different type of database in the future just by changing this config.</p>
+<h3>Testing code written using Sequelize</h3>
+<p>Let's start with a failing test:</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">const</span> {sequelize} = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./sequelize_index&#x27;</span>);
+<span class="hljs-keyword">const</span> {Restaurant} = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./Restaurant&#x27;</span>)
+
+describe(<span class="hljs-string">&#x27;Restaurant&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+    <span class="hljs-comment">/**
+     * Runs the code prior to all tests
+     */</span>
+    beforeAll(<span class="hljs-keyword">async</span> () =&gt; {
+        <span class="hljs-comment">// the &#x27;sync&#x27; method will create tables based on the model class</span>
+        <span class="hljs-comment">// by setting &#x27;force:true&#x27; the tables are recreated each time the </span>
+        <span class="hljs-comment">// test suite is run</span>
+        <span class="hljs-keyword">await</span> sequelize.sync({ <span class="hljs-attr">force</span>: <span class="hljs-literal">true</span> });
+    })
+
+    test(<span class="hljs-string">&#x27;can create a restaurant&#x27;</span>, <span class="hljs-keyword">async</span> () =&gt; {
+        <span class="hljs-keyword">await</span> sequelize.sync({ <span class="hljs-attr">force</span>: <span class="hljs-literal">true</span> }); <span class="hljs-comment">// recreate db</span>
+        <span class="hljs-keyword">const</span> restaurant = <span class="hljs-keyword">await</span> Restaurant.create({ <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Ronalds&#x27;</span>, <span class="hljs-attr">image</span>: <span class="hljs-string">&#x27;http://some.image.url&#x27;</span> })
+        expect(restaurant.id).toBe(<span class="hljs-number">1</span>)
+    })
+})
+</code></pre>
+<p>Before we start our tests (or later our application server) we need to call and wait for <code>sequelize.sync()</code>. This command performs a SQL query to the database and creates tables (based on our class models) or modifies the table structure to match the class models. The <code>{ force: true }</code> parameter forces the tables to be recreated each time the test suite is run (this ensures the <code>expect</code> line passes as there will only be a single row in the database).</p>
+<p>In our test you can see the API for Sequelize. To create a new instance of a Restaurant we call a static method on the class called <code>create</code>. We pass in an object with the field names, and the values we want to store. In our test which kind of async function are we using?</p>
+<h3>Defining the model</h3>
+<p>Models are fundamental to Sequelize. A Model represents a table in your database. It is represented by a class that extends <code>Model</code>. Here is an example for the <code>Restaurant</code> class.</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">const</span> {sequelize, DataTypes, Model} = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./sequelize_index&#x27;</span>);
+
+<span class="hljs-comment">/**
+ * Represents a Restaurant
+ */</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Restaurant</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Model</span> </span>{
+
+    <span class="hljs-comment">// add methods here</span>
+
+}
+Restaurant.init({
+    <span class="hljs-attr">name</span>: DataTypes.STRING,
+    <span class="hljs-attr">image</span>: DataTypes.STRING,
+}, {
+    sequelize,
+    <span class="hljs-attr">timestamps</span>: <span class="hljs-literal">false</span>,
+});
+
+<span class="hljs-built_in">module</span>.exports = {
+    Restaurant
+};
+</code></pre>
+<p>In the code above we de-structure assign three constructors from the sequelize module: Sequelize, Model &amp; DataTypes.</p>
+<p>Our class definition just requires us to extend from the Sequelize class <code>Model</code> (note that there are alternative methods to inheritance if required), plus the addition of an <code>init</code> method which defines the table columns and their types. The <code>timestamps: false</code> setting avoids a <code>created_at</code> column appearing. There are many more customisations you can achieve if you refer to the <a href="https://sequelize.org/master/">Sequelize documentation</a>.</p>
+<h2>Assignment</h2>
+<ul>
+<li>Create a new node project (run <code>npm init</code>) and add dependencies on  sqlite3, jest and sequelize (as per the installation instructions above)</li>
+<li>Create Restaurant, Menu and Item classes</li>
+<li>Add code to map each class to a database table in a new database file (ignore relationship for now). use the <code>Restaurant</code> class above as an example.</li>
+<li>Create a test based on the code above to check that your tables are created and that you can insert data into them.</li>
+</ul>
+<h2>Assignment extention tasks</h2>
+<h2>Additional resources</h2>
+<p>ORM frameworks for other languages:</p>
+<ul>
+<li><a href="https://hibernate.org/">Hibernate for Java</a></li>
+<li><a href="https://docs.microsoft.com/en-us/ef/core/get-started/overview/first-app?tabs=netcore-cli">Entity Framework Core for .NET</a></li>
+</ul>
+<p><a href="https://sequelize.org/master/">Sequalize documentation</a></p>
+
+        <script src="/curriculum/js/tabbed-code-blocks.js"></script>
+    </body>
+</html>
