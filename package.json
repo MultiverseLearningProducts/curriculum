@@ -35,7 +35,8 @@
     "markdown-pdf": "^10.0.0",
     "puppeteer": "^8.0.0",
     "remarkable": "^2.0.1",
-    "remarkable-admonitions": "^0.2.2"
+    "remarkable-admonitions": "^0.2.2",
+    "remarkable-figure-plugin": "^1.0.0"
   },
   "devDependencies": {
     "svgo": "^2.2.2"

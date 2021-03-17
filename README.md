@@ -15,6 +15,15 @@ npm run publish
 
 That will build the markdown pages into html pages and then push to github. See the site here [https://multiverselearningproducts.github.io/swe](https://multiverselearningproducts.github.io/swe)
 
+## Images
+
+Add images for the curriculum [here](https://github.com/MultiverseLearningProducts/curriculum/issues/1), keep them out of the codebase so they are not sent back and forth as we push and pull the repo.
+
+1. Drag your image into a new issue
+2. Wait for the image to upload then right click to copy the image URL
+3. Add your image using markdown `![alt label in here](image URL in here)`
+4. OPTIONAL add a figcaption for the image using `![alt label in here](image URL in here "fig caption here")`
+
 ## Special Markdowns
 
 ### Embeds
@@ -35,8 +44,9 @@ To create a tabbed code block use the following markdown
 
 ![use the pipe character to separate the labels for the language tabs no line-breaks between the following code blocks](https://user-images.githubusercontent.com/4499581/100463155-4dfb4180-30c3-11eb-963c-9c168cd4f16e.png)
 
-There are 2 rules to follow:
+There are 3 rules to follow:
 
+1. Use the block delimiter `:::` at the beginning and end of your tabbed code block
 1. Create the tabs with the pipe character your text here will become the label and the hash i.e. "Javascript" -> #javascript
 1. In the code blocks that follow don't create line breaks between them i.e make sure your different language blocks butt up to each other.
 
