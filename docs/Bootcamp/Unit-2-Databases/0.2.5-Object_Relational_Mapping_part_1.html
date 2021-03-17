@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+    <head>
+        <meta charset="utf-8">
+        <title> Object Relational Mapping - part 1</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="shortcut icon" type="image/x-icon" href="/curriculum/favicon.ico"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/an-old-hope.min.css">
+        <link rel="stylesheet" href="/curriculum/style.css"/>
+        <script src="/curriculum/js/highlight.min.js"></script>
+        <script src="/curriculum/js/bash.min.js"></script>
+        <script src="/curriculum/js/java.min.js"></script>
+        <script src="/curriculum/js/javascript.min.js"></script>
+        <script src="/curriculum/js/sql.min.js"></script>
+    </head>
+    <body>
+        <h1>Object Relational Mapping - part 1</h1>
+<h2>Learning Objectives</h2>
+<ul>
+<li>Implement an Object Relational Mapping (ORM) design pattern</li>
+</ul>
+<h2>Pre-requisites</h2>
+<p>Familiarity with Database access using Node.js</p>
+<h2>Lesson</h2>
+<p>We represent objects in our programs with classes and in the database as rows. We can't store an instance of a class in the row of a database. We can't easily use the row of a database in our programs.</p>
+<p>The ORM pattern is about abstracting away the database layer. It allows us to focus on creating / manipulating instances of classes such as Restaurant and delegate the work of mapping them to database fields to the ORM layer.</p>
+<p>In this lesson we will manually persist Restaurant, Menu and Menu Item data as part of the class constructor. This is not a recommended approach for production (a commercial ORM system is preferred) however it will allow us to illustrate the ORM concepts.</p>
+<p>In both our tests and our main program we have to make sure the database is set up with the tables we need to store our Restaurants in. We recommend creating a file that initialises the database appropriately for test or production use and exports it.</p>
+<pre><code class="language-javascript"><span class="hljs-comment">// db.js</span>
+<span class="hljs-keyword">const</span> {Database} = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;sqlite3&#x27;</span>)
+<span class="hljs-keyword">const</span> location = process.env.NODE_ENV === <span class="hljs-string">&#x27;test&#x27;</span> ? <span class="hljs-string">&#x27;:memory:&#x27;</span> : <span class="hljs-string">&#x27;./db.sqlite&#x27;</span>
+<span class="hljs-built_in">module</span>.exports = <span class="hljs-keyword">new</span> Database(location)
+</code></pre>
+<p>In the example above if we are running tests, the value of <code>process.env.NODE_ENV</code> will be 'test', so when our tests are running we always start with an empty, in-memory database. When we come to just run this code in 'development' or 'production' we specify a file that holds our data.</p>
+<p>We should always start with a failing test and practise &quot;Test Driven Development&quot; (TTD). Our test needs to ensure that when we create a new Restaurant it is saved to the database. However, our classes assume that the database is ready to read and write to so we can use the <code>beforeAll</code> function that Jest provides to create the required tables <em>before</em> our tests run.</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">const</span> Restaurant = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./Restaurant&#x27;</span>)
+<span class="hljs-keyword">const</span> db = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./db.js&#x27;</span>)
+
+describe(<span class="hljs-string">&#x27;Restaurants&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+    beforeAll(<span class="hljs-function">(<span class="hljs-params">done</span>) =&gt;</span> {
+        db.run(<span class="hljs-string">&#x27;CREATE TABLE IF NOT EXISTS restaurants(id INTEGER PRIMARY KEY, name TEXT, image TEXT);&#x27;</span>, done)
+    })
+
+    test(<span class="hljs-string">&#x27;When a Restaurant is created it is stored in the database&#x27;</span>, <span class="hljs-keyword">async</span> (done) =&gt; {
+        <span class="hljs-keyword">const</span> restaurant = <span class="hljs-keyword">await</span> <span class="hljs-keyword">new</span> Restaurant({<span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Boo Jangles&#x27;</span>, <span class="hljs-attr">image</span>: <span class="hljs-string">&#x27;https://some.image.url&#x27;</span>})
+        expect(restaurant.id).toBe(<span class="hljs-number">1</span>)
+        db.get(<span class="hljs-string">&#x27;SELECT * FROM restaurants WHERE id=?;&#x27;</span>, <span class="hljs-number">1</span>, <span class="hljs-function">(<span class="hljs-params">err, row</span>) =&gt;</span> {
+            expect(row.name).toBe(<span class="hljs-string">&#x27;Boo Jangles&#x27;</span>)
+            done()
+        })
+    })
+})
+</code></pre>
+<p>We also want to test that we can create a new instance of a Restaurant from a row.</p>
+<pre><code class="language-javascript">test(<span class="hljs-string">&#x27;can create an instance of an restaurant from a row&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">done</span>) =&gt;</span> {
+    db.get(<span class="hljs-string">&#x27;SELECT * FROM restaurants WHERE id=?&#x27;</span>, <span class="hljs-number">1</span>, <span class="hljs-keyword">async</span> (err, row) =&gt; {
+        <span class="hljs-keyword">const</span> restaurant = <span class="hljs-keyword">await</span> <span class="hljs-keyword">new</span> Restaurant(row)
+        expect(restaurant.id).toBe(<span class="hljs-number">1</span>)
+        expect(restaurant.name).toBe(<span class="hljs-string">&#x27;Boo Jangles&#x27;</span>)
+        db.get(<span class="hljs-string">&#x27;SELECT COUNT(id) AS total FROM restaurants;&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">err, count</span>) =&gt;</span> {
+            expect(count.total).toBe(<span class="hljs-number">1</span>)
+            done()
+        })
+    })        
+})
+</code></pre>
+<h2>Assignment</h2>
+<ol>
+<li><p>Create JavaScript code to represent the 3 classes below. There is no need at this stage to worry about relationships between classes. <figure><img src="https://user-images.githubusercontent.com/1316724/111300668-3ed7d980-8649-11eb-99b2-5a842259c4ed.png" alt="UML Class Diagram showing Restaurant, Menu and MenuItem classes and attributes"><figcaption></figcaption></figure></p></li>
+<li><p>Write code to persist an instance of each class to the database.</p></li>
+<li><p>Write code to create an instance of each class from a database row (??)</p></li>
+<li><p>Ensure that the Unit Tests described above both run successfully.</p></li>
+<li><p>Commit your code to GitHub and let you coach know it is ready for review.</p></li>
+</ol>
+<h2>Assignment extension tasks</h2>
+<ul>
+<li></li>
+</ul>
+<h2>Additional resources</h2>
+
+        <script src="/curriculum/js/tabbed-code-blocks.js"></script>
+    </body>
+</html>

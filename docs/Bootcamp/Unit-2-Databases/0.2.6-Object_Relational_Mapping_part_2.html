@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+    <head>
+        <meta charset="utf-8">
+        <title> Object Relational Mapping - part 2</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="shortcut icon" type="image/x-icon" href="/curriculum/favicon.ico"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/an-old-hope.min.css">
+        <link rel="stylesheet" href="/curriculum/style.css"/>
+        <script src="/curriculum/js/highlight.min.js"></script>
+        <script src="/curriculum/js/bash.min.js"></script>
+        <script src="/curriculum/js/java.min.js"></script>
+        <script src="/curriculum/js/javascript.min.js"></script>
+        <script src="/curriculum/js/sql.min.js"></script>
+    </head>
+    <body>
+        <h1>Object Relational Mapping - part 2</h1>
+<h2>Learning Objectives</h2>
+<ul>
+<li>Implement an Object Relational Mapping (ORM) design pattern with relationships between classes</li>
+</ul>
+<h2>Pre-requisites</h2>
+<p><a href="https://multiverselearningproducts.github.io/curriculum/Bootcamp/Unit-2-Databases/0.2.5-Object_Relational_Mapping_part_1.html">Object Relational Mapping - part 1</a></p>
+<h2>Lesson</h2>
+<p>There is an important dimension missing from our 'home grown' ORM implementation - relationships. As we see from the class diagram below, our Restaurants have Menus and our Menus have Menu Items.<br>
+<figure><img src="https://user-images.githubusercontent.com/1316724/105141638-5d11d500-5af1-11eb-98ee-d177df9c5894.png" alt="UML Class Diagram showing relationships between Restaurant, Menu and MenuItem classes"><figcaption></figcaption></figure></p>
+<p>We want to be able to access our Menus like this:</p>
+<pre><code class="language-javascript">restaurant.menus <span class="hljs-comment">// [Menu, Menu]</span>
+</code></pre>
+<p>and from each Menu we want to be able to access the list of items on the Menu:</p>
+<pre><code class="language-javascript">menu.items <span class="hljs-comment">// [Item, Item]</span>
+</code></pre>
+<p>We therefore need to expand our Restaurant class to include a function that will create and add a Menu instance to the Restaurant.</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-title">addMenu</span>(<span class="hljs-params">title</span>)</span> {
+    <span class="hljs-keyword">const</span> menu = <span class="hljs-keyword">await</span> <span class="hljs-keyword">new</span> Menu({title, <span class="hljs-attr">restaurant_id</span>: <span class="hljs-built_in">this</span>.id})
+    <span class="hljs-built_in">this</span>.menus.push(menu)
+}
+</code></pre>
+<p>Then we have the work to go get the items for a menu, and the menus for a restaurant. So when I instantiate a Restaurant with a row from the database (the restaurant is stored with an id), I will also need to go get all the menus. That way a new instance of a restaurant has all it's menus in place, and each of those menus have their items in place. I expect to be able to drill down through all my connected data like this:</p>
+<pre><code class="language-javascript">restaurant.menus[<span class="hljs-number">0</span>].items[<span class="hljs-number">0</span>].price <span class="hljs-comment">// 12.50</span>
+</code></pre>
+<h2>Assignment</h2>
+<ul>
+<li>Enhance your solution from xxx to include the relationships between your Restaurant and Menu classes and the Menu and Menu Item classes as described above.</li>
+<li>Ensure you have unit tests that cover the new functionality.</li>
+<li>Commit your code and a screen shot of your coverage report to GitHub and let you coach know it is ready for review.</li>
+</ul>
+<h2>Assignment extension tasks</h2>
+<ul>
+<li></li>
+</ul>
+<h2>Additional resources</h2>
+
+        <script src="/curriculum/js/tabbed-code-blocks.js"></script>
+    </body>
+</html>

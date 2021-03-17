@@ -25,11 +25,11 @@
 <ul>
 <li><p>Familiarity with <a href="https://multiverselearningproducts.github.io/curriculum/Bootcamp/Unit-2-Databases/0.2.1-Basic_SQL_Commands.html">Basic SQL Commands</a> and <a href="https://multiverselearningproducts.github.io/curriculum/Bootcamp/Unit-2-Databases/0.2.2-SQL_Joins.html">SQL JOIN</a></p></li>
 <li><p>Installation of the <code>sqlite</code> by <code>alexcvzz</code> plugin for VSCode. This will allow you to visualise your database. Once installed,</p>
-<ul>
+<ol>
 <li>Select <code>View-Command Palette</code> from the menu</li>
 <li>Type <code>SQLite: Open Database</code> to select your database</li>
 <li>A <code>SQLITE EXPLORER</code> window should appear at the bottom of your VSCode Explorer view displaying your tables.</li>
-</ul></li>
+</ol></li>
 <li><p>Installation of the SQLite node module. SQLite is a lightweight SQL database commonly used in embedded devices such as phones and games consoles. If you do not already have this installed please follow the instructions below:</p>
 <ol>
 <li><p>Create a new directory for this lesson's work. <code>cd</code> into it.</p></li>
@@ -39,27 +39,26 @@
 <li>Right click on VSCode and 'run as Administrator'. Navigate to the directory where your <code>package.json</code> file is and run <code>npm install --global --production windows-build-tools@4.0.0</code>.</li>
 <li>Close VSCode and run it again (this time not as administrator i.e. just double click on the icon). Execute <code>npm install sqlite3@5.0.0</code> in the directory where your <code>package.json</code> lives.</li>
 </ul></li>
-</ol></li>
+</ol>
+<p>To check your install is successful, paste the following code into a file named <code>dbconnect.js</code> and run the file with <code>node dbconnect.js</code>.</p></li>
 </ul>
-<p>To check your install is successful, paste this code into a file named <code>dbconnect.js</code>:</p>
-<pre><code class="language-js"><span class="hljs-keyword">const</span> sqlite3 = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;sqlite3&#x27;</span>).verbose();
+<pre><code class="language-js">    <span class="hljs-keyword">const</span> sqlite3 = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;sqlite3&#x27;</span>).verbose();
 
-<span class="hljs-keyword">const</span> db = <span class="hljs-keyword">new</span> sqlite3.Database(<span class="hljs-string">&#x27;:memory:&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> {
-    <span class="hljs-keyword">if</span> (err) {
-      <span class="hljs-keyword">return</span> <span class="hljs-built_in">console</span>.error(err.message);
-    }
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Connected to the in-memory SQlite database.&#x27;</span>);
-  });
+    <span class="hljs-keyword">const</span> db = <span class="hljs-keyword">new</span> sqlite3.Database(<span class="hljs-string">&#x27;:memory:&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> {
+        <span class="hljs-keyword">if</span> (err) {
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">console</span>.error(err.message);
+        }
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Connected to the in-memory SQlite database.&#x27;</span>);
+    });
   
-  <span class="hljs-comment">// close the database connection</span>
-  db.close(<span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> {
-    <span class="hljs-keyword">if</span> (err) {
-      <span class="hljs-keyword">return</span> <span class="hljs-built_in">console</span>.error(err.message);
-    }
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Close the database connection.&#x27;</span>);
-  });
+    <span class="hljs-comment">// close the database connection</span>
+    db.close(<span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> {
+        <span class="hljs-keyword">if</span> (err) {
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">console</span>.error(err.message);
+        }
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Close the database connection.&#x27;</span>);
+    });
 </code></pre>
-<p>run the file with <code>node dbconnect.js</code>. You should see the console logs appear. Well done, you have successfully installed and connected to the SQLlite in-memory database.</p>
 <h2>Lesson</h2>
 <p>In this lesson we will save the database as a file written to our local disk rather than in-memory. This means that the data can be accessed even when our program has stopped running. We will interact with our database using JavaScript (Node.js).</p>
 <p>The following Node.js code creates a RESTAURANT table in a database named 'restaurants.sqlite' and inserts a row into it:</p>
@@ -102,13 +101,15 @@ try {
 </code></pre>
 <p>In the lines above we import the <code>sqlite3</code> package then access a constructor on the <code>sqlite3</code> object and use the <code>new</code> keyword to instantiate a new instance of our database for our program. We can pass some config to our <code>Database</code> constructor, here we are passing in a relative path to where the database file either already exists, or where we would like it to be created and with what name.</p>
 <p>The code uses a <a href="https://www.w3schools.com/jsref/jsref_try_catch.asp">try/finally</a> block to ensure that the statement and database are closed regardless of whether an error occurs. This is best practice to avoid memory leaks.</p>
-<p>The code also makes use of <strong>Prepared Statements</strong> which are key for ensure your database applications are not vulnerable to <a href="https://portswigger.net/web-security/sql-injection">SQL injection attacks</a>.</p>
+<p>The code also makes use of <a href="https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html">Prepared Statements</a> which are key for ensure your database applications are not vulnerable to <a href="https://portswigger.net/web-security/sql-injection">SQL injection attacks</a>. Watch this video to find out more about this kind of attack</p>
+<p>!(https://youtu.be/wX6tszfgYp4)</p>
 <h2>Assignment</h2>
-<ul>
-<li>Write Node.js code to create a new, persistent database containing the tables described by the UML diagram  in the <a href="https://multiverselearningproducts.github.io/curriculum/Bootcamp/Unit-2-Databases/0.2.2-SQL_Joins.html">SQL Joins</a> lesson. Ensure you create FOREIGN KEYs as appropriate.</li>
+<ol>
+<li>Write Node.js code to create a new, persistent database containing the tables described by the UML diagram in the <a href="https://multiverselearningproducts.github.io/curriculum/Bootcamp/Unit-2-Databases/0.2.2-SQL_Joins.html">SQL Joins</a> lesson. Ensure you create FOREIGN KEYs as appropriate.</li>
 <li>Write Node.js code to insert one row into the Restaurant table and ensure that this Restaurant has 2 Menus. Insert 2 Menu Items per Menu.</li>
 <li>Write Node.js code to list all the Menu Items belonging to a specific Menu for the Restaurant.</li>
-</ul>
+<li>Commit your code to GitHub and let you coach know it is ready for review</li>
+</ol>
 <h2>Assignment extension tasks</h2>
 <ul>
 <li>Research SQL injections attacks which made the news</li>
