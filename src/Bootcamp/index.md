@@ -2,10 +2,13 @@
 
 Intro to bootcamp
 
-## Unit 1
-[Unit 1](/curriculum/Bootcamp/index.html)
+## Unit 1 - Object Oriented Programming
+* [JavaScript Objects and Functions](/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.1-JavaScript_Objects_And_Functions)
+* [Test Driven Development](/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.2-Test_Driven_Development)
+* [Objects in an Airport Domain](/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.3-Objects_in_an_Airport_Domain)
 
-## Unit 2
+
+## Unit 2 - Databases
 * [0.2.1 Basic SQL Commands](/curriculum/Bootcamp/Unit-2-Databases/0.2.1-Basic_SQL_Commands.html)
 * [0.2.2 SQL Joins](/curriculum/Bootcamp/Unit-2-Databases/0.2.2-SQL_Joins.html)
 * [0.2.3 Database access using Node.js](/curriculum/Bootcamp/Unit-2-Databases/0.2.3-Database_access_using_Node.html)
