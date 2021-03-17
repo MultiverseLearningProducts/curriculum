@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+    <head>
+        <meta charset="utf-8">
+        <title> Test Driven Development</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="shortcut icon" type="image/x-icon" href="/curriculum/favicon.ico"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/an-old-hope.min.css">
+        <link rel="stylesheet" href="/curriculum/style.css"/>
+        <script src="/curriculum/js/highlight.min.js"></script>
+        <script src="/curriculum/js/bash.min.js"></script>
+        <script src="/curriculum/js/java.min.js"></script>
+        <script src="/curriculum/js/javascript.min.js"></script>
+        <script src="/curriculum/js/sql.min.js"></script>
+    </head>
+    <body>
+        <h1>Test Driven Development</h1>
+<h2>Learning Objectives</h2>
+<ul>
+<li>Write a unit test</li>
+<li>Describe the purpose of a unit test</li>
+<li>Implement the TDD cycle of red, green, refactor</li>
+</ul>
+<h2>Lesson</h2>
+<p>What are tests? Code does things on computers for us. How do we know that our code is working the way we think it is? Surely we can just run the code and see if it is working. Isn't this just testing the code?</p>
+<p>As the programs we write get larger and more complex, it is not always possible to test our code by just running it. For example, we may want to force a particular kind of error to ensure we are handling it correctly.</p>
+<p>This is why we write tests. Tests ensure that our software is working as we have designed. We are trying to prevent 3 things:</p>
+<ul>
+<li>Errors</li>
+<li>Defects (bugs)</li>
+<li>Failures</li>
+</ul>
+<p>Errors in JavaScript can be further divided into 7 types:</p>
+<ul>
+<li>EvalError</li>
+<li>InternalError</li>
+<li>RangeError</li>
+<li>ReferenceError</li>
+<li>SyntaxError</li>
+<li>TypeError</li>
+<li>URIError</li>
+</ul>
+<p>You can read more about these in the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error">mozilla documentation</a>.</p>
+<p>Some of these errors can be caught and handled safely in our program. You are likely as beginners to experience many SyntaxErrors. SyntaxErrors will cause your program to fail.</p>
+<p>With defects our code works, but not as we intended. These are often called 'bugs'. This term was coined because pre the use of electronic circuits, early computer programs would sometimes malfunction due to actual insects getting into the physical valves of the computer, preventing the program from running correctly.</p>
+<p>Failures are when our programme 'crashes' i.e. stops running and errors in a way that cannot be recovered from.</p>
+<p>We write tests to prevent these 3 things.</p>
+<h3>Jest</h3>
+<p>Jest is a testing framework developed at Facebook. Test Driven Development (TDD) starts with a failing test. So we write a test that we know will fail.</p>
+<pre><code class="language-javascript">describe(<span class="hljs-string">&#x27;person objects&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+    test(<span class="hljs-string">&#x27;have a name&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+        expect(person.name).toEqual(<span class="hljs-string">&quot;test person&quot;</span>)
+    })
+})
+</code></pre>
+<p><code>person</code> is not defined. Let's create a person in our <code>person.js</code> file and export it.</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">const</span> person = {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;test person&quot;</span>
+}
+<span class="hljs-built_in">module</span>.exports = person
+</code></pre>
+<p>then we can import it into the test file by adding this line to the top of the file.</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">const</span> person = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./person&#x27;</span>)
+</code></pre>
+<p>Now our tests pass!</p>
+<p>The TDD process requires us to write the test first. The test will always fail initially and then pass once we add our code logic. We continue to iterate by adding additional or modified tests for proposed functionality prior to writing any logic.</p>
+<h2>Assignment</h2>
+<p>Use TDD to recreate the family tree from the assignment in TODO. You should now have a set of tests that you can run to prove your family tree is constructed correctly.</p>
+<p>To run all your tests use <code>npm run test</code> or use <code>npm run test -t</code> to run a single test.</p>
+<h2>Assignment extension tasks</h2>
+<ul>
+<li>Include tests which make use of different Jest (expect types)[https://jestjs.io/docs/expect] such as <code>objectContaining</code>, <code>not.objectContaining</code>, <code>toHaveProperty</code></li>
+<li>Research the unit test framework for another language such as Java. What similarities can you see with the Jest syntax?</li>
+</ul>
+<h2>Additional resources</h2>
+<p><a href="https://www.youtube.com/watch?v=EIQgVdoYb0M">Using Visual Studio Code, npm and Jest</a> (from minute 5:30 onwards).</p>
+
+        <script src="/curriculum/js/tabbed-code-blocks.js"></script>
+    </body>
+</html>

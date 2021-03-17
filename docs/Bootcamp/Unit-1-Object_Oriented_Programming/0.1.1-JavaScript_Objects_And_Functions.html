@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+    <head>
+        <meta charset="utf-8">
+        <title> JavaScript Objects and Functions</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="shortcut icon" type="image/x-icon" href="/curriculum/favicon.ico"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/an-old-hope.min.css">
+        <link rel="stylesheet" href="/curriculum/style.css"/>
+        <script src="/curriculum/js/highlight.min.js"></script>
+        <script src="/curriculum/js/bash.min.js"></script>
+        <script src="/curriculum/js/java.min.js"></script>
+        <script src="/curriculum/js/javascript.min.js"></script>
+        <script src="/curriculum/js/sql.min.js"></script>
+    </head>
+    <body>
+        <h1>JavaScript Objects and Functions</h1>
+<h2>Learning Objectives</h2>
+<ul>
+<li>Understand how to create objects and functions using Javascript</li>
+</ul>
+<h2>Lesson</h2>
+<p>Objects are the main data type in Javascript. Think of objects as nouns (person, place or thing), something you can touch, see, smell, feel or taste.</p>
+<p>Lets start by looking at the three different ways we can make an object:</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">const</span> person1 = {}
+<span class="hljs-keyword">const</span> person2 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Object</span>()
+<span class="hljs-keyword">const</span> person3 = <span class="hljs-built_in">Object</span>.create({})
+</code></pre>
+<p>You can just declare a new object using <code>{}</code>. The other two methods do the same kind of thing. <code>Object.create()</code> gives you the option to inherit the prototypal chain from an object you pass to create. We will come back to this later.</p>
+<p>Once you have an object you can add properties to it. We are creating a person so lets give them a <code>name</code> property:</p>
+<pre><code class="language-javascript">person1.name = <span class="hljs-string">&#x27;Bosola&#x27;</span>
+</code></pre>
+<p>Very easy, we just use the 'dot' notation and equal's operator to assign the property and a value. We can read the value from the property in a couple of different ways:</p>
+<pre><code class="language-javascript">person1.name
+person1[<span class="hljs-string">&#x27;name&#x27;</span>]
+</code></pre>
+<p>Both do the same thing. The reason for using the bracket notation is when our property is a string that has an unusual character in it i.e. &quot;full-name&quot;. For example this will not work:</p>
+<pre><code class="language-javascript">person1.full-name = <span class="hljs-string">&#x27;Bosola Randle&#x27;</span>
+</code></pre>
+<p>but this will</p>
+<pre><code class="language-javascript">person1[<span class="hljs-string">&#x27;full-name&#x27;</span>] = <span class="hljs-string">&#x27;Bosola Randle&#x27;</span>
+</code></pre>
+<p>Objects can reference other objects. Let's consider the British Royal Family. Prince George is a person with parents Katherine and William. If we create objects to represent George's parents we can reference them inside George's person object. To group objects together we can use an array.</p>
+<p>How can we create a parents property on our person?<br>
+How can we assign the value of an array of parents to that property?<br>
+Can you access the name of the two parents?</p>
+<p>Lets add a function called <code>childOf</code> which returns the names of that object's parents. In our function, we want to be able to access the parents array of itself. To do this we use the <code>this</code> keyword. From within the function that is assigned as a property of the object, we can reference the parent's array like this:</p>
+<pre><code class="language-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.parents.map(<span class="hljs-function"><span class="hljs-params">parent</span> =&gt;</span> parent.name).join(<span class="hljs-string">&#x27; &amp; &#x27;</span>) || <span class="hljs-string">&quot;unknown&quot;</span>
+}
+</code></pre>
+<p>In the function above we map over the array and pick out the name properties from the parent objects. We then take this array of names, chain the array method <code>join</code> and give it a delimiter to use. This results in all the names in our array being joined together with an &quot;&amp;&quot; in between them and returned as a string. If the array is empty, <code>join</code> will return an empty string which evaluates as falsey, so we can use the <code>||</code> double pipes of the OR operator to return a default value.</p>
+<p>Finally, since we want all our person objects to have this function we can declare the function once by assigning it to a variable. Now our <code>childOf</code> property can have as its value a reference to the <code>childOf</code> function. You must use the <code>function</code> keyword for this to work. Arrow functions reference the <code>this</code> of the parent's scope so it will not work the same way.</p>
+<h2>Assignment</h2>
+<ol>
+<li><p>Create a new directory in your local Git repository called <code>familyTree</code>. As a general rule, do NOT use spaces or special characters in directory or filenames.</p></li>
+<li><p>Create an object that represents 3 generations of the <a href="https://i.insider.com/5e17677224fe1248eb288e84?width=1000&amp;format=jpeg&amp;auto=webp">Royal Family</a>. A person in the family tree should have the following properties:</p>
+<ul>
+<li>name of type <code>String</code></li>
+<li>parents of type <code>Array</code></li>
+<li>childOf of type <code>Function</code></li>
+</ul>
+<p>The childOf property should return a string of the parent's names.</p>
+<p>Use a combination of objects arranged in arrays to represent different generations. Use the <code>this</code> keyword to create a childOf function that references the parents array of itself.</p>
+<p>Once constructed you should be able to traverse from an individual to their grand-parents. You should be able to call childOf on any person and that function should return a string i.e. &quot;Elizabeth Windsor &amp; Philip Windsor&quot;.</p></li>
+<li><p>Commit your code into Github and share the link with your coach.</p></li>
+</ol>
+<h2>Assignment extension tasks</h2>
+<p>TODO</p>
+<h2>Additional resources</h2>
+
+        <script src="/curriculum/js/tabbed-code-blocks.js"></script>
+    </body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+    <head>
+        <meta charset="utf-8">
+        <title> Objects in an Airport Domain</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="shortcut icon" type="image/x-icon" href="/curriculum/favicon.ico"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/an-old-hope.min.css">
+        <link rel="stylesheet" href="/curriculum/style.css"/>
+        <script src="/curriculum/js/highlight.min.js"></script>
+        <script src="/curriculum/js/bash.min.js"></script>
+        <script src="/curriculum/js/java.min.js"></script>
+        <script src="/curriculum/js/javascript.min.js"></script>
+        <script src="/curriculum/js/sql.min.js"></script>
+    </head>
+    <body>
+        <h1>Objects in an Airport Domain</h1>
+<h2>Learning Objectives</h2>
+<ul>
+<li>Create an object using the <code>new</code> keyword</li>
+</ul>
+<h2>Pre-requisites</h2>
+<ul>
+<li>Familiarity with Test Driven Development</li>
+<li>Familiarity with JavaScript Objects and Functions<br>
+TODO - fix links</li>
+</ul>
+<h2>Lesson</h2>
+<p>In this lesson are going to create an Airport system. This exercise is designed to introduce you to the idea of Object Orientated Programming (OOP). In OOP we construct our programs using objects which are abstractions of real life objects. For example, it is common for a person who uses a program to be represented in the program with a User object.</p>
+<h3>👩🏾‍💻👨🏻‍💻 In pairs</h3>
+<p>TODO - replace icons</p>
+<p>What are some of the objects that you might expect to find in an airport?</p>
+<h3>Objects and Classes</h3>
+<p>Our Airport system is going to have the following objects in it:</p>
+<ol>
+<li>Bag</li>
+<li>Passenger</li>
+<li>Plane</li>
+<li>Airport</li>
+</ol>
+<p><figure><img src="https://user-images.githubusercontent.com/1316724/104850737-c5da3100-58e8-11eb-9248-a41550978a76.png" alt="UML diagram detailing the attributes of the Bag, Passenger, Plane and Airport classes"><figcaption></figcaption></figure></p>
+<p>TODO - add a destination property to a Plane that is an Airport name</p>
+<p>What does a Bag have? A weight. It also has a relationship to a Person (or in Airport terms, a Passenger) who takes a Bag on holiday. One of the important things to think about in OOP is which object is responsible for what properties or behaviours. In our Airport system there are going to be lots and lots of Bags. In our code we can create each Bag like this:</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">const</span> bag = {<span class="hljs-attr">weight</span>: <span class="hljs-number">16</span>}
+</code></pre>
+<p>but someone might come along and make a Bag like this:</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">const</span> bag = {<span class="hljs-attr">kg</span>: <span class="hljs-number">16</span>}
+</code></pre>
+<p>We therefore want to standardise our Bag construction. Why do you think we might want to do that?</p>
+<p>What we want is a way to create bags that all follow the same template. Like a rubber stamp, stamping out the same graphic each time.</p>
+<p><figure><img src="https://media.giphy.com/media/LpGDCmF87M24T6Sn6p/giphy.gif" alt="animation of a person repeatedly stamping an Approved status onto paper"><figcaption></figcaption></figure></p>
+<p>The way to make yourself a 'rubber object stamper' is to create a class and use the <code>new</code> keyword to instantiate instances of your class. In other words you use the <code>Bag</code> class to make Bag objects in your programme.</p>
+<pre><code class="language-javascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Bag</span> </span>{
+    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">weight</span>)</span> {
+        <span class="hljs-built_in">this</span>.weight = weight
+    }
+}
+
+<span class="hljs-keyword">const</span> bag = <span class="hljs-keyword">new</span> Bag(<span class="hljs-number">16</span>)
+<span class="hljs-built_in">console</span>.log(bag.weight) <span class="hljs-comment">// 16</span>
+</code></pre>
+<p>In the code example above we declare a class using the <code>class</code> keyword. The name of the class should be capitalised and singular.</p>
+<p>After the class name comes the block that contains the class definition. When we create a new Bag we want it to have a weight, hence we have declared a 'constructor' function which will be called when we use the <code>new</code> keyword and any arguments are passed into. Can you see how we add a property <code>weight</code> to the <code>this</code> object? <code>this</code> refers to the instance of the class that we just created.</p>
+<h3>TDD for Bags</h3>
+<p>How would you write a unit test for this Bag class?</p>
+<p>If we try to create a bag without a weight - the constructor should throw an Error. This protects our program from trying to do calculations on <code>bag.weight</code> and reading <code>undefined</code> as the value for weight. Why might the weight be undefined?</p>
+<p>Our failing test will include this assertion:<br>
+<code>expect(() =&gt; new Bag()).toThrowError('bag must have a weight')</code></p>
+<p>Notice how we have to run a function inside <code>expect</code> to trigger the error and catch it. If we just wrote the following:</p>
+<p><code>expect(new Bag()).toThrowError('bag must have a weight')</code></p>
+<p>it would be like calling expect with <code>Error</code> and then expecting the Error to throw (which it wont, it's too late, the trap has been sprung). We'll need to update our Bag class to throw an error if no weight is passed into your constructor. Below is the syntax to throw an error.</p>
+<p><code>throw new Error('some error message in here')</code></p>
+<p>Can you spot the <code>new</code> keyword above? What do you think that is doing in the Error class definition?</p>
+<h3>Bags belong to a Passenger</h3>
+<p>Our Airport system has Bags. We also need to create Passengers. Let's make a Passenger class with the following properties:</p>
+<ol>
+<li>A name</li>
+<li>Bags</li>
+</ol>
+<p>People often fly with a more than one Bag. Our Passengers should be able to carry multiple Bags. What data structure would work well here?</p>
+<p>To add a Bag to a Passenger we should be able to call a function on the instance of a Passenger. Read the code below:</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">const</span> bob = <span class="hljs-keyword">new</span> Passenger(<span class="hljs-string">&#x27;Bob the Builder&#x27;</span>)
+<span class="hljs-keyword">const</span> bobsCabinBag = <span class="hljs-keyword">new</span> Bag(<span class="hljs-number">9</span>)
+<span class="hljs-keyword">const</span> bobsHullBag = <span class="hljs-keyword">new</span> Bag(<span class="hljs-number">23</span>)
+bob.addBag(bobsCabinBag)
+bob.addBag(bobsHullBag)
+<span class="hljs-built_in">console</span>.log(bob.bags) <span class="hljs-comment">// [ Bag { weight: 9 }, Bag { weight: 23 } ]</span>
+</code></pre>
+<p>The way to define a function on a class is like this:</p>
+<pre><code class="language-javascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Passenger</span> </span>{
+    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">name</span>)</span> {
+        <span class="hljs-built_in">this</span>.name = name
+        <span class="hljs-built_in">this</span>.bags = []
+    }
+
+    <span class="hljs-function"><span class="hljs-title">addBag</span>(<span class="hljs-params">bag</span>)</span> {
+        <span class="hljs-built_in">this</span>.bags.push(bag)
+    }
+}
+
+<span class="hljs-built_in">module</span>.exports = Passenger
+</code></pre>
+<h2>Assignment</h2>
+<ol>
+<li><p>Use TDD to create unit tests for the Bag and Passenger classes described in the UML model above. These tests will fail initially as the classes won't exist.</p></li>
+<li><p>Implement the Bag and Passenger classes with the properties and methods specified in the UML model. Make sure the unit tests pass.</p></li>
+<li><p>Now we have Passengers with Bags, they are ready to board their flight! Use TDD to create unit tests for the Plane and Airport classes described in the UML model above. Include tests for:</p>
+<ul>
+<li>reading the weight of a Bag belonging to a specific Passenger on a specific Plane at a specific Airport</li>
+<li>creating any number of Airports and Planes</li>
+<li>landing Planes at Airports</li>
+<li>boarding Passengers onto a Plane</li>
+</ul></li>
+<li><p>Commit your code into Github and share the link with your coach.</p></li>
+</ol>
+<h2>Assignment extension task</h2>
+<ol>
+<li><p>Document your classes using the <a href="https://jsdoc.app/">JSDoc</a> comment structure and generate the HTML documentation. Why do you think this documentation could be useful?</p></li>
+<li><p>Commit this to your Git repository.</p></li>
+</ol>
+<h2>Additional resources</h2>
+
+        <script src="/curriculum/js/tabbed-code-blocks.js"></script>
+    </body>
+</html>
