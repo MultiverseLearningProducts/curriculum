@@ -2,7 +2,7 @@
 <html lang="en-GB">
     <head>
         <meta charset="utf-8">
-        <title> Basic SQL commands</title>
+        <title> Basic SQL commands</title>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link rel="shortcut icon" type="image/x-icon" href="/curriculum/favicon.ico"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/an-old-hope.min.css">
@@ -21,7 +21,6 @@
 <p>Sign up for a (free) <a href="https://repl.it/~">Repl</a> account</p>
 <h2>Lesson</h2>
 <p>A Relational Database Management System (RDBMS) refers to a database that stores data using rows and columns. Structured Query Language (SQL) is used to create, read, update, and delete data in RDMSs.</p>
-<p><iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQpmJ3NMHXf3v-uh4nT3O0keOjivstLweqSi7ZUbhvdFI1M6o4b2cDSFKFdz5YfakbewFyNjIdbrmBI/embed" width="100%" height="444px" allowfullscreen frameborder=0></iframe></p>
 <p>Relational Databases stores data in tables. Here is an example table called COMPANIES, which stores data about software companies:</p>
 <table>
 <thead>
@@ -34,7 +33,7 @@
 </table>
 <p><strong>Activity</strong> - in the 'chat' function, post the names of relational database you have heard of or used</p>
 <p>Tables are made up of columns, each which have a specific Data Type.</p>
-<p>The Data Types for SQLite are as follows:</p>
+<p>The Data Types for different SQL databases vary slightly, for SQLite they are as follows:</p>
 <table>
 <thead>
 <tr><th>Data type</th><th>Description</th></tr>
@@ -47,14 +46,13 @@
 <tr><td>BLOB</td><td>The value is a blob of data</td></tr>
 </tbody>
 </table>
-<p>The SQL command to create the above table would be:</p>
+<p>The SQL command to create the COMPANIES table would look as follows:</p>
 <pre><code class="language-sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> COMPANIES(id <span class="hljs-type">INTEGER</span>, 
                           name TEXT, 
                           location TEXT,
                           numEmployees <span class="hljs-type">INTEGER</span>);
 </code></pre>
-<p>It's important to note that the syntax for creating tables and naming of data types does vary slightly between different database vendors.</p>
-<p>A column (or set of columns) marked as a <strong>PRIMARY KEY</strong> is a column (or set of columns) that has to be unique i.e. you cannot insert rows with the same value in this column/s and cannot be null. It is good practice to have a PRIMARY KEY on each table. The syntax for adding a PRIMARY KEY is as follows:</p>
+<p>A column (or set of columns) marked as a <code>PRIMARY KEY</code> is a column (or set of columns) that has to be unique i.e. you cannot insert rows with the same value in this column and the value cannot be null. It is good practice to have a PRIMARY KEY on each table. The syntax for adding a PRIMARY KEY is as follows:</p>
 <pre><code class="language-sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> COMPANIES(id <span class="hljs-type">INTEGER</span> <span class="hljs-keyword">PRIMARY</span> KEY, 
                           name TEXT, 
                           location TEXT,
@@ -65,17 +63,17 @@
 <p><strong>Activity</strong> - Work through the <a href="https://www.w3schools.com/sql/sql_syntax.asp">W3Schools SQL Tutorial</a> up to and including the 'SQL Delete' lesson. This tutorial will enable you to understand how to create, read, update and delete (CRUD) data to / from a SQL database. Once you are comfortable with this syntax, move on to look at how to <a href="https://www.w3schools.com/sql/sql_create_table.asp">create a table</a> &amp; <a href="https://www.w3schools.com/sql/sql_drop_table.asp">drop a table</a>.</p>
 <h2>Assignment</h2>
 <p>Here is a UML class diagram representing a model for a restaurant ordering app.</p>
-<p><figure><img src="https://user-images.githubusercontent.com/1316724/111300668-3ed7d980-8649-11eb-99b2-5a842259c4ed.png" alt="UML Class Diagram showing Restaurant, Menu and MenuItem classes and attributes" title="UML Class Diagram showing Restaurant, Menu and MenuItem classes and attributes"><figcaption>UML Class Diagram showing Restaurant, Menu and MenuItem classes and attributes</figcaption></figure></p>
-<p>Imagine we write some code to create instances of these classes with real restaurant and menu data. The problem is all the data is lost when your app stops. The data that makes the app persists only in memory, so when the process dies, so does the data. Your challenge in this assignment is to provide a persistent way of storing this data.</p>
+<p><figure><img src="https://user-images.githubusercontent.com/1316724/111300668-3ed7d980-8649-11eb-99b2-5a842259c4ed.png" alt="UML Class Diagram showing Restaurant, Menu and MenuItem classes and attributes"><figcaption></figcaption></figure></p>
+<p>Imagine we write some code to create instances of these classes with real Restaurant and Menu data. The problem is all the data is lost when your app stops. The data that makes the app persists only in memory, so when the process dies, so does the data. Your challenge in this assignment is to provide a persistent way of storing this data.</p>
 <ol>
 <li>Using a <code>SQLite</code> Repl, compose the SQL queries to do the following:
 <ul>
 <li>Implement the Restaurants, Menus and MenuItems tables - make the id of each a PRIMARY KEY (this has to be unique) and make this AUTO INCREMENTing</li>
 <li>Insert rows into each table using &quot;INSERT&quot;</li>
-<li>Read back your row data using &quot;SELECT&quot;</li>
-<li>Update your rows using &quot;UPDATE&quot;</li>
-<li>Delete your rows using &quot;DELETE&quot;</li>
-<li>Use the WHERE clause to filter results</li>
+<li>Read back your row data using the <code>SELECT</code> command</li>
+<li>Update your rows using the <code>UPDATE</code> command</li>
+<li>Delete your rows using <code>DELETE</code> command</li>
+<li>Use the <code>WHERE</code> clause to filter results</li>
 </ul></li>
 <li>Share your repl with your coach on Slack so they can provide feedback</li>
 </ol>
