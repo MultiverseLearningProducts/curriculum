@@ -17,9 +17,8 @@
         <h1>Test Driven Development</h1>
 <h2>Learning Objectives</h2>
 <ul>
-<li>Write a unit test</li>
 <li>Describe the purpose of a unit test</li>
-<li>Implement the TDD cycle of red, green, refactor</li>
+<li>Implement the Test Driven Development (TDD) cycle of 'Red, Green, Refactor'</li>
 </ul>
 <h2>Lesson</h2>
 <p>What are tests? Code does things on computers for us. How do we know that our code is working the way we think it is? Surely we can just run the code and see if it is working. Isn't this just testing the code?</p>
@@ -63,9 +62,14 @@
 <pre><code class="language-javascript"><span class="hljs-keyword">const</span> person = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./person&#x27;</span>)
 </code></pre>
 <p>Now our tests pass!</p>
-<p>The TDD process requires us to write the test first. The test will always fail initially and then pass once we add our code logic. We continue to iterate by adding additional or modified tests for proposed functionality prior to writing any logic.</p>
+<p>The TDD process requires us to write tests first. The 'red, green, refactor' approach helps developers focus on three phases:</p>
+<ul>
+<li>Red — think about <em>what</em> you want to develop</li>
+<li>Green — think about <em>how</em> to make your tests pass</li>
+<li>Refactor — think about <em>how</em> to improve your implementation</li>
+</ul>
 <h2>Assignment</h2>
-<p>Use TDD to recreate the family tree from the assignment in TODO. You should now have a set of tests that you can run to prove your family tree is constructed correctly.</p>
+<p>Use TDD to write tests for the family tree assignment in the [JavaScript Objects and Functions] (/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.1-JavaScript_Objects_and_Functions#java). Your tests should prove that your family tree is constructed correctly.</p>
 <p>To run all your tests use <code>npm run test</code> or use <code>npm run test -t</code> to run a single test.</p>
 <h2>Assignment extension tasks</h2>
 <ul>
