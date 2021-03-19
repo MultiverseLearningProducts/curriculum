@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+    <head>
+        <meta charset="utf-8">
+        <title> Static functions and properties</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="shortcut icon" type="image/x-icon" href="/curriculum/favicon.ico"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/an-old-hope.min.css">
+        <link rel="stylesheet" href="/curriculum/style.css"/>
+        <script src="/curriculum/js/highlight.min.js"></script>
+        <script src="/curriculum/js/bash.min.js"></script>
+        <script src="/curriculum/js/java.min.js"></script>
+        <script src="/curriculum/js/javascript.min.js"></script>
+        <script src="/curriculum/js/sql.min.js"></script>
+    </head>
+    <body>
+        <h1>Static functions and properties</h1>
+<h2>Learning Objectives</h2>
+<ul>
+<li>Understand the purpose of the <code>static</code> keyword on functions and properties</li>
+</ul>
+<h2>Pre-requisites</h2>
+<p>TODO</p>
+<h2>Lesson</h2>
+<p>In the TODO lesson we created objects from classes using the <code>new</code> keyword. For example, we constructed Passenger to board Planes and Bags to assign to Passengers.</p>
+<p>To complete our Airport system we want to be able to move our Planes (and the Passengers they transport) from one Airport to another.</p>
+<p>To do this, we need to be able to access one Airport from another Airport. We can't do this using the properties and functions of an instance of an Airport. For example, if we created London Heathrow (LHR) and Los Angles (LAX) Airports, how could we connect them?</p>
+<p><code>london.addAirport(LAX)</code> would be clumsy and hard to keep track of as each new Airport is created.</p>
+<h3>Static properties</h3>
+<p>The <code>static</code> keyword defines a static function or property for a class. Static functions and static properties cannot be called on instances of the class, instead, they're called on the class itself.</p>
+<p>We need somewhere we can keep track of all the Airports that we create. Read the code snippet below. Can you see what we are doing?</p>
+<pre><code class="language-javascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Airport</span> </span>{
+    <span class="hljs-keyword">static</span> airports = []
+    
+    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">name</span>)</span> {
+        <span class="hljs-built_in">this</span>.name = name
+        <span class="hljs-built_in">this</span>.planes = []
+        <span class="hljs-built_in">this</span>.constructor.airports.push(<span class="hljs-built_in">this</span>)
+    }
+    
+    <span class="hljs-function"><span class="hljs-title">land</span>(<span class="hljs-params">plane</span>)</span> {
+        <span class="hljs-built_in">this</span>.planes.push(plane)
+    }
+}
+</code></pre>
+<p><code>Airport.airports</code> holds an array of all the instances of <code>Airport</code> that have been created. Each time we construct an Airport we <code>push</code> it into the static array.</p>
+<h2>Assignment</h2>
+<p>TODO - check this explanation</p>
+<p>Write a <code>takeOff</code> function on an instance of an Airport that does the following:</p>
+<ul>
+<li>takes a Plane as an argument</li>
+<li>finds that Plane in the outbound Airport's Planes array and removes it</li>
+<li>pushes the Plane into the inbound Airport's array of Planes</li>
+</ul>
+<p>This will effectively move the Plane object from one Airport to another.</p>
+<p>Remember to write tests that prove the above functionality.</p>
+<h2>Assignment extensions tasks</h2>
+<p>Consider when you would use <code>static</code> functions.</p>
+<h2>Additional resources</h2>
+<ul>
+<li><a href="https://www.w3schools.com/js/js_classes.asp">Introduction to JavaScript Classes</a></li>
+<li><a href="https://www.w3schools.com/jsref/jsref_classes.asp">JavaScript Class Reference</a></li>
+<li><a href="https://egghead.io/lessons/javascript-track-project-code-coverage-with-jest">Using test coverage with Jest</a></li>
+</ul>
+
+        <script src="/curriculum/js/tabbed-code-blocks.js"></script>
+    </body>
+</html>

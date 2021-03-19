@@ -26,9 +26,10 @@
 </ul>
 <h2>Lesson</h2>
 <p>In this lesson are going to create an Airport system. This exercise is designed to introduce you to the idea of Object Orientated Programming (OOP). In OOP we construct our programs using objects which are abstractions of real life objects. For example, it is common for a person who uses a program to be represented in the program with a User object.</p>
+<p>Note that JavaScript is a loosely typed language, meaning you don't have to specify what type of information will be stored in a variable in advance. Other languages such as Java are strongly typed, requiring all variables to declare their types. TypeScript layers strong static typing onto JavaScript as well as supporting encapsulation via <code>private</code> properties.</p>
 <h3>👩🏾‍💻👨🏻‍💻 In pairs</h3>
 <p>TODO - replace icons</p>
-<p>What are some of the objects that you might expect to find in an airport?</p>
+<p>What are some of the objects that you might expect to find in an Airport?</p>
 <h3>Objects and Classes</h3>
 <p>Our Airport system is going to have the following objects in it:</p>
 <ol>
@@ -39,17 +40,18 @@
 </ol>
 <p><figure><img src="https://user-images.githubusercontent.com/1316724/104850737-c5da3100-58e8-11eb-9248-a41550978a76.png" alt="UML diagram detailing the attributes of the Bag, Passenger, Plane and Airport classes"><figcaption></figcaption></figure></p>
 <p>TODO - add a destination property to a Plane that is an Airport name</p>
-<p>What does a Bag have? A weight. It also has a relationship to a Person (or in Airport terms, a Passenger) who takes a Bag on holiday. One of the important things to think about in OOP is which object is responsible for what properties or behaviours. In our Airport system there are going to be lots and lots of Bags. In our code we can create each Bag like this:</p>
+<p>What does a Bag have? A weight. It also has a relationship to a Person (or in Airport terms, a Passenger) who takes a Bag on holiday. One of the important things to think about in OOP is which object is responsible for what properties or behaviours. In our Airport system there are going to be many Bags. In our code we could create each Bag like this:</p>
 <pre><code class="language-javascript"><span class="hljs-keyword">const</span> bag = {<span class="hljs-attr">weight</span>: <span class="hljs-number">16</span>}
 </code></pre>
-<p>but someone might come along and make a Bag like this:</p>
+<p>however, someone might come along and make a Bag like this instead:</p>
 <pre><code class="language-javascript"><span class="hljs-keyword">const</span> bag = {<span class="hljs-attr">kg</span>: <span class="hljs-number">16</span>}
 </code></pre>
 <p>We therefore want to standardise our Bag construction. Why do you think we might want to do that?</p>
-<p>What we want is a way to create bags that all follow the same template. Like a rubber stamp, stamping out the same graphic each time.</p>
+<p>What we want is a way to create Bags that all follow the same template. Like a rubber stamp, stamping out the same graphic each time.</p>
 <p><figure><img src="https://media.giphy.com/media/LpGDCmF87M24T6Sn6p/giphy.gif" alt="animation of a person repeatedly stamping an Approved status onto paper"><figcaption></figcaption></figure></p>
-<p>The way to make yourself a 'rubber object stamper' is to create a class and use the <code>new</code> keyword to instantiate instances of your class. In other words you use the <code>Bag</code> class to make Bag objects in your programme.</p>
+<p>The way to make yourself a 'rubber object stamper' is to create a class and use the <code>new</code> keyword to instantiate instances of your class. In other words you use the <code>Bag</code> class to make Bag objects in your program.</p>
 <pre><code class="language-javascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Bag</span> </span>{
+    
     <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">weight</span>)</span> {
         <span class="hljs-built_in">this</span>.weight = weight
     }
@@ -59,23 +61,28 @@
 <span class="hljs-built_in">console</span>.log(bag.weight) <span class="hljs-comment">// 16</span>
 </code></pre>
 <p>In the code example above we declare a class using the <code>class</code> keyword. The name of the class should be capitalised and singular.</p>
-<p>After the class name comes the block that contains the class definition. When we create a new Bag we want it to have a weight, hence we have declared a 'constructor' function which will be called when we use the <code>new</code> keyword and any arguments are passed into. Can you see how we add a property <code>weight</code> to the <code>this</code> object? <code>this</code> refers to the instance of the class that we just created.</p>
+<p>After the class name comes the block that contains the class definition. When we create a new Bag we want it to have a weight, hence we declare a 'constructor' function which will be called with zero or more arguments when we use the <code>new</code> keyword.</p>
+<p>Can you see how we add a property <code>weight</code> to the <code>this</code> object? <code>this</code> refers to the instance of the class that we just created.</p>
 <h3>TDD for Bags</h3>
 <p>How would you write a unit test for this Bag class?</p>
-<p>If we try to create a bag without a weight - the constructor should throw an Error. This protects our program from trying to do calculations on <code>bag.weight</code> and reading <code>undefined</code> as the value for weight. Why might the weight be undefined?</p>
-<p>Our failing test will include this assertion:<br>
-<code>expect(() =&gt; new Bag()).toThrowError('bag must have a weight')</code></p>
+<p>If we try to create a Bag without a weight - the constructor should throw an Error. This protects our program from trying to do calculations on <code>bag.weight</code> and reading <code>undefined</code> as the value.</p>
+<p>Why might the weight be undefined?</p>
+<p>Our failing test will include this assertion:</p>
+<pre><code class="language-javascript">expect(<span class="hljs-function">() =&gt;</span> <span class="hljs-keyword">new</span> Bag()).toThrowError(<span class="hljs-string">&#x27;bag must have a weight&#x27;</span>)
+</code></pre>
 <p>Notice how we have to run a function inside <code>expect</code> to trigger the error and catch it. If we just wrote the following:</p>
-<p><code>expect(new Bag()).toThrowError('bag must have a weight')</code></p>
-<p>it would be like calling expect with <code>Error</code> and then expecting the Error to throw (which it wont, it's too late, the trap has been sprung). We'll need to update our Bag class to throw an error if no weight is passed into your constructor. Below is the syntax to throw an error.</p>
-<p><code>throw new Error('some error message in here')</code></p>
+<pre><code class="language-javascript">expect(<span class="hljs-keyword">new</span> Bag()).toThrowError(<span class="hljs-string">&#x27;bag must have a weight&#x27;</span>)
+</code></pre>
+<p>it would be like calling expect with <code>Error</code> and then expecting the Error to throw (which it won't, it's too late, the trap has been sprung). We'll need to update our Bag class to throw an error if no weight is passed into the constructor. We throw an Error using this syntax:</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">&#x27;some error message in here&#x27;</span>)
+</code></pre>
 <p>Can you spot the <code>new</code> keyword above? What do you think that is doing in the Error class definition?</p>
 <h3>Bags belong to a Passenger</h3>
 <p>Our Airport system has Bags. We also need to create Passengers. Let's make a Passenger class with the following properties:</p>
-<ol>
+<ul>
 <li>A name</li>
 <li>Bags</li>
-</ol>
+</ul>
 <p>People often fly with a more than one Bag. Our Passengers should be able to carry multiple Bags. What data structure would work well here?</p>
 <p>To add a Bag to a Passenger we should be able to call a function on the instance of a Passenger. Read the code below:</p>
 <pre><code class="language-javascript"><span class="hljs-keyword">const</span> bob = <span class="hljs-keyword">new</span> Passenger(<span class="hljs-string">&#x27;Bob the Builder&#x27;</span>)
@@ -106,7 +113,7 @@ bob.addBag(bobsHullBag)
 <li><p>Now we have Passengers with Bags, they are ready to board their flight! Use TDD to create unit tests for the Plane and Airport classes described in the UML model above. Include tests for:</p>
 <ul>
 <li>reading the weight of a Bag belonging to a specific Passenger on a specific Plane at a specific Airport</li>
-<li>creating any number of Airports and Planes</li>
+<li>creating multiple Airports and Planes</li>
 <li>landing Planes at Airports</li>
 <li>boarding Passengers onto a Plane</li>
 </ul></li>
@@ -114,8 +121,9 @@ bob.addBag(bobsHullBag)
 </ol>
 <h2>Assignment extension task</h2>
 <ol>
-<li><p>Document your classes using the <a href="https://jsdoc.app/">JSDoc</a> comment structure and generate the HTML documentation. Why do you think this documentation could be useful?</p></li>
-<li><p>Commit this to your Git repository.</p></li>
+<li>Take a copy of your solution and covert it to use TypeScript. What differences do you notice? Note that the TypeScript files must use export = NameOfClass; rather than module.exports.</li>
+<li>Document your classes using the <a href="https://jsdoc.app/">JSDoc</a> comment structure and generate the HTML documentation. Why do you think this documentation could be useful?</li>
+<li>Commit your Typescript solution and generated HTML to your Git repository.</li>
 </ol>
 <h2>Additional resources</h2>
 
