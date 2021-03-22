@@ -6,6 +6,7 @@ Intro to bootcamp
 * [JavaScript Objects and Functions](/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.1-JavaScript_Objects_And_Functions)
 * [Test Driven Development](/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.2-Test_Driven_Development)
 * [Objects in an Airport Domain](/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.3-Objects_in_an_Airport_Domain)
+* [Static functions and properties](/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.4-Static_functions_and_properties)
 
 
 ## Unit 2 - Databases
