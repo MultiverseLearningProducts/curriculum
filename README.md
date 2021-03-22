@@ -1,5 +1,5 @@
 
-![SWE at Multiverse Welcome](https://user-images.githubusercontent.com/4499581/106140314-83c1b280-6166-11eb-9c99-7f0f7180cb57.png)
+![SWE at Multiverse Welcome](https://user-images.githubusercontent.com/4499581/111465340-e3295100-8719-11eb-8c34-40c60ced07e7.png)
 
 ## Overview
 
@@ -13,7 +13,7 @@ Clone the repo. Make sure you have push permissions to this repo. To publish you
 npm run publish
 ```
 
-That will build the markdown pages into html pages and then push to github. See the site here [https://multiverselearningproducts.github.io/swe](https://multiverselearningproducts.github.io/swe)
+That will build the markdown pages into html pages and then push to github. See the site here [https://multiverselearningproducts.github.io/curriculum](https://multiverselearningproducts.github.io/curriculum)
 
 ## Images
 
