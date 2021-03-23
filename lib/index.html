@@ -14,7 +14,7 @@
         <script src="/curriculum/js/sql.min.js"></script>
     </head>
     <body>
-        <label for="navigation" aria-haspopup="true" onclick="toggleNav()">Table of contents</label>
+        <label id="navigation-label" for="navigation" aria-haspopup="true" onclick="toggleNav()" tabindex="1">Table of contents</label>
         <%=nav%>
         <%=content%>
         <script src="/curriculum/js/tabbed-code-blocks.js"></script>

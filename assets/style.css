@@ -179,6 +179,11 @@ th, td {
 th {
     background-color: var(--mv-gray);
 }
+#navigation-label {
+    background-image: url('https://multiverselearningproducts.github.io/curriculum/branding/mv_marker_molten.svg');
+    background-size: cover;
+    cursor: pointer;
+}
 #navigation {
     display: none;
 }
