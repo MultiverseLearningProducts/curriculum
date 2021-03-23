@@ -74,6 +74,10 @@ body::before {
     right: -480px;
 }
 
+img {
+    max-width: 100%;
+}
+
 h1, h2, h3, h4 {
     font-family: 'TimesNRMTPro-Cond';
 }
@@ -174,4 +178,7 @@ th, td {
 }
 th {
     background-color: var(--mv-gray);
+}
+#navigation {
+    display: none;
 }
