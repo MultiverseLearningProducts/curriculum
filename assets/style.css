@@ -198,8 +198,8 @@ th {
 #navigation a:visited {
     color: var(--mv-deep-space);
 }
-#navigation a:hover {
-    background-image: url('https://multiverselearningproducts.github.io/curriculum/branding/mv_thin_electron_underline.svg');
+#navigation a:hover, #navigation a:focus {
+    background-image: url('https://multiverselearningproducts.github.io/curriculum/branding/mv_thin_molten_underline.svg');
     background-size: auto 100%;
     background-position: left center;
 }
