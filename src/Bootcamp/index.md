@@ -7,7 +7,11 @@ Intro to bootcamp
 * [Test Driven Development](/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.2-Test_Driven_Development)
 * [Objects in an Airport Domain](/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.3-Objects_in_an_Airport_Domain)
 * [Static functions and properties](/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.4-Static_functions_and_properties)
-* [END OF UNIT ASSESSMENT](/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1-End_of_Unit_Assessment)
+* [Inheritance](/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.5-Inheritance)
+* [Asynchronous JavaScript](/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.6-Asynchronous_JavaScript)
+* [Asynchronous Airport Data Load](/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.7-Asynchronous_Airport_Data_Load)
+
+[End of Unit 1 Assessment](/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1-End_of_Unit_Assessment)
 
 
 ## Unit 2 - Databases
