@@ -2,7 +2,7 @@
 <html lang="en-GB">
     <head>
         <meta charset="utf-8">
-        <title></title>
+        <title> Inheritance</title>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link rel="shortcut icon" type="image/x-icon" href="/curriculum/favicon.ico"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/an-old-hope.min.css">
@@ -14,7 +14,74 @@
         <script src="/curriculum/js/sql.min.js"></script>
     </head>
     <body>
-        
+        <h1>Inheritance</h1>
+<h2>Learning Objectives</h2>
+<ul>
+<li>Demonstrate sharing functionality through inheritance</li>
+</ul>
+<h2>Pre-requisites</h2>
+<p>TODO</p>
+<h2>Lesson</h2>
+<p>The final object oriented pattern we are going to look at is inheritance. This is a way to share functionality in an object oriented paradigm. The idea is very simple. You extend base classes that already exist with additional functionality. If we look at our airports system we have 2 kinds of travellers.</p>
+<table>
+<thead>
+<tr><th>Passengers</th><th>Crew</th></tr>
+</thead>
+<tbody>
+<tr><td><figure><img src="https://user-images.githubusercontent.com/4499581/93331580-6b38a780-f818-11ea-835c-1c579dfe481d.jpg" alt="passengers"><figcaption></figcaption></figure></td><td><figure><img src="https://user-images.githubusercontent.com/4499581/93331575-67a52080-f818-11ea-8308-af97a9a6d6cc.jpg" alt="crew"><figcaption></figcaption></figure></td></tr>
+</tbody>
+</table>
+<p>Both are people, both have a name and take bags when they travel.</p>
+<h3>Base class <code>Person</code></h3>
+<p>A base class is the base from which you might create other types of classes. Let's refactor our code to use a base class <code>Person</code>. A person will have a name and bags - basically the current <code>Passenger</code> class definition we have now needs to be renamed to be <code>Person</code>. Now to restore our <code>Passenger</code> class we should import the <code>Person</code> base class into our <code>Passenger</code> definition and extend it like this.</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">const</span> Person = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./Person&#x27;</span>)
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Passenger</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Person</span> </span>{}
+</code></pre>
+<p>That is enough to fix all our current tests. Everything should work as it was. When we create a <code>new Passenger('bob')</code> we will be able to call <code>addBag</code> as this functionality has been inherited from the <code>Person</code> class.</p>
+<p>Our passengers might want functionality specific to them like <code>callAttendant</code>. In this case, we add the method to the <code>Passenger</code> subclass.</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">const</span> Person = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./Person&#x27;</span>)
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Passenger</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Person</span> </span>{
+    <span class="hljs-function"><span class="hljs-title">callAttendant</span>(<span class="hljs-params"></span>)</span> {
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Excuses me, Hay there!&#x27;</span>)
+    }
+}
+</code></pre>
+<h3>instanceof</h3>
+<p>Can you see where this is going? One useful operator we want to introduce at this point is <code>instanceof</code>. Now you can make classes, in your code sometimes you'll want to know what type an object is. For example, you might want to know, is this person a <code>Passenger</code> or a <code>Crew</code> member? You can use <code>instanceof</code> to help you work that out.</p>
+<pre><code class="language-javascript">test(<span class="hljs-string">&#x27;is an instance of a Passenger&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+    <span class="hljs-keyword">const</span> betty = <span class="hljs-keyword">new</span> Passenger(<span class="hljs-string">&#x27;Betty&#x27;</span>)
+    expect(betty <span class="hljs-keyword">instanceof</span> Passenger).toBeTruthy()
+})
+</code></pre>
+<h2>Assignment</h2>
+<ul>
+<li>Create the <code>Crew</code> class by extending the <code>Person</code> class. Think about the properties a crew member may have.</li>
+<li>Refactor the <code>Plane</code> class to have a <code>crew</code> property</li>
+<li>When <code>board</code> is called on an instance of a plane, you should iterate over the array and put crew and passengers in the correct property in the plane instance.</li>
+<li>All your refactoring should have tests that cover it</li>
+</ul>
+<p>When you have completed these tasks, create a coverage report using Jest. Add the following line to your package.json</p>
+<pre><code class="language-json">{
+  <span class="hljs-attr">&quot;scripts&quot;</span>: {
+    <span class="hljs-attr">&quot;test&quot;</span>: <span class="hljs-string">&quot;jest --watchAll&quot;</span>,
+    <span class="hljs-attr">&quot;test:report&quot;</span>: <span class="hljs-string">&quot;jest --coverage=true&quot;</span>
+  },
+  <span class="hljs-attr">&quot;dependencies&quot;</span>: {
+    <span class="hljs-attr">&quot;jest&quot;</span>: <span class="hljs-string">&quot;^26.4.2&quot;</span>
+  }
+}
+</code></pre>
+<p>Then run <code>npm run test:report</code> - you are aiming for 100% test coverage.</p>
+<p>You should see that Jest generates a 'coverage' report in your project folder under <code>/coverage/Icov-report/index.html</code>. Open this in your browser to view coverage by line, branch, function and statement.</p>
+<p><figure><img src="https://user-images.githubusercontent.com/4499581/93334401-cc627a00-f81c-11ea-9c98-4825235c06a4.png" alt="test coverage report showing statements, branches, functions and line coverage"><figcaption></figcaption></figure></p>
+<p>The report is interactive hence you can click and drill down into a specific class.</p>
+<p>Commit all your code and a screenshot of your coverage report into Github and share the link with your coach for review.</p>
+<h3>Assignment extension tasks</h3>
+<p>TODO</p>
+<h2>Additional resources</h2>
+
         <script src="/curriculum/js/tabbed-code-blocks.js"></script>
     </body>
 </html>
