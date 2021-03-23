@@ -182,8 +182,18 @@ th {
 #navigation-label {
     background-image: url('https://multiverselearningproducts.github.io/curriculum/branding/mv_marker_molten.svg');
     background-size: cover;
+    padding: .5rem;
+    color: var(--mv-deep-space);
     cursor: pointer;
 }
 #navigation {
     display: none;
+}
+#navigation a,
+#navigation a:active
+#navigation a:visited {
+    color: var(--mv-deep-space);
+}
+#navigation a:hover {
+    color: var(--mv-molten);
 }
