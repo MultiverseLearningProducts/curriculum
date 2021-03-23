@@ -14,8 +14,15 @@
         <script src="/curriculum/js/sql.min.js"></script>
     </head>
     <body>
+        <label for="navigation" aria-haspopup="true" onclick="toggleNav()">Table of contents</label>
         <%=nav%>
         <%=content%>
         <script src="/curriculum/js/tabbed-code-blocks.js"></script>
+        <script>
+            function toggleNav() {
+                const nav = document.getElementById('navigation')
+                nav.style.display = nav.offsetParent ? 'none' : 'block'
+            }
+        </script>
     </body>
 </html>
