@@ -179,10 +179,12 @@ th, td {
 th {
     background-color: var(--mv-gray);
 }
-#navigation-label {
+#navigation-toggle {
+    border-color: transparent;
     background-image: url('https://multiverselearningproducts.github.io/curriculum/branding/mv_marker_molten.svg');
     background-size: cover;
-    padding: .5rem;
+    background-repeat: no-repeat;
+    padding: .5rem 1rem;
     color: var(--mv-deep-space);
     cursor: pointer;
 }
