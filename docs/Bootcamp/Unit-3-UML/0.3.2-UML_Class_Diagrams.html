@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+    <head>
+        <meta charset="utf-8">
+        <title> UML Class Diagrams</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="shortcut icon" type="image/x-icon" href="/curriculum/favicon.ico"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/an-old-hope.min.css">
+        <link rel="stylesheet" href="/curriculum/style.css"/>
+        <script src="/curriculum/js/highlight.min.js"></script>
+        <script src="/curriculum/js/bash.min.js"></script>
+        <script src="/curriculum/js/java.min.js"></script>
+        <script src="/curriculum/js/javascript.min.js"></script>
+        <script src="/curriculum/js/sql.min.js"></script>
+    </head>
+    <body>
+        <h1>UML Class Diagrams</h1>
+<h2>Pre-requisites</h2>
+<ul>
+<li>Try out <a href="https://planttext.com">https://planttext.com</a> for drawing UML diagrams</li>
+<li>Install the <code>PlantUML</code> plugin for VSCode</li>
+</ul>
+<h2>Learning Objectives</h2>
+<ul>
+<li>Create a UML class diagram</li>
+<li>Understand how to correctly label relationships between classes such as</li>
+<li>Use 'has many' and 'belongs to' to correctly label relationship between classes</li>
+</ul>
+<h2>Lesson</h2>
+<p>Imagine we are going to build a Restaurant application like Deliveroo or Uber Eats. We firstly start by designing our data model. An application data model is like the foundations of a building. Everything is build on top of this foundation.</p>
+<p>In a Restaurant system what are some of the objects you would expect to find?</p>
+<ol>
+<li>Restaurant</li>
+<li>Menu</li>
+<li>Item (a dish with a price)</li>
+</ol>
+<p>What are the relationships between these?</p>
+<p>A Restaurant can have many Menus, for example:</p>
+<ul>
+<li>a drinks menu</li>
+<li>a mains menu</li>
+<li>a dessert menu</li>
+</ul>
+<p>A Menu belongs to a Restaurant. A Menu has many Items. An Item belongs to a Menu. Can you figure out all of that? It gets confusing and quite complicated to imagine if someone is just verbally explaining it to us. We need a way to visually represent it so we can clearly communicate our design.</p>
+<h3>UML</h3>
+<p>Unified Modeling Language is a standardised way to represent abstract structures in programming, like a data model.</p>
+<p>TODO - rebrand this presentation</p>
+<p><iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTxqagPim3SJ1f4Js8PVwPc8zzgkm-wPSZB6I0LUw9jEIihFYUUjkc7-SB0jcahUZevJZH0avpYUWuQ/embed" width="100%" height="444px" allowfullscreen frameborder=0></iframe></p>
+<p>Example of Airports in UML</p>
+<p><figure><img src="https://user-images.githubusercontent.com/4499581/93352652-fa52b900-f832-11ea-81a8-ebd2b8e43f97.png" alt="UML of airports"><figcaption></figcaption></figure></p>
+<p>In UML relationships are represented...<br>
+TODO</p>
+<h2>Assignment</h2>
+<p>Design a data model for the following classes. Include the relationship between them.</p>
+<ol>
+<li>Restaurant</li>
+<li>Menu</li>
+<li>Item</li>
+</ol>
+<p>Commit your UML diagram into Github and share the link with your coach for review.</p>
+
+        <script src="/curriculum/js/tabbed-code-blocks.js"></script>
+    </body>
+</html>

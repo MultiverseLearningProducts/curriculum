@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+    <head>
+        <meta charset="utf-8">
+        <title> Implementing the Logical Data Model</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="shortcut icon" type="image/x-icon" href="/curriculum/favicon.ico"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/an-old-hope.min.css">
+        <link rel="stylesheet" href="/curriculum/style.css"/>
+        <script src="/curriculum/js/highlight.min.js"></script>
+        <script src="/curriculum/js/bash.min.js"></script>
+        <script src="/curriculum/js/java.min.js"></script>
+        <script src="/curriculum/js/javascript.min.js"></script>
+        <script src="/curriculum/js/sql.min.js"></script>
+    </head>
+    <body>
+        <h1>Implementing the Logical Data Model</h1>
+<h2>Learning Objectives</h2>
+<ul>
+<li>Demonstrate knowledge of unit tests</li>
+<li>Demonstrate knowledge of classes</li>
+</ul>
+<h2>Pre-requisites</h2>
+<p>TODO</p>
+<h2>Lesson</h2>
+<p>Once you have a Logical Data Model you can begin to write a set of tests that will prove your model is sound. TODO - Use the examples from the Airport exercise to implement your data model for your restaurant ordering app.</p>
+<p>Once your tests and logic are complete you should run a Jest coverage report to analyse how much of your code is executed during your tests. To do this, add the following line to your package.json file:</p>
+<pre><code class="language-json">{
+  <span class="hljs-attr">&quot;scripts&quot;</span>: {
+    <span class="hljs-attr">&quot;test&quot;</span>: <span class="hljs-string">&quot;jest&quot;</span>,
+    <span class="hljs-attr">&quot;test:report&quot;</span>: <span class="hljs-string">&quot;jest --coverage=true&quot;</span>
+  },
+  <span class="hljs-attr">&quot;dependencies&quot;</span>: {
+    <span class="hljs-attr">&quot;jest&quot;</span>: <span class="hljs-string">&quot;^26.4.2&quot;</span>
+  }
+}
+</code></pre>
+<p>Then run <code>npm run test:report</code>. You are aiming for 100% test coverage. You should see that Jest generates a 'coverage' report in your project folder under <code>/coverage/Icov-report/index.html</code>. Open this in your browser to view coverage by line, branch, function and statement.</p>
+<p><figure><img src="https://user-images.githubusercontent.com/4499581/93334401-cc627a00-f81c-11ea-9c98-4825235c06a4.png" alt="test coverage report"><figcaption></figcaption></figure></p>
+<p>The report is interactive hence you can click and drill down into a specific class.</p>
+<h2>Assignment</h2>
+<p>Create a new project folder and use <code>npm init</code> to start a new Node.js app. Create tests and class definitions for each of the classes in the Restaurant Logical Data Model.</p>
+<ol>
+<li>Create a Restaurant (with a name, image URL, and a city)</li>
+<li>Create a Menu and associate it with a Restaurant (the Menu should have a 'title' property and an 'icon' - you can use emojis for icons)</li>
+<li>Create a Menu Item and associate it with a Menu (Menu Item should have a name and price)</li>
+<li>Run a coverage report</li>
+<li>Commit your code and a screenshot of your coverage report into Github and share the link with your coach for review.</li>
+</ol>
+
+        <script src="/curriculum/js/tabbed-code-blocks.js"></script>
+    </body>
+</html>

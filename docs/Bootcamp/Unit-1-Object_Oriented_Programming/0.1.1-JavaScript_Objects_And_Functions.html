@@ -2,7 +2,7 @@
 <html lang="en-GB">
     <head>
         <meta charset="utf-8">
-        <title> JavaScript Objects and Functions</title>
+        <title> JavaScript Objects and Functions</title>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link rel="shortcut icon" type="image/x-icon" href="/curriculum/favicon.ico"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/an-old-hope.min.css">
@@ -19,6 +19,7 @@
 <ul>
 <li>Understand how to create objects and functions using Javascript</li>
 </ul>
+<h2>Pre-requisites</h2>
 <h2>Lesson</h2>
 <p>Objects are the main data type in Javascript. Think of objects as nouns (person, place or thing), something you can touch, see, smell, feel or taste.</p>
 <p>Let's start by looking at the three different ways we can make an object:</p>
@@ -27,14 +28,14 @@
 <span class="hljs-keyword">const</span> person3 = <span class="hljs-built_in">Object</span>.create({})
 </code></pre>
 <p>You can just declare a new object using <code>{}</code>. The other two methods do the same kind of thing. <code>Object.create()</code> gives you the option to inherit the prototypal chain from an object you pass to create.</p>
-<p>Once you have an object you can add properties to it. We are creating a person so lets give them a <code>name</code> property:</p>
+<p>Once you have an object you can add properties to it. Let's a person and give them a <code>name</code> property:</p>
 <pre><code class="language-javascript">person1.name = <span class="hljs-string">&#x27;Bosola&#x27;</span>
 </code></pre>
 <p>Very easy, we just use the 'dot' notation and <code>=</code> operator to assign the property and a value. We can read the value from the property in a couple of different ways:</p>
 <pre><code class="language-javascript">person1.name
 person1[<span class="hljs-string">&#x27;name&#x27;</span>]
 </code></pre>
-<p>Both do the same thing. The reason for using the bracket notation is when our property is a string that has an unusual character in it i.e. &quot;full-name&quot;. For example this will not work:</p>
+<p>Both do the same thing. The reason for using the bracket notation is when our property is a string that has an unusual character in it i.e. &quot;full-name&quot;. For example, this will not work:</p>
 <pre><code class="language-javascript">person1.full-name = <span class="hljs-string">&#x27;Bosola Randle&#x27;</span>
 </code></pre>
 <p>but this will</p>
@@ -63,7 +64,7 @@ How can we access the name of the parents?</p>
 <p>The childOf property should return a string of the parent's names.</p>
 <p>Use a combination of objects arranged in arrays to represent different generations. Use the <code>this</code> keyword to create a <code>childOf</code> function that references the parents array of itself.</p>
 <p>Once constructed you should be able to traverse from an individual to their grand-parents. You should be able to call <code>childOf</code> on any person and that function should return a string i.e. 'Elizabeth Windsor &amp; Philip Windsor'.</p></li>
-<li><p>Commit your code into Github and share the link with your coach.</p></li>
+<li><p>Commit your code into Github and share the link with your coach for review.</p></li>
 </ol>
 <h2>Assignment extension tasks</h2>
 <p>Research the <code>Object.create()</code> method.</p>

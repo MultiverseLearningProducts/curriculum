@@ -2,7 +2,7 @@
 <html lang="en-GB">
     <head>
         <meta charset="utf-8">
-        <title> Object Relational Mapping - part 2</title>
+        <title> Object Relational Mapping - part 2</title>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link rel="shortcut icon" type="image/x-icon" href="/curriculum/favicon.ico"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/an-old-hope.min.css">
@@ -20,7 +20,7 @@
 <li>Implement an Object Relational Mapping (ORM) design pattern with relationships between classes</li>
 </ul>
 <h2>Pre-requisites</h2>
-<p><a href="/curriculum/Bootcamp/Unit-2-Databases/0.2.5-Object_Relational_Mapping_part_1.html">Object Relational Mapping - part 1</a></p>
+<p><a href="/curriculum/Bootcamp/Unit-2-Databases/0.2.7-Object_Relational_Mapping_part_1.html">Object Relational Mapping - part 1</a></p>
 <h2>Lesson</h2>
 <p>There is an important dimension missing from our 'home grown' ORM implementation - relationships. As we see from the class diagram below, our Restaurants have Menus and our Menus have Menu Items.<br>
 <figure><img src="https://user-images.githubusercontent.com/1316724/105141638-5d11d500-5af1-11eb-98ee-d177df9c5894.png" alt="UML Class Diagram showing relationships between Restaurant, Menu and MenuItem classes"><figcaption></figcaption></figure></p>
@@ -36,14 +36,14 @@
     <span class="hljs-built_in">this</span>.menus.push(menu)
 }
 </code></pre>
-<p>Then we have the work to go get the items for a menu, and the menus for a restaurant. So when I instantiate a Restaurant with a row from the database (the restaurant is stored with an id), I will also need to go get all the menus. That way a new instance of a restaurant has all it's menus in place, and each of those menus have their items in place. I expect to be able to drill down through all my connected data like this:</p>
+<p>Then we need to get the Menu Items for a Menu, and the Menus for a Restaurant. So when we instantiate a Restaurant with a row from the database (the Restaurant is stored with an id), we will also need to retrieve all the Menus. That way a new instance of a Restaurant has all it's Menus in place, and each of those Menus have their Menu Items in place. We expect to be able to drill down through all our connected data like this:</p>
 <pre><code class="language-javascript">restaurant.menus[<span class="hljs-number">0</span>].items[<span class="hljs-number">0</span>].price <span class="hljs-comment">// 12.50</span>
 </code></pre>
 <h2>Assignment</h2>
 <ul>
-<li>Enhance your solution from xxx to include the relationships between your Restaurant and Menu classes and the Menu and Menu Item classes as described above.</li>
+<li>Enhance the solution from the <a href="https://multiverselearningproducts.github.io/curriculum/Bootcamp/Unit-2-Databases/0.2.7-Object_Relational_Mapping_part_1.html">Object Relational Mapping - Part 1</a> lesson to include the relationships between your Restaurant and Menu classes and the Menu and Menu Item classes as described above.</li>
 <li>Ensure you have unit tests that cover the new functionality.</li>
-<li>Commit your code and a screen shot of your coverage report to GitHub and let you coach know it is ready for review.</li>
+<li>Commit your code into Github and share the link with your coach for review.</li>
 </ul>
 <h2>Assignment extension tasks</h2>
 <ul>

@@ -2,7 +2,7 @@
 <html lang="en-GB">
     <head>
         <meta charset="utf-8">
-        <title> Populating databases from JSON</title>
+        <title> Populating databases from JSON</title>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link rel="shortcut icon" type="image/x-icon" href="/curriculum/favicon.ico"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/an-old-hope.min.css">
@@ -19,7 +19,7 @@
 <p>How to use JavaScript (Node.js) to load data from a JSON file and populate database tables.</p>
 <h2>Pre-requisites</h2>
 <ul>
-<li><p>Familiarity with <a href="/curriculum/Bootcamp/Unit-2-Databases/0.2.3-Database_access_with_Node.html">Database access using Node.js</a></p></li>
+<li><p>Familiarity with <a href="/curriculum/Bootcamp/Unit-2-Databases/0.2.5-Database_access_with_Node.html">Database access using Node.js</a></p></li>
 <li><p>Download this <a href="https://raw.githubusercontent.com/MultiverseLearningProducts/airports/master/airportsData.json">airports.json</a> file</p></li>
 </ul>
 <h2>Lesson</h2>
@@ -97,9 +97,9 @@ describe(<span class="hljs-string">&#x27;SQLite3&#x27;</span>, <span class="hljs
 <ol>
 <li><p>Download this <a href="https://raw.githubusercontent.com/MultiverseLearningProducts/restaurant-data/master/restaurants.json">restaurant data file</a>.</p></li>
 <li><p>Write a unit test to verify your seed data has loaded into the database ok. This will fail initially but should pass once you complete the rest of the assignment.</p></li>
-<li><p>Create a js file (named <code>initialiseDB.js</code>) which contains Node.js code to create a new, persistent database containing the tables described by the UML diagram in the <a href="/curriculum/Bootcamp/Unit-2-Databases/0.2.2-SQL_Joins.html">SQL Joins</a> lesson. Ensure you create FOREIGN KEYs as appropriate.</p></li>
+<li><p>Create a js file (named <code>initialiseDB.js</code>) which contains Node.js code to create a new, persistent database containing the tables described by the UML diagram in the <a href="/curriculum/Bootcamp/Unit-2-Databases/0.2.4-SQL_Joins.html">SQL Joins</a> lesson. Ensure you create FOREIGN KEYs as appropriate.</p></li>
 <li><p>Create a js file (named <code>populateDB.js</code>) which contains code to load the restaurant JSON data and recursively insert each Restaurant, Menu &amp; MenuItem into the database. You will be looping through a <a href="https://www.geeksforgeeks.org/multidimensional-array-in-javascript/">multi-dimensional array</a>. Remember to use <code>try/catch/finally</code> blocks to handle errors and close both the statements and database.</p></li>
-<li><p>Commit your code to GitHub and let you coach know it is ready for review.</p></li>
+<li><p>Commit your code into Github and share the link with your coach for review.</p></li>
 </ol>
 <h2>Assignment extension tasks</h2>
 <ul>
