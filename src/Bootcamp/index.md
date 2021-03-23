@@ -10,8 +10,7 @@ Intro to bootcamp
 * [Inheritance](/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.5-Inheritance)
 * [Asynchronous JavaScript](/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.6-Asynchronous_JavaScript)
 * [Asynchronous Airport Data Load](/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.7-Asynchronous_Airport_Data_Load)
-
-[End of Unit 1 Assessment](/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1-End_of_Unit_Assessment)
+* [Scooter Hire System](/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.8-Scooter_Hire_System)
 
 
 ## Unit 2 - Databases
