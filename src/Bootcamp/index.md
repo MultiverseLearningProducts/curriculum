@@ -10,14 +10,16 @@ Intro to bootcamp
 
 
 ## Unit 2 - Databases
-* [Basic SQL Commands](/curriculum/Bootcamp/Unit-2-Databases/0.2.1-Basic_SQL_Commands.html)
-* [SQL Joins](/curriculum/Bootcamp/Unit-2-Databases/0.2.2-SQL_Joins.html)
-* [Database access using Node.js](/curriculum/Bootcamp/Unit-2-Databases/0.2.3-Database_access_using_Node.html)
-* [Populating databases from JSON](/curriculum/Bootcamp/Unit-2-Databases/0.2.4-Populating_databases_from_JSON.html)
-* [Object Relational Mapping - part 1](/curriculum/Bootcamp/Unit-2-Databases/0.2.5-Object_Relational_Mapping_part_1.html)
-* [Object Relational Mapping - part 2](/curriculum/Bootcamp/Unit-2-Databases/0.2.6-Object_Relational_Mapping_part_2.html)
-* [Sequelize - part 1](/curriculum/Bootcamp/Unit-2-Databases/0.2.7-Sequelize_part_1.html)
-* [Sequelize - part 2](/curriculum/Bootcamp/Unit-2-Databases/0.2.8-Sequelize_part_2.html)
+* [Logical Data Model](/curriculum/Bootcamp/Unit-2-Databases/0.2.1-Logical_Data_Model)
+* [Implementing the Logical Data Model](/curriculum/Bootcamp/Unit-2-Databases/0.2.2-Implementing_the_Logical_Data_Model)
+* [Basic SQL Commands](/curriculum/Bootcamp/Unit-2-Databases/0.2.3-Basic_SQL_Commands.html)
+* [SQL Joins](/curriculum/Bootcamp/Unit-2-Databases/0.2.4-SQL_Joins.html)
+* [Database access using Node.js](/curriculum/Bootcamp/Unit-2-Databases/0.2.5-Database_access_using_Node.html)
+* [Populating databases from JSON](/curriculum/Bootcamp/Unit-2-Databases/0.2.6-Populating_databases_from_JSON.html)
+* [Object Relational Mapping - part 1](/curriculum/Bootcamp/Unit-2-Databases/0.2.7-Object_Relational_Mapping_part_1.html)
+* [Object Relational Mapping - part 2](/curriculum/Bootcamp/Unit-2-Databases/0.2.8-Object_Relational_Mapping_part_2.html)
+* [Sequelize - part 1](/curriculum/Bootcamp/Unit-2-Databases/0.2.9-Sequelize_part_1.html)
+* [Sequelize - part 2](/curriculum/Bootcamp/Unit-2-Databases/0.2.10-Sequelize_part_2.html)
 
 ## End of Bootcamp Summative Assessment
 TODO (group project)
