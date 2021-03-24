@@ -13,5 +13,5 @@
   }
   ```
 
-## How do I run my Jest tests?
+## <a name="runJestTests"></a> How do I run my Jest tests?
 To run all your tests use `npm run test` or use `npm run test -t` to run a single test.
