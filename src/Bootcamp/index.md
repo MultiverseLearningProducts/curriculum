@@ -1,6 +1,8 @@
 # Bootcamp
 
-Intro to bootcamp
+In the Bootcamp we cover the basics of the software development life cycle and begin to understand the role of a software developer. As well as learning the basics of programming in HTML and Javascript, you will take on coding challenges and gain practical experience of the entire software stack.
+
+For frequently asked questions about assignments in the Bootcamp, please see the [Bootcamp FAQ](/curriculum/Bootcamp/FAQ).
 
 ## Unit 1 - Object Oriented Programming
 * [JavaScript Objects and Functions](/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.1-JavaScript_Objects_And_Functions)
