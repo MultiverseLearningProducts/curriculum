@@ -102,6 +102,7 @@ describe(<span class="hljs-string">&#x27;SQLite3&#x27;</span>, <span class="hljs
 <p>All the &quot;?&quot; are placeholders for the different values that we will be inserting as we iterate over our array of data. When you call <code>db.run</code> the first argument is the string above, and the second argument is an array of all the values you want to store. The &quot;?&quot; are substituated with the data hence your values have to be in the same order as the database columns.</p>
 <h2>Assignment</h2>
 <ol>
+<li><p>Create a <a href="/curriculum/Bootcamp/FAQ#createNewProject">new Node.js project</a> for this assignment.</p></li>
 <li><p>Download this <a href="https://raw.githubusercontent.com/MultiverseLearningProducts/restaurant-data/master/restaurants.json">restaurant data file</a>.</p></li>
 <li><p>Write a unit test to verify your seed data has loaded into the database ok. This will fail initially but should pass once you complete the rest of the assignment.</p></li>
 <li><p>Create a js file (named <code>initialiseDB.js</code>) which contains Node.js code to create a new, persistent database containing the tables described by the UML diagram in the <a href="/curriculum/Bootcamp/Unit-2-Databases/0.2.4-SQL_Joins.html">SQL Joins</a> lesson. Ensure you create FOREIGN KEYs as appropriate.</p></li>

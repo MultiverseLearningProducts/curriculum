@@ -24,7 +24,7 @@
         <h1>Frequently Asked Questions</h1>
 <h2><a name="createNewProject"></a> How do I create a new Node.js project for my lesson?</h2>
 <ol>
-<li>Create a new directory to hold the lesson's work. <code>cd</code> into it.</li>
+<li>Create a new directory to hold the lesson's work - do not use spaces or special characters in directory or filenames.. <code>cd</code> into it.</li>
 <li>Run <code>npm init</code> to create a new <code>package.json</code> file. Accept all defaults.</li>
 <li>Add any Node package dependencies you require using <code>npm install</code>. For the majority of Bootcamp assignments you will require:
 <ul>
@@ -39,6 +39,9 @@
 </code></pre>
 <h2><a name="runJestTests"></a> How do I run my Jest tests?</h2>
 <p>To run all your tests use <code>npm run test</code> or use <code>npm run test -t</code> to run a single test.</p>
+<h2><a name="generateCoverage"></a> How do I create a Jest coverage report?</h2>
+<p>To create a Jest coverage report run <code>npm run test:report</code>.</p>
+<p>You should see that Jest generates a 'coverage' report in your project folder under <code>/coverage/Icov-report/index.html</code>. Open this in your browser to view coverage by line, branch, function and statement.</p>
 
         <script src="/curriculum/js/tabbed-code-blocks.js"></script>
         <script>

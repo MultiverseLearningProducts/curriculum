@@ -61,8 +61,8 @@ How can we access the name of the parents?</p>
 <p>Finally, since we want all our person objects to have this function, we can declare the function once by assigning it to a variable. Now our <code>childOf</code> property can have as its value a reference to the <code>childOf</code> function. You must use the <code>function</code> keyword for this to work. Arrow functions reference the <code>this</code> of the parent's scope so do not work the same way.</p>
 <h2>Assignment</h2>
 <ol>
-<li><p>Create a new directory in your local Git repository called <code>familyTree</code>. As a general rule, do not use spaces or special characters in directory or filenames.</p></li>
-<li><p>Create an object that represents 3 generations of the <a href="https://i.insider.com/5e17677224fe1248eb288e84?width=1000&amp;format=jpeg&amp;auto=webp">British Royal Family</a>. A person in the family tree should have the following properties:</p>
+<li><p>Create a new directory in your local Git repository called <code>familyTree</code>. As a general rule, do not use spaces or special characters in directory or file names.</p></li>
+<li><p>Create objects to represents 3 generations of the <a href="https://i.insider.com/5e17677224fe1248eb288e84?width=1000&amp;format=jpeg&amp;auto=webp">British Royal Family</a>. A person in the family tree should have the following properties:</p>
 <ul>
 <li>name of type <code>String</code></li>
 <li>parents of type <code>Array</code></li>
@@ -71,6 +71,7 @@ How can we access the name of the parents?</p>
 <p>The childOf property should return a string of the parent's names.</p>
 <p>Use a combination of objects arranged in arrays to represent different generations. Use the <code>this</code> keyword to create a <code>childOf</code> function that references the parents array of itself.</p>
 <p>Once constructed you should be able to traverse from an individual to their grand-parents. You should be able to call <code>childOf</code> on any person and that function should return a string i.e. 'Elizabeth Windsor &amp; Philip Windsor'.</p></li>
+<li><p>To run your code execute <code>node</code> <em>name_of_file</em><code>.js</code></p></li>
 <li><p>Commit your code into Github and share the link with your coach for review.</p></li>
 </ol>
 <h2>Assignment extension tasks</h2>
