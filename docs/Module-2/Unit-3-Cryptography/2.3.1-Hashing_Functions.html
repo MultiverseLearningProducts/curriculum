@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+    <head>
+        <meta charset="utf-8">
+        <title> Hashing Functions</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="shortcut icon" type="image/x-icon" href="/curriculum/favicon.ico"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/an-old-hope.min.css">
+        <link rel="stylesheet" href="/curriculum/style.css"/>
+        <script src="/curriculum/js/highlight.min.js"></script>
+        <script src="/curriculum/js/bash.min.js"></script>
+        <script src="/curriculum/js/java.min.js"></script>
+        <script src="/curriculum/js/javascript.min.js"></script>
+        <script src="/curriculum/js/sql.min.js"></script>
+    </head>
+    <body>
+        <button 
+            id="navigation-toggle"
+            aria-expanded="false"
+            aria-haspopup="true"
+            onclick="toggleNav()"
+            onkeydown="event => {event.keyCode === 13 ? toggleNav() : null}"
+            tabindex="1">Table of contents</button>
+        <nav id="navigation"><ul><li><a href="/curriculum/Bootcamp/index.html">Bootcamp</a><ul><li><a href="/curriculum/Bootcamp/FAQ.html">FAQ</a></li><li><a href="/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/index.html">Unit 1 Object Oriented Programming</a><ul><li><a href="/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.1-JavaScript_Objects_And_Functions.html">0.1.1 JavaScript Objects And Functions</a></li><li><a href="/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.2-Test_Driven_Development.html">0.1.2 Test Driven Development</a></li><li><a href="/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.3-Objects_in_an_Airport_Domain.html">0.1.3 Objects in an Airport Domain</a></li><li><a href="/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.4-Static_functions_and_properties.html">0.1.4 Static functions and properties</a></li><li><a href="/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.5-Inheritance.html">0.1.5 Inheritance</a></li><li><a href="/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.6-Asynchronous_JavaScript.html">0.1.6 Asynchronous JavaScript</a></li><li><a href="/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.7-Asynchronous_Airport_Data_Load.html">0.1.7 Asynchronous Airport Data Load</a></li><li><a href="/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.8-Scooter_Hire_System.html">0.1.8 Scooter Hire System</a></li></ul></li><li><a href="/curriculum/Bootcamp/Unit-2-Databases/index.html">Unit 2 Databases</a><ul><li><a href="/curriculum/Bootcamp/Unit-2-Databases/0.2.1-Logical_Data_Model.html">0.2.1 Logical Data Model</a></li><li><a href="/curriculum/Bootcamp/Unit-2-Databases/0.2.10-Sequelize_part_2.html">0.2.10 Sequelize part 2</a></li><li><a href="/curriculum/Bootcamp/Unit-2-Databases/0.2.2-Implementing_the_Logical_Data_Model.html">0.2.2 Implementing the Logical Data Model</a></li><li><a href="/curriculum/Bootcamp/Unit-2-Databases/0.2.3-Basic_SQL_Commands.html">0.2.3 Basic SQL Commands</a></li><li><a href="/curriculum/Bootcamp/Unit-2-Databases/0.2.4-SQL_Joins.html">0.2.4 SQL Joins</a></li><li><a href="/curriculum/Bootcamp/Unit-2-Databases/0.2.5-Database_access_using_Node.html">0.2.5 Database access using Node</a></li><li><a href="/curriculum/Bootcamp/Unit-2-Databases/0.2.6-Populating_databases_from_JSON.html">0.2.6 Populating databases from JSON</a></li><li><a href="/curriculum/Bootcamp/Unit-2-Databases/0.2.7-Object_Relational_Mapping_part_1.html">0.2.7 Object Relational Mapping part 1</a></li><li><a href="/curriculum/Bootcamp/Unit-2-Databases/0.2.8-Object_Relational_Mapping_part_2.html">0.2.8 Object Relational Mapping part 2</a></li><li><a href="/curriculum/Bootcamp/Unit-2-Databases/0.2.9-Sequelize_part_1.html">0.2.9 Sequelize part 1</a></li></ul></li><li><a href="/curriculum/Bootcamp/Unit-3-API_development/index.html">Unit 3 API development</a><ul><li><a href="/curriculum/Bootcamp/Unit-3-API_development/0.3.1-Web_Servers.html">0.3.1 Web Servers</a></li><li><a href="/curriculum/Bootcamp/Unit-3-API_development/0.3.2-Application_Servers.html">0.3.2 Application Servers</a></li></ul></li></ul></li><li><a href="/curriculum/Module-2/index.html">Module 2</a><ul><li><a href="/curriculum/Module-2/Unit-1-The_Anatomy_of_the_HTTP_request/index.html">Unit 1 The Anatomy of the HTTP request</a><ul><li><a href="/curriculum/Module-2/Unit-1-The_Anatomy_of_the_HTTP_request/2.1.1-Identifying_the_different_parts_of_HTTP.html">2.1.1 Identifying the different parts of HTTP</a></li><li><a href="/curriculum/Module-2/Unit-1-The_Anatomy_of_the_HTTP_request/2.1.2-Programmatic_HTTP_requests.html">2.1.2 Programmatic HTTP requests</a></li></ul></li><li><a href="/curriculum/Module-2/Unit-2-What_is_REST/index.html">Unit 2 What is REST</a><ul><li><a href="/curriculum/Module-2/Unit-2-What_is_REST/2.2.1-REST_and_the_openAPI_spec.html">2.2.1 REST and the openAPI spec</a></li><li><a href="/curriculum/Module-2/Unit-2-What_is_REST/2.2.2-The_OpenAPI_spec.html">2.2.2 The OpenAPI spec</a></li><li><a href="/curriculum/Module-2/Unit-2-What_is_REST/2.2.3-Build_an_OpenAPI_RESTful_service.html">2.2.3 Build an OpenAPI RESTful service</a></li><li><a href="/curriculum/Module-2/Unit-2-What_is_REST/2.2.4-Integration_tests.html">2.2.4 Integration tests</a></li><li><a href="/curriculum/Module-2/Unit-2-What_is_REST/2.2.5-Knowledge_quiz.html">2.2.5 Knowledge quiz</a></li></ul></li><li><a href="/curriculum/Module-2/Unit-3-Cryptography/index.html">Unit 3 Cryptography</a><ul><li><a href="/curriculum/Module-2/Unit-3-Cryptography/2.3.1-Hashing_Functions.html">2.3.1 Hashing Functions</a></li><li><a href="/curriculum/Module-2/Unit-3-Cryptography/2.3.2-Symmetric_Key_Encryption.html">2.3.2 Symmetric Key Encryption</a></li></ul></li></ul></li><li><a href="/curriculum/Module-3/index.html">Module 3</a><ul><li><a href="/curriculum/Module-3/Unit-1-The-SDLC/index.html">Unit 1 The SDLC</a><ul><li><a href="/curriculum/Module-3/Unit-1-The-SDLC/3.1.1-Business_Impact.html">3.1.1 Business Impact</a></li></ul></li></ul></li></ul></nav>
+        <h1>Hashing Functions</h1>
+<h2>Overview</h2>
+<p>Today introduces the subject of cryptography or the art of writing or solving codes. Why study this? It is this area of mathematics that really gave birth to some of the first computers. For example here in the UK at Bletchley Park Tommy Flowers created the <a href="https://www.tnmoc.org/colossus">Colossus</a> computer to break codes. Cryptography features heavily in production systems and solves the problem of passing private data through a public network. You will be familiar with your SSH keys that help you connect to Github, or sites that respond over <code>https://</code>. These secure network connections are made possible by implementing cryptographic concepts 3 of which we will study to help us secure our API servers.</p>
+<h2>Learning Objectives</h2>
+<ul>
+<li>Implement a hashing function</li>
+<li>Recall the features of hashing functions</li>
+</ul>
+<h2>Lesson</h2>
+<p>The first concept in cryptography we need to understand is hashing. A hashing algorithm takes as its input a string of any length and will return you a different string of a fixed length. That hashing algorithm will produce the same result with the same input each time. How the initial string is boiled down to a hash is often done through a mathematical formula.</p>
+<p>Hashing is so useful. What follows are some examples of how hashing is used with computers.</p>
+<h3>Storing passwords</h3>
+<p>Why do you think it's not cool to store people's passwords in your database in plain text? We can hash a password. That way we store a hash that no-one can recognise. It's impossible to figure out the original password string that created it, but at the same time if we are given a string and feed it back through our hashing function - we should end up with a matching hash we know that the string that created it must be the same. We have a password match!</p>
+<blockquote>
+<p>Hashing only works one way</p>
+</blockquote>
+<h3>Verifying changes</h3>
+<p>Hashes have a fixed length. If you hash a single character or the complete works of Shakespeare you end up with a hash that is exactly the same length.</p>
+<p>If I have an important file that I want to transfer to you I might make a hash of the file. Then I send you the file and you can check with my hashing function do you get the same hash? If you do the file has not been tampered with and I can feel relaxed.</p>
+<p>This is because changing just 1 single character of the input string to a hash will result is a totally different hash. This is how git works. Under the hood git is storing hashes of your file and folders. When a file is changed it hashes differently. Your commits are hashes of your whole project.</p>
+<p>How might you go about hashing a directory structure like you have in a codebase?</p>
+<blockquote>
+<p>Hashes have a fixed length</p>
+</blockquote>
+<h3>Indexing and searching</h3>
+<p>Hashes can be used to speed up searching. Imagine an enormous database. You want to search by full name for &quot;Kingdom Richards&quot;. Is Kingdom even in the database? We would then have to search for all the records with full name equal to 'K'+'i'+'n'... ⏱ (come back later).</p>
+<p>To speed this up we can index the database using a hashing function. We would create a hash table structure of key value pairs that is much smaller that the enormous database. That is called indexing. The key is a hash of &quot;Kingdom Richards&quot; <code>c50b35ae86c2ec095850243e007dbb1dec3e9278</code> and the value is the address of the record in the database. So now to search we can hash &quot;Kingdom Richards&quot; and look that key up in our hash table. If there is no key then &quot;Kingdom Richards&quot; is not even in our enormous database so we saved ourself some time there. If there is a &quot;Kingdom Richards&quot; then we retrieve the value from the hash table and go straight to that location in memory to get our record.</p>
+<p>There is a bit more to it that that but you can see the usefulness of hashing in computer programming with just these three examples.</p>
+<h3>Try it</h3>
+<p>Lets try to create a simple hashing function that will hash the string &quot;Lets meet at midnight under the clock&quot;. To do this we need to have a little idea about how hashing functions work.</p>
+<h4>Chunking</h4>
+<p>The first thing to do is prepare our string by chunking it into equal sections. We might need to pad the final block if our string will not perfectly chunk (which is nearly always). Usually a hashing function will turn the string charterers into their numerical representations and make sure they are padded to an equal length.</p>
+<p><figure><img src="https://user-images.githubusercontent.com/4499581/101887615-08477a00-3b95-11eb-8a60-9f01f7be853f.png" alt="evenly chunked blocks"><figcaption></figcaption></figure></p>
+<p>|Javascript|Java|</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">const</span> msg = <span class="hljs-string">&quot;Lets meet at midnight under the c1ock&quot;</span>;
+<span class="hljs-keyword">const</span> tokens = msg.split(<span class="hljs-string">&quot;&quot;</span>)
+<span class="hljs-keyword">let</span> blocks = [];
+<span class="hljs-keyword">let</span> slice = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">const</span> blockSize = <span class="hljs-number">8</span>;
+
+<span class="hljs-keyword">while</span> (slice &lt; tokens.length) {
+    blocks.push(tokens.slice(slice, slice += blockSize));
+}
+
+<span class="hljs-keyword">while</span> (blocks[blocks.length - <span class="hljs-number">1</span>].length &lt; <span class="hljs-number">8</span>) {
+    blocks[blocks.length - <span class="hljs-number">1</span>].push(<span class="hljs-string">&quot;a&quot;</span>)
+}
+
+blocks = blocks.map(<span class="hljs-function"><span class="hljs-params">block</span> =&gt;</span> block.map(<span class="hljs-function"><span class="hljs-params">char</span> =&gt;</span> char.charCodeAt()))
+
+<span class="hljs-built_in">console</span>.log(blocks)
+<span class="hljs-comment">/*
+    Output
+    [76, 101, 116, 115, 32, 109, 101, 101]
+    [116, 32, 117, 110, 100, 101, 114, 32]
+    [116, 104, 101, 32, 99, 108, 111, 99]
+    [107, 32, 97, 116, 32, 109, 105, 100]
+    [110, 105, 103, 104, 116, 46, 32, 82]
+    [101, 109, 101, 109, 98, 101, 114, 32]
+    [73, 32, 108, 111, 118, 101, 32, 121]
+    [111, 117, 46, 97, 97, 97, 97, 97]
+*/</span>
+</code></pre>
+<pre><code class="language-java"><span class="hljs-keyword">import</span> java.util.ArrayList;
+<span class="hljs-keyword">import</span> java.util.Arrays;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Code</span> </span>{
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span>[] blockAsCharCodes (String[] block) {
+    <span class="hljs-keyword">int</span>[] charCodes = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[block.length];
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i &lt; block.length;i++) {
+      charCodes[i] = block[i].codePointAt(<span class="hljs-number">0</span>);
+    }
+    <span class="hljs-keyword">return</span> charCodes;
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+    String msg = <span class="hljs-string">&quot;Lets meet at midnight under the c1ock&quot;</span>;
+    String[] tokens = msg.split(<span class="hljs-string">&quot;&quot;</span>);
+    <span class="hljs-keyword">int</span> slice = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">int</span> blockSize = <span class="hljs-number">8</span>;
+    ArrayList&lt;String[]&gt; blocks = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+    ArrayList&lt;<span class="hljs-keyword">int</span>[]&gt; blocksOfInts = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+    
+    <span class="hljs-keyword">while</span>(slice &lt; tokens.length) {
+      blocks.add(Arrays.copyOfRange(tokens, slice, slice+=blockSize));
+    }
+    
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i &lt; blockSize;i++) {
+      String b = blocks.get(blocks.size() - <span class="hljs-number">1</span>)[i];
+      blocks.get(blocks.size() - <span class="hljs-number">1</span>)[i] = b == <span class="hljs-keyword">null</span> ? <span class="hljs-string">&quot;a&quot;</span> : b;
+    }
+ 
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i &lt; blocks.size();i++){
+      blocksOfInts.add(blockAsCharCodes(blocks.get(i)));
+    }
+ 
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span>[] result : blocksOfInts) {
+      System.out.println(Arrays.toString(result));
+    }
+    <span class="hljs-comment">/*
+      Output
+      [76, 101, 116, 115, 32, 109, 101, 101]
+      [116, 32, 117, 110, 100, 101, 114, 32]
+      [116, 104, 101, 32, 99, 108, 111, 99]
+      [107, 32, 97, 116, 32, 109, 105, 100]
+      [110, 105, 103, 104, 116, 46, 32, 82]
+      [101, 109, 101, 109, 98, 101, 114, 32]
+      [73, 32, 108, 111, 118, 101, 32, 121]
+      [111, 117, 46, 97, 97, 97, 97, 97]
+    */</span>
+  }
+}
+</code></pre>
+<h4>Hashing</h4>
+<p>Now lets consume that array of even chunks and boil it down to a hash. You can visualise an array of 5 initial values that are the internal starting state of the hashing function.</p>
+<p><figure><img src="https://user-images.githubusercontent.com/4499581/101887628-0e3d5b00-3b95-11eb-86b6-d320b9657658.png" alt="a 1 by 5 grid of values"><figcaption></figcaption></figure></p>
+<p>Next we take each of our equal chunks from our input string and use those values to update the internal state of the hashing function. In the SHA-1 (simple hashing algorithm) algorithm all kinds of math tricks go on. You can shift bytes, use XOR gates and swap the positions of values in the internal state. Below is a diagram of the SHA-1 algorithm.</p>
+<p><figure><img src="https://user-images.githubusercontent.com/4499581/101887639-11384b80-3b95-11eb-9f0b-049c022e7719.png" alt="the SHA-1 algorithm in a diagram"><figcaption></figcaption></figure></p>
+<p>We do not expect you to implement this algorithm, it is shown for inspiration. We keep cycling through these updates until we run out of chunks from our input string. The internal state we are left with at the end of all that is our output hash. This is how we always end up with the hash being the same length, and the same value.</p>
+<pre><code>echo <span class="hljs-string">&quot;Lets meet at midnight under the c1ock.&quot;</span> <span class="hljs-string">| shasum</span>
+a49dfd68bf232c685f22dbdcb8a894803cebd320
+echo <span class="hljs-string">&quot;Lets meet at midnight under the clock.&quot;</span> <span class="hljs-string">| shasum</span>
+fa137e72391cfa6cb95781662fe0294bd7d000a8
+</code></pre>
+<p>In the example above you can see I am changing the 'l' in 'clock' and passing it to a hashing function the output is quite different for each slightly different string. You might find it is this behavior that poses the most challenging. Do your best and have some fun.</p>
+<h2>Assignment</h2>
+<p>Can you create a hashing algorithm?</p>
+<ol>
+<li>Your hashing function should take a string of any length and return a string of a fixed length</li>
+<li>The initial string and output hash should not be similar in any way</li>
+<li>Changing the input string even by 1 letter should create a different output hash</li>
+<li>Repeating your hashing function with the same input string should return the same output hash every time.</li>
+</ol>
+<p>You are not expected to implement a complete hashing algorithm in this assignment! We want you to try implementing a hashing function so you can appreciate what goes on inside them, what the rules are and why there are different varieties of hashing algorithms. If you need a little more help to get started you can watch the video below.</p>
+<p><iframe src="https://www.youtube.com/embed/5Bce1ipSW4s" width="100%" height="444px" allowfullscreen frameborder=0></iframe></p>
+<p>Be prepared to talk the group through your hashing function.</p>
+
+        <script src="/curriculum/js/tabbed-code-blocks.js"></script>
+        <script>
+            function toggleNav() {
+                const button = document.getElementById('navigation-toggle')
+                const isAriaExp = button.getAttribute('aria-expanded')
+                const newAriaExp = (isAriaExp == "false") ? "true" : "false"
+                button.setAttribute('aria-expanded', newAriaExp)
+                const nav = document.getElementById('navigation')
+                nav.style.display = nav.offsetParent ? 'none' : 'block'
+            }
+        </script>
+    </body>
+</html>
