@@ -2,7 +2,7 @@
 <html lang="en-GB">
     <head>
         <meta charset="utf-8">
-        <title> Integration Tests</title>
+        <title> Asymmetric Encryption</title>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link rel="shortcut icon" type="image/x-icon" href="/curriculum/favicon.ico"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/an-old-hope.min.css">
@@ -22,94 +22,71 @@
             onkeydown="event => {event.keyCode === 13 ? toggleNav() : null}"
             tabindex="1">Table of contents</button>
         <nav id="navigation"><ul><li><a href="/curriculum/Bootcamp/index.html">Bootcamp</a><ul><li><a href="/curriculum/Bootcamp/FAQ.html">FAQ</a></li><li><a href="/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/index.html">Unit 1 Object Oriented Programming</a><ul><li><a href="/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.1-JavaScript_Objects_And_Functions.html">0.1.1 JavaScript Objects And Functions</a></li><li><a href="/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.2-Test_Driven_Development.html">0.1.2 Test Driven Development</a></li><li><a href="/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.3-Objects_in_an_Airport_Domain.html">0.1.3 Objects in an Airport Domain</a></li><li><a href="/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.4-Static_functions_and_properties.html">0.1.4 Static functions and properties</a></li><li><a href="/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.5-Inheritance.html">0.1.5 Inheritance</a></li><li><a href="/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.6-Asynchronous_JavaScript.html">0.1.6 Asynchronous JavaScript</a></li><li><a href="/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.7-Asynchronous_Airport_Data_Load.html">0.1.7 Asynchronous Airport Data Load</a></li><li><a href="/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.8-Scooter_Hire_System.html">0.1.8 Scooter Hire System</a></li></ul></li><li><a href="/curriculum/Bootcamp/Unit-2-Databases/index.html">Unit 2 Databases</a><ul><li><a href="/curriculum/Bootcamp/Unit-2-Databases/0.2.1-Logical_Data_Model.html">0.2.1 Logical Data Model</a></li><li><a href="/curriculum/Bootcamp/Unit-2-Databases/0.2.10-Sequelize_part_2.html">0.2.10 Sequelize part 2</a></li><li><a href="/curriculum/Bootcamp/Unit-2-Databases/0.2.2-Implementing_the_Logical_Data_Model.html">0.2.2 Implementing the Logical Data Model</a></li><li><a href="/curriculum/Bootcamp/Unit-2-Databases/0.2.3-Basic_SQL_Commands.html">0.2.3 Basic SQL Commands</a></li><li><a href="/curriculum/Bootcamp/Unit-2-Databases/0.2.4-SQL_Joins.html">0.2.4 SQL Joins</a></li><li><a href="/curriculum/Bootcamp/Unit-2-Databases/0.2.5-Database_access_using_Node.html">0.2.5 Database access using Node</a></li><li><a href="/curriculum/Bootcamp/Unit-2-Databases/0.2.6-Populating_databases_from_JSON.html">0.2.6 Populating databases from JSON</a></li><li><a href="/curriculum/Bootcamp/Unit-2-Databases/0.2.7-Object_Relational_Mapping_part_1.html">0.2.7 Object Relational Mapping part 1</a></li><li><a href="/curriculum/Bootcamp/Unit-2-Databases/0.2.8-Object_Relational_Mapping_part_2.html">0.2.8 Object Relational Mapping part 2</a></li><li><a href="/curriculum/Bootcamp/Unit-2-Databases/0.2.9-Sequelize_part_1.html">0.2.9 Sequelize part 1</a></li></ul></li><li><a href="/curriculum/Bootcamp/Unit-3-APIs_and_Dynamic_Content/index.html">Unit 3 APIs and Dynamic Content</a><ul><li><a href="/curriculum/Bootcamp/Unit-3-APIs_and_Dynamic_Content/0.3.1-Web_Servers.html">0.3.1 Web Servers</a></li><li><a href="/curriculum/Bootcamp/Unit-3-APIs_and_Dynamic_Content/0.3.2-Application_Servers.html">0.3.2 Application Servers</a></li><li><a href="/curriculum/Bootcamp/Unit-3-APIs_and_Dynamic_Content/0.3.3-Rendering_Dynamic_Content.html">0.3.3 Rendering Dynamic Content</a></li><li><a href="/curriculum/Bootcamp/Unit-3-APIs_and_Dynamic_Content/0.3.4-Responsive_CSS_Grids.html">0.3.4 Responsive CSS Grids</a></li><li><a href="/curriculum/Bootcamp/Unit-3-APIs_and_Dynamic_Content/0.3.5-CSS_Box_Model.html">0.3.5 CSS Box Model</a></li><li><a href="/curriculum/Bootcamp/Unit-3-APIs_and_Dynamic_Content/0.3.6-Route_Parameters.html">0.3.6 Route Parameters</a></li><li><a href="/curriculum/Bootcamp/Unit-3-APIs_and_Dynamic_Content/0.3.7-HTML_Forms.html">0.3.7 HTML Forms</a></li><li><a href="/curriculum/Bootcamp/Unit-3-APIs_and_Dynamic_Content/0.3.8-CRUD_operations.html">0.3.8 CRUD operations</a></li></ul></li></ul></li><li><a href="/curriculum/Module-2/index.html">Module 2</a><ul><li><a href="/curriculum/Module-2/Unit-1-The_Anatomy_of_the_HTTP_request/index.html">Unit 1 The Anatomy of the HTTP request</a><ul><li><a href="/curriculum/Module-2/Unit-1-The_Anatomy_of_the_HTTP_request/2.1.1-Identifying_the_different_parts_of_HTTP.html">2.1.1 Identifying the different parts of HTTP</a></li><li><a href="/curriculum/Module-2/Unit-1-The_Anatomy_of_the_HTTP_request/2.1.2-Programmatic_HTTP_requests.html">2.1.2 Programmatic HTTP requests</a></li></ul></li><li><a href="/curriculum/Module-2/Unit-2-What_is_REST/index.html">Unit 2 What is REST</a><ul><li><a href="/curriculum/Module-2/Unit-2-What_is_REST/2.2.1-REST_and_the_openAPI_spec.html">2.2.1 REST and the openAPI spec</a></li><li><a href="/curriculum/Module-2/Unit-2-What_is_REST/2.2.2-The_OpenAPI_spec.html">2.2.2 The OpenAPI spec</a></li><li><a href="/curriculum/Module-2/Unit-2-What_is_REST/2.2.3-Build_an_OpenAPI_RESTful_service.html">2.2.3 Build an OpenAPI RESTful service</a></li><li><a href="/curriculum/Module-2/Unit-2-What_is_REST/2.2.4-Integration_tests.html">2.2.4 Integration tests</a></li><li><a href="/curriculum/Module-2/Unit-2-What_is_REST/2.2.5-Unit_2_Knowledge_quiz.html">2.2.5 Unit 2 Knowledge quiz</a></li></ul></li><li><a href="/curriculum/Module-2/Unit-3-Cryptography/index.html">Unit 3 Cryptography</a><ul><li><a href="/curriculum/Module-2/Unit-3-Cryptography/2.3.1-Hashing_Functions.html">2.3.1 Hashing Functions</a></li><li><a href="/curriculum/Module-2/Unit-3-Cryptography/2.3.2-Symmetric_Key_Encryption.html">2.3.2 Symmetric Key Encryption</a></li><li><a href="/curriculum/Module-2/Unit-3-Cryptography/2.3.3-Asymmetric_Key_Encryption.html">2.3.3 Asymmetric Key Encryption</a></li><li><a href="/curriculum/Module-2/Unit-3-Cryptography/2.3.4-Unit_3_Knowledge_Quiz.html">2.3.4 Unit 3 Knowledge Quiz</a></li></ul></li></ul></li><li><a href="/curriculum/Module-3/index.html">Module 3</a><ul><li><a href="/curriculum/Module-3/Unit-1-The-SDLC/index.html">Unit 1 The SDLC</a><ul><li><a href="/curriculum/Module-3/Unit-1-The-SDLC/3.1.1-Business_Impact.html">3.1.1 Business Impact</a></li></ul></li></ul></li></ul></nav>
-        <h1>Integration Tests</h1>
-<h2>Overview</h2>
-<p>You should have a RESTful web server that exposes the airports as a resource. You have done well to get this far. Today we will focus our attention on &quot;Integration Tests&quot;.</p>
+        <h1>Asymmetric Encryption</h1>
 <h2>Learning Objectives</h2>
 <ul>
-<li>Understand the difference between Unit and Integration tests</li>
-<li>Demonstrate the knowledge to implement integration tests in a language</li>
+<li>contrast the tradeoffs between Symmetric and Asymmetric encryption</li>
+<li>Generate a public and private key pair</li>
+<li>Use a public key to encrypt a message</li>
+<li>Use a private key to decrypt a message</li>
 </ul>
 <h2>Pre-requisites</h2>
 <ul>
-<li>You need to have completed your RESTful web server.</li>
+<li>You should know about hashing and symmetric encryption.</li>
 </ul>
 <h2>Lesson</h2>
-<p>We have a server. Now we are professional software engineers we know whats missing. Tests. There are 3 different kinds of tests we commonly write for our services:</p>
-<ol>
-<li>Unit tests</li>
-<li>Integration tests</li>
-<li>System tests</li>
-</ol>
-<p>Unit tests we wrote lots of these in our first bootcamp for our airport and scooter classes etc. A unit test is often a static test and it verifies the correct output of a part of our programme given a particular input. Unit tests should be run in isolation and not depend on other parts of the programme.</p>
-<p>Integration tests are different. We use these to verify the behavior of different parts of our programme working together. For example our RESTful controllers interact with the server and HTTP requests. These tests don't have to be dynamic, but they often are.</p>
-<h3>Static Dynamic</h3>
-<p>What do I mean by static an dynamic? Unit tests are static and Integration tests are usually dynamic? The easiest way to understand this is to think of a car. We can test a car in the car showroom. We can check things like:</p>
-<p><figure><img src="https://cdn.motor1.com/images/mgl/EqyMv/s1/volkswagen-id-buzz-concept-detroit-2017.jpg" alt="static van"><figcaption></figcaption></figure></p>
-<ol>
-<li>Do the lights work</li>
-<li>Does the steering move the wheels?</li>
-<li>Can you lock the doors</li>
-</ol>
-<p>The car does not have to be moving for us to test these things. These are static tests. If we wanted to test the following:</p>
-<p><figure><img src="https://www.inchcape.co.uk/-/media/ba79d1fea496499b8ec94a3dbe692b96.jpeg?la=en-gb&amp;hash=193E23BD23DFD2666426DB2E5C8FFE92" alt="dynamic"><figcaption></figcaption></figure></p>
-<ol>
-<li>The breaking distances</li>
-<li>Cornering</li>
-<li>The noise level</li>
-</ol>
-<p>We have to run the car to check these things, the car has to be moving or be dynamic.</p>
-<p>With our server we can test particular methods or configuration, but to check that we are getting the right responses from our endpoints it would be helpful to spin up a test version of our server, and actually call the endpoints with different values to verify that our server is behaving the way it should.</p>
-<h3>Test cases</h3>
-<p>We would ideally want to test each endpoint thoroughly. That means tests for <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status">different responses</a>. For example:</p>
-<ol>
-<li>200 Ok</li>
-<li>201 Created</li>
-<li>400 Bad request</li>
-<li>404 Not Found</li>
-<li>415 Unsupported media type</li>
-</ol>
-<p>A guide is to test the happy path, and test for likely errors like; wrong content type, malformed payloads.</p>
-<h3>Running in test mode</h3>
-<p>Most testing frameworks have built into them a setup phase and a teardown phase. During the setup phase you get things ready for your tests. For us in the setup phase we need to start our server so that it is running and ready to receive requests. Once the server is running the tests will begin. Once all the tests have completed our framework will run the teardown phase, during this phase we close down our server so it stops gracefully. Integration tests will often have setup and teardown phases that have to run each time the tests run.</p>
-<h3>Rethinking the server</h3>
-<p>In our tests we will want to get hold of the server object (it's called <code>app</code>). At the moment we define and configure the server and start it in the same file. Lets not do that. Change your code to just export the <code>app</code> object:</p>
-<pre><code class="language-javascript"><span class="hljs-comment">// app.listen(3000, () =&gt; console.log(&#x27;server docs http://localhost:3000/api-docs&#x27;))</span>
-<span class="hljs-built_in">module</span>.exports = app
+<p><figure><img src="https://sectigostore.com/blog/wp-content/uploads/2020/04/types-of-encryption-asymmetric-encryption.png" alt="a illustration of asymmetric encryption"><figcaption></figcaption></figure></p>
+<p>Asymmetric encryption makes use of 2 different keys. A public key and a private key. The public key is used to encrypt a message. The difference is that public key has its own exclusive private key. They are a key pair. The public key can be out in the wild and people can encrypt messages till their hearts are content. It is only the owner of the private key who can unlock and decrypt the messages encrypted with the paired public key.</p>
+<p>This solves the problem of key distribution which you had to deal with yesterday when you were encrypting messages with the same key. There are other differences between symmetric and asymmetric encryption.</p>
+<table>
+<thead>
+<tr><th style="text-align:left">Symmetric Encryption</th><th style="text-align:left">Asymmetric Encryption</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">Uses a single key to encrypt and decrypt the data</td><td style="text-align:left">Uses two separate keys for encryption and decryption. They are known as &quot;public key&quot; and &quot;private key&quot;</td></tr>
+<tr><td style="text-align:left">Is more straightforward and conventional</td><td style="text-align:left">Was invented to mitigate the risks of symmetric encryption and is more complicated</td></tr>
+<tr><td style="text-align:left">Is faster when compared to asymmetric encryption</td><td style="text-align:left">Is slower and required more computational power</td></tr>
+<tr><td style="text-align:left">Requires smaller key lengths (usually about 128-256 bit length)</td><td style="text-align:left">Keys are longer in length</td></tr>
+<tr><td style="text-align:left">Provides confidentiality of the data</td><td style="text-align:left">Provides confidentiality, authenticity and non-repudiation (something you cant deny)</td></tr>
+<tr><td style="text-align:left">Good for encrypting large amounts of data</td><td style="text-align:left">Good for encrypting smaller amounts of data</td></tr>
+<tr><td style="text-align:left">Typical algorithms RC4, AES, DES, 3DES, QUAD</td><td style="text-align:left">Typical algorithms RSA, Diffie-Hellman, ECC, El Gamal, DSA</td></tr>
+</tbody>
+</table>
+<h3>Secret ballot</h3>
+<p>We are going to encrypt a file and send it using asymmetric encryption. I want us to vote on the following question:</p>
+<blockquote>
+<p>Who in your cohort do you vote to be cohort president?</p>
+</blockquote>
+<p>This is a secret ballot so your submission needs to be encrypted. You need to write the name of the apprentice you'd like to be president in a file and encrypt it with my public key. I, as the returning officer, will not be voting but I will collect and decrypt your encrypted submissions using my private key.</p>
+<h3>OpenSSL</h3>
+<p><a href="https://www.openssl.org/">OpenSSL</a> is a general-purpose cryptography library. It comes bundled with Git so both OSX and Windows users can access this command line tool. Git makes use of SSH keys to help you securely connect to your Github repos without having to authenticate with a username and password every time you interact with them. You might recall adding your public key to your Github account? We will use a similar key pair only in the Privacy-Enhanced Mail format or PEM.</p>
+<p><figure><img src="https://content.codecademy.com/courses/freelance-1/unit-3/git%20bash%20setup/annotated_gitbash_start.png" alt="how to open Git Bash on Windows"><figcaption></figcaption></figure></p>
+<h3>Generate the key pair</h3>
+<p>I will generate a key pair on my machine.</p>
+<pre><code class="language-sh">openssl genrsa -out id_rsa.pem 2048
 </code></pre>
-<p>In a separate file you can add that line that actually starts the server and make that file your entry point:</p>
-<pre><code class="language-javascript"><span class="hljs-comment">// /main.js</span>
-<span class="hljs-keyword">const</span> app = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./server&#x27;</span>)
-app.listen(<span class="hljs-number">3000</span>, <span class="hljs-function">() =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;server docs http://localhost:3000/api-docs&#x27;</span>))
+<p>That creates the private key on my computer in a file called <code>id_rsa.pem</code>. Now I'm going to extract the public key from that file which I'll share with you.</p>
+<pre><code class="language-sh">openssl rsa -<span class="hljs-keyword">in</span> id_rsa.pem -outform PEM -pubout -out id_rsa.pub.pem
 </code></pre>
-<p>Now in your <code>package.json</code> you can call this file to start the server:</p>
-<pre><code class="language-json">{
-    <span class="hljs-attr">&quot;scripts&quot;</span>: {
-        <span class="hljs-attr">&quot;start&quot;</span>: <span class="hljs-string">&quot;node main.js&quot;</span>,
-        <span class="hljs-attr">&quot;test&quot;</span>: <span class="hljs-string">&quot;jest --runInBand --detectOpenHandles --verbose&quot;</span>
-    }
-}
+<p>Now I have 2 files <code>id_rsa.pem</code> and <code>id_rsa.pub.pem</code> I'll sent this to you all in slack. It's totally fine to share this key. However I have to be guarded about the private key on my computer, but is fine as I don't need to move it or share it.</p>
+<h3>Encrypt</h3>
+<p>Can you store the public key in a folder and create another file next to it with your nomination for president. Now lets create a third file (the encrypted vote file).</p>
+<pre><code class="language-sh">openssl rsautl -encrypt -pubin -inkey id_rsa.pub.pem -<span class="hljs-keyword">in</span> my_vote.txt -out vote.txt
 </code></pre>
-<h3>Writing integration tests</h3>
-<p>We can use a library called <code>supertest</code> to help with the setup and tear down phase for each of our tests. Below is an example of a test file:</p>
-<pre><code class="language-javascript"><span class="hljs-keyword">const</span> app = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;../server&#x27;</span>)
-<span class="hljs-keyword">const</span> request = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;supertest&#x27;</span>)
-
-describe(<span class="hljs-string">&quot;My Airport server&quot;</span>, <span class="hljs-function">() =&gt;</span> {
-    test(<span class="hljs-string">&quot;can GET all the airports&quot;</span>, <span class="hljs-function">(<span class="hljs-params">done</span>) =&gt;</span> {
-        request(app)
-            .get(<span class="hljs-string">&#x27;/airports&#x27;</span>)
-            .expect(<span class="hljs-number">200</span>)
-            .expect(<span class="hljs-function"><span class="hljs-params">response</span> =&gt;</span> {
-                expect(response.body.length).toBeGreaterThan(<span class="hljs-number">28000</span>)
-            })
-            .end(done)
-    })
-})  
+<p>You can check the contents of your <code>vote.txt</code> file. You should be unable to distinguish the name you put in <code>my_vote.txt</code> file. You can send this file to me via slack.</p>
+<h3>Decrypt</h3>
+<p>When I receive your file I am going to decrypt it with my private key and record the name in a spreadsheet.</p>
+<pre><code class="language-sh">openssl rsautl -decrypt -inkey id_rsa.pem -<span class="hljs-keyword">in</span> vote.txt
 </code></pre>
-<p>Notice how we are importing our <code>app</code> object and passing it to supertest (we called that import <code>request</code> as thats what it represents). You can look at the examples on the <a href="https://www.npmjs.com/package/supertest">supertest npm page</a> to get going with GET and POST.</p>
+<p>That will output the name to my terminal. If I wanted to save the decrypted message to disc I would add the file name I wanted to save it as after the <code>-out</code> flag.</p>
+<pre><code class="language-sh">openssl rsautl -decrypt -inkey id_rsa.pem -<span class="hljs-keyword">in</span> vote.txt -out decrypted_vote.txt
+</code></pre>
+<h3>Results</h3>
+<p>The votes are in and the new cohort president is...</p>
+<h3>Summary</h3>
+<p>In this session we have generated an asymmetric key pair consisting of a public and private key. You have used a public key to encrypt a file and have sent that to me securely and privately. You have seen me use my private key to decrypt your file and retrieve the name you sent me. My private key has not moved from my disc and we've been able to send encrypted messages without having to share sensitive keys.</p>
 <h2>Assignment</h2>
-<p>Can you create a test suite for your API server? You will likely have to implement a setup and teardown phase. Write a few tests for each endpoint, try to test for the different status codes that you listed in your original <code>airports-config.yaml</code> OpenAPI spec.</p>
+<p>We have looked at hashing, symmetric and asymmetric encryption, these are building blocks. Digitally signing a file uses the cryptographic building blocks we have looked at to verify that a file has not been tampered with in transit. Can you research how to digitally 'sign' a file using openssl. Send your file and it's signature to your partner in crypto and get them to verify your file. How can you break the verification?</p>
 
         <script src="/curriculum/js/tabbed-code-blocks.js"></script>
         <script>
