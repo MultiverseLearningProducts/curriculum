@@ -2,7 +2,7 @@
 <html lang="en-GB">
     <head>
         <meta charset="utf-8">
-        <title> Web Servers</title>
+        <title> OpenID Connect</title>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link rel="shortcut icon" type="image/x-icon" href="/curriculum/favicon.ico"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/an-old-hope.min.css">
@@ -22,84 +22,135 @@
             onkeydown="event => {event.keyCode === 13 ? toggleNav() : null}"
             tabindex="1">Table of contents</button>
         <nav id="navigation"><ul><li><a href="/curriculum/Bootcamp/index.html">Bootcamp</a><ul><li><a href="/curriculum/Bootcamp/FAQ.html">FAQ</a></li><li><a href="/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/index.html">Unit 1 Object Oriented Programming</a><ul><li><a href="/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.1-JavaScript_Objects_And_Functions.html">0.1.1 JavaScript Objects And Functions</a></li><li><a href="/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.2-Test_Driven_Development.html">0.1.2 Test Driven Development</a></li><li><a href="/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.3-Objects_in_an_Airport_Domain.html">0.1.3 Objects in an Airport Domain</a></li><li><a href="/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.4-Static_functions_and_properties.html">0.1.4 Static functions and properties</a></li><li><a href="/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.5-Inheritance.html">0.1.5 Inheritance</a></li><li><a href="/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.6-Asynchronous_JavaScript.html">0.1.6 Asynchronous JavaScript</a></li><li><a href="/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.7-Asynchronous_Airport_Data_Load.html">0.1.7 Asynchronous Airport Data Load</a></li><li><a href="/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.8-Scooter_Hire_System.html">0.1.8 Scooter Hire System</a></li></ul></li><li><a href="/curriculum/Bootcamp/Unit-2-Databases/index.html">Unit 2 Databases</a><ul><li><a href="/curriculum/Bootcamp/Unit-2-Databases/0.2.1-Logical_Data_Model.html">0.2.1 Logical Data Model</a></li><li><a href="/curriculum/Bootcamp/Unit-2-Databases/0.2.10-Sequelize_part_2.html">0.2.10 Sequelize part 2</a></li><li><a href="/curriculum/Bootcamp/Unit-2-Databases/0.2.2-Implementing_the_Logical_Data_Model.html">0.2.2 Implementing the Logical Data Model</a></li><li><a href="/curriculum/Bootcamp/Unit-2-Databases/0.2.3-Basic_SQL_Commands.html">0.2.3 Basic SQL Commands</a></li><li><a href="/curriculum/Bootcamp/Unit-2-Databases/0.2.4-SQL_Joins.html">0.2.4 SQL Joins</a></li><li><a href="/curriculum/Bootcamp/Unit-2-Databases/0.2.5-Database_access_using_Node.html">0.2.5 Database access using Node</a></li><li><a href="/curriculum/Bootcamp/Unit-2-Databases/0.2.6-Populating_databases_from_JSON.html">0.2.6 Populating databases from JSON</a></li><li><a href="/curriculum/Bootcamp/Unit-2-Databases/0.2.7-Object_Relational_Mapping_part_1.html">0.2.7 Object Relational Mapping part 1</a></li><li><a href="/curriculum/Bootcamp/Unit-2-Databases/0.2.8-Object_Relational_Mapping_part_2.html">0.2.8 Object Relational Mapping part 2</a></li><li><a href="/curriculum/Bootcamp/Unit-2-Databases/0.2.9-Sequelize_part_1.html">0.2.9 Sequelize part 1</a></li></ul></li><li><a href="/curriculum/Bootcamp/Unit-3-APIs_and_Dynamic_Content/index.html">Unit 3 APIs and Dynamic Content</a><ul><li><a href="/curriculum/Bootcamp/Unit-3-APIs_and_Dynamic_Content/0.3.1-Web_Servers.html">0.3.1 Web Servers</a></li><li><a href="/curriculum/Bootcamp/Unit-3-APIs_and_Dynamic_Content/0.3.10-Full_CRUD_operations.html">0.3.10 Full CRUD operations</a></li><li><a href="/curriculum/Bootcamp/Unit-3-APIs_and_Dynamic_Content/0.3.11-Restaurant_ratings.html">0.3.11 Restaurant ratings</a></li><li><a href="/curriculum/Bootcamp/Unit-3-APIs_and_Dynamic_Content/0.3.2-Application_Servers.html">0.3.2 Application Servers</a></li><li><a href="/curriculum/Bootcamp/Unit-3-APIs_and_Dynamic_Content/0.3.3-Rendering_Dynamic_Content.html">0.3.3 Rendering Dynamic Content</a></li><li><a href="/curriculum/Bootcamp/Unit-3-APIs_and_Dynamic_Content/0.3.4-Responsive_CSS_Grids.html">0.3.4 Responsive CSS Grids</a></li><li><a href="/curriculum/Bootcamp/Unit-3-APIs_and_Dynamic_Content/0.3.5-CSS_Box_Model.html">0.3.5 CSS Box Model</a></li><li><a href="/curriculum/Bootcamp/Unit-3-APIs_and_Dynamic_Content/0.3.6-Route_Parameters.html">0.3.6 Route Parameters</a></li><li><a href="/curriculum/Bootcamp/Unit-3-APIs_and_Dynamic_Content/0.3.7-HTML_Forms.html">0.3.7 HTML Forms</a></li><li><a href="/curriculum/Bootcamp/Unit-3-APIs_and_Dynamic_Content/0.3.8-Server_side_Validation.html">0.3.8 Server side Validation</a></li><li><a href="/curriculum/Bootcamp/Unit-3-APIs_and_Dynamic_Content/0.3.9-CRUD_operations.html">0.3.9 CRUD operations</a></li></ul></li><li><a href="/curriculum/Bootcamp/Unit-4-Client_side_Javascript/index.html">Unit 4 Client side Javascript</a><ul><li><a href="/curriculum/Bootcamp/Unit-4-Client_side_Javascript/0.4.1-TODO.html">0.4.1 TODO</a></li></ul></li><li><a href="/curriculum/Bootcamp/Unit-5-Software_Development_Lifecycle/index.html">Unit 5 Software Development Lifecycle</a><ul><li><a href="/curriculum/Bootcamp/Unit-5-Software_Development_Lifecycle/0.5.1-TODO.html">0.5.1 TODO</a></li></ul></li></ul></li><li><a href="/curriculum/Module-2/index.html">Module 2</a><ul><li><a href="/curriculum/Module-2/Unit-1-The_Anatomy_of_the_HTTP_request/index.html">Unit 1 The Anatomy of the HTTP request</a><ul><li><a href="/curriculum/Module-2/Unit-1-The_Anatomy_of_the_HTTP_request/2.1.1-Identifying_the_different_parts_of_HTTP.html">2.1.1 Identifying the different parts of HTTP</a></li><li><a href="/curriculum/Module-2/Unit-1-The_Anatomy_of_the_HTTP_request/2.1.2-Programmatic_HTTP_requests.html">2.1.2 Programmatic HTTP requests</a></li></ul></li><li><a href="/curriculum/Module-2/Unit-2-What_is_REST/index.html">Unit 2 What is REST</a><ul><li><a href="/curriculum/Module-2/Unit-2-What_is_REST/2.2.1-REST_and_the_openAPI_spec.html">2.2.1 REST and the openAPI spec</a></li><li><a href="/curriculum/Module-2/Unit-2-What_is_REST/2.2.2-The_OpenAPI_spec.html">2.2.2 The OpenAPI spec</a></li><li><a href="/curriculum/Module-2/Unit-2-What_is_REST/2.2.3-Build_an_OpenAPI_RESTful_service.html">2.2.3 Build an OpenAPI RESTful service</a></li><li><a href="/curriculum/Module-2/Unit-2-What_is_REST/2.2.4-Integration_tests.html">2.2.4 Integration tests</a></li><li><a href="/curriculum/Module-2/Unit-2-What_is_REST/2.2.5-Unit_2_Knowledge_quiz.html">2.2.5 Unit 2 Knowledge quiz</a></li></ul></li><li><a href="/curriculum/Module-2/Unit-3-Cryptography/index.html">Unit 3 Cryptography</a><ul><li><a href="/curriculum/Module-2/Unit-3-Cryptography/2.3.1-Hashing_Functions.html">2.3.1 Hashing Functions</a></li><li><a href="/curriculum/Module-2/Unit-3-Cryptography/2.3.2-Symmetric_Key_Encryption.html">2.3.2 Symmetric Key Encryption</a></li><li><a href="/curriculum/Module-2/Unit-3-Cryptography/2.3.3-Asymmetric_Key_Encryption.html">2.3.3 Asymmetric Key Encryption</a></li><li><a href="/curriculum/Module-2/Unit-3-Cryptography/2.3.4-Unit_3_Knowledge_Quiz.html">2.3.4 Unit 3 Knowledge Quiz</a></li></ul></li><li><a href="/curriculum/Module-2/Unit-4-Authentication/index.html">Unit 4 Authentication</a><ul><li><a href="/curriculum/Module-2/Unit-4-Authentication/2.4.1-Authentication_and_Authorisation.html">2.4.1 Authentication and Authorisation</a></li><li><a href="/curriculum/Module-2/Unit-4-Authentication/2.4.2-What_is_middleware.html">2.4.2 What is middleware</a></li><li><a href="/curriculum/Module-2/Unit-4-Authentication/2.4.3-Session_based_auth.html">2.4.3 Session based auth</a></li><li><a href="/curriculum/Module-2/Unit-4-Authentication/2.4.4-Introduction_to_OAuth.html">2.4.4 Introduction to OAuth</a></li><li><a href="/curriculum/Module-2/Unit-4-Authentication/2.4.5-Token_based_auth.html">2.4.5 Token based auth</a></li><li><a href="/curriculum/Module-2/Unit-4-Authentication/2.4.6-OpenID_Connect.html">2.4.6 OpenID Connect</a></li><li><a href="/curriculum/Module-2/Unit-4-Authentication/2.4.7-Unit_4_Knowledge_Quiz.html">2.4.7 Unit 4 Knowledge Quiz</a></li></ul></li></ul></li><li><a href="/curriculum/Module-3/index.html">Module 3</a><ul><li><a href="/curriculum/Module-3/Unit-1-The-SDLC/index.html">Unit 1 The SDLC</a><ul><li><a href="/curriculum/Module-3/Unit-1-The-SDLC/3.1.1-Business_Impact.html">3.1.1 Business Impact</a></li></ul></li></ul></li></ul></nav>
-        <h1>Web Servers</h1>
+        <h1>OpenID Connect</h1>
 <h2>Learning Objectives</h2>
 <ul>
-<li>Build a web server serving static content using <a href="https://expressjs.com/">Node.js Express</a></li>
-<li>Understand the difference between static and dynamic content</li>
+<li>Set up Auth0s universal login</li>
+<li>Recall and follow the 3 stages of design planning (input, processes, outputs)</li>
+<li>Communicate the design of a programme using diagrams</li>
 </ul>
-<h2>Pre-requisites</h2>
 <h2>Lesson</h2>
-<p>What is a server? The simple answer is a computer that provides services to other computers. From that definition you can tell servers are often found on networks. For example, an office might have a 'file server' a computer where office workers can read and write files that can be accessed by any other computer on the network.</p>
-<p>In this lesson we are going to focus on creating a 'web server' using the <a href="https://expressjs.com/">Express</a> web framework for Node.js.</p>
-<p>A 'web server' responds to requests for <code>.html</code> files by sending back the HTML contents of that file.</p>
-<p>To create a web server we firstly install the node module 'Express' using <code>npm install express</code>. Next we create a file called <code>server.js</code> containing the following logic:</p>
-<pre><code class="language-javascript"><span class="hljs-keyword">const</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;express&#x27;</span>);
+<p>OAuth deals specifically with authorisation of resources, <strong>OpenID Connect</strong> is a protocol which is built on top of OAuth 2.0 and focusses on user authentication. It is widely used to enable user logins on consumer websites and mobile apps.</p>
+<p><figure><img src="https://user-images.githubusercontent.com/1316724/102927348-b8b75700-448e-11eb-9d0d-3d7fa4e6e1ea.png" alt="sequence diagram showing the OpenID Connect authorization flow"><figcaption></figcaption></figure></p>
+<p>OpenID Connect uses an additional JSON Web Token (JWT), called an ID token, to hold basic profile information about the authenticated (logged in) user e.g. their name or email address. Here is an example:</p>
+<p><code>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkZyZWQgRmxpbnRzdG9uZSIsImVtYWlsIjoiZnJlZC5mbGludHN0b25lQHdoaXRlaGF0Lm9yZy51ayIsImlhdCI6MTUxNjIzOTAyMn0.DlHfHG2qZXpWszZv-X8LwoQkZUlqVgaXoRmnHXE2y_I</code></p>
+<p>Use https://jwt.io to find out the name and email hidden in the JWT ID token.</p>
+<p>So, instead of passing a user name and password to our Login page and looking this up in our user database, we will delegate authentication to Auth0. This avoid us having to store usernames and passwords (a good thing!) but means that users need to be registered in the Auth0 dashboard.</p>
+<h2>Implementing authentication using Auth0</h2>
+<p><figure><img src="https://user-images.githubusercontent.com/4499581/105991041-39273400-609b-11eb-9078-6975f7a5e2bc.png" alt="Regular Web App Option on Auth0"><figcaption></figcaption></figure></p>
+<ol>
+<li>Using the Auth0 Dashboard, create a new application and choose 'Regular Web Applications'</li>
+<li>Create a totally new express server locally on your machine</li>
+<li>Follow the wizard and select
+<ul>
+<li>Node.js(Express)</li>
+<li>INTEGRATE NOW</li>
+<li>SAVE SETTINGS AND CONTINUE</li>
+<li>Add the code to your express project</li>
+</ul></li>
+<li>Spin up your server and visit <code>http://localhost:3000/login</code></li>
+</ol>
+<h3>OpenID connect</h3>
+<p>This <a href="https://npmjs.com/express-openid-connect">library</a> creates 3 routes for you on your express server. Be careful not to over write these. They are:</p>
+<table>
+<thead>
+<tr><th style="text-align:left">route</th><th style="text-align:left">purpose</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left"><code>/login</code></td><td style="text-align:left">visit this route to authenticate and create new users (see below)</td></tr>
+<tr><td style="text-align:left"><code>/logout</code></td><td style="text-align:left">invalidate the logged in users token which will effectively end their 'session'</td></tr>
+<tr><td style="text-align:left"><code>/callback</code></td><td style="text-align:left">This is the redirect back to your app after successful authentication</td></tr>
+<tr><td style="text-align:left"><code>/</code></td><td style="text-align:left">This is the &quot;home&quot; route. Logged in users arrive here after being redirected from <code>/callback</code></td></tr>
+</tbody>
+</table>
+<p><figure><img src="https://user-images.githubusercontent.com/4499581/105988966-59092880-6098-11eb-87d4-d1c59af032d0.png" alt="the login page from Auth0"><figcaption></figcaption></figure></p>
+<p>You also have a couple of middleware functions from the library to help protect all and individual routes. The library adds a <a href="https://auth0.github.io/express-openid-connect/interfaces/requestcontext.html">RequestContext</a> object onto the <code>req</code> object in express. You can access the logged in user like this <code>req.oidc.user</code>. You can view their token like this <code>req.oidc.accessToken</code>. Below are two of the main functions in the library to get you going.</p>
+<table>
+<thead>
+<tr><th style="text-align:left">middleware</th><th style="text-align:left">purpose</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">auth</td><td style="text-align:left">this adds <code>req.oidc</code> to all your requests</td></tr>
+<tr><td style="text-align:left">requiresAuth</td><td style="text-align:left">use this to protect routes that require a user to be logged in</td></tr>
+</tbody>
+</table>
+<pre><code class="language-javascript">app.get(<span class="hljs-string">&#x27;/profile&#x27;</span>, requiresAuth(), <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  res.send(req.oidc.user)
+})
 
-<span class="hljs-keyword">const</span> app = express();
-<span class="hljs-keyword">const</span> port = <span class="hljs-number">3000</span>;
+<span class="hljs-comment">/**
+{
+    &quot;nickname&quot;: &quot;bernard.mordan&quot;,
+    &quot;name&quot;: &quot;bernard.mordan<span class="hljs-doctag">@multiverse</span>.io&quot;,
+    &quot;picture&quot;: &quot;https://s.gravatar.com/avatar/52c5aa1584c1dc479342c603b30ff9e2?s=480&amp;r=pg&amp;d=https%3A%2F%2Fcdn.auth0.com%2Favatars%2Fbe.png&quot;,
+    &quot;updated_at&quot;: &quot;2021-01-27T11:43:17.588Z&quot;,
+    &quot;email&quot;: &quot;bernard.mordan<span class="hljs-doctag">@multiverse</span>.io&quot;,
+    &quot;email_verified&quot;: false,
+    &quot;sub&quot;: &quot;auth0|601151d59c2f080069ec8597&quot;
+}
+*/</span>
+</code></pre>
+<p>That last property the <code>sub</code> is a unique id number for that user. That might be useful...</p>
+<h2>Summary</h2>
+<p>Below is the code to bootstrap a server that will use Auth0 to create, authenticate and manage authorization of users.</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">const</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;express&#x27;</span>)
+<span class="hljs-keyword">const</span> app = express()
+<span class="hljs-keyword">const</span> { sequelize } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./models&#x27;</span>)
+<span class="hljs-keyword">const</span> { auth } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;express-openid-connect&#x27;</span>)
 
-<span class="hljs-comment">// serve static assets from the public/ folder</span>
-app.use(express.static(<span class="hljs-string">&#x27;public&#x27;</span>));
+<span class="hljs-keyword">const</span> openIDconfig = {
+    <span class="hljs-attr">authRequired</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">auth0Logout</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">secret</span>: <span class="hljs-string">&#x27;a long, randomly-generated string stored in env that you make up&#x27;</span>,
+    <span class="hljs-attr">baseURL</span>: <span class="hljs-string">&#x27;http://localhost:3000&#x27;</span>,
+    <span class="hljs-attr">clientID</span>: YOUR_CLIENT_ID,
+    <span class="hljs-attr">issuerBaseURL</span>: <span class="hljs-string">&#x27;https://YOUR_AUTH0_DOMAIN.eu.auth0.com&#x27;</span>
+  }
 
-app.listen(port, <span class="hljs-function">() =&gt;</span> {
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Server listening at http://localhost:<span class="hljs-subst">${port}</span>`</span>)
+app.use(express.json())
+app.use(auth(openIDconfig))
+
+<span class="hljs-comment">// app.get(&#x27;/login&#x27;) this is created by express-openid-connect and displays a login widget</span>
+<span class="hljs-comment">// app.get(&#x27;/callback&#x27;) this is created by express-openid-connect and fetches an authenticated user their token</span>
+<span class="hljs-comment">// app.get(&#x27;/logout&#x27;) this is created by express-openid-connect and will end a users token based session</span>
+
+app.get(<span class="hljs-string">&#x27;/&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+    res.send(req.oidc.user || <span class="hljs-string">&quot;No user logged in&quot;</span>)
+})
+
+app.listen(<span class="hljs-number">3000</span>, <span class="hljs-function">() =&gt;</span> {
+    sequelize.sync().then(<span class="hljs-function">() =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;All ready for banking&quot;</span>))
 })
 </code></pre>
-<p>In the code above, after importing the Express module we create an instance of a web server and call it <code>app</code>. Then we configure the server to serve 'static' assets from the <code>public/</code> folder. A 'static' asset is a file that is simply read off of disc and then returned to the user.</p>
-<p>Next, we need to add an HTML file in our <code>public</code> folder called <code>index.html</code>. For now it can just be a very simple 'hello world' page as per the HTML below. Naming the file <code>index.html</code> makes it the default page Express will respond with when requests are made to the root endpoint of the server.</p>
-<pre><code class="language-html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Hello World<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
-</code></pre>
-<p>To start your server, run the command <code>node server.js</code> in the root directory of your project. You should see a message logged indicating your web server is running. Visit <code>http://localhost:3000/</code> to see your HTML page.</p>
-<p>Your server will serve your HTML page to any other computer that asks for it. Your computer does however need to be publicly accessible, so it will not work unless you expose it to the wider Internet, or deploy your server code online.</p>
-<p>We can serve different kinds of files from our public folder. For example, a <code>.css</code> file or a JavaScript file. Let's try to add some style to our HTML page using a <code>style.css</code> file.</p>
-<pre><code class="language-css">* {
-    <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;
-    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
-}
-<span class="hljs-selector-tag">body</span> {
-    <span class="hljs-attribute">font-family</span>: <span class="hljs-string">&#x27;Open Sans&#x27;</span>, <span class="hljs-string">&#x27;Helvetica Neue&#x27;</span>, sans-serif;
-    <span class="hljs-attribute">color</span>: <span class="hljs-built_in">rgb</span>(<span class="hljs-number">35</span>, <span class="hljs-number">1</span>, <span class="hljs-number">35</span>);
-    <span class="hljs-attribute">background-color</span>: <span class="hljs-built_in">rgb</span>(<span class="hljs-number">255</span>, <span class="hljs-number">228</span>, <span class="hljs-number">225</span>);
-}
-</code></pre>
-<p>We'll update our <code>index.html</code> file to request this file from the server.</p>
-<pre><code class="language-html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;/style.css&quot;</span>/&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Hello World<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
-</code></pre>
-<p>Notice the <code>&quot;/style.css&quot;</code> is not a file path. It is a URL (Uniform Resource Locator). The browser will actually read this URL as <code>http://localhost:3000/style.css</code> and if you visit that in your browser you'll see the content of your CSS.</p>
-<p>Now, when a request is made to our web server for the <code>index.html</code> page, when that page loads in the browser it makes a request for another file, our <code>style.css</code> file.</p>
-<p>Under <code>Developer Tools</code> in your Chrome browser you should be able to see in the <code>Network</code> tab, the request the <code>index.html</code> page makes for the <code>style.css</code> file. Once all these additional requests for assets and files have finished, the browser <code>document</code> will emit an 'onload' event signalling your page has loaded.</p>
-<p><img width="424" alt="httpRequests" src="https://user-images.githubusercontent.com/1316724/105642249-89767a00-5e80-11eb-9deb-2e8f753e8b9b.PNG"></p>
+<ul>
+<li>You will need to set up sequelize and your data models (your data model will be spread over 2 servers! - the user model on Auth0 the rest of the account/transaction model in your SQL database)</li>
+<li>You will need to have a public folder to server assets out of i.e. <code>style.css</code></li>
+<li>You need to decide on how you will integrate your frontend views (handlebars, pug, vue.js, react)</li>
+</ul>
+<p>You can look back a previous projects to remind yourself of how to do this.</p>
 <h2>Assignment</h2>
+<p>Below is a spec for a banking app.</p>
 <ol>
-<li><p>Create a <a href="/curriculum/Bootcamp/FAQ#createNewProject">new Node.js project</a> for this assignment</p></li>
-<li><p>Install Express using <code>npm install express</code></p></li>
-<li><p>Use the instructions above to create a web server running on port 3000, serving static content from the <code>public</code> directory</p></li>
-<li><p>Create an <code>index.html</code> page with a linked CSS file</p></li>
-<li><p>Visit <code>http://localhost:3000/</code> to see your HTML page</p></li>
-<li><p>Validate that you see the files being loaded in the <code>Network</code> section of your browser's <code>Developer Tools</code>. Look at the HTTP status codes, what happens to them when you refresh?</p></li>
-<li><p>Now try creating additional HTML pages and link them using anchor tags e.g.</p>
-<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;/about.html&quot;</span>&gt;</span>About me<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-</code></pre></li>
-<li><p>Commit your code into Github and share the link with your coach for review</p></li>
+<li>Users can log into your app</li>
+<li>Users can see a balance on their account (due to little time target mobile first)</li>
+<li>Your app will need to be deployed (heroku)</li>
+<li>A user should be able to invite a friend via a link in an email (you can integrate with gmail for this)</li>
+<li>A user should see all their friends listed when they are logged in</li>
+<li>A user should be able to transfer balance to their friends</li>
 </ol>
-<h3>Assignment extension tasks</h3>
-<p>Research what HTTP codes may be returned from a web server and in what situation each occurs.</p>
-<h2>Additional resources</h2>
+<p>In groups come up with a design pitch for this app.</p>
+<ul>
+<li>What will your data model look like?</li>
+<li>How will you trigger an email?</li>
+<li>How will the link in the email work?</li>
+<li>How can you transfer funds from one user to another?</li>
+<li>How can a user add funds?</li>
+<li>What UI do you need to build?</li>
+</ul>
+<p>You will have 2 days to complete this challenge. You can work in groups of 3. You may need to deploy to heroku so your email link will work.</p>
+<h2>Furthur resources</h2>
+<p><iframe src="https://www.youtube.com/embed/dhoW2_pME4A" width="100%" height="444px" allowfullscreen frameborder=0></iframe></p>
+<p>This video will get you set up with <code>nodemailer</code> so you can send emails.</p>
 
         <script src="/curriculum/js/tabbed-code-blocks.js"></script>
         <script>
