@@ -2,7 +2,7 @@
 <html lang="en-GB">
     <head>
         <meta charset="utf-8">
-        <title> Introduction to OAuth</title>
+        <title> Drag and Drop with AppRun</title>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link rel="shortcut icon" type="image/x-icon" href="/curriculum/favicon.ico"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/an-old-hope.min.css">
@@ -22,54 +22,67 @@
             onkeydown="event => {event.keyCode === 13 ? toggleNav() : null}"
             tabindex="1">Table of contents</button>
         <nav id="navigation"><ul><li><a href="/curriculum\Bootcamp/index.html">Bootcamp</a><ul><li><a href="/curriculum\Bootcamp\FAQ.html">FAQ</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming/index.html">Unit 1 Object Oriented Programming</a><ul><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.1-JavaScript_Objects_and_Functions.html">0.1.1 JavaScript Objects and Functions</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.2-Test_Driven_Development.html">0.1.2 Test Driven Development</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.3-Objects_in_an_Airport_Domain.html">0.1.3 Objects in an Airport Domain</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.4-Static_functions_and_properties.html">0.1.4 Static functions and properties</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.5-Inheritance.html">0.1.5 Inheritance</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.6-Asynchronous_JavaScript.html">0.1.6 Asynchronous JavaScript</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.7-Asynchronous_Airport_Data_Load.html">0.1.7 Asynchronous Airport Data Load</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.8-Scooter_Hire_System.html">0.1.8 Scooter Hire System</a></li></ul></li><li><a href="/curriculum\Bootcamp\Unit-2-Databases/index.html">Unit 2 Databases</a><ul><li><a href="/curriculum\Bootcamp\Unit-2-Databases\0.2.1-Logical_Data_Model.html">0.2.1 Logical Data Model</a></li><li><a href="/curriculum\Bootcamp\Unit-2-Databases\0.2.10-Sequelize_part_2.html">0.2.10 Sequelize part 2</a></li><li><a href="/curriculum\Bootcamp\Unit-2-Databases\0.2.2-Implementing_the_Logical_Data_Model.html">0.2.2 Implementing the Logical Data Model</a></li><li><a href="/curriculum\Bootcamp\Unit-2-Databases\0.2.3-Basic_SQL_Commands.html">0.2.3 Basic SQL Commands</a></li><li><a href="/curriculum\Bootcamp\Unit-2-Databases\0.2.4-SQL_Joins.html">0.2.4 SQL Joins</a></li><li><a href="/curriculum\Bootcamp\Unit-2-Databases\0.2.5-Database_access_using_Node.html">0.2.5 Database access using Node</a></li><li><a href="/curriculum\Bootcamp\Unit-2-Databases\0.2.6-Populating_databases_from_JSON.html">0.2.6 Populating databases from JSON</a></li><li><a href="/curriculum\Bootcamp\Unit-2-Databases\0.2.7-Object_Relational_Mapping_part_1.html">0.2.7 Object Relational Mapping part 1</a></li><li><a href="/curriculum\Bootcamp\Unit-2-Databases\0.2.8-Object_Relational_Mapping_part_2.html">0.2.8 Object Relational Mapping part 2</a></li><li><a href="/curriculum\Bootcamp\Unit-2-Databases\0.2.9-Sequelize_part_1.html">0.2.9 Sequelize part 1</a></li></ul></li><li><a href="/curriculum\Bootcamp\Unit-3-APIs_and_Dynamic_Content/index.html">Unit 3 APIs and Dynamic Content</a><ul><li><a href="/curriculum\Bootcamp\Unit-3-APIs_and_Dynamic_Content\0.3.1-Web_Servers.html">0.3.1 Web Servers</a></li><li><a href="/curriculum\Bootcamp\Unit-3-APIs_and_Dynamic_Content\0.3.10-Full_CRUD_operations.html">0.3.10 Full CRUD operations</a></li><li><a href="/curriculum\Bootcamp\Unit-3-APIs_and_Dynamic_Content\0.3.11-Restaurant_ratings.html">0.3.11 Restaurant ratings</a></li><li><a href="/curriculum\Bootcamp\Unit-3-APIs_and_Dynamic_Content\0.3.2-Application_Servers.html">0.3.2 Application Servers</a></li><li><a href="/curriculum\Bootcamp\Unit-3-APIs_and_Dynamic_Content\0.3.3-Rendering_Dynamic_Content.html">0.3.3 Rendering Dynamic Content</a></li><li><a href="/curriculum\Bootcamp\Unit-3-APIs_and_Dynamic_Content\0.3.4-Responsive_CSS_Grids.html">0.3.4 Responsive CSS Grids</a></li><li><a href="/curriculum\Bootcamp\Unit-3-APIs_and_Dynamic_Content\0.3.5-CSS_Box_Model.html">0.3.5 CSS Box Model</a></li><li><a href="/curriculum\Bootcamp\Unit-3-APIs_and_Dynamic_Content\0.3.6-Route_Parameters.html">0.3.6 Route Parameters</a></li><li><a href="/curriculum\Bootcamp\Unit-3-APIs_and_Dynamic_Content\0.3.7-HTML_Forms.html">0.3.7 HTML Forms</a></li><li><a href="/curriculum\Bootcamp\Unit-3-APIs_and_Dynamic_Content\0.3.8-Server_side_Validation.html">0.3.8 Server side Validation</a></li><li><a href="/curriculum\Bootcamp\Unit-3-APIs_and_Dynamic_Content\0.3.9-CRUD_operations.html">0.3.9 CRUD operations</a></li></ul></li><li><a href="/curriculum\Bootcamp\Unit-4-Client_side_development/index.html">Unit 4 Client side development</a><ul><li><a href="/curriculum\Bootcamp\Unit-4-Client_side_development\0.4.1-Client_side_JavaScript.html">0.4.1 Client side JavaScript</a></li><li><a href="/curriculum\Bootcamp\Unit-4-Client_side_development\0.4.2-HTML_DOM_Events.html">0.4.2 HTML DOM Events</a></li><li><a href="/curriculum\Bootcamp\Unit-4-Client_side_development\0.4.3-AppRun_framework.html">0.4.3 AppRun framework</a></li><li><a href="/curriculum\Bootcamp\Unit-4-Client_side_development\0.4.4-Web_Accessibility.html">0.4.4 Web Accessibility</a></li><li><a href="/curriculum\Bootcamp\Unit-4-Client_side_development\0.4.5-Drag_and_Drop.html">0.4.5 Drag and Drop</a></li><li><a href="/curriculum\Bootcamp\Unit-4-Client_side_development\0.4.6-Drag_and_Drop_with_AppRun.html">0.4.6 Drag and Drop with AppRun</a></li><li><a href="/curriculum\Bootcamp\Unit-4-Client_side_development\0.4.7-AJAX.html">0.4.7 AJAX</a></li></ul></li><li><a href="/curriculum\Bootcamp\Unit-5-End_Of_Bootcamp_Assessment/index.html">Unit 5 End Of Bootcamp Assessment</a><ul><li><a href="/curriculum\Bootcamp\Unit-5-End_Of_Bootcamp_Assessment\0.5.1-TODO.html">0.5.1 TODO</a></li></ul></li></ul></li><li><a href="/curriculum\Module-2/index.html">Module 2</a><ul><li><a href="/curriculum\Module-2\Unit-1-The_Anatomy_of_the_HTTP_request/index.html">Unit 1 The Anatomy of the HTTP request</a><ul><li><a href="/curriculum\Module-2\Unit-1-The_Anatomy_of_the_HTTP_request\2.1.1-Identifying_the_different_parts_of_HTTP.html">2.1.1 Identifying the different parts of HTTP</a></li><li><a href="/curriculum\Module-2\Unit-1-The_Anatomy_of_the_HTTP_request\2.1.2-Programmatic_HTTP_requests.html">2.1.2 Programmatic HTTP requests</a></li></ul></li><li><a href="/curriculum\Module-2\Unit-2-What_is_REST/index.html">Unit 2 What is REST</a><ul><li><a href="/curriculum\Module-2\Unit-2-What_is_REST\2.2.1-REST_and_the_openAPI_spec.html">2.2.1 REST and the openAPI spec</a></li><li><a href="/curriculum\Module-2\Unit-2-What_is_REST\2.2.2-The_OpenAPI_spec.html">2.2.2 The OpenAPI spec</a></li><li><a href="/curriculum\Module-2\Unit-2-What_is_REST\2.2.3-Build_an_OpenAPI_RESTful_service.html">2.2.3 Build an OpenAPI RESTful service</a></li><li><a href="/curriculum\Module-2\Unit-2-What_is_REST\2.2.4-Integration_tests.html">2.2.4 Integration tests</a></li><li><a href="/curriculum\Module-2\Unit-2-What_is_REST\2.2.5-Unit_2_Knowledge_quiz.html">2.2.5 Unit 2 Knowledge quiz</a></li></ul></li><li><a href="/curriculum\Module-2\Unit-3-Cryptography/index.html">Unit 3 Cryptography</a><ul><li><a href="/curriculum\Module-2\Unit-3-Cryptography\2.3.1-Hashing_Functions.html">2.3.1 Hashing Functions</a></li><li><a href="/curriculum\Module-2\Unit-3-Cryptography\2.3.2-Symmetric_Key_Encryption.html">2.3.2 Symmetric Key Encryption</a></li><li><a href="/curriculum\Module-2\Unit-3-Cryptography\2.3.3-Asymmetric_Key_Encryption.html">2.3.3 Asymmetric Key Encryption</a></li><li><a href="/curriculum\Module-2\Unit-3-Cryptography\2.3.4-Unit_3_Knowledge_Quiz.html">2.3.4 Unit 3 Knowledge Quiz</a></li></ul></li><li><a href="/curriculum\Module-2\Unit-4-Authentication/index.html">Unit 4 Authentication</a><ul><li><a href="/curriculum\Module-2\Unit-4-Authentication\2.4.1-Authentication_and_Authorisation.html">2.4.1 Authentication and Authorisation</a></li><li><a href="/curriculum\Module-2\Unit-4-Authentication\2.4.2-What_is_middleware.html">2.4.2 What is middleware</a></li><li><a href="/curriculum\Module-2\Unit-4-Authentication\2.4.3-Session_based_auth.html">2.4.3 Session based auth</a></li><li><a href="/curriculum\Module-2\Unit-4-Authentication\2.4.4-Introduction_to_OAuth.html">2.4.4 Introduction to OAuth</a></li><li><a href="/curriculum\Module-2\Unit-4-Authentication\2.4.5-Token_based_auth.html">2.4.5 Token based auth</a></li><li><a href="/curriculum\Module-2\Unit-4-Authentication\2.4.6-OpenID_Connect.html">2.4.6 OpenID Connect</a></li><li><a href="/curriculum\Module-2\Unit-4-Authentication\2.4.7-Unit_4_Knowledge_Quiz.html">2.4.7 Unit 4 Knowledge Quiz</a></li></ul></li></ul></li><li><a href="/curriculum\Module-3/index.html">Module 3</a><ul><li><a href="/curriculum\Module-3\Unit-1-The-SDLC/index.html">Unit 1 The SDLC</a><ul><li><a href="/curriculum\Module-3\Unit-1-The-SDLC\3.1.1-Business_Impact.html">3.1.1 Business Impact</a></li></ul></li></ul></li></ul></nav>
-        <h1>Introduction to OAuth</h1>
+        <h1>Drag and Drop with AppRun</h1>
 <h2>Learning Objectives</h2>
-<ul>
-<li>Create a UML sequence diagram</li>
-<li>Encode and Decode JWT tokens</li>
-<li>Recall the structure of a JWT</li>
-</ul>
+<p>TODO</p>
 <h2>Pre-requisites</h2>
-<ul>
-<li>Make sure you have installed plant UML</li>
-</ul>
-<h2>The problem with sessions</h2>
-<p>Sessions are great, but your clients are now bound to 1 machine. If I have a cluster of computers managing incoming requests and your session is in the memory of machine 1, I can't bounce you to machine 2 to lighten the load.</p>
-<p>❓ Why not?</p>
-<p>Sessions are stateful. To achieve the same thing as a session (auth you once then keep track of you) I could use a token based auth system.</p>
-<h2>What is OAuth?</h2>
-<p>OAuth (2.0) is an open standard for authorization. It controls authorization to a protected resource such as an API.</p>
-<p>If you’ve ever signed up to a new application and agreed to let it access your Facebook or phone contacts, then you’ve used OAuth. OAuth provides secure delegated access which means an application can access resources from a server on behalf of the user, without them having to share their credentials. It does this by allowing an Identity Provider (we will be using Auth0) to issue access tokens. The token informs the API that the bearer of the token is authorized to access the API.</p>
-<p><figure><img src="https://static01.nyt.com/images/2017/06/18/nyregion/12nytoday3/12nytoday3-superJumbo.jpg?quality=90&amp;auto=webp" alt="clubber getting their hand stamped" title="Photo: Caitlin Ochs for The New York Times"><figcaption>Photo: Caitlin Ochs for The New York Times</figcaption></figure></p>
-<p>In a nightclub when you enter and pay your entry fee you will often be stamped or presented with a bracelet to ware on your wrist. This shows the security staff on the door that you have paid, and you can enter and leave the club for that evening. The bracelet or stamp is like a token the club (Identity Provider) has issue. With a legitimate stamp or bracelet the door staff (API middleware) check it and then if its ok let you in (to the controller).</p>
-<h2>What makes OAuth secure?</h2>
-<ul>
-<li>Token management means we can track each device that uses the API (and revoke access if we want)</li>
-<li>OAuth provides 'scopes' which allow for fine-grained authorization</li>
-<li>Tokens expire, making it very hard for them to be reused</li>
-</ul>
-<p>Let's look at this diagram which illustrates the OAuth flow we are going to be using to secure our API resource:</p>
-<p><figure><img src="https://user-images.githubusercontent.com/1316724/102925060-9cb1b680-448a-11eb-8177-7eda1802026f.png" alt="oauth flow showing how an identify provider issues a token which is used to secure a resource"><figcaption></figcaption></figure></p>
-<h1>Lesson 2 - JWT</h1>
-<p>OAuth returns access tokens as JSON Web Tokens (JWTs) format. A JWT is easy to identify, it is three strings separated by a <code>.</code></p>
-<p>Here is an example:</p>
-<p><code>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtZXNzYWdlIjoiSGVsbG8gZnJvbSBXaGl0ZUhhdCEifQ.XSYkatPu3LirweyU13rLWblqQRNvbqoJJ0qwX_mdYgM</code></p>
-<p>Use https://jwt.io to see the secret message hidden inside this token!</p>
-<p><strong>Activity</strong>: Create your own messages and send them to the Slack channel!</p>
-<p>A JWT is made up of 3 parts:</p>
-<ul>
-<li><strong>Header</strong> - specifies the type of token and the algorithm used to sign the token</li>
-<li><strong>Payload</strong> - the information that we want to transmit and other information about our token</li>
-<li><strong>Signature</strong> - verifies who sent the token and that the token has not been tampered with</li>
-</ul>
-<p>To create the signature part you have to take the encoded header, the encoded payload, a secret, the algorithm specified in the header, and sign that.</p>
-<pre><code class="language-ruby">SHA1(base64Encode(Header) + &quot;.&quot; + base64Encode(Payload), secret)
-// SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c &lt;- that is the Signature part
+<p>TODO</p>
+<h2>Lesson</h2>
+<h3>Dragging</h3>
+<p>When you start dragging an event is triggered. We want to intercept this event and keep track of which element is being dragged.</p>
+<pre><code class="language-javascript"><span class="hljs-string">`&lt;li id=&quot;<span class="hljs-subst">${task.id}</span>&quot; draggable=&quot;true&quot; ondragstart=&quot;app.run(&#x27;ondragstart&#x27;, event)&quot;&gt;`</span>
 </code></pre>
+<p>Make the <code>task.id</code> the id of the HTML element. Add the update function <code>onDragStart</code>. Notice we are going to pass in the event object.</p>
+<pre><code class="language-javascript">    onDragStart: <span class="hljs-function">(<span class="hljs-params">state, event</span>) =&gt;</span> {
+        event.dataTransfer.setData(<span class="hljs-string">&#x27;text&#x27;</span>, event.target.id)
+        <span class="hljs-keyword">return</span> state
+    }
+</code></pre>
+<p>When we start dragging we set the drag event up to transfer some data, the id of the task being dragged. Can you see how we read the id of the element being dragged from the <code>event</code> object and in particular the <code>event.target</code> object.</p>
+<h3>Dropping</h3>
+<p>Lets make it so if you drag a task from the list it will delete it. For that we need to detect the drop event, and we need to make a drop zone. Can you put another element next to your list? Get them to sit next to each other on the page.</p>
+<p><figure><img src="https://user-images.githubusercontent.com/4499581/95676057-55b66380-0bb3-11eb-97ef-be07d2948bd5.png" alt="flexbox example"><figcaption></figcaption></figure></p>
+<p>The hotpink section is the drop zone. HTML elements by default are NOT droppable. To make a drop zone, we need to override the default behavior of the browser. To do this you will have to add a <code>ondragover</code> event listener to your drop zone element. You can also add the <code>ondrop</code> event listener, and add the event handler to <code>ondrop</code>.</p>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">ondragover</span>=<span class="hljs-string">&quot;event.preventDefault()&quot;</span> <span class="hljs-attr">ondrop</span>=<span class="hljs-string">&quot;app.run(&#x27;onDrop&#x27;, event)&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<p>Here we are calling <code>event.preventDefault()</code> whenever an element is dragged over this element. By doing this we will enable dropping on that element. Then we add our <code>ondrop</code> event handler and capture the drop event. We need the <code>event</code> object from the drop to get the data values we passed from the dragging element.</p>
+<p>Delete the item from the array in <code>state.tasks</code>.</p>
+<pre><code class="language-javascript">onDrop: <span class="hljs-function">(<span class="hljs-params">state, event</span>) =&gt;</span> {
+    event.preventDefault()
+    <span class="hljs-keyword">const</span> id = event.dataTransfer.getData(<span class="hljs-string">&#x27;text&#x27;</span>)
+    <span class="hljs-keyword">const</span> index = state.tasks.findIndex(<span class="hljs-function"><span class="hljs-params">task</span> =&gt;</span> task.id == id)
+    state.tasks.splice(index, <span class="hljs-number">1</span>)
+    <span class="hljs-keyword">return</span> state
+}
+</code></pre>
+<h3>stopPropagation</h3>
+<p>What happens if we have nested drop zones? For now imagine I want to either 'highlight' a task or delete it.</p>
+<p><figure><img src="https://user-images.githubusercontent.com/4499581/95676910-ba74bc80-0bb9-11eb-9f7e-e448e3888812.png" alt="nested drop zones"><figcaption></figcaption></figure></p>
+<p>I'm going to add a different update function that will add a 'highlight' class to my task. The behavior I am looking for is when I drag and drop on the highlight zone, my task should become highlighted. However! It doesn't work. My task just gets deleted. Why is that?</p>
+<p>The drop event will cause <u>BOTH</u> event handlers to be triggered; <code>onDrop</code> and my <code>onHighlight</code>. The event propagates up through the DOM. This behavior is called bubbling. I don't want this. When the <code>ondrop</code> listener triggers my <code>onHighlight</code> event handler I want the event propagation to stop. I will have to call <code>event.stopPropagation()</code> to stop the event triggering other event handlers.</p>
+<pre><code class="language-javascript">onHighlight: <span class="hljs-function">(<span class="hljs-params">state, event</span>) =&gt;</span> {
+    event.preventDefault()
+    event.stopPropagation()
+    <span class="hljs-keyword">const</span> id = event.dataTransfer.getData(<span class="hljs-string">&#x27;text&#x27;</span>)
+    <span class="hljs-keyword">const</span> index = state.tasks.findIndex(<span class="hljs-function"><span class="hljs-params">task</span> =&gt;</span> task.id === id)
+    state.tasks[index].highlight = <span class="hljs-string">&#x27;highlight&#x27;</span>
+    <span class="hljs-keyword">return</span> state
+}
+</code></pre>
+<p><figure><img src="https://user-images.githubusercontent.com/4499581/95677015-9bc2f580-0bba-11eb-8894-8657e1a852f0.png" alt="highlight task now works thanks to stop propagation"><figcaption></figcaption></figure></p>
+<h3>Summary</h3>
+<p>There are some important concepts we have looked at in this lesson. First of all we have learnt more about the event object. We have seen how it can be used to:</p>
+<ul>
+<li>transfer data</li>
+<li>override default browser behaviors</li>
+<li>stop event propagation</li>
+</ul>
 <h2>Assignment</h2>
 <ul>
-<li>Use <a href="http://www.plantuml.com/plantuml/uml">PlantUML</a> to create your own sequence diagram which illustrates the OAuth flow.</li>
+<li>Implement drag and drop to delete a task in your todo app</li>
 </ul>
+<h3>Assignment extension tasks</h3>
+<h2>Additional resources</h2>
 
         <script src="/curriculum/js/tabbed-code-blocks.js"></script>
         <script>
