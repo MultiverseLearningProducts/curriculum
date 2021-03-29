@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+    <head>
+        <meta charset="utf-8">
+        <title> Responsive CSS Grids</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="shortcut icon" type="image/x-icon" href="/curriculum/favicon.ico"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/an-old-hope.min.css">
+        <link rel="stylesheet" href="/curriculum/style.css"/>
+        <script src="/curriculum/js/highlight.min.js"></script>
+        <script src="/curriculum/js/bash.min.js"></script>
+        <script src="/curriculum/js/java.min.js"></script>
+        <script src="/curriculum/js/javascript.min.js"></script>
+        <script src="/curriculum/js/sql.min.js"></script>
+    </head>
+    <body>
+        <button 
+            id="navigation-toggle"
+            aria-expanded="false"
+            aria-haspopup="true"
+            onclick="toggleNav()"
+            onkeydown="event => {event.keyCode === 13 ? toggleNav() : null}"
+            tabindex="1">Table of contents</button>
+        <nav id="navigation"><ul><li><a href="/curriculum\Bootcamp/index.html">Bootcamp</a><ul><li><a href="/curriculum\Bootcamp\FAQ.html">FAQ</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming/index.html">Unit 1 Object Oriented Programming</a><ul><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.1-JavaScript_Objects_and_Functions.html">0.1.1 JavaScript Objects and Functions</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.2-Test_Driven_Development.html">0.1.2 Test Driven Development</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.3-Objects_in_an_Airport_Domain.html">0.1.3 Objects in an Airport Domain</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.4-Static_functions_and_properties.html">0.1.4 Static functions and properties</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.5-Inheritance.html">0.1.5 Inheritance</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.6-Asynchronous_JavaScript.html">0.1.6 Asynchronous JavaScript</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.7-Asynchronous_Airport_Data_Load.html">0.1.7 Asynchronous Airport Data Load</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.8-Scooter_Hire_System.html">0.1.8 Scooter Hire System</a></li></ul></li><li><a href="/curriculum\Bootcamp\Unit-2-Databases/index.html">Unit 2 Databases</a><ul><li><a href="/curriculum\Bootcamp\Unit-2-Databases\0.2.1-Logical_Data_Model.html">0.2.1 Logical Data Model</a></li><li><a href="/curriculum\Bootcamp\Unit-2-Databases\0.2.10-Sequelize_part_2.html">0.2.10 Sequelize part 2</a></li><li><a href="/curriculum\Bootcamp\Unit-2-Databases\0.2.2-Implementing_the_Logical_Data_Model.html">0.2.2 Implementing the Logical Data Model</a></li><li><a href="/curriculum\Bootcamp\Unit-2-Databases\0.2.3-Basic_SQL_Commands.html">0.2.3 Basic SQL Commands</a></li><li><a href="/curriculum\Bootcamp\Unit-2-Databases\0.2.4-SQL_Joins.html">0.2.4 SQL Joins</a></li><li><a href="/curriculum\Bootcamp\Unit-2-Databases\0.2.5-Database_access_using_Node.html">0.2.5 Database access using Node</a></li><li><a href="/curriculum\Bootcamp\Unit-2-Databases\0.2.6-Populating_databases_from_JSON.html">0.2.6 Populating databases from JSON</a></li><li><a href="/curriculum\Bootcamp\Unit-2-Databases\0.2.7-Object_Relational_Mapping_part_1.html">0.2.7 Object Relational Mapping part 1</a></li><li><a href="/curriculum\Bootcamp\Unit-2-Databases\0.2.8-Object_Relational_Mapping_part_2.html">0.2.8 Object Relational Mapping part 2</a></li><li><a href="/curriculum\Bootcamp\Unit-2-Databases\0.2.9-Sequelize_part_1.html">0.2.9 Sequelize part 1</a></li></ul></li><li><a href="/curriculum\Bootcamp\Unit-3-APIs_and_Dynamic_Content/index.html">Unit 3 APIs and Dynamic Content</a><ul><li><a href="/curriculum\Bootcamp\Unit-3-APIs_and_Dynamic_Content\0.3.1-Web_Servers.html">0.3.1 Web Servers</a></li><li><a href="/curriculum\Bootcamp\Unit-3-APIs_and_Dynamic_Content\0.3.2-Application_Servers.html">0.3.2 Application Servers</a></li><li><a href="/curriculum\Bootcamp\Unit-3-APIs_and_Dynamic_Content\0.3.3-Rendering_Dynamic_Content.html">0.3.3 Rendering Dynamic Content</a></li><li><a href="/curriculum\Bootcamp\Unit-3-APIs_and_Dynamic_Content\0.3.4-Responsive_CSS_Grids.html">0.3.4 Responsive CSS Grids</a></li><li><a href="/curriculum\Bootcamp\Unit-3-APIs_and_Dynamic_Content\0.3.5-CSS_Box_Model.html">0.3.5 CSS Box Model</a></li><li><a href="/curriculum\Bootcamp\Unit-3-APIs_and_Dynamic_Content\0.3.6-Route_Parameters.html">0.3.6 Route Parameters</a></li><li><a href="/curriculum\Bootcamp\Unit-3-APIs_and_Dynamic_Content\0.3.7-HTML_Forms.html">0.3.7 HTML Forms</a></li><li><a href="/curriculum\Bootcamp\Unit-3-APIs_and_Dynamic_Content\0.3.8-CRUD_operations.html">0.3.8 CRUD operations</a></li></ul></li><li><a href="/curriculum\Bootcamp\Unit-4-Client_side_development/index.html">Unit 4 Client side development</a><ul><li><a href="/curriculum\Bootcamp\Unit-4-Client_side_development\0.4.5-Drag_and_Drop.html">0.4.5 Drag and Drop</a></li><li><a href="/curriculum\Bootcamp\Unit-4-Client_side_development\0.4.6-Ajax.html">0.4.6 Ajax</a></li><li><a href="/curriculum\Bootcamp\Unit-4-Client_side_development\0.4.9-Web_Accessibility.html">0.4.9 Web Accessibility</a></li><li><a href="/curriculum\Bootcamp\Unit-4-Client_side_development\0.4.91-JavaScript_in_the_Browser.html">0.4.91 JavaScript in the Browser</a></li><li><a href="/curriculum\Bootcamp\Unit-4-Client_side_development\0.4.92-HTML_DOM.html">0.4.92 HTML DOM</a></li><li><a href="/curriculum\Bootcamp\Unit-4-Client_side_development\0.4.93-AppRun_Framework.html">0.4.93 AppRun Framework</a></li></ul></li><li><a href="/curriculum\Bootcamp\Unit-5-Software_Development_Lifecycle.html">Unit 5 Software Development Lifecycle</a><ul><li><a href="/curriculum\Bootcamp\Unit-5-Software_Development_Lifecycle.html\Agile_Development.md/index.html">Agile Development</a></li><li><a href="/curriculum\Bootcamp\Unit-5-Software_Development_Lifecycle.html\Code_Reviews.md/index.html">Code Reviews</a></li><li><a href="/curriculum\Bootcamp\Unit-5-Software_Development_Lifecycle.html\Deployment.md/index.html">Deployment</a></li><li><a href="/curriculum\Bootcamp\Unit-5-Software_Development_Lifecycle.html\Design.md/index.html">Design</a></li><li><a href="/curriculum\Bootcamp\Unit-5-Software_Development_Lifecycle.html\Requirements.md/index.html">Requirements</a></li><li><a href="/curriculum\Bootcamp\Unit-5-Software_Development_Lifecycle.html\System_Testing.md/index.html">System Testing</a></li></ul></li></ul></li><li><a href="/curriculum\Module-2/index.html">Module 2</a><ul><li><a href="/curriculum\Module-2\Unit-1-The_Anatomy_of_the_HTTP_request/index.html">Unit 1 The Anatomy of the HTTP request</a><ul><li><a href="/curriculum\Module-2\Unit-1-The_Anatomy_of_the_HTTP_request\2.1.1-Identifying_the_different_parts_of_HTTP.html">2.1.1 Identifying the different parts of HTTP</a></li><li><a href="/curriculum\Module-2\Unit-1-The_Anatomy_of_the_HTTP_request\2.1.2-Programmatic_HTTP_requests.html">2.1.2 Programmatic HTTP requests</a></li></ul></li><li><a href="/curriculum\Module-2\Unit-2-What_is_REST/index.html">Unit 2 What is REST</a><ul><li><a href="/curriculum\Module-2\Unit-2-What_is_REST\2.2.1-REST_and_the_openAPI_spec.html">2.2.1 REST and the openAPI spec</a></li><li><a href="/curriculum\Module-2\Unit-2-What_is_REST\2.2.2-The_OpenAPI_spec.html">2.2.2 The OpenAPI spec</a></li><li><a href="/curriculum\Module-2\Unit-2-What_is_REST\2.2.3-Build_an_OpenAPI_RESTful_service.html">2.2.3 Build an OpenAPI RESTful service</a></li><li><a href="/curriculum\Module-2\Unit-2-What_is_REST\2.2.4-Integration_tests.html">2.2.4 Integration tests</a></li><li><a href="/curriculum\Module-2\Unit-2-What_is_REST\2.2.5-Knowledge_quiz.html">2.2.5 Knowledge quiz</a></li></ul></li><li><a href="/curriculum\Module-2\Unit-3-Cryptography/index.html">Unit 3 Cryptography</a><ul><li><a href="/curriculum\Module-2\Unit-3-Cryptography\2.3.1-Hashing_Functions.html">2.3.1 Hashing Functions</a></li><li><a href="/curriculum\Module-2\Unit-3-Cryptography\2.3.2-Symmetric_Key_Encryption.html">2.3.2 Symmetric Key Encryption</a></li></ul></li></ul></li><li><a href="/curriculum\Module-3/index.html">Module 3</a><ul><li><a href="/curriculum\Module-3\Unit-1-The-SDLC/index.html">Unit 1 The SDLC</a><ul><li><a href="/curriculum\Module-3\Unit-1-The-SDLC\3.1.1-Business_Impact.html">3.1.1 Business Impact</a></li></ul></li></ul></li></ul></nav>
+        <h1>Responsive CSS Grids</h1>
+<h2>Learning Objectives</h2>
+<ul>
+<li>Use the CSS @media Rule</li>
+<li>Implement a responsive CSS grid</li>
+</ul>
+<h2>Pre-requisites</h2>
+<ul>
+<li>Lesson <a href="/curriculum/Bootcamp/Unit-3-APIs_and_Dynamic_Content/0.3.3-Rendering_Dynamic_Content">Rendering Dynamic Content</a></li>
+</ul>
+<h2>Lesson</h2>
+<p>Designing for the web is tricky because the screen sizes for a web page on different devices are so dramatically different.</p>
+<p><figure><img src="https://d1xzrcop0305fv.cloudfront.net/wp-content/uploads/2016/06/zymr-adaptive-responsive-design_3.jpg" alt="different screen sizes for web pages"><figcaption></figcaption></figure></p>
+<p>Where do we put things if we want our page to look good on both a mobile phone and a large 26&quot; monitor? The anwser to this question was beautifully addressed by Ethan Marcotte back in 2010 in a blog he wrote called <a href="https://alistapart.com/article/responsive-web-design/">responsive web design</a>.</p>
+<h3>Responsive @media</h3>
+<p>CSS comes with a <code>@media</code> API which was orignialy added to the spec so you could style a printer friendly version of your page. The basic API of <code>@media</code> enables you to apply CSS to your page at particular screen sizes.</p>
+<p>Media queries can be used to check things like:</p>
+<ul>
+<li>the width and height of the device</li>
+<li>the device orientation (landscape or portrait mode)</li>
+</ul>
+<p>The CSS is applied immediately so your page does not require a refresh for the new CSS rules to be visible once the screen size changes.</p>
+<p>Using the <code>@media</code> API solves the problem of having to serve different HTML templates and CSS to different devices.</p>
+<h3>Understanding the viewport</h3>
+<p>The <b>viewport</b> is the visible area of a web page.</p>
+<p>The viewport varies with the device e.g. the viewport on a mobile phone is smaller than on a computer screen.</p>
+<p>To make our page responsive (i.e. look good on all devices) we need to give the browser instructions on how to control the page's dimensions and scaling. We do this by adding the following line to the <code>&lt;head&gt;</code> element of our HTML (if you are using Handlebars this will be in the <code>main.handlebars</code> file).</p>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span>
+</code></pre>
+<p>The <code>width=device-width</code> part sets the width of the page to follow the screen-width of the device.</p>
+<p>The <code>initial-scale=1.0</code> part sets the initial zoom level when the page is first loaded by the browser.</p>
+<p>The impact of setting the viewport can be visualised <a href="https://www.w3schools.com/css/css_rwd_viewport.asp">here</a>.</p>
+<h3>Mobile first</h3>
+<p>The way to implement a responsive layout is start with the smallest screen size, the mobile. These layouts are often the most simple. As the screen size get larger you can start to make more use of the real estate that becomes available.</p>
+<p>Let's start. Edit your <code>style.css</code>file and add the following:</p>
+<pre><code class="language-css">* {
+    <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-comment">/* put css styling for  
+   mobile devices here */</span>
+
+<span class="hljs-keyword">@media</span> screen <span class="hljs-keyword">and</span> (<span class="hljs-attribute">min-width</span>: <span class="hljs-number">40em</span>) {
+  <span class="hljs-comment">/* put css styling for mid-sized screens here */</span>
+}
+
+<span class="hljs-keyword">@media</span> screen <span class="hljs-keyword">and</span> (<span class="hljs-attribute">min-width</span>: <span class="hljs-number">60em</span>) {
+  <span class="hljs-comment">/* put css styling for massive screens here */</span>
+}
+</code></pre>
+<p><code>screen</code> refers to any device with a screen.</p>
+<p>Note that we are using <code>em</code> units here rather than <code>pixels</code>. This allows elements to scale if the root element changes (e.g. if a user changes their default font size, all elements on the page will scale appropriately).</p>
+<p>This CSS gives us two break points, one at 40em and the other at 60em. We remove any browser default padding or margin. Can you get your background color to change at the different break points?</p>
+<h3>CSS Grid</h3>
+<p><a href="https://www.w3schools.com/css/css_grid.asp">CSS Grid Layout</a> presents a layout system with rows and columns.</p>
+<p>Let's consider the different types of devices that we will display our Restaurant web app on. Open up Chrome Developer tools and select the 'Device Toobar'.</p>
+<p>TODO<br>
+<figure><img src="https://developers.google.com/web/tools/chrome-devtools/device-mode/imgs/landscape.png" alt="chrome developer tools"><figcaption></figcaption></figure><br>
+(https://developers.google.com/web/tools/chrome-devtools/device-mode)</p>
+<p>Select a mobile phone. Set the orientation to portrait. For small screens our content can just be in a single column to allow the user to scroll through the restaurants. We want a single restaurant <em>card</em> to occupy the width of the screen. So let's modify our <code>styles.css</code> file to have the following:</p>
+<pre><code class="language-css">* {                 <span class="hljs-comment">/* applies to all elements */</span>
+    <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-comment">/* css defaults for mobile devices */</span>
+<span class="hljs-selector-tag">h1</span> {
+    <span class="hljs-attribute">padding</span>: <span class="hljs-number">1rem</span>;
+    <span class="hljs-attribute">border-bottom</span>: solid <span class="hljs-number">1px</span> black;
+}
+<span class="hljs-selector-tag">article</span> {
+    <span class="hljs-attribute">border</span>: solid <span class="hljs-number">1px</span> black;   <span class="hljs-comment">/* adds a border around the box */</span>
+    <span class="hljs-attribute">width</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">100%</span> - <span class="hljs-number">2rem</span>);
+    <span class="hljs-attribute">height</span>: <span class="hljs-number">35em</span>;
+    <span class="hljs-attribute">margin</span>: <span class="hljs-number">1rem</span> <span class="hljs-number">1rem</span>;
+}
+</code></pre>
+<p>Now we have a card shape box in which we can display information about each restaurant (including its 'thumbnail' image). Each box will be spaced out evenly and we can scroll through them. We are using <code>calc()</code> to calculate the width of the viewport minus the margins either side.</p>
+<p>Once our viewport size has broken through to be greater than <code>40em</code> we want to <em>override</em> the previous styles to jump from a single column layout to a 2 column layout. Add the code below to your <code>styles.css</code> file:</p>
+<pre><code class="language-css">
+<span class="hljs-keyword">@media</span> screen <span class="hljs-keyword">and</span> (<span class="hljs-attribute">min-width</span>: <span class="hljs-number">40em</span>) {
+    <span class="hljs-comment">/* css overrides for mid-sized screens goes here */</span>
+      <span class="hljs-selector-tag">section</span> {
+          <span class="hljs-attribute">margin</span>: <span class="hljs-number">1rem</span>;
+          <span class="hljs-attribute">display</span>: grid;
+          grid-template-<span class="hljs-attribute">columns</span>: auto auto;
+          grid-template-rows: none;
+          gap: <span class="hljs-number">1rem</span>;
+      }
+      <span class="hljs-selector-tag">article</span> {
+          <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+          <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+      }
+  }
+</code></pre>
+<p>We now apply a grid layout to the <code>&lt;section&gt;</code> element. That grid is applied to the section's children elements (all the <code>&lt;article&gt;</code> elements). We don't know how many restaurants we'll have so we are not defining the rows in this case. We also adjust the width of the <code>&lt;article&gt;</code> elements and remove the margins, we pass this responsibility now to the parent 'grid' element. CSS 'grid' has a very handy <code>gap</code> property that will deal with spacing between grid elements. Finally we can use the margin of the <code>&lt;section&gt;</code> to add some spacing all round the items in the grid.</p>
+<p>For larger devices, we want to jump to 3 columns. To do this, we just need to override one property by adding the following code to our <code>styles.css</code> file:</p>
+<pre><code class="language-css"><span class="hljs-keyword">@media</span> screen <span class="hljs-keyword">and</span> (<span class="hljs-attribute">min-width</span>: <span class="hljs-number">60em</span>) {
+    <span class="hljs-comment">/* css overrides for large screens goes here */</span>
+    <span class="hljs-selector-tag">section</span> {
+        grid-template-<span class="hljs-attribute">columns</span>: auto auto auto;
+    }
+}
+</code></pre>
+<p>We have now covered responsive layouts using CSS <code>@media</code> (media queries) and taken a quick look at the power of 'grid' in CSS.</p>
+<h2>Assignment</h2>
+<ol>
+<li>Edit your CSS so that it changes the background color dependent on the type of device you are using. Hint: this <a href="https://www.w3schools.com/cssref/css3_pr_mediaquery.asp">CSS @media Rule</a> tutorial will help.</li>
+<li>Implement a responsive layout for your Restaurant app created as part of Lesson <a href="/curriculum/Bootcamp/Unit-2-Databases/0.3.3-Dynamic_data_arrays">Dynamic Data Arrays</a> using <code>@media</code> and CSS 'grid'</li>
+<li>Commit your code into Github and share the link with your coach for review.</li>
+</ol>
+<h2>Assignment extension tasks</h2>
+<p>Read up on the CSS Flexbox layout and how it <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Relationship_of_Grid_Layout#grid_and_flexbox">compares to the Grid layout</a>. Are there any older browsers which don't support these layouts?</p>
+<h2>Additional resources</h2>
+<ul>
+<li><a href="https://www.freecodecamp.org/news/html-basics-for-beginners/">Video - HTML basics for beginners (15 mins)</a></li>
+<li><a href="https://www.youtube.com/watch?v=yU7jJ3NbPdA">Video - Learn CSS Media Query In 7 Minutes</a></li>
+<li><a href="https://www.youtube.com/watch?v=br-0i3U1VCA">Video - Making Modern Layouts with CSS Grid | CSS Grid Basics (16 mins)</a></li>
+<li><a href="https://www.w3schools.com/cssref/css3_pr_mediaquery.asp">CSS @media Rule</a></li>
+</ul>
+
+        <script src="/curriculum/js/tabbed-code-blocks.js"></script>
+        <script>
+            function toggleNav() {
+                const button = document.getElementById('navigation-toggle')
+                const isAriaExp = button.getAttribute('aria-expanded')
+                const newAriaExp = (isAriaExp == "false") ? "true" : "false"
+                button.setAttribute('aria-expanded', newAriaExp)
+                const nav = document.getElementById('navigation')
+                nav.style.display = nav.offsetParent ? 'none' : 'block'
+            }
+        </script>
+    </body>
+</html>

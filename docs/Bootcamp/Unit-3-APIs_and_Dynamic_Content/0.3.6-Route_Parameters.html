@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+    <head>
+        <meta charset="utf-8">
+        <title> Route Parameters</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="shortcut icon" type="image/x-icon" href="/curriculum/favicon.ico"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/an-old-hope.min.css">
+        <link rel="stylesheet" href="/curriculum/style.css"/>
+        <script src="/curriculum/js/highlight.min.js"></script>
+        <script src="/curriculum/js/bash.min.js"></script>
+        <script src="/curriculum/js/java.min.js"></script>
+        <script src="/curriculum/js/javascript.min.js"></script>
+        <script src="/curriculum/js/sql.min.js"></script>
+    </head>
+    <body>
+        <button 
+            id="navigation-toggle"
+            aria-expanded="false"
+            aria-haspopup="true"
+            onclick="toggleNav()"
+            onkeydown="event => {event.keyCode === 13 ? toggleNav() : null}"
+            tabindex="1">Table of contents</button>
+        <nav id="navigation"><ul><li><a href="/curriculum\Bootcamp/index.html">Bootcamp</a><ul><li><a href="/curriculum\Bootcamp\FAQ.html">FAQ</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming/index.html">Unit 1 Object Oriented Programming</a><ul><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.1-JavaScript_Objects_and_Functions.html">0.1.1 JavaScript Objects and Functions</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.2-Test_Driven_Development.html">0.1.2 Test Driven Development</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.3-Objects_in_an_Airport_Domain.html">0.1.3 Objects in an Airport Domain</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.4-Static_functions_and_properties.html">0.1.4 Static functions and properties</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.5-Inheritance.html">0.1.5 Inheritance</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.6-Asynchronous_JavaScript.html">0.1.6 Asynchronous JavaScript</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.7-Asynchronous_Airport_Data_Load.html">0.1.7 Asynchronous Airport Data Load</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.8-Scooter_Hire_System.html">0.1.8 Scooter Hire System</a></li></ul></li><li><a href="/curriculum\Bootcamp\Unit-2-Databases/index.html">Unit 2 Databases</a><ul><li><a href="/curriculum\Bootcamp\Unit-2-Databases\0.2.1-Logical_Data_Model.html">0.2.1 Logical Data Model</a></li><li><a href="/curriculum\Bootcamp\Unit-2-Databases\0.2.10-Sequelize_part_2.html">0.2.10 Sequelize part 2</a></li><li><a href="/curriculum\Bootcamp\Unit-2-Databases\0.2.2-Implementing_the_Logical_Data_Model.html">0.2.2 Implementing the Logical Data Model</a></li><li><a href="/curriculum\Bootcamp\Unit-2-Databases\0.2.3-Basic_SQL_Commands.html">0.2.3 Basic SQL Commands</a></li><li><a href="/curriculum\Bootcamp\Unit-2-Databases\0.2.4-SQL_Joins.html">0.2.4 SQL Joins</a></li><li><a href="/curriculum\Bootcamp\Unit-2-Databases\0.2.5-Database_access_using_Node.html">0.2.5 Database access using Node</a></li><li><a href="/curriculum\Bootcamp\Unit-2-Databases\0.2.6-Populating_databases_from_JSON.html">0.2.6 Populating databases from JSON</a></li><li><a href="/curriculum\Bootcamp\Unit-2-Databases\0.2.7-Object_Relational_Mapping_part_1.html">0.2.7 Object Relational Mapping part 1</a></li><li><a href="/curriculum\Bootcamp\Unit-2-Databases\0.2.8-Object_Relational_Mapping_part_2.html">0.2.8 Object Relational Mapping part 2</a></li><li><a href="/curriculum\Bootcamp\Unit-2-Databases\0.2.9-Sequelize_part_1.html">0.2.9 Sequelize part 1</a></li></ul></li><li><a href="/curriculum\Bootcamp\Unit-3-APIs_and_Dynamic_Content/index.html">Unit 3 APIs and Dynamic Content</a><ul><li><a href="/curriculum\Bootcamp\Unit-3-APIs_and_Dynamic_Content\0.3.1-Web_Servers.html">0.3.1 Web Servers</a></li><li><a href="/curriculum\Bootcamp\Unit-3-APIs_and_Dynamic_Content\0.3.2-Application_Servers.html">0.3.2 Application Servers</a></li><li><a href="/curriculum\Bootcamp\Unit-3-APIs_and_Dynamic_Content\0.3.3-Rendering_Dynamic_Content.html">0.3.3 Rendering Dynamic Content</a></li><li><a href="/curriculum\Bootcamp\Unit-3-APIs_and_Dynamic_Content\0.3.4-Responsive_CSS_Grids.html">0.3.4 Responsive CSS Grids</a></li><li><a href="/curriculum\Bootcamp\Unit-3-APIs_and_Dynamic_Content\0.3.5-CSS_Box_Model.html">0.3.5 CSS Box Model</a></li><li><a href="/curriculum\Bootcamp\Unit-3-APIs_and_Dynamic_Content\0.3.6-Route_Parameters.html">0.3.6 Route Parameters</a></li><li><a href="/curriculum\Bootcamp\Unit-3-APIs_and_Dynamic_Content\0.3.7-HTML_Forms.html">0.3.7 HTML Forms</a></li><li><a href="/curriculum\Bootcamp\Unit-3-APIs_and_Dynamic_Content\0.3.8-CRUD_operations.html">0.3.8 CRUD operations</a></li></ul></li><li><a href="/curriculum\Bootcamp\Unit-4-Client_side_development/index.html">Unit 4 Client side development</a><ul><li><a href="/curriculum\Bootcamp\Unit-4-Client_side_development\0.4.5-Drag_and_Drop.html">0.4.5 Drag and Drop</a></li><li><a href="/curriculum\Bootcamp\Unit-4-Client_side_development\0.4.6-Ajax.html">0.4.6 Ajax</a></li><li><a href="/curriculum\Bootcamp\Unit-4-Client_side_development\0.4.9-Web_Accessibility.html">0.4.9 Web Accessibility</a></li><li><a href="/curriculum\Bootcamp\Unit-4-Client_side_development\0.4.91-JavaScript_in_the_Browser.html">0.4.91 JavaScript in the Browser</a></li><li><a href="/curriculum\Bootcamp\Unit-4-Client_side_development\0.4.92-HTML_DOM.html">0.4.92 HTML DOM</a></li><li><a href="/curriculum\Bootcamp\Unit-4-Client_side_development\0.4.93-AppRun_Framework.html">0.4.93 AppRun Framework</a></li></ul></li><li><a href="/curriculum\Bootcamp\Unit-5-Software_Development_Lifecycle.html">Unit 5 Software Development Lifecycle</a><ul><li><a href="/curriculum\Bootcamp\Unit-5-Software_Development_Lifecycle.html\Agile_Development.md/index.html">Agile Development</a></li><li><a href="/curriculum\Bootcamp\Unit-5-Software_Development_Lifecycle.html\Code_Reviews.md/index.html">Code Reviews</a></li><li><a href="/curriculum\Bootcamp\Unit-5-Software_Development_Lifecycle.html\Deployment.md/index.html">Deployment</a></li><li><a href="/curriculum\Bootcamp\Unit-5-Software_Development_Lifecycle.html\Design.md/index.html">Design</a></li><li><a href="/curriculum\Bootcamp\Unit-5-Software_Development_Lifecycle.html\Requirements.md/index.html">Requirements</a></li><li><a href="/curriculum\Bootcamp\Unit-5-Software_Development_Lifecycle.html\System_Testing.md/index.html">System Testing</a></li></ul></li></ul></li><li><a href="/curriculum\Module-2/index.html">Module 2</a><ul><li><a href="/curriculum\Module-2\Unit-1-The_Anatomy_of_the_HTTP_request/index.html">Unit 1 The Anatomy of the HTTP request</a><ul><li><a href="/curriculum\Module-2\Unit-1-The_Anatomy_of_the_HTTP_request\2.1.1-Identifying_the_different_parts_of_HTTP.html">2.1.1 Identifying the different parts of HTTP</a></li><li><a href="/curriculum\Module-2\Unit-1-The_Anatomy_of_the_HTTP_request\2.1.2-Programmatic_HTTP_requests.html">2.1.2 Programmatic HTTP requests</a></li></ul></li><li><a href="/curriculum\Module-2\Unit-2-What_is_REST/index.html">Unit 2 What is REST</a><ul><li><a href="/curriculum\Module-2\Unit-2-What_is_REST\2.2.1-REST_and_the_openAPI_spec.html">2.2.1 REST and the openAPI spec</a></li><li><a href="/curriculum\Module-2\Unit-2-What_is_REST\2.2.2-The_OpenAPI_spec.html">2.2.2 The OpenAPI spec</a></li><li><a href="/curriculum\Module-2\Unit-2-What_is_REST\2.2.3-Build_an_OpenAPI_RESTful_service.html">2.2.3 Build an OpenAPI RESTful service</a></li><li><a href="/curriculum\Module-2\Unit-2-What_is_REST\2.2.4-Integration_tests.html">2.2.4 Integration tests</a></li><li><a href="/curriculum\Module-2\Unit-2-What_is_REST\2.2.5-Knowledge_quiz.html">2.2.5 Knowledge quiz</a></li></ul></li><li><a href="/curriculum\Module-2\Unit-3-Cryptography/index.html">Unit 3 Cryptography</a><ul><li><a href="/curriculum\Module-2\Unit-3-Cryptography\2.3.1-Hashing_Functions.html">2.3.1 Hashing Functions</a></li><li><a href="/curriculum\Module-2\Unit-3-Cryptography\2.3.2-Symmetric_Key_Encryption.html">2.3.2 Symmetric Key Encryption</a></li></ul></li></ul></li><li><a href="/curriculum\Module-3/index.html">Module 3</a><ul><li><a href="/curriculum\Module-3\Unit-1-The-SDLC/index.html">Unit 1 The SDLC</a><ul><li><a href="/curriculum\Module-3\Unit-1-The-SDLC\3.1.1-Business_Impact.html">3.1.1 Business Impact</a></li></ul></li></ul></li></ul></nav>
+        <h1>Route Parameters</h1>
+<h2>Learning Objectives</h2>
+<ul>
+<li>Present the menu data from the list of restaurants in a separate page</li>
+<li>Create a new route to support access to this page</li>
+</ul>
+<h2>Pre-requisites</h2>
+<ul>
+<li>Lesson <a href="/curriculum/Bootcamp/Unit-3-APIs_and_Dynamic_Content/0.3.5-CSS_Box_Model">CSS Box Model</a></li>
+</ul>
+<h2>Lesson</h2>
+<p>We want to read what is on the menu for these lovely looking restaurants. For that level of detail we need to alter the view so we are just looking at one restaurant at a time. In this lesson we are going to create a page for each individual restaurant.</p>
+<h3>Dynamic links</h3>
+<p>To be able to click on a restaurant card and then view that restaurant's page we need to create a dynamic link. We are going to do this by wrapping our restaurant card in an 'anchor' tag. We then make the <code>href</code> point to a particular address on our server. Update your cards like this:</p>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Restaurants<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">section</span>&gt;</span>
+    {{#each restaurants}}
+        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;/restaurants/{{this.id}}&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">article</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">header</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;background-image: url({{this.image}});&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">main</span>&gt;</span>{{this.name}}<span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">footer</span>&gt;</span>{{this.menus.length}} menus<span class="hljs-tag">&lt;/<span class="hljs-name">footer</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">article</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+    {{/each}}
+<span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
+</code></pre>
+<p>As you hover over each card can you see the URL it links to in the bottom left-hand corner of your Chrome browser? Clicking this link will cause a 404 error, as that page or resource does not exist yet.</p>
+<pre><code class="language-sh">Cannot GET /restaurants/2
+</code></pre>
+<h3>New Route</h3>
+<p>To deal with this new request we need to add a new route on our server. Not just any route, the last part of our route is going to be different depending on which restaurant we are clicking on. We need a route that also has a route parameter. Add the new route below to your server.</p>
+<pre><code class="language-javascript">app.get(<span class="hljs-string">&#x27;/restaurants/:id&#x27;</span>, <span class="hljs-keyword">async</span> (req, res) =&gt; {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;get restaurant with ID:&quot;</span>, req.params.id)
+    res.send()
+})
+</code></pre>
+<p>Like before we add a new route, but in the string definition of the route we indicate a route parameter <code>/:id</code> called 'id'. We can now read that value in our route handler. What do you think we are going to do with this id?</p>
+<h3>New template</h3>
+<p>Before we get our data, let's create the new template for this view. In the <code>views</code> folder add a file called <code>restaurant.handlebars</code>. Add some HTML so you know you have wired the route up to the template ok. Can you pass the correct arguments to your <code>res.render()</code>?</p>
+<p>Now we can focus on getting our data for this view.</p>
+<pre><code class="language-javascript">app.get(<span class="hljs-string">&#x27;/restaurants/:id&#x27;</span>, <span class="hljs-keyword">async</span> (req, res) =&gt; {
+    <span class="hljs-keyword">const</span> restaurant = <span class="hljs-keyword">await</span> Restaurant.findByPk(req.params.id)
+    <span class="hljs-keyword">const</span> menus = <span class="hljs-keyword">await</span> restaurant.getMenus({
+        <span class="hljs-attr">include</span>: [{<span class="hljs-attr">model</span>: MenuItem, <span class="hljs-attr">as</span>: <span class="hljs-string">&#x27;items&#x27;</span>}],
+        <span class="hljs-attr">nest</span>: <span class="hljs-literal">true</span>
+    })
+    res.render(<span class="hljs-string">&#x27;restaurant&#x27;</span>, {restaurant, menus})
+})
+</code></pre>
+<h3>2 levels of iteration</h3>
+<p>This view of a restaurant requires us to iterate over the array of menus, and within each menu we iterate over that menus array of items. WOW!</p>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>{{restaurant.name}}<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">section</span>&gt;</span>
+    {{#each menus}}
+        <span class="hljs-tag">&lt;<span class="hljs-name">article</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>{{this.title}}<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">dl</span>&gt;</span>
+                {{#each this.items}}
+                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">dt</span>&gt;</span>{{this.name}}<span class="hljs-tag">&lt;/<span class="hljs-name">dt</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">dd</span>&gt;</span>£{{this.price}}<span class="hljs-tag">&lt;/<span class="hljs-name">dd</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                {{/each}}
+            <span class="hljs-tag">&lt;/<span class="hljs-name">dl</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">article</span>&gt;</span>
+    {{/each}}
+<span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
+</code></pre>
+<p>Finally we have some menus, the fact we are using the same elements in the same order means our CSS is already being applied. The <code>&lt;dl&gt;</code> element is a 'description list' you can read more about it <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dl">here</a>. To get the item name and price to line up nicely like below I am using Flexbox.</p>
+<p><figure><img src="https://user-images.githubusercontent.com/4499581/95021384-9caed100-0668-11eb-9fbc-9d93ea06a54b.jpg" alt="flexbox example"><figcaption></figcaption></figure></p>
+<pre><code class="language-css"><span class="hljs-selector-tag">dl</span> <span class="hljs-selector-tag">div</span>{
+    <span class="hljs-attribute">display</span>: flex;
+    <span class="hljs-attribute">justify-content</span>: space-between;
+    <span class="hljs-attribute">padding</span>: <span class="hljs-number">1rem</span>;
+}
+</code></pre>
+<h2>Assignment</h2>
+<ol>
+<li>Create the route and template to view a single restaurant.</li>
+<li>Include a 'back' or 'main menu' button on your page.</li>
+<li>Render the menus and the menu items in a grid on the page.</li>
+<li>Create a <a href="https://www.w3schools.com/howto/howto_css_hero_image.asp">hero image</a> for the page<br>
+<figure><img src="https://user-images.githubusercontent.com/4499581/95021581-adac1200-0669-11eb-84da-cfdf9befc65c.jpg" alt="example of a hero image"><figcaption></figcaption></figure></li>
+<li>Commit your code into Github and share the link with your coach for review.</li>
+</ol>
+<h3>Assignment extension tasks</h3>
+<p>TODO</p>
+<h2>TODO - move this content someone else</h2>
+<p><iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQS_RdDgrFiEHaD2Nxm0aNLw6ICCpntv638tO0ITZjZdHXRVSMMJ7bXEZE4x0tmpHdNwOQpEBOwCvOg/embed" width="100%" height="444px" allowfullscreen frameborder=0></iframe></p>
+
+        <script src="/curriculum/js/tabbed-code-blocks.js"></script>
+        <script>
+            function toggleNav() {
+                const button = document.getElementById('navigation-toggle')
+                const isAriaExp = button.getAttribute('aria-expanded')
+                const newAriaExp = (isAriaExp == "false") ? "true" : "false"
+                button.setAttribute('aria-expanded', newAriaExp)
+                const nav = document.getElementById('navigation')
+                nav.style.display = nav.offsetParent ? 'none' : 'block'
+            }
+        </script>
+    </body>
+</html>
