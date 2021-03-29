@@ -16,6 +16,7 @@
     <body>
         <button 
             id="navigation-toggle"
+            aria-expanded="false"
             aria-haspopup="true"
             onclick="toggleNav()"
             onkeydown="event => {event.keyCode === 13 ? toggleNav() : null}"
@@ -25,6 +26,10 @@
         <script src="/curriculum/js/tabbed-code-blocks.js"></script>
         <script>
             function toggleNav() {
+                const button = document.getElementById('navigation-toggle')
+                const isAriaExp = button.getAttribute('aria-expanded')
+                const newAriaExp = (isAriaExp == "false") ? "true" : "false"
+                button.setAttribute('aria-expanded', newAriaExp)
                 const nav = document.getElementById('navigation')
                 nav.style.display = nav.offsetParent ? 'none' : 'block'
             }
