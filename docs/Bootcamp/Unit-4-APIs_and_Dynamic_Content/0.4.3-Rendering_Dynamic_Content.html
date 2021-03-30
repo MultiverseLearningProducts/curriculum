@@ -2,7 +2,7 @@
 <html lang="en-GB">
     <head>
         <meta charset="utf-8">
-        <title> Inheritance</title>
+        <title> Rendering Dynamic Content</title>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link rel="shortcut icon" type="image/x-icon" href="/curriculum/favicon.ico"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/an-old-hope.min.css">
@@ -22,73 +22,70 @@
             onkeydown="event => {event.keyCode === 13 ? toggleNav() : null}"
             tabindex="1">Table of contents</button>
         <nav id="navigation"><ul><li><a href="/curriculum\Bootcamp/index.html">Bootcamp</a><ul><li><a href="/curriculum\Bootcamp\FAQ.html">FAQ</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming/index.html">Unit 1 Object Oriented Programming</a><ul><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.1-JavaScript_Objects_and_Functions.html">0.1.1 JavaScript Objects and Functions</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.2-Test_Driven_Development.html">0.1.2 Test Driven Development</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.3-Objects_in_an_Airport_Domain.html">0.1.3 Objects in an Airport Domain</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.4-Static_functions_and_properties.html">0.1.4 Static functions and properties</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.5-Inheritance.html">0.1.5 Inheritance</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.6-Asynchronous_JavaScript.html">0.1.6 Asynchronous JavaScript</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.7-Asynchronous_Airport_Data_Load.html">0.1.7 Asynchronous Airport Data Load</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.8-Scooter_Hire_System.html">0.1.8 Scooter Hire System</a></li></ul></li><li><a href="/curriculum\Bootcamp\Unit-2-Databases/index.html">Unit 2 Databases</a><ul><li><a href="/curriculum\Bootcamp\Unit-2-Databases\0.2.1-Logical_Data_Model.html">0.2.1 Logical Data Model</a></li><li><a href="/curriculum\Bootcamp\Unit-2-Databases\0.2.10-Sequelize_part_2.html">0.2.10 Sequelize part 2</a></li><li><a href="/curriculum\Bootcamp\Unit-2-Databases\0.2.2-Implementing_the_Logical_Data_Model.html">0.2.2 Implementing the Logical Data Model</a></li><li><a href="/curriculum\Bootcamp\Unit-2-Databases\0.2.3-Basic_SQL_Commands.html">0.2.3 Basic SQL Commands</a></li><li><a href="/curriculum\Bootcamp\Unit-2-Databases\0.2.4-SQL_Joins.html">0.2.4 SQL Joins</a></li><li><a href="/curriculum\Bootcamp\Unit-2-Databases\0.2.5-Database_access_using_Node.html">0.2.5 Database access using Node</a></li><li><a href="/curriculum\Bootcamp\Unit-2-Databases\0.2.6-Populating_databases_from_JSON.html">0.2.6 Populating databases from JSON</a></li><li><a href="/curriculum\Bootcamp\Unit-2-Databases\0.2.7-Object_Relational_Mapping_part_1.html">0.2.7 Object Relational Mapping part 1</a></li><li><a href="/curriculum\Bootcamp\Unit-2-Databases\0.2.8-Object_Relational_Mapping_part_2.html">0.2.8 Object Relational Mapping part 2</a></li><li><a href="/curriculum\Bootcamp\Unit-2-Databases\0.2.9-Sequelize_part_1.html">0.2.9 Sequelize part 1</a></li></ul></li><li><a href="/curriculum\Bootcamp\Unit-3-Advanced_HTML_CSS/index.html">Unit 3 Advanced HTML CSS</a><ul><li><a href="/curriculum\Bootcamp\Unit-3-Advanced_HTML_CSS\0.3.1-CSS_Box_Model.html">0.3.1 CSS Box Model</a></li><li><a href="/curriculum\Bootcamp\Unit-3-Advanced_HTML_CSS\0.3.2-Responsive_CSS_Grids.html">0.3.2 Responsive CSS Grids</a></li><li><a href="/curriculum\Bootcamp\Unit-3-Advanced_HTML_CSS\0.3.3-Flexbox.html">0.3.3 Flexbox</a></li><li><a href="/curriculum\Bootcamp\Unit-3-Advanced_HTML_CSS\0.3.4-Client_side_JavaScript.html">0.3.4 Client side JavaScript</a></li><li><a href="/curriculum\Bootcamp\Unit-3-Advanced_HTML_CSS\0.3.5-HTML_DOM_Events.html">0.3.5 HTML DOM Events</a></li><li><a href="/curriculum\Bootcamp\Unit-3-Advanced_HTML_CSS\0.3.6-HTML_Forms.html">0.3.6 HTML Forms</a></li></ul></li><li><a href="/curriculum\Bootcamp\Unit-4-APIs_and_Dynamic_Content/index.html">Unit 4 APIs and Dynamic Content</a><ul><li><a href="/curriculum\Bootcamp\Unit-4-APIs_and_Dynamic_Content\0.4.1-Web_Servers.html">0.4.1 Web Servers</a></li><li><a href="/curriculum\Bootcamp\Unit-4-APIs_and_Dynamic_Content\0.4.2-Application_Servers.html">0.4.2 Application Servers</a></li><li><a href="/curriculum\Bootcamp\Unit-4-APIs_and_Dynamic_Content\0.4.3-Rendering_Dynamic_Content.html">0.4.3 Rendering Dynamic Content</a></li><li><a href="/curriculum\Bootcamp\Unit-4-APIs_and_Dynamic_Content\0.4.5-Route_Parameters.html">0.4.5 Route Parameters</a></li><li><a href="/curriculum\Bootcamp\Unit-4-APIs_and_Dynamic_Content\0.4.6-Server_side_Validation.html">0.4.6 Server side Validation</a></li><li><a href="/curriculum\Bootcamp\Unit-4-APIs_and_Dynamic_Content\0.4.7-CRUD_operations.html">0.4.7 CRUD operations</a></li><li><a href="/curriculum\Bootcamp\Unit-4-APIs_and_Dynamic_Content\0.4.8-Full_CRUD_operations.html">0.4.8 Full CRUD operations</a></li><li><a href="/curriculum\Bootcamp\Unit-4-APIs_and_Dynamic_Content\0.4.9-Restaurant_ratings.html">0.4.9 Restaurant ratings</a></li></ul></li><li><a href="/curriculum\Bootcamp\Unit-5-Website_Testing/index.html">Unit 5 Website Testing</a><ul><li><a href="/curriculum\Bootcamp\Unit-5-Website_Testing\0.5.1-Cypress_Testing.html">0.5.1 Cypress Testing</a></li><li><a href="/curriculum\Bootcamp\Unit-5-Website_Testing\0.5.2-Accessibility_Testing.html">0.5.2 Accessibility Testing</a></li></ul></li><li><a href="/curriculum\Bootcamp\Unit-6-End_Of_Bootcamp_Assessment/index.html">Unit 6 End Of Bootcamp Assessment</a><ul><li><a href="/curriculum\Bootcamp\Unit-6-End_Of_Bootcamp_Assessment\0.6.1-TODO.html">0.6.1 TODO</a></li></ul></li></ul></li><li><a href="/curriculum\Module-2/index.html">Module 2</a><ul><li><a href="/curriculum\Module-2\Unit-1-The_Anatomy_of_the_HTTP_request/index.html">Unit 1 The Anatomy of the HTTP request</a><ul><li><a href="/curriculum\Module-2\Unit-1-The_Anatomy_of_the_HTTP_request\2.1.1-Identifying_the_different_parts_of_HTTP.html">2.1.1 Identifying the different parts of HTTP</a></li><li><a href="/curriculum\Module-2\Unit-1-The_Anatomy_of_the_HTTP_request\2.1.2-Programmatic_HTTP_requests.html">2.1.2 Programmatic HTTP requests</a></li></ul></li><li><a href="/curriculum\Module-2\Unit-2-What_is_REST/index.html">Unit 2 What is REST</a><ul><li><a href="/curriculum\Module-2\Unit-2-What_is_REST\2.2.1-REST_and_the_openAPI_spec.html">2.2.1 REST and the openAPI spec</a></li><li><a href="/curriculum\Module-2\Unit-2-What_is_REST\2.2.2-The_OpenAPI_spec.html">2.2.2 The OpenAPI spec</a></li><li><a href="/curriculum\Module-2\Unit-2-What_is_REST\2.2.3-Build_an_OpenAPI_RESTful_service.html">2.2.3 Build an OpenAPI RESTful service</a></li><li><a href="/curriculum\Module-2\Unit-2-What_is_REST\2.2.4-Integration_tests.html">2.2.4 Integration tests</a></li><li><a href="/curriculum\Module-2\Unit-2-What_is_REST\2.2.5-Unit_2_Knowledge_quiz.html">2.2.5 Unit 2 Knowledge quiz</a></li></ul></li><li><a href="/curriculum\Module-2\Unit-3-Cryptography/index.html">Unit 3 Cryptography</a><ul><li><a href="/curriculum\Module-2\Unit-3-Cryptography\2.3.1-Hashing_Functions.html">2.3.1 Hashing Functions</a></li><li><a href="/curriculum\Module-2\Unit-3-Cryptography\2.3.2-Symmetric_Key_Encryption.html">2.3.2 Symmetric Key Encryption</a></li><li><a href="/curriculum\Module-2\Unit-3-Cryptography\2.3.3-Asymmetric_Key_Encryption.html">2.3.3 Asymmetric Key Encryption</a></li><li><a href="/curriculum\Module-2\Unit-3-Cryptography\2.3.4-Unit_3_Knowledge_Quiz.html">2.3.4 Unit 3 Knowledge Quiz</a></li></ul></li><li><a href="/curriculum\Module-2\Unit-4-Authentication/index.html">Unit 4 Authentication</a><ul><li><a href="/curriculum\Module-2\Unit-4-Authentication\2.4.1-Authentication_and_Authorisation.html">2.4.1 Authentication and Authorisation</a></li><li><a href="/curriculum\Module-2\Unit-4-Authentication\2.4.2-What_is_middleware.html">2.4.2 What is middleware</a></li><li><a href="/curriculum\Module-2\Unit-4-Authentication\2.4.3-Session_based_auth.html">2.4.3 Session based auth</a></li><li><a href="/curriculum\Module-2\Unit-4-Authentication\2.4.4-Introduction_to_OAuth.html">2.4.4 Introduction to OAuth</a></li><li><a href="/curriculum\Module-2\Unit-4-Authentication\2.4.5-Token_based_auth.html">2.4.5 Token based auth</a></li><li><a href="/curriculum\Module-2\Unit-4-Authentication\2.4.6-OpenID_Connect.html">2.4.6 OpenID Connect</a></li><li><a href="/curriculum\Module-2\Unit-4-Authentication\2.4.7-Unit_4_Knowledge_Quiz.html">2.4.7 Unit 4 Knowledge Quiz</a></li></ul></li></ul></li><li><a href="/curriculum\Module-3/index.html">Module 3</a><ul><li><a href="/curriculum\Module-3\Unit-1-The-SDLC/index.html">Unit 1 The SDLC</a><ul><li><a href="/curriculum\Module-3\Unit-1-The-SDLC\3.1.1-Business_Impact.html">3.1.1 Business Impact</a></li></ul></li></ul></li></ul></nav>
-        <h1>Inheritance</h1>
+        <h1>Rendering Dynamic Content</h1>
 <h2>Learning Objectives</h2>
 <ul>
-<li>Demonstrate sharing functionality through inheritance</li>
+<li>Create dynamic HTML content from an array of data</li>
 </ul>
 <h2>Pre-requisites</h2>
-<p>TODO</p>
+<ul>
+<li>Lesson <a href="/curriculum/Bootcamp/Unit-2-Databases/0.2.9-Sequelize_part_1.html">Sequelize - part 2</a></li>
+<li>Lesson <a href="/curriculum/Bootcamp/Unit-3-APIs_and_Dynamic_Content/0.3.2-Application_Servers">Application Server</a></li>
+</ul>
 <h2>Lesson</h2>
-<p>The final object oriented pattern we are going to look at is inheritance. This is a way to share functionality in an object oriented paradigm. The idea is very simple. You extend base classes that already exist with additional functionality. If we look at our airports system we have 2 kinds of travellers.</p>
-<table>
-<thead>
-<tr><th>Passengers</th><th>Crew</th></tr>
-</thead>
-<tbody>
-<tr><td><figure><img src="https://user-images.githubusercontent.com/4499581/93331580-6b38a780-f818-11ea-835c-1c579dfe481d.jpg" alt="passengers"><figcaption></figcaption></figure></td><td><figure><img src="https://user-images.githubusercontent.com/4499581/93331575-67a52080-f818-11ea-8308-af97a9a6d6cc.jpg" alt="crew"><figcaption></figcaption></figure></td></tr>
-</tbody>
-</table>
-<p>Both are people, both have a name and take bags when they travel.</p>
-<h3>Base class <code>Person</code></h3>
-<p>A base class is the base from which you might create other types of classes. Let's refactor our code to use a base class <code>Person</code>. A person will have a name and bags - basically the current <code>Passenger</code> class definition we have now needs to be renamed to be <code>Person</code>. Now to restore our <code>Passenger</code> class we should import the <code>Person</code> base class into our <code>Passenger</code> definition and extend it like this.</p>
-<pre><code class="language-javascript"><span class="hljs-keyword">const</span> Person = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./Person&#x27;</span>)
-
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Passenger</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Person</span> </span>{}
-</code></pre>
-<p>That is enough to fix all our current tests. Everything should work as it was. When we create a <code>new Passenger('bob')</code> we will be able to call <code>addBag</code> as this functionality has been inherited from the <code>Person</code> class.</p>
-<p>Our passengers might want functionality specific to them like <code>callAttendant</code>. In this case, we add the method to the <code>Passenger</code> subclass.</p>
-<pre><code class="language-javascript"><span class="hljs-keyword">const</span> Person = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./Person&#x27;</span>)
-
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Passenger</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Person</span> </span>{
-    <span class="hljs-function"><span class="hljs-title">callAttendant</span>(<span class="hljs-params"></span>)</span> {
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Excuses me, Hay there!&#x27;</span>)
-    }
-}
-</code></pre>
-<h3>instanceof</h3>
-<p>Can you see where this is going? One useful operator we want to introduce at this point is <code>instanceof</code>. Now you can make classes, in your code sometimes you'll want to know what type an object is. For example, you might want to know, is this person a <code>Passenger</code> or a <code>Crew</code> member? You can use <code>instanceof</code> to help you work that out.</p>
-<pre><code class="language-javascript">test(<span class="hljs-string">&#x27;is an instance of a Passenger&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
-    <span class="hljs-keyword">const</span> betty = <span class="hljs-keyword">new</span> Passenger(<span class="hljs-string">&#x27;Betty&#x27;</span>)
-    expect(betty <span class="hljs-keyword">instanceof</span> Passenger).toBeTruthy()
+<p>Imagine we are going to build a Restaurant application like Deliveroo or Uber Eats. The application will have an array of restaurants that we want to display on our web page. Handlebars enables us to iterate over an array of data and repeatedly add the same parsed HTML block to our final page. This is how dynamic lists of content are rendered. The example below can be seen all over the Internet and is a good example of a <em>card</em> component.</p>
+<p>TODO - change image</p>
+<p><figure><img src="https://user-images.githubusercontent.com/4499581/95015340-344df880-0644-11eb-8ce4-30609f0de5fe.jpg" alt="example of the card component"><figcaption></figcaption></figure></p>
+<p>Can you recognise the template vs the dynamic content in the example above?</p>
+<h3>Passing the Restaurant data to the view template</h3>
+<p>Our first step is to prepare the data for the view template and the second step is to pass it to the view template.</p>
+<p>The example below uses Sequelize to fetch all the restaurants and then render them.</p>
+<pre><code class="language-javascript">app.get(<span class="hljs-string">&#x27;/&#x27;</span>, <span class="hljs-keyword">async</span> (req, res) =&gt; {
+    <span class="hljs-keyword">const</span> restaurants = <span class="hljs-keyword">await</span> Restaurant.findAll({
+        <span class="hljs-attr">include</span>: [
+            {
+                <span class="hljs-attr">model</span>: Menu, <span class="hljs-attr">as</span>: <span class="hljs-string">&#x27;menus&#x27;</span>,
+                <span class="hljs-attr">include</span>: [{<span class="hljs-attr">model</span>:MenuItem, <span class="hljs-attr">as</span>: <span class="hljs-string">&#x27;items&#x27;</span>}]
+            }
+        ],
+        <span class="hljs-attr">nest</span>: <span class="hljs-literal">true</span>
+    })
+    res.render(<span class="hljs-string">&#x27;home&#x27;</span>, {restaurants})
 })
 </code></pre>
-<h2>Assignment</h2>
-<ul>
-<li>Create the <code>Crew</code> class by extending the <code>Person</code> class. Think about the properties a crew member may have.</li>
-<li>Refactor the <code>Plane</code> class to have a <code>crew</code> property</li>
-<li>When <code>board</code> is called on an instance of a plane, you should iterate over the array and put crew and passengers in the correct property in the plane instance.</li>
-<li>All your refactoring should have tests that cover it</li>
-</ul>
-<p>When you have completed these tasks, create a coverage report using Jest. Add the following line to your package.json</p>
-<pre><code class="language-json">{
-  <span class="hljs-attr">&quot;scripts&quot;</span>: {
-    <span class="hljs-attr">&quot;test&quot;</span>: <span class="hljs-string">&quot;jest --watchAll&quot;</span>,
-    <span class="hljs-attr">&quot;test:report&quot;</span>: <span class="hljs-string">&quot;jest --coverage=true&quot;</span>
-  },
-  <span class="hljs-attr">&quot;dependencies&quot;</span>: {
-    <span class="hljs-attr">&quot;jest&quot;</span>: <span class="hljs-string">&quot;^26.4.2&quot;</span>
-  }
-}
+<p>The first argument to <code>res.render</code> is the name of the layout file we want to render. In this example, this refers to a file named <code>home.handlebars</code>.</p>
+<p>The second argument to <code>res.render</code> is the restaurant data returned from the Sequelize query.</p>
+<blockquote>
+<p>Note: To use <code>include</code> as in the code above, make sure your Restaurant class has the appropriate aliases added as described in Lesson <a href="/curriculum/Bootcamp/Unit-2-Databases/0.2.9-Sequelize_part_1.html">Sequelize - part 2</a>. This will enable you to access the menus associated with a restaurant via <code>restaurants.menus</code>.</p>
+</blockquote>
+<p>In our view template there will be an object called 'restaurants' that will be the array of data that came from <code>await Restaurant.findAll()</code>. We can write our HTML content and insert Handlebars placeholders for dynamic content. This is very much like 'mail merge' in Word.</p>
+<p>To repeat a block of code for every item in an array we can use the built in Handlebars template helper <code>{{#each}}</code>. The code below iterates over the list of restaurants and displays the name and number of menus in each restaurant.</p>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Restaurants<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">section</span>&gt;</span>
+    {{#each restaurants}}
+        <span class="hljs-tag">&lt;<span class="hljs-name">article</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">main</span>&gt;</span>{{this.name}}<span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">footer</span>&gt;</span>{{this.menus.length}} menus<span class="hljs-tag">&lt;/<span class="hljs-name">footer</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">article</span>&gt;</span>
+    {{/each}}
+<span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
 </code></pre>
-<p>Then run <code>npm run test:report</code> - you are aiming for 100% test coverage.</p>
-<p>You should see that Jest generates a 'coverage' report in your project folder under <code>/coverage/Icov-report/index.html</code>. Open this in your browser to view coverage by line, branch, function and statement.</p>
-<p><figure><img src="https://user-images.githubusercontent.com/4499581/93334401-cc627a00-f81c-11ea-9c98-4825235c06a4.png" alt="test coverage report showing statements, branches, functions and line coverage"><figcaption></figcaption></figure></p>
-<p>The report is interactive hence you can click and drill down into a specific class.</p>
-<p>Commit all your code and a screenshot of your coverage report into Github and share the link with your coach for review.</p>
+<p>From the code above where does the repeating block of HTML begin and end? Load the page in your browser, when you inspect the HTML in the <code>Layouts</code> section of Developer Tools, what do you expect to see?</p>
+<h2>Assignment</h2>
+<ol>
+<li>If you have not completed Lesson <a href="/curriculum/Bootcamp/Unit-2-Databases/0.2.9-Sequelize_part_2.html">Sequelize - part 2</a> then please obtain the sample solution code for this lesson. Copy the <code>.js</code> files into your project directory and install any required dependencies.</li>
+<li>Run <code>node populateDB.js</code> to load the restaurant JSON file and insert matching rows into the Restaurant, Menu and MenuItems tables.</li>
+<li>Follow the instructions from this lesson to render all the restaurants onto a web page.</li>
+<li>Commit your code into Github and share the link with your coach for review.</li>
+</ol>
 <h3>Assignment extension tasks</h3>
-<p>TODO</p>
+<p>Display all the items associated with each menu.</p>
 <h2>Additional resources</h2>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=TV7T_vKMid4">Passing Variables To Node Webpages With Handlebars (3 minutes)</a></li>
+<li><a href="https://www.youtube.com/watch?v=JbrqxPcuYVc">using the <code>each</code> Handlebars helper keyword (13 mins)</a></li>
+</ul>
 
         <script src="/curriculum/js/tabbed-code-blocks.js"></script>
         <script>
