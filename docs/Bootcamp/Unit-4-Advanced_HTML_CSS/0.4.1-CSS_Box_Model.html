@@ -2,7 +2,7 @@
 <html lang="en-GB">
     <head>
         <meta charset="utf-8">
-        <title> Unit 2 - Databases</title>
+        <title> CSS Box Model</title>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link rel="shortcut icon" type="image/x-icon" href="/curriculum/favicon.ico"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/an-old-hope.min.css">
@@ -22,10 +22,64 @@
             onkeydown="event => {event.keyCode === 13 ? toggleNav() : null}"
             tabindex="1">Table of contents</button>
         <nav id="navigation"><ul><li><a href="/curriculum\Bootcamp/index.html">Bootcamp</a><ul><li><a href="/curriculum\Bootcamp\FAQ.html">FAQ</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming/index.html">Unit 1 Object Oriented Programming</a><ul><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.1-JavaScript_Objects_and_Functions.html">0.1.1 JavaScript Objects and Functions</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.2-Test_Driven_Development.html">0.1.2 Test Driven Development</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.3-Objects_in_an_Airport_Domain.html">0.1.3 Objects in an Airport Domain</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.4-Static_functions_and_properties.html">0.1.4 Static functions and properties</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.5-Inheritance.html">0.1.5 Inheritance</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.6-Asynchronous_JavaScript.html">0.1.6 Asynchronous JavaScript</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.7-Asynchronous_Airport_Data_Load.html">0.1.7 Asynchronous Airport Data Load</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.8-Scooter_Hire_System.html">0.1.8 Scooter Hire System</a></li></ul></li><li><a href="/curriculum\Bootcamp\Unit-2-Databases/index.html">Unit 2 Databases</a><ul><li><a href="/curriculum\Bootcamp\Unit-2-Databases\0.2.1-Logical_Data_Model.html">0.2.1 Logical Data Model</a></li><li><a href="/curriculum\Bootcamp\Unit-2-Databases\0.2.10-Sequelize_part_2.html">0.2.10 Sequelize part 2</a></li><li><a href="/curriculum\Bootcamp\Unit-2-Databases\0.2.2-Implementing_the_Logical_Data_Model.html">0.2.2 Implementing the Logical Data Model</a></li><li><a href="/curriculum\Bootcamp\Unit-2-Databases\0.2.3-Basic_SQL_Commands.html">0.2.3 Basic SQL Commands</a></li><li><a href="/curriculum\Bootcamp\Unit-2-Databases\0.2.4-SQL_Joins.html">0.2.4 SQL Joins</a></li><li><a href="/curriculum\Bootcamp\Unit-2-Databases\0.2.5-Database_access_using_Node.html">0.2.5 Database access using Node</a></li><li><a href="/curriculum\Bootcamp\Unit-2-Databases\0.2.6-Populating_databases_from_JSON.html">0.2.6 Populating databases from JSON</a></li><li><a href="/curriculum\Bootcamp\Unit-2-Databases\0.2.7-Object_Relational_Mapping_part_1.html">0.2.7 Object Relational Mapping part 1</a></li><li><a href="/curriculum\Bootcamp\Unit-2-Databases\0.2.8-Object_Relational_Mapping_part_2.html">0.2.8 Object Relational Mapping part 2</a></li><li><a href="/curriculum\Bootcamp\Unit-2-Databases\0.2.9-Sequelize_part_1.html">0.2.9 Sequelize part 1</a></li></ul></li><li><a href="/curriculum\Bootcamp\Unit-3-APIs_and_Dynamic_Content/index.html">Unit 3 APIs and Dynamic Content</a><ul><li><a href="/curriculum\Bootcamp\Unit-3-APIs_and_Dynamic_Content\0.3.1-Web_Servers.html">0.3.1 Web Servers</a></li><li><a href="/curriculum\Bootcamp\Unit-3-APIs_and_Dynamic_Content\0.3.10-Full_CRUD_operations.html">0.3.10 Full CRUD operations</a></li><li><a href="/curriculum\Bootcamp\Unit-3-APIs_and_Dynamic_Content\0.3.11-Restaurant_ratings.html">0.3.11 Restaurant ratings</a></li><li><a href="/curriculum\Bootcamp\Unit-3-APIs_and_Dynamic_Content\0.3.2-Application_Servers.html">0.3.2 Application Servers</a></li><li><a href="/curriculum\Bootcamp\Unit-3-APIs_and_Dynamic_Content\0.3.3-Rendering_Dynamic_Content.html">0.3.3 Rendering Dynamic Content</a></li><li><a href="/curriculum\Bootcamp\Unit-3-APIs_and_Dynamic_Content\0.3.6-Route_Parameters.html">0.3.6 Route Parameters</a></li><li><a href="/curriculum\Bootcamp\Unit-3-APIs_and_Dynamic_Content\0.3.8-Server_side_Validation.html">0.3.8 Server side Validation</a></li><li><a href="/curriculum\Bootcamp\Unit-3-APIs_and_Dynamic_Content\0.3.9-CRUD_operations.html">0.3.9 CRUD operations</a></li></ul></li><li><a href="/curriculum\Bootcamp\Unit-4-Advanced_HTML_CSS/index.html">Unit 4 Advanced HTML CSS</a><ul><li><a href="/curriculum\Bootcamp\Unit-4-Advanced_HTML_CSS\0.4.1-CSS_Box_Model.html">0.4.1 CSS Box Model</a></li><li><a href="/curriculum\Bootcamp\Unit-4-Advanced_HTML_CSS\0.4.2-Responsive_CSS_Grids.html">0.4.2 Responsive CSS Grids</a></li><li><a href="/curriculum\Bootcamp\Unit-4-Advanced_HTML_CSS\0.4.3-Client_side_JavaScript.html">0.4.3 Client side JavaScript</a></li><li><a href="/curriculum\Bootcamp\Unit-4-Advanced_HTML_CSS\0.4.4-HTML_DOM_Events.html">0.4.4 HTML DOM Events</a></li><li><a href="/curriculum\Bootcamp\Unit-4-Advanced_HTML_CSS\0.4.5-HTML_Forms.html">0.4.5 HTML Forms</a></li></ul></li><li><a href="/curriculum\Bootcamp\Unit-5-Website_Testing/index.html">Unit 5 Website Testing</a><ul><li><a href="/curriculum\Bootcamp\Unit-5-Website_Testing\0.5.1-Cypress_Testing.html">0.5.1 Cypress Testing</a></li><li><a href="/curriculum\Bootcamp\Unit-5-Website_Testing\0.5.2-Accessibility_Testing.html">0.5.2 Accessibility Testing</a></li></ul></li><li><a href="/curriculum\Bootcamp\Unit-6-End_Of_Bootcamp_Assessment/index.html">Unit 6 End Of Bootcamp Assessment</a><ul><li><a href="/curriculum\Bootcamp\Unit-6-End_Of_Bootcamp_Assessment\0.6.1-TODO.html">0.6.1 TODO</a></li></ul></li></ul></li><li><a href="/curriculum\Module-2/index.html">Module 2</a><ul><li><a href="/curriculum\Module-2\Unit-1-The_Anatomy_of_the_HTTP_request/index.html">Unit 1 The Anatomy of the HTTP request</a><ul><li><a href="/curriculum\Module-2\Unit-1-The_Anatomy_of_the_HTTP_request\2.1.1-Identifying_the_different_parts_of_HTTP.html">2.1.1 Identifying the different parts of HTTP</a></li><li><a href="/curriculum\Module-2\Unit-1-The_Anatomy_of_the_HTTP_request\2.1.2-Programmatic_HTTP_requests.html">2.1.2 Programmatic HTTP requests</a></li></ul></li><li><a href="/curriculum\Module-2\Unit-2-What_is_REST/index.html">Unit 2 What is REST</a><ul><li><a href="/curriculum\Module-2\Unit-2-What_is_REST\2.2.1-REST_and_the_openAPI_spec.html">2.2.1 REST and the openAPI spec</a></li><li><a href="/curriculum\Module-2\Unit-2-What_is_REST\2.2.2-The_OpenAPI_spec.html">2.2.2 The OpenAPI spec</a></li><li><a href="/curriculum\Module-2\Unit-2-What_is_REST\2.2.3-Build_an_OpenAPI_RESTful_service.html">2.2.3 Build an OpenAPI RESTful service</a></li><li><a href="/curriculum\Module-2\Unit-2-What_is_REST\2.2.4-Integration_tests.html">2.2.4 Integration tests</a></li><li><a href="/curriculum\Module-2\Unit-2-What_is_REST\2.2.5-Unit_2_Knowledge_quiz.html">2.2.5 Unit 2 Knowledge quiz</a></li></ul></li><li><a href="/curriculum\Module-2\Unit-3-Cryptography/index.html">Unit 3 Cryptography</a><ul><li><a href="/curriculum\Module-2\Unit-3-Cryptography\2.3.1-Hashing_Functions.html">2.3.1 Hashing Functions</a></li><li><a href="/curriculum\Module-2\Unit-3-Cryptography\2.3.2-Symmetric_Key_Encryption.html">2.3.2 Symmetric Key Encryption</a></li><li><a href="/curriculum\Module-2\Unit-3-Cryptography\2.3.3-Asymmetric_Key_Encryption.html">2.3.3 Asymmetric Key Encryption</a></li><li><a href="/curriculum\Module-2\Unit-3-Cryptography\2.3.4-Unit_3_Knowledge_Quiz.html">2.3.4 Unit 3 Knowledge Quiz</a></li></ul></li><li><a href="/curriculum\Module-2\Unit-4-Authentication/index.html">Unit 4 Authentication</a><ul><li><a href="/curriculum\Module-2\Unit-4-Authentication\2.4.1-Authentication_and_Authorisation.html">2.4.1 Authentication and Authorisation</a></li><li><a href="/curriculum\Module-2\Unit-4-Authentication\2.4.2-What_is_middleware.html">2.4.2 What is middleware</a></li><li><a href="/curriculum\Module-2\Unit-4-Authentication\2.4.3-Session_based_auth.html">2.4.3 Session based auth</a></li><li><a href="/curriculum\Module-2\Unit-4-Authentication\2.4.4-Introduction_to_OAuth.html">2.4.4 Introduction to OAuth</a></li><li><a href="/curriculum\Module-2\Unit-4-Authentication\2.4.5-Token_based_auth.html">2.4.5 Token based auth</a></li><li><a href="/curriculum\Module-2\Unit-4-Authentication\2.4.6-OpenID_Connect.html">2.4.6 OpenID Connect</a></li><li><a href="/curriculum\Module-2\Unit-4-Authentication\2.4.7-Unit_4_Knowledge_Quiz.html">2.4.7 Unit 4 Knowledge Quiz</a></li></ul></li></ul></li><li><a href="/curriculum\Module-3/index.html">Module 3</a><ul><li><a href="/curriculum\Module-3\Unit-1-The-SDLC/index.html">Unit 1 The SDLC</a><ul><li><a href="/curriculum\Module-3\Unit-1-The-SDLC\3.1.1-Business_Impact.html">3.1.1 Business Impact</a></li></ul></li></ul></li></ul></nav>
-        <h1>Unit 2 - Databases</h1>
-<p>This Unit focuses on relational databases and how to use Node.js to create, read, update and delete data held within tables. It also discusses popular Object Relational Mapping tools such as Sequelize.</p>
-<h2>End of Unit formative assessment</h2>
-<p><a href="https://www.w3schools.com/quiztest/quiztest.asp?qtest=SQL">SQL Quiz</a></p>
+        <h1>CSS Box Model</h1>
+<h2>Learning Objectives</h2>
+<ul>
+<li>Understand the CSS Box Model</li>
+<li>Style the background properties of an HTML element</li>
+<li>Use different positioning properties of CSS</li>
+</ul>
+<h2>Pre-requisites</h2>
+<ul>
+<li>Lesson <a href="/curriculum/Bootcamp/Unit-3-APIs_and_Dynamic_Content/0.3.4-Responsive_CSS_Grids">Responsive CSS Grids</a></li>
+</ul>
+<h2>Lesson</h2>
+<p>Previously, we considered the layout of all the elements on our page. Now we need to consider the individual components. To really get to grips with styling HTML using CSS you need to study and understand the CSS Box Model.</p>
+<p>TODO - brand this<br>
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vR9fXGQK-iEBE2zaLeilLJlAM0_90xheU8S1VTGyvT08hmVuKDK-sPlL34MeXf3bv-Pl8zBw9caaHti/embed" width="100%" height="444px" allowfullscreen frameborder=0></iframe></p>
+<p>In the CSS Box Model. the browser represents each element as a rectangular box. We can use CSS to determine the size, position and properties of each box.</p>
+<h3>background-image</h3>
+<p>We want to display an restaurant image in each 'card' in our CSS Grid layout. The issue we face is that different restaurant images are different sizes, yet we want them all to fit in our card nicely regardless. The trick that lots of developers use to accomplish this is use the <code>background-image</code> property. Setting an image as a background image in CSS gives us flexible sizing and cropping capabilities. This is very useful when our content is dynamic and we have images of varying sizes to deal with.</p>
+<p>To update your card to display the background image of your restaurant you need to modify the HTML in your <code>home.handlebars</code> file as follows.</p>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Restaurants<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">section</span>&gt;</span>
+    {{#each restaurants}}
+        <span class="hljs-tag">&lt;<span class="hljs-name">article</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">header</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;background-image: url({{this.image}})&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">main</span>&gt;</span>{{this.name}}<span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">footer</span>&gt;</span>{{this.menus.length}} menus<span class="hljs-tag">&lt;/<span class="hljs-name">footer</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">article</span>&gt;</span>
+    {{/each}}
+<span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
+</code></pre>
+<p>To display the image correctly, you also need to modify the <code>styles.css</code> file and target the <code>&lt;header&gt;</code> element inside the <code>&lt;article&gt;</code> to set some background properties including the image height.</p>
+<pre><code class="language-css"><span class="hljs-selector-tag">article</span> <span class="hljs-selector-tag">header</span> {
+    <span class="hljs-attribute">height</span>: <span class="hljs-number">24rem</span>;
+    <span class="hljs-attribute">background-repeat</span>: no-repeat;
+    <span class="hljs-attribute">background-size</span>: cover;
+    <span class="hljs-attribute">background-position</span>: center center;
+}
+</code></pre>
+<p>By default, a <code>background-image</code> is placed at the top-left corner of an element and repeated both vertically and horizontally. The background of an element is the total size of the element including padding and border (but not the margin).</p>
+<p>The CSS <code>background-repeat</code> property of <code>no-repeat</code> tells the browser to centre the image vertically and horizontally.</p>
+<p>The CSS <code>background-size</code> property of <code>cover</code> tells<br>
+the browser to cover the whole element's background with the image.</p>
+<p>The CSS <code>background-position</code> property of <code>center center</code> tells the browser to avoid repeating the image.</p>
+<p>Note that <a href="https://www.w3schools.com/css/css3_flexbox.asp">Flexbox</a> is really powerful when styling smaller components. Once a parent element is <code>display:flex</code> its behavior changes. Now items line up in a row. You can change this <code>flex-direction</code> to column. The beauty of flex is being able to have elements fill (or flex) arbitrary space. We can also position elements along the flex axis.</p>
+<h2>Assignment</h2>
+<ol>
+<li>Style your restaurant card so it displays the restaurant image, the name of the restaurant and the number of menus.</li>
+<li>Commit your code into Github and share the link with your coach for review.</li>
+</ol>
+<h3>Assignment extension tasks</h3>
+<ul>
+<li>Read up on more <a href="https://www.w3schools.com/cssref/css3_pr_background.asp">CSS Background properties</a>.</li>
+<li>Background images aren't printed by default - why do you think this is?</li>
+</ul>
+<h2>Additional resources</h2>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=WH-86nJPVNk">Video - CSS Box Model (4 mins)</a></li>
+</ul>
 
         <script src="/curriculum/js/tabbed-code-blocks.js"></script>
         <script>
