@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+    <head>
+        <meta charset="utf-8">
+        <title> Web Servers</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="shortcut icon" type="image/x-icon" href="/curriculum/favicon.ico"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/an-old-hope.min.css">
+        <link rel="stylesheet" href="/curriculum/style.css"/>
+        <script src="/curriculum/js/highlight.min.js"></script>
+        <script src="/curriculum/js/bash.min.js"></script>
+        <script src="/curriculum/js/java.min.js"></script>
+        <script src="/curriculum/js/javascript.min.js"></script>
+        <script src="/curriculum/js/sql.min.js"></script>
+    </head>
+    <body>
+        <button 
+            id="navigation-toggle"
+            aria-expanded="false"
+            aria-haspopup="true"
+            onclick="toggleNav()"
+            onkeydown="event => {event.keyCode === 13 ? toggleNav() : null}"
+            tabindex="1">Table of contents</button>
+        <nav id="navigation"><ul><li><a href="/curriculum\Bootcamp/index.html">Bootcamp</a><ul><li><a href="/curriculum\Bootcamp\FAQ.html">FAQ</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming/index.html">Unit 1 Object Oriented Programming</a><ul><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.1-JavaScript_Objects_and_Functions.html">0.1.1 JavaScript Objects and Functions</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.2-Test_Driven_Development.html">0.1.2 Test Driven Development</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.3-Objects_in_an_Airport_Domain.html">0.1.3 Objects in an Airport Domain</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.4-Static_functions_and_properties.html">0.1.4 Static functions and properties</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.5-Inheritance.html">0.1.5 Inheritance</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.8-Scooter_Hire_System.html">0.1.8 Scooter Hire System</a></li></ul></li><li><a href="/curriculum\Bootcamp\Unit-2-Asynchronous_JavaScript/index.html">Unit 2 Asynchronous JavaScript</a><ul><li><a href="/curriculum\Bootcamp\Unit-2-Asynchronous_JavaScript\0.2.1-Asynchronous_JavaScript.html">0.2.1 Asynchronous JavaScript</a></li><li><a href="/curriculum\Bootcamp\Unit-2-Asynchronous_JavaScript\0.2.2-Asynchronous_Airport_Data_Load.html">0.2.2 Asynchronous Airport Data Load</a></li></ul></li><li><a href="/curriculum\Bootcamp\Unit-3-Databases/index.html">Unit 3 Databases</a><ul><li><a href="/curriculum\Bootcamp\Unit-3-Databases\0.3.1-Logical_Data_Model.html">0.3.1 Logical Data Model</a></li><li><a href="/curriculum\Bootcamp\Unit-3-Databases\0.3.10-Sequelize_part_2.html">0.3.10 Sequelize part 2</a></li><li><a href="/curriculum\Bootcamp\Unit-3-Databases\0.3.2-Implementing_the_Logical_Data_Model.html">0.3.2 Implementing the Logical Data Model</a></li><li><a href="/curriculum\Bootcamp\Unit-3-Databases\0.3.3-Basic_SQL_Commands.html">0.3.3 Basic SQL Commands</a></li><li><a href="/curriculum\Bootcamp\Unit-3-Databases\0.3.4-SQL_Joins.html">0.3.4 SQL Joins</a></li><li><a href="/curriculum\Bootcamp\Unit-3-Databases\0.3.5-Database_access_using_Node.html">0.3.5 Database access using Node</a></li><li><a href="/curriculum\Bootcamp\Unit-3-Databases\0.3.6-Populating_databases_from_JSON.html">0.3.6 Populating databases from JSON</a></li><li><a href="/curriculum\Bootcamp\Unit-3-Databases\0.3.7-Object_Relational_Mapping_part_1.html">0.3.7 Object Relational Mapping part 1</a></li><li><a href="/curriculum\Bootcamp\Unit-3-Databases\0.3.8-Object_Relational_Mapping_part_2.html">0.3.8 Object Relational Mapping part 2</a></li><li><a href="/curriculum\Bootcamp\Unit-3-Databases\0.3.9-Sequelize_part_1.html">0.3.9 Sequelize part 1</a></li></ul></li><li><a href="/curriculum\Bootcamp\Unit-4-Advanced_HTML_CSS/index.html">Unit 4 Advanced HTML CSS</a><ul><li><a href="/curriculum\Bootcamp\Unit-4-Advanced_HTML_CSS\0.4.1-CSS_Box_Model.html">0.4.1 CSS Box Model</a></li><li><a href="/curriculum\Bootcamp\Unit-4-Advanced_HTML_CSS\0.4.2-Responsive_CSS_Grids.html">0.4.2 Responsive CSS Grids</a></li><li><a href="/curriculum\Bootcamp\Unit-4-Advanced_HTML_CSS\0.4.3-Flexbox.html">0.4.3 Flexbox</a></li><li><a href="/curriculum\Bootcamp\Unit-4-Advanced_HTML_CSS\0.4.4-Client_side_JavaScript.html">0.4.4 Client side JavaScript</a></li><li><a href="/curriculum\Bootcamp\Unit-4-Advanced_HTML_CSS\0.4.5-HTML_DOM_Events.html">0.4.5 HTML DOM Events</a></li><li><a href="/curriculum\Bootcamp\Unit-4-Advanced_HTML_CSS\0.4.6-HTML_Forms.html">0.4.6 HTML Forms</a></li></ul></li><li><a href="/curriculum\Bootcamp\Unit-5-APIs_and_Dynamic_Content/index.html">Unit 5 APIs and Dynamic Content</a><ul><li><a href="/curriculum\Bootcamp\Unit-5-APIs_and_Dynamic_Content\0.5.1-Web_Servers.html">0.5.1 Web Servers</a></li><li><a href="/curriculum\Bootcamp\Unit-5-APIs_and_Dynamic_Content\0.5.2-Application_Servers.html">0.5.2 Application Servers</a></li><li><a href="/curriculum\Bootcamp\Unit-5-APIs_and_Dynamic_Content\0.5.3-Rendering_Dynamic_Content.html">0.5.3 Rendering Dynamic Content</a></li><li><a href="/curriculum\Bootcamp\Unit-5-APIs_and_Dynamic_Content\0.5.4-Route_Parameters.html">0.5.4 Route Parameters</a></li><li><a href="/curriculum\Bootcamp\Unit-5-APIs_and_Dynamic_Content\0.5.5-Server_side_Validation.html">0.5.5 Server side Validation</a></li><li><a href="/curriculum\Bootcamp\Unit-5-APIs_and_Dynamic_Content\0.5.6-CRUD_operations.html">0.5.6 CRUD operations</a></li><li><a href="/curriculum\Bootcamp\Unit-5-APIs_and_Dynamic_Content\0.5.7-Full_CRUD_operations.html">0.5.7 Full CRUD operations</a></li><li><a href="/curriculum\Bootcamp\Unit-5-APIs_and_Dynamic_Content\0.5.8-Restaurant_ratings.html">0.5.8 Restaurant ratings</a></li></ul></li><li><a href="/curriculum\Bootcamp\Unit-6-Website_Testing/index.html">Unit 6 Website Testing</a><ul><li><a href="/curriculum\Bootcamp\Unit-6-Website_Testing\0.6.1-Cypress_Testing.html">0.6.1 Cypress Testing</a></li><li><a href="/curriculum\Bootcamp\Unit-6-Website_Testing\0.6.2-Accessibility_Testing.html">0.6.2 Accessibility Testing</a></li></ul></li><li><a href="/curriculum\Bootcamp\Unit-7-End_Of_Bootcamp_Assessment/index.html">Unit 7 End Of Bootcamp Assessment</a><ul><li><a href="/curriculum\Bootcamp\Unit-7-End_Of_Bootcamp_Assessment\0.7.1-TODO.html">0.7.1 TODO</a></li></ul></li></ul></li><li><a href="/curriculum\Module-2/index.html">Module 2</a><ul><li><a href="/curriculum\Module-2\Unit-1-The_Anatomy_of_the_HTTP_request/index.html">Unit 1 The Anatomy of the HTTP request</a><ul><li><a href="/curriculum\Module-2\Unit-1-The_Anatomy_of_the_HTTP_request\2.1.1-Identifying_the_different_parts_of_HTTP.html">2.1.1 Identifying the different parts of HTTP</a></li><li><a href="/curriculum\Module-2\Unit-1-The_Anatomy_of_the_HTTP_request\2.1.2-Programmatic_HTTP_requests.html">2.1.2 Programmatic HTTP requests</a></li></ul></li><li><a href="/curriculum\Module-2\Unit-2-What_is_REST/index.html">Unit 2 What is REST</a><ul><li><a href="/curriculum\Module-2\Unit-2-What_is_REST\2.2.1-REST_and_the_openAPI_spec.html">2.2.1 REST and the openAPI spec</a></li><li><a href="/curriculum\Module-2\Unit-2-What_is_REST\2.2.2-The_OpenAPI_spec.html">2.2.2 The OpenAPI spec</a></li><li><a href="/curriculum\Module-2\Unit-2-What_is_REST\2.2.3-Build_an_OpenAPI_RESTful_service.html">2.2.3 Build an OpenAPI RESTful service</a></li><li><a href="/curriculum\Module-2\Unit-2-What_is_REST\2.2.4-Integration_tests.html">2.2.4 Integration tests</a></li><li><a href="/curriculum\Module-2\Unit-2-What_is_REST\2.2.5-Unit_2_Knowledge_quiz.html">2.2.5 Unit 2 Knowledge quiz</a></li></ul></li><li><a href="/curriculum\Module-2\Unit-3-Cryptography/index.html">Unit 3 Cryptography</a><ul><li><a href="/curriculum\Module-2\Unit-3-Cryptography\2.3.1-Hashing_Functions.html">2.3.1 Hashing Functions</a></li><li><a href="/curriculum\Module-2\Unit-3-Cryptography\2.3.2-Symmetric_Key_Encryption.html">2.3.2 Symmetric Key Encryption</a></li><li><a href="/curriculum\Module-2\Unit-3-Cryptography\2.3.3-Asymmetric_Key_Encryption.html">2.3.3 Asymmetric Key Encryption</a></li><li><a href="/curriculum\Module-2\Unit-3-Cryptography\2.3.4-Unit_3_Knowledge_Quiz.html">2.3.4 Unit 3 Knowledge Quiz</a></li></ul></li><li><a href="/curriculum\Module-2\Unit-4-Authentication/index.html">Unit 4 Authentication</a><ul><li><a href="/curriculum\Module-2\Unit-4-Authentication\2.4.1-Authentication_and_Authorisation.html">2.4.1 Authentication and Authorisation</a></li><li><a href="/curriculum\Module-2\Unit-4-Authentication\2.4.2-What_is_middleware.html">2.4.2 What is middleware</a></li><li><a href="/curriculum\Module-2\Unit-4-Authentication\2.4.3-Session_based_auth.html">2.4.3 Session based auth</a></li><li><a href="/curriculum\Module-2\Unit-4-Authentication\2.4.4-Introduction_to_OAuth.html">2.4.4 Introduction to OAuth</a></li><li><a href="/curriculum\Module-2\Unit-4-Authentication\2.4.5-Token_based_auth.html">2.4.5 Token based auth</a></li><li><a href="/curriculum\Module-2\Unit-4-Authentication\2.4.6-OpenID_Connect.html">2.4.6 OpenID Connect</a></li><li><a href="/curriculum\Module-2\Unit-4-Authentication\2.4.7-Unit_4_Knowledge_Quiz.html">2.4.7 Unit 4 Knowledge Quiz</a></li></ul></li></ul></li><li><a href="/curriculum\Module-3/index.html">Module 3</a><ul><li><a href="/curriculum\Module-3\Unit-1-The-SDLC/index.html">Unit 1 The SDLC</a><ul><li><a href="/curriculum\Module-3\Unit-1-The-SDLC\3.1.1-Business_Impact.html">3.1.1 Business Impact</a></li></ul></li></ul></li></ul></nav>
+        <h1>Web Servers</h1>
+<h2>Learning Objectives</h2>
+<ul>
+<li>Build a web server serving static content using <a href="https://expressjs.com/">Node.js Express</a></li>
+<li>Understand the difference between static and dynamic content</li>
+</ul>
+<h2>Pre-requisites</h2>
+<h2>Lesson</h2>
+<p>What is a server? The simple answer is a computer that provides services to other computers. From that definition you can tell servers are often found on networks. For example, an office might have a 'file server' a computer where office workers can read and write files that can be accessed by any other computer on the network.</p>
+<p>In this lesson we are going to focus on creating a 'web server' using the <a href="https://expressjs.com/">Express</a> web framework for Node.js.</p>
+<p>A 'web server' responds to requests for <code>.html</code> files by sending back the HTML contents of that file.</p>
+<p>To create a web server we firstly install the node module 'Express' using <code>npm install express</code>. Next we create a file called <code>server.js</code> containing the following logic:</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">const</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;express&#x27;</span>);
+
+<span class="hljs-keyword">const</span> app = express();
+<span class="hljs-keyword">const</span> port = <span class="hljs-number">3000</span>;
+
+<span class="hljs-comment">// serve static assets from the public/ folder</span>
+app.use(express.static(<span class="hljs-string">&#x27;public&#x27;</span>));
+
+app.listen(port, <span class="hljs-function">() =&gt;</span> {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Server listening at http://localhost:<span class="hljs-subst">${port}</span>`</span>)
+})
+</code></pre>
+<p>In the code above, after importing the Express module we create an instance of a web server and call it <code>app</code>. Then we configure the server to serve 'static' assets from the <code>public/</code> folder. A 'static' asset is a file that is simply read off of disc and then returned to the user.</p>
+<p>Next, we need to add an HTML file in our <code>public</code> folder called <code>index.html</code>. For now it can just be a very simple 'hello world' page as per the HTML below. Naming the file <code>index.html</code> makes it the default page Express will respond with when requests are made to the root endpoint of the server.</p>
+<pre><code class="language-html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Hello World<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre>
+<p>To start your server, run the command <code>node server.js</code> in the root directory of your project. You should see a message logged indicating your web server is running. Visit <code>http://localhost:3000/</code> to see your HTML page.</p>
+<p>Your server will serve your HTML page to any other computer that asks for it. Your computer does however need to be publicly accessible, so it will not work unless you expose it to the wider Internet, or deploy your server code online.</p>
+<p>We can serve different kinds of files from our public folder. For example, a <code>.css</code> file or a JavaScript file. Let's try to add some style to our HTML page using a <code>style.css</code> file.</p>
+<pre><code class="language-css">* {
+    <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+}
+<span class="hljs-selector-tag">body</span> {
+    <span class="hljs-attribute">font-family</span>: <span class="hljs-string">&#x27;Open Sans&#x27;</span>, <span class="hljs-string">&#x27;Helvetica Neue&#x27;</span>, sans-serif;
+    <span class="hljs-attribute">color</span>: <span class="hljs-built_in">rgb</span>(<span class="hljs-number">35</span>, <span class="hljs-number">1</span>, <span class="hljs-number">35</span>);
+    <span class="hljs-attribute">background-color</span>: <span class="hljs-built_in">rgb</span>(<span class="hljs-number">255</span>, <span class="hljs-number">228</span>, <span class="hljs-number">225</span>);
+}
+</code></pre>
+<p>We'll update our <code>index.html</code> file to request this file from the server.</p>
+<pre><code class="language-html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;/style.css&quot;</span>/&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Hello World<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre>
+<p>Notice the <code>&quot;/style.css&quot;</code> is not a file path. It is a URL (Uniform Resource Locator). The browser will actually read this URL as <code>http://localhost:3000/style.css</code> and if you visit that in your browser you'll see the content of your CSS.</p>
+<p>Now, when a request is made to our web server for the <code>index.html</code> page, when that page loads in the browser it makes a request for another file, our <code>style.css</code> file.</p>
+<p>Under <code>Developer Tools</code> in your Chrome browser you should be able to see in the <code>Network</code> tab, the request the <code>index.html</code> page makes for the <code>style.css</code> file. Once all these additional requests for assets and files have finished, the browser <code>document</code> will emit an 'onload' event signalling your page has loaded.</p>
+<p><img width="424" alt="httpRequests" src="https://user-images.githubusercontent.com/1316724/105642249-89767a00-5e80-11eb-9deb-2e8f753e8b9b.PNG"></p>
+<h2>Assignment</h2>
+<ol>
+<li><p>Create a <a href="/curriculum/Bootcamp/FAQ#createNewProject">new Node.js project</a> for this assignment</p></li>
+<li><p>Install Express using <code>npm install express</code></p></li>
+<li><p>Use the instructions above to create a web server running on port 3000, serving static content from the <code>public</code> directory</p></li>
+<li><p>Create an <code>index.html</code> page with a linked CSS file</p></li>
+<li><p>Visit <code>http://localhost:3000/</code> to see your HTML page</p></li>
+<li><p>Validate that you see the files being loaded in the <code>Network</code> section of your browser's <code>Developer Tools</code>. Look at the HTTP status codes, what happens to them when you refresh?</p></li>
+<li><p>Now try creating additional HTML pages and link them using anchor tags e.g.</p>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;/about.html&quot;</span>&gt;</span>About me<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+</code></pre></li>
+<li><p>Commit your code into Github and share the link with your coach for review</p></li>
+</ol>
+<h3>Assignment extension tasks</h3>
+<p>Research what HTTP codes may be returned from a web server and in what situation each occurs.</p>
+<h2>Additional resources</h2>
+
+        <script src="/curriculum/js/tabbed-code-blocks.js"></script>
+        <script>
+            function toggleNav() {
+                const button = document.getElementById('navigation-toggle')
+                const isAriaExp = button.getAttribute('aria-expanded')
+                const newAriaExp = (isAriaExp == "false") ? "true" : "false"
+                button.setAttribute('aria-expanded', newAriaExp)
+                const nav = document.getElementById('navigation')
+                nav.style.display = nav.offsetParent ? 'none' : 'block'
+            }
+        </script>
+    </body>
+</html>
