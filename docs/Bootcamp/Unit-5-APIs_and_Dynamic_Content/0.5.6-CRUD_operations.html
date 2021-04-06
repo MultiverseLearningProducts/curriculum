@@ -28,9 +28,9 @@
 <h2>Pre-requisites</h2>
 <p>TODO</p>
 <h2>Lesson</h2>
-<p>In our route handler we have all the information we need to create a new restaurant.</p>
+<p>In our route handler we have all the information we need to create a new restaurant. TODO - need to move this from the Form lesson.</p>
 <p>Now let's add functionality to delete a restaurant. We will need to update our template to have a delete button on the restaurant page. For example:</p>
-<p><figure><img src="https://user-images.githubusercontent.com/4499581/95022824-5dd14900-0671-11eb-9cb3-2d9caa3cbb30.jpg" alt="example of a dynamic href"><figcaption></figcaption></figure></p>
+<p><figure><img src="https://user-images.githubusercontent.com/4499581/95022824-5dd14900-0671-11eb-9cb3-2d9caa3cbb30.jpg" alt="example of a webpage with a button to delete a restaurant"><figcaption></figcaption></figure></p>
 <p>On our server we define a new route and use that to perform the delete operation.</p>
 <pre><code class="language-javascript">app.get(<span class="hljs-string">&#x27;/restaurants/:id/delete&#x27;</span>, <span class="hljs-keyword">async</span> (req, res) =&gt; {
     <span class="hljs-keyword">await</span> Restaurant.findByPk(req.params.id)
@@ -40,7 +40,7 @@
         })
 })
 </code></pre>
-<p>Powerful! But what if we make a typo and want to update our restaurant? This is more involved. We need to provide the user with the Form they used to create the restaurant, populated with the current values. We then need a new update route to post the new values to.</p>
+<p>Powerful! Now what if we make a typo and want to update our restaurant? This is more involved. We need to provide the user with the Form they used to create the restaurant, populated with the current values. We then need a new update route to post the new values to.</p>
 <p>Let's create a new route that will serve an edit template to the user:</p>
 <pre><code class="language-javascript">app.get(<span class="hljs-string">&#x27;/restaurants/:id/edit&#x27;</span>, <span class="hljs-keyword">async</span> (req, res) =&gt; {
     <span class="hljs-keyword">const</span> restaurant = <span class="hljs-keyword">await</span> Restaurant.findByPk(req.params.id)
