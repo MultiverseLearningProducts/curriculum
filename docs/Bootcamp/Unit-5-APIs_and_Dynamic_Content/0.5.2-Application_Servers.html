@@ -26,6 +26,7 @@
 <h2>Learning Objectives</h2>
 <ul>
 <li>Build an application server serving dynamic content using <a href="https://expressjs.com/">Node.js Express</a></li>
+<li>Understand the difference between static and dynamic content</li>
 <li>Create dynamic content using the Handlebars templating framework</li>
 </ul>
 <h2>Pre-requisites</h2>
@@ -36,7 +37,8 @@
 <p>So where does the dynamic content come from? Dynamic content is usually stored in a database or comes from another service. The app responds to a request by fetching some specific content for that user/request and parses that content with a template to create the resulting HTML. The page is built per request 'on-the-fly' and is assembled by our app.</p>
 <p>If we are serving dynamic content, our server is now called an <b>application server</b>.</p>
 <h3>Creating a Route</h3>
-<p>Our server needs to intercept the HTTP request. It's no good just responding with the content of a static file or template. The way we intercept or 'handle' requests is by declaring a 'route' (also known as a REST API endpoint) in our <code>server.js</code> file. Here is an example route which returns the current date when the user navigates to the root endpoint.</p>
+<p>TODO - add in HTTP overview?</p>
+<p>The way we intercept or 'handle' HTTP requests is by declaring a 'route' (also known as a REST API endpoint) in our <code>server.js</code> file. Here is an example route which returns the current date when the user navigates to the root endpoint.</p>
 <pre><code class="language-javascript">app.get(<span class="hljs-string">&#x27;/&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">request, response</span>) =&gt;</span> {
     <span class="hljs-keyword">const</span> date = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>()
     response.send(date)})
@@ -73,7 +75,7 @@ views
 </code></pre>
 <p>We install Handlebars by running</p>
 <blockquote>
-<p><code>npm install handlebars express-handlebars @handlebars/allow-prototype-access</code>.</p>
+<p><code>npm install handlebars express-handlebars @handlebars/allow-prototype-access</code></p>
 </blockquote>
 <p>Once installed, we can <code>require</code> it and set it as the templating engine to use in our Express code.</p>
 <pre><code class="language-javascript"><span class="hljs-keyword">const</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;express&#x27;</span>);
@@ -103,14 +105,15 @@ app.listen(port, <span class="hljs-function">() =&gt;</span> {
     <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Server listening at http://localhost:<span class="hljs-subst">${port}</span>`</span>)
 })
 </code></pre>
+<p>The first argument to <code>response.render</code> is the name of the view template we want to render. In this example, this refers to a file named <code>restaurants.handlebars</code>.<br>
+The second argument to <code>response.render</code> is the dynamic data which will be passed to the view template.</p>
 <h2>Assignment</h2>
 <ol>
 <li><p>Install Handlebars as a Node dependency in your existing project</p></li>
-<li><p>Modify your <code>server.js</code> file to serve both static and dynamic content as per the code above. Start your server by navigating to <code>http://localhost:3000</code>. You should see the date displayed. Use <code>Developer Tools</code> to see the HTTP requests as you refresh the page</p></li>
-<li><p>Create another route handler on your server, <code>/about</code></p></li>
-<li><p>Create another template in the <code>views</code> folder for your new <code>/about</code> page</p></li>
+<li><p>Modify your <code>server.js</code> file to serve both static and dynamic content as per the code above. Start your server by navigating to <code>http://localhost:3000</code>. You should see the date displayed. Use 'Chrome Developer Tools' to see the HTTP requests as you refresh the page.</p></li>
+<li><p>Create another template in the <code>views</code> folder for an <code>about.handlebars</code> page. Add some static text for the page and a placeholder for a string holding the name of the website author.</p></li>
+<li><p>Create another route handler on your server, <code>/about</code>. When the user navigates to this URL, the Express route should render the <code>about.handlebars</code> page and pass in your name as the website author.</p></li>
 <li><p>Add a link from the <code>restaurants</code> page to the <code>about</code> page</p></li>
-<li><p>Display your name on the <code>about</code> page</p></li>
 <li><p>Commit your code into Github and share the link with your coach for review</p></li>
 </ol>
 <h3>Assignment extension tasks</h3>

@@ -30,7 +30,6 @@
 <h2>Pre-requisites</h2>
 <ul>
 <li>Lesson <a href="/curriculum/Bootcamp/Unit-3-Relational_Databases/0.3.9-Sequelize_part_1.html">Sequelize - part 2</a></li>
-<li>Lesson <a href="/curriculum/Bootcamp/Unit-3-Relational_Databases/0.3.2-Application_Servers">Application Server</a></li>
 </ul>
 <h2>Lesson</h2>
 <p>Imagine we are going to build a Restaurant application like Deliveroo or Uber Eats. The application will have an array of restaurants that we want to display on our web page. Handlebars enables us to iterate over an array of data and repeatedly add the same parsed HTML block to our final page. This is how dynamic lists of content are rendered. The example below can be seen all over the Internet and is a good example of a <em>card</em> component.</p>
@@ -40,7 +39,7 @@
 <h3>Passing the Restaurant data to the view template</h3>
 <p>Our first step is to prepare the data for the view template and the second step is to pass it to the view template.</p>
 <p>The example below uses Sequelize to fetch all the restaurants and then render them.</p>
-<pre><code class="language-javascript">app.get(<span class="hljs-string">&#x27;/&#x27;</span>, <span class="hljs-keyword">async</span> (req, res) =&gt; {
+<pre><code class="language-javascript">app.get(<span class="hljs-string">&#x27;/&#x27;</span>, <span class="hljs-keyword">async</span> (request, response) =&gt; {
     <span class="hljs-keyword">const</span> restaurants = <span class="hljs-keyword">await</span> Restaurant.findAll({
         <span class="hljs-attr">include</span>: [
             {
@@ -50,15 +49,15 @@
         ],
         <span class="hljs-attr">nest</span>: <span class="hljs-literal">true</span>
     })
-    res.render(<span class="hljs-string">&#x27;home&#x27;</span>, {restaurants})
+    response.render(<span class="hljs-string">&#x27;home&#x27;</span>, {restaurants})
 })
 </code></pre>
-<p>The first argument to <code>res.render</code> is the name of the layout file we want to render. In this example, this refers to a file named <code>home.handlebars</code>.</p>
-<p>The second argument to <code>res.render</code> is the restaurant data returned from the Sequelize query.</p>
+<p>The first argument to <code>response.render</code> is the name of the view template we want to render. In this example, this refers to a file named <code>home.handlebars</code>.<br>
+The second argument to <code>response.render</code> is the dynamic array of restaurants returned from the Sequelize query. This will be passed to the view template as a variable called <code>restaurants</code>.</p>
 <blockquote>
 <p>Note: To use <code>include</code> as in the code above, make sure your Restaurant class has the appropriate aliases added as described in Lesson <a href="/curriculum/Bootcamp/Unit-3-Relational_Databases/0.3.9-Sequelize_part_1.html">Sequelize - part 2</a>. This will enable you to access the menus associated with a restaurant via <code>restaurants.menus</code>.</p>
 </blockquote>
-<p>In our view template there will be an object called 'restaurants' that will be the array of data that came from <code>await Restaurant.findAll()</code>. We can write our HTML content and insert Handlebars placeholders for dynamic content. This is very much like 'mail merge' in Word.</p>
+<p>In our view template we can write our HTML content and insert Handlebars placeholders where we need to access content from the <code>restaurants</code> array. This is very much like 'mail merge' in Word.</p>
 <p>To repeat a block of code for every item in an array we can use the built in Handlebars template helper <code>{{#each}}</code>. The code below iterates over the list of restaurants and displays the name and number of menus in each restaurant.</p>
 <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Restaurants<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">section</span>&gt;</span>
@@ -71,7 +70,7 @@
     {{/each}}
 <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
 </code></pre>
-<p>From the code above where does the repeating block of HTML begin and end? Load the page in your browser, when you inspect the HTML in the <code>Layouts</code> section of Developer Tools, what do you expect to see?</p>
+<p>From the code above where does the repeating block of HTML begin and end? Load the page in your browser, when you inspect the HTML in the <code>Layouts</code> section of Chrome Developer Tools, what do you expect to see?</p>
 <h2>Assignment</h2>
 <ol>
 <li>If you have not completed Lesson <a href="/curriculum/Bootcamp/Unit-3-Relational_Databases/0.3.9-Sequelize_part_2.html">Sequelize - part 2</a> then please obtain the sample solution code for this lesson. Copy the <code>.js</code> files into your project directory and install any required dependencies.</li>
