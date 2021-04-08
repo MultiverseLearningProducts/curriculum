@@ -77,13 +77,14 @@
   <span class="hljs-attribute">color</span>: red;
 }
 </code></pre>
-<p>You can see the result: (https://jsfiddle.net/2qsrdzhf/7/)[here]. Notice that the global paragraph styles apply to both customised paragraph selectors - this is CSS inheritance in action, where descendents inherit the parent's styles. Also notice that the paragraph with an ID overrides the global paragraph. This is to do with <strong>specificity</strong>. In this example, the ID is a more specific selector and therefore takes precedence over the global selector.</p>
+<p>You can see the result: <a href="https://jsfiddle.net/2qsrdzhf/7/">here</a>. Notice that the global paragraph styles apply to both customised paragraph selectors - this is CSS inheritance in action, where descendents inherit the parent's styles.</p>
+<p>Also notice that the paragraph with an ID overrides the global paragraph. This is to do with <em>specificity</em>. In this example, the ID is a more specific selector and therefore takes precedence over the global selector.</p>
 <p>So when do you use classes and when do you use IDs?</p>
 <ul>
 <li><p>Classes should be used when you want styles to apply to one or more elements on a page</p></li>
 <li><p>An ID on the other hand, is unique, and should only feature once on a page</p></li>
 </ul>
-<p>Selectors don't need to be prefixed but the type of element but this can be useful ahead of time if you know that you only want the styles to apply to elements of a certain type. For example, the following class and ID would work just fine and couple be applied to any element:</p>
+<p>Selectors don't need to be prefixed by the type of element, but this can be useful ahead of time if you know that you only want the styles to apply to elements of a certain type. For example, the following class and ID would work just fine and couple be applied to any element:</p>
 <pre><code class="language-css"><span class="hljs-selector-class">.font--30</span> {
   <span class="hljs-attribute">font-size</span>: <span class="hljs-number">30px</span>;
 }
@@ -94,6 +95,10 @@
 </code></pre>
 <h3>Understand inline elements, block elements and inline-block elements</h3>
 <p>Some elements are <strong>inline</strong> elements and some a <strong>block</strong> level elements. There is also a further display option called <strong>inline-block</strong>. These are all set using the display property.</p>
+<pre><code class="language-css"><span class="hljs-selector-class">.block-anchor</span> {
+  <span class="hljs-attribute">display</span>: block;
+}
+</code></pre>
 <ul>
 <li><p>Inline elements are elements that group together on the same line. Top/bottom margins are ignored, as are height/width properties. Examples include: anchors, span and img.</p></li>
 <li><p>Block elements render on their own line. Margins and height/width properties get applied. Examples include: div, h1, p and form.</p></li>
