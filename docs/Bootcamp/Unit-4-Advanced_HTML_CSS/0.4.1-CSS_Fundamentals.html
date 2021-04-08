@@ -86,12 +86,12 @@
 <li><p>Classes should be used when you want styles to apply to one or more elements on a page</p></li>
 <li><p>An ID on the other hand, is unique, and should only feature once on a page</p></li>
 </ul>
-<p>Selectors don't need to be prefixed by the type of element, but this can be usefulif you know that you only want the styles to apply to elements of a certain type. In contrast, the following class and ID would work just fine and could be applied to any paragraph:</p>
-<pre><code class="language-css"><span class="hljs-selector-class">.bigger-paragraph</span> {
+<p>Selectors don't need to be prefixed by the type of element, but this can be useful if you know that you only want the styles to apply to elements of a certain type. In contrast, the following class and ID would work just fine and could be applied to any element:</p>
+<pre><code class="language-css"><span class="hljs-selector-class">.bigger</span> {
   <span class="hljs-attribute">font-size</span>: <span class="hljs-number">30px</span>;
 }
 
-<span class="hljs-selector-id">#specific-paragraph</span> {
+<span class="hljs-selector-id">#specific</span> {
   <span class="hljs-attribute">color</span>: red;
 }
 </code></pre>
@@ -132,7 +132,7 @@
 <p>There is plenty of debate about this on the web and many people's views differ. The advantage of using a relative measurement like rems on your webpage is that the whole page will scale well when zoomed in/out because they are all relative to the root element.</p>
 <p>If you're just starting out, stick with pixels for everything. If you've got a bit more experience under your belt, experiment with rems. Ems can be used very sparingly for small, self-contained elements.</p>
 <h3>Understand inline elements, block elements and inline-block elements</h3>
-<p>Some elements are <strong>inline</strong> elements and some a <strong>block</strong> level elements. There is also a further display option called <strong>inline-block</strong>. These are all set using the display property.</p>
+<p>Some elements are <em>inline</em> elements and some a <em>block</em> level elements. There is also a further display option called <em>inline-block</em>. These are all set using the display property.</p>
 <pre><code class="language-css"><span class="hljs-selector-class">.block-anchor</span> {
   <span class="hljs-attribute">display</span>: block;
 }
