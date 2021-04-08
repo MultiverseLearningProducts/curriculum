@@ -36,9 +36,13 @@
 </ul>
 <h2>Lesson</h2>
 <h3>Understand what CSS is and what it does</h3>
-<p>Cascading Style Sheets (CSS) is the language we use to style a web page. Whereas HTML provides the means to structure and web page with elements, CSS controls the presentation of the elements. However, it wasn't always this way. In an older version of HTML, you could actually write styles directly into the HTML tags. This made life very tricky for developers, as they didn't have one source of truth when it came to styling. It also meant they had duplicated style definitions. CSS solves this problem by providing the ability to style many elements across different pages using just one set of styles.</p>
+<p>Cascading Style Sheets (CSS) is the language we use to style a web page. Whereas HTML provides the means to structure and web page with elements, CSS controls the presentation of those elements.</p>
+<p>In older versions of HTML, you could actually write styles directly into the HTML tags. This made life very tricky for developers, as they didn't have one source of truth when it came to styles. It also meant they had duplicate style definitions. CSS solves this problem by providing the ability to style many elements across different pages using just one set of styles.</p>
+<blockquote>
+<p>Good to know: the &quot;Cascading&quot; part of CSS refers to the algorithm the browser uses to decide which styles to apply to an element</p>
+</blockquote>
 <h3>Understand the basic syntax</h3>
-<p>Below is a simple stylesheet that styles every occurence of a heading 1 and a paragraph. You can think of these like global styles. Since there is only ever one body tag, the styles will apply to this tag only. The syntax starts with an element declaration (e.g body) and then the style properties for that element, enclosed in curly braces.</p>
+<p>Below is a simple stylesheet that styles every occurrence of a heading 1 and a paragraph. You can think of these as global styles. Since there is only ever one body tag, the body styles will apply to this tag only. The syntax starts with an element declaration (e.g body) and then the style properties for that element, enclosed in curly braces.</p>
 <pre><code class="language-css"><span class="hljs-selector-tag">body</span> {
   <span class="hljs-attribute">background-color</span>: lightblue;
 }
@@ -49,7 +53,7 @@
 }
 
 <span class="hljs-selector-tag">p</span> {
-  <span class="hljs-attribute">font-family</span>: verdana;
+  <span class="hljs-attribute">font-family</span>: verdana, sans-serif;
   <span class="hljs-attribute">font-size</span>: <span class="hljs-number">20px</span>;
 }
 </code></pre>
@@ -58,64 +62,53 @@
 </blockquote>
 <h3>Understand the difference between classes and IDs</h3>
 <p>So far we've styled elements using their global selectors, but we can also style by <code>class</code> and by <code>id</code>.</p>
-<pre><code class="language-css"><span class="hljs-selector-tag">body</span> {
-  <span class="hljs-attribute">background-color</span>: lightblue;
+<pre><code class="language-css"><span class="hljs-selector-tag">p</span> {
+  <span class="hljs-attribute">font-family</span>: verdana, sans-serif;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">20px</span>;
+  <span class="hljs-attribute">color</span>: black;
+  <span class="hljs-attribute">text-decoration</span>: underline;
 }
 
-<span class="hljs-selector-tag">h1</span> {
-  <span class="hljs-attribute">color</span>: white;
-  <span class="hljs-attribute">text-align</span>: center;
+<span class="hljs-selector-tag">p</span><span class="hljs-selector-class">.bigger-paragraph</span> {
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">30px</span>;
 }
 
-<span class="hljs-selector-tag">h1</span><span class="hljs-selector-class">.generalHeading</span> {
+<span class="hljs-selector-tag">p</span><span class="hljs-selector-id">#specific-paragraph</span> {
   <span class="hljs-attribute">color</span>: red;
 }
-
-<span class="hljs-selector-tag">p</span><span class="hljs-selector-class">.generalParagraph</span> {
-  <span class="hljs-attribute">font-family</span>: verdana;
-  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">20px</span>;
+</code></pre>
+<p>You can see the result: (https://jsfiddle.net/2qsrdzhf/7/)[here]. Notice that the global paragraph styles apply to both customised paragraph selectors - this is CSS inheritance in action, where descendents inherit the parent's styles. Also notice that the paragraph with an ID overrides the global paragraph. This is to do with <strong>specificity</strong>. In this example, the ID is a more specific selector and therefore takes precedence over the global selector.</p>
+<p>So when do you use classes and when do you use IDs?</p>
+<ul>
+<li><p>Classes should be used when you want styles to apply to one or more elements on a page</p></li>
+<li><p>An ID on the other hand, is unique, and should only feature once on a page</p></li>
+</ul>
+<p>Selectors don't need to be prefixed but the type of element but this can be useful ahead of time if you know that you only want the styles to apply to elements of a certain type. For example, the following class and ID would work just fine and couple be applied to any element:</p>
+<pre><code class="language-css"><span class="hljs-selector-class">.font--30</span> {
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">30px</span>;
 }
 
-<span class="hljs-selector-tag">p</span><span class="hljs-selector-id">#specificParagraph</span> {
-  <span class="hljs-attribute">color</span>: pink;
+<span class="hljs-selector-id">#color--red</span> {
+  <span class="hljs-attribute">color</span>: red;
 }
 </code></pre>
 <h3>Understand inline elements, block elements and inline-block elements</h3>
 <p>Some elements are <strong>inline</strong> elements and some a <strong>block</strong> level elements. There is also a further display option called <strong>inline-block</strong>. These are all set using the display property.</p>
 <ul>
-<li><p>Inline elements are elements that group together on the same line. Top/bottom margins are ignored, as are height/width properties.</p></li>
-<li><p>Block elements render on their own line. Margins and height/width properties get applied.</p></li>
+<li><p>Inline elements are elements that group together on the same line. Top/bottom margins are ignored, as are height/width properties. Examples include: anchors, span and img.</p></li>
+<li><p>Block elements render on their own line. Margins and height/width properties get applied. Examples include: div, h1, p and form.</p></li>
 <li><p>Inline-block elements render on the same line, but behave like a block element.</p></li>
 </ul>
-<p>Common inline elements:</p>
-<table>
-<thead>
-<tr><th style="text-align:left">Element</th><th style="text-align:left">Function</th></tr>
-</thead>
-<tbody>
-<tr><td style="text-align:left">a</td><td style="text-align:left">Adds a hyperlink</td></tr>
-<tr><td style="text-align:left">span</td><td style="text-align:left">Applies styles to a selected region</td></tr>
-<tr><td style="text-align:left">img</td><td style="text-align:left">Adds an image</td></tr>
-</tbody>
-</table>
-<p>Common block level elements</p>
-<table>
-<thead>
-<tr><th style="text-align:left">Element</th><th style="text-align:left">Function</th></tr>
-</thead>
-<tbody>
-<tr><td style="text-align:left">div</td><td style="text-align:left">Adds a 'divide' - used to add structure to web pages</td></tr>
-<tr><td style="text-align:left">h1</td><td style="text-align:left">Adds a heading 1</td></tr>
-<tr><td style="text-align:left">p</td><td style="text-align:left">Adds a paragraph</td></tr>
-<tr><td style="text-align:left">form</td><td style="text-align:left">Adds a form</td></tr>
-</tbody>
-</table>
 <blockquote>
-<p>Try it yourself. <a href="https://jsfiddle.net/pj8f240b/10/">See the difference</a> between inline, block and inline block</p>
+<p>Try it yourself. <a href="https://jsfiddle.net/43ou0jmg/5/">See the difference</a> between inline, block and inline block</p>
 </blockquote>
 <h2>Assignment</h2>
 <h3>Assignment extension tasks</h3>
 <h2>Additional resources</h2>
+<ul>
+<li><a href="https://blog.logrocket.com/how-css-works-understanding-the-cascade-d181cd89a4d8/">Understanding how CSS cascading works</a></li>
+<li><a href="http://getbem.com/naming/">Write better CSS using BEM</a></li>
+</ul>
 
         <script src="/curriculum/js/tabbed-code-blocks.js"></script>
         <script>
