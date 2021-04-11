@@ -29,7 +29,7 @@
 <p>TODO</p>
 <h2>Lesson</h2>
 <p>We have a new requirement for our restaurant application. Customers must be able to rate their visit to a restaurant.</p>
-<p>A Rating will consist of a 'number of stars'.</p>
+<p>A rating will consist of a 'number of stars'.</p>
 <p><figure><img src="https://user-images.githubusercontent.com/1316724/114306968-909f4280-9ad5-11eb-920a-08cca02dafe5.png" alt="restaurant reviews example comments"><figcaption></figcaption></figure></p>
 <p>This means we need to extend our data model to include a <code>Rating</code> class/table which is associated to the <code>Restaurant</code> table as follows:</p>
 <pre><code class="language-js">Restaurant.hasMany(Rating, {<span class="hljs-attr">as</span>: <span class="hljs-string">&#x27;ratings&#x27;</span>, <span class="hljs-attr">foreignKey</span>: <span class="hljs-string">&#x27;restaurant_id&#x27;</span>})
