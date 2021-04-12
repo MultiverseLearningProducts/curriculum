@@ -55,14 +55,15 @@
 <p>Try it yourself: <a href="https://jsfiddle.net/43ou0jmg/5/">see the difference</a> between inline, block and inline block</p>
 </blockquote>
 <h3>Understand the position property</h3>
-<p>As we've learnt, every element has a display property. The position property is the same - each element has a default position property (called <code>static</code>) but can also be overridden.</p>
+<p>As we've learnt, every element has a display property. The position property is the same; each element has a default position property (known as <code>static</code> positioning) that can also be overridden.</p>
+<p><figure><img src="https://www.internetingishard.com/html-and-css/advanced-positioning/css-positioning-schemes-790d5b.png" alt="CSS Position"><figcaption></figcaption></figure><br>
+<sub>https://www.internetingishard.com/html-and-css/advanced-positioning/</sub></p>
 <h4>Static positioning</h4>
-<p>As mentioned static position is an element's default position. This means no positioning has been applied and the element will follow be in it's default position on a page.</p>
+<p>As mentioned, static position is an element's default position. This means no positioning has been applied.</p>
 <pre><code class="language-css"><span class="hljs-selector-tag">div</span><span class="hljs-selector-class">.static</span> {
   <span class="hljs-attribute">position</span>: static;
 }
 </code></pre>
-<p>Click <a href="https://www.w3schools.com/css/tryit.asp?filename=trycss_position_static">here</a> to see an example of static positioning.</p>
 <h4>Relative positioning</h4>
 <p>Elements positioned relatively are positioned relative to their static position. Here you have access to the top, right, bottom and left properties to effectively move the element around as you see fit.</p>
 <pre><code class="language-css"><span class="hljs-selector-tag">div</span><span class="hljs-selector-class">.relative</span> {
@@ -70,7 +71,6 @@
   <span class="hljs-attribute">left</span>: <span class="hljs-number">30px</span>;
 }
 </code></pre>
-<p>Click <a href="https://www.w3schools.com/css/tryit.asp?filename=trycss_position_relative">here</a> to see an example of relative positioning.</p>
 <h4>Fixed positioning</h4>
 <p>Elements that are positioned using the fixed property are positioned relative to the viewport (i.e the boundaries of the browser/app) and always stay in the same place, even when scrolled. Similar to relative positioning, the top, right, bottom and left properties are available to you.</p>
 <pre><code class="language-css"><span class="hljs-selector-tag">div</span><span class="hljs-selector-class">.fixed</span> {
@@ -79,13 +79,26 @@
   <span class="hljs-attribute">right</span>: <span class="hljs-number">0</span>;
 }
 </code></pre>
-<p>Click <a href="https://www.w3schools.com/css/tryit.asp?filename=trycss_position_fixed">here</a> to see an example of relative positioning.</p>
 <blockquote>
 <p>Have you seen fixed positioned elements on the web? Where was it being used?</p>
+</blockquote>
+<h4>Absolute positioning</h4>
+<p>Elements positioned absolutely render relative to their first positioned (not static) ancestor. What this means is that an absolute element positioned within a relative, absolute, etc, element will be positioned relative to that element. If no positioned ancestor can be found, the element will be placed relative to the browser/app viewport.</p>
+<p>Again, you have access to the top, right, bottom and left properties to position the element as needed.</p>
+<pre><code class="language-css"><span class="hljs-selector-tag">div</span><span class="hljs-selector-class">.absolute</span> {
+  <span class="hljs-attribute">position</span>: absolute;
+  <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>;
+}
+</code></pre>
+<blockquote>
+<p>Try it yourself: click <a href="https://www.w3schools.com/cssref/playit.asp?filename=playcss_position&amp;preval=absolute">here</a> to see the different position properties in action</p>
 </blockquote>
 <h2>Assignment</h2>
 <h3>Assignment extension tasks</h3>
 <h2>Additional resources</h2>
+<pre><code>
+</code></pre>
 
         <script src="/curriculum/js/tabbed-code-blocks.js"></script>
         <script>
