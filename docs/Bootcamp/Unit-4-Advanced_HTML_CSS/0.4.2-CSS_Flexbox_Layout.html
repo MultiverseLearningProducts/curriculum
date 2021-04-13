@@ -43,11 +43,50 @@
 <h3>When to use flexbox</h3>
 <p>Any scenario where you have multiple columns or elements that need to be side by side are good candidates for flexbox.</p>
 <p>Check out the mockup below. We could use flexbox to handle the two columns in the main design as well as three articles that need to be on the same row.</p>
-<p><img src="https://miro.medium.com/max/700/1*Nx5IvOf6rNHBdT0WVsd0yg.png" alt="CSS Positioning - Static" height="500" width="800"><br>
+<p><img src="https://miro.medium.com/max/700/1*Nx5IvOf6rNHBdT0WVsd0yg.png" alt="CSS Positioning - Static" height="300" width="500"><br>
 <sub><sup>https://medium.com/swlh/how-i-use-css-grid-and-flexbox-to-create-a-one-page-website-262aeea3592a</sup></sub></p>
 <h3>How to use flexbox</h3>
 <p>To get up and running with flex, we need to establish a <em>flex container</em> element with some child div elements. We then add <code>display: flex</code> to the parent.</p>
-<p>Checkout <a href="https://jsfiddle.net/jnsodgqk/5/">this</a> link for an example.</p>
+<pre><code class="language-css"><span class="hljs-selector-class">.flex-container</span> {
+  <span class="hljs-attribute">display</span>: flex;
+  <span class="hljs-attribute">background-color</span>: pink;
+}
+</code></pre>
+<p>Checkout <a href="https://jsfiddle.net/jnsodgqk/7/">this</a> link for an example.</p>
+<h4>Flex direction</h4>
+<p>By default the boxes are arranged in a row, but this can be changed with one line:</p>
+<pre><code class="language-css"><span class="hljs-selector-class">.flex-container</span> {
+  <span class="hljs-attribute">display</span>: flex;
+  <span class="hljs-attribute">background-color</span>: pink;
+  <span class="hljs-attribute">flex-direction</span>: column; <span class="hljs-comment">/* add this line */</span>
+}
+</code></pre>
+<p>To get back to the row arrangement, just remove the flex-direction attribute or add <code>flex-direction: row</code>.</p>
+<h4>Justifying the content</h4>
+<p>This is where Flexbox <em>really</em> starts to shine. By default the boxes are justified to the left using <code>justify-content: flex-start</code>. We can change that by adding:</p>
+<pre><code class="language-css"><span class="hljs-selector-class">.flex-container</span> {
+  <span class="hljs-attribute">display</span>: flex;
+  <span class="hljs-attribute">background-color</span>: pink;
+  <span class="hljs-attribute">flex-direction</span>: row;
+  <span class="hljs-attribute">justify-content</span>: flex-end; <span class="hljs-comment">/* add this line */</span>
+}
+</code></pre>
+<p>Want to center the boxes?</p>
+<pre><code class="language-css"><span class="hljs-selector-class">.flex-container</span> {
+  <span class="hljs-attribute">display</span>: flex;
+  <span class="hljs-attribute">background-color</span>: pink;
+  <span class="hljs-attribute">flex-direction</span>: row;
+  <span class="hljs-attribute">justify-content</span>: center; <span class="hljs-comment">/* add this line */</span>
+}
+</code></pre>
+<p>Want to evenly space the boxes out? No problem:</p>
+<pre><code class="language-css"><span class="hljs-selector-class">.flex-container</span> {
+  <span class="hljs-attribute">display</span>: flex;
+  <span class="hljs-attribute">background-color</span>: pink;
+  <span class="hljs-attribute">flex-direction</span>: row;
+  <span class="hljs-attribute">justify-content</span>: space-between; <span class="hljs-comment">/* add this line */</span>
+}
+</code></pre>
 <h2>Assignment</h2>
 <p>To that end, take a look at <a href="https://jsfiddle.net/hdz6jf4v/140/">this</a> simple webpage. All of the ingredients are in place for you to add some flex styles and some comments have been added to signpost you.</p>
 <p>Your task is to add the required flex styles to make the page look like the mock up above.</p>
