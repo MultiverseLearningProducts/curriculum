@@ -54,6 +54,13 @@
 <p>To use an external file, you need to fashion a <code>.css</code> file in your directory. You then link to the file in the <code>&lt;head&gt;</code> section as follows:</p>
 <pre><code class="language-css">  &lt;link rel=&quot;stylesheet&quot; href=&quot;/css/myStyles.css&quot;&gt;
 </code></pre>
+<blockquote>
+<p>The <em>rel</em> stands for relationship and tells the browser what the resource is</p>
+</blockquote>
+<p>Large websites with 100s if not thousands of lines of CSS will <em>always</em> use external files. This is because these files can be minified and then cached by the browser. If you're just testing or have a very small amount of CSS, then it's perfectly acceptable to use the inline technique.</p>
+<blockquote>
+<p>You can also add styles directly to an element using the style attribute: `<p style="color: blue">Blue text</p></p>
+</blockquote>
 <h3>Understand the basic syntax</h3>
 <p>Below is a simple stylesheet that styles every occurrence of a heading and a paragraph. You can think of these as global styles. Since there is only ever one body tag, the body styles will apply to this tag only. The syntax starts with an element declaration (e.g body) and then the style properties for that element, enclosed in curly braces.</p>
 <pre><code class="language-css"><span class="hljs-selector-tag">body</span> {
