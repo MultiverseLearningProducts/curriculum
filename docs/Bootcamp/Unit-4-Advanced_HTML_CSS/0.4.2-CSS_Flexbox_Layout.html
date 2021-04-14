@@ -35,7 +35,7 @@
 </ul>
 <h2>Lesson</h2>
 <h3>The bad old days</h3>
-<p>Layout methods and CSS have come a long way. Before Flexbox and Grid (see the chapter on this), developers used things like HTML frames, tables and CSS float to create layouts. All of these had their limitations: frames required multiple HTML files to be loaded into each frame, tables were never meant for layouts and produced lots of code bloat and last but not least, float introduced a quirk where the floated elements' parent container would collapse, ending up with a height of zero. The <em>clearfix</em> hack was then deployed to get around this issue.</p>
+<p>Layout methods and CSS have come a long way. Before Flexbox and Grid, developers used things like HTML frames, tables and CSS float to create layouts. All of these had their limitations: frames required multiple HTML files to be loaded into each frame, tables were never meant for layouts and produced lots of code bloat and last but not least, float introduced a quirk where the floated elements' parent container would collapse, ending up with a height of zero. The <em>clearfix</em> hack was then deployed to get around this issue.</p>
 <p>These days we have Flexbox and CSS Grid to make layouts more consistent and predictable.</p>
 <blockquote>
 <p>Whole design systems like Bootstrap were built around the idea of float and clearfix (Bootstrap now uses Flexbox)</p>
@@ -103,9 +103,38 @@
 <p>Conveniently, many of the align-item properties are shared with justify-content, including: flex-start, flex-end, center and space-between.</p>
 <p>Check out the W3C's guide <a href="https://www.w3schools.com/css/css3_flexbox_container.asp">here</a>, then add some more boxes and play around with the various settings to get a feel for align-items.</p>
 <h4>Flex wrap</h4>
-<p>Flex supports the ability to <em>wrap</em> elements as viewport/device width gets smaller and is therefore useful for responsive layouts.</p>
+<p>Flex supports the ability to <em>wrap</em> elements as viewport/device width gets smaller.</p>
 <p>See <a href="https://jsfiddle.net/u1jqogb2/29/">this</a> link for an example. Be sure to add/remove the property and reduce the screensize to see the effect. Notice that with just one line, the boxes collapse nicely into one column, then expand as more space becomes available.</p>
-<h4>The Flex property (flex-grow, flex-shrink and flex-basis)</h4>
+<h4>Flex child items</h4>
+<p>So far we've mainly focused on attributes that can be added to the flex container. There are a number of attributes we can add the the children (or flex items as you might see them called) to control how they render.</p>
+<p><strong>Flex-grow</strong></p>
+<p>Flex-grow defines how much an item can grow to fill the space relative to it's siblings. In <a href="https://jsfiddle.net/6a25vqsk/8">this</a> example, we've specified that box 1 can grow more whereas the others should not grow. The default value is 0.</p>
+<pre><code class="language-css"><span class="hljs-selector-class">.box1</span> {
+  <span class="hljs-attribute">flex-grow</span>: <span class="hljs-number">1</span>;
+}
+</code></pre>
+<p>Try adding/changing the flex-grow properties to see the effect.</p>
+<p><strong>Flex-shrink</strong></p>
+<p>Basically the opposite to grow; shrink defines how much an item will shrink relative to its siblings. Checkout <a href="https://jsfiddle.net/p4meaqf3/8/">this</a> JSFiddle for an example. Here we've said box 2 should not shrink by giving it a flex-shrink value of 0. The default value is 1.</p>
+<pre><code class="language-css"><span class="hljs-selector-class">.box2</span> {
+  <span class="hljs-attribute">flex-shrink</span>: <span class="hljs-number">0</span>;
+}
+</code></pre>
+<p><strong>Flex-basis</strong></p>
+<p>The last one we'll look at is flex-basis. This controls the initial length of an item. We can set this in pixels, rems or ems. The default value will be any width setting applied or how much space the item requires to contain its content.</p>
+<pre><code class="language-css"><span class="hljs-selector-class">.box4</span> {
+  <span class="hljs-attribute">flex-basis</span>: <span class="hljs-number">40px</span>;
+}
+</code></pre>
+<p>In <a href="https://jsfiddle.net/jdrk27L9/1/">this</a> example, we've given box 4 an initial length of 40px;</p>
+<p><strong>Put it all togeter with the Flex property</strong></p>
+<p>The flex property is a shorthand property for the flex-grow, flex-shrink, and flex-basis properties.</p>
+<pre><code class="language-css"><span class="hljs-selector-class">.box</span> {
+  <span class="hljs-comment">/* flex-grow, flex-shrink, flex-basis */</span>
+  <span class="hljs-attribute">flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">200px</span>;
+}
+</code></pre>
+<p>In <a href="https://jsfiddle.net/jv5q0hem/43/">this</a> example, box 2 shouldn't grow or shrink and has an initial size of 200px.</p>
 <h2>Assignment</h2>
 <p>Take a look at <a href="https://jsfiddle.net/q61tL5pb/1/">this</a> simple web page. All of the ingredients are in place for you to add some flex styles and some comments have been added to signpost you.</p>
 <p>Your task is to add the required flex styles to make the page look like the mock up seen earlier.</p>
