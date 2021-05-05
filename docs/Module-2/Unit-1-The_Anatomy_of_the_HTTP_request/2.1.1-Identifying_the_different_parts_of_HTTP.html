@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+    <head>
+        <meta charset="utf-8">
+        <title> The Anatomy of the HTTP request</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="shortcut icon" type="image/x-icon" href="/curriculum/favicon.ico"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/an-old-hope.min.css">
+        <link rel="stylesheet" href="/curriculum/style.css"/>
+        <script src="/curriculum/js/highlight.min.js"></script>
+        <script src="/curriculum/js/bash.min.js"></script>
+        <script src="/curriculum/js/java.min.js"></script>
+        <script src="/curriculum/js/javascript.min.js"></script>
+        <script src="/curriculum/js/sql.min.js"></script>
+    </head>
+    <body>
+        <button 
+            id="navigation-toggle"
+            aria-expanded="false"
+            aria-haspopup="true"
+            onclick="toggleNav()"
+            onkeydown="event => {event.keyCode === 13 ? toggleNav() : null}"
+            tabindex="1">Table of contents</button>
+        <nav id="navigation"><ul><li><a href="/curriculum/Bootcamp/index.html">Bootcamp</a><ul><li><a href="/curriculum/Bootcamp/FAQ.html">FAQ</a></li><li><a href="/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/index.html">Unit 1 Object Oriented Programming</a><ul><li><a href="/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.1-JavaScript_Objects_And_Functions.html">0.1.1 JavaScript Objects And Functions</a></li><li><a href="/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.2-Test_Driven_Development.html">0.1.2 Test Driven Development</a></li><li><a href="/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.3-Objects_in_an_Airport_Domain.html">0.1.3 Objects in an Airport Domain</a></li><li><a href="/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.4-Static_functions_and_properties.html">0.1.4 Static functions and properties</a></li><li><a href="/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.5-Inheritance.html">0.1.5 Inheritance</a></li><li><a href="/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.6-UML_Modelling.html">0.1.6 UML Modelling</a></li><li><a href="/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.7-Unit_1_Challenge.html">0.1.7 Unit 1 Challenge</a></li></ul></li><li><a href="/curriculum/Bootcamp/Unit-2-Asynchronous_JavaScript/index.html">Unit 2 Asynchronous JavaScript</a><ul><li><a href="/curriculum/Bootcamp/Unit-2-Asynchronous_JavaScript/0.2.1-Asynchronous_JavaScript.html">0.2.1 Asynchronous JavaScript</a></li><li><a href="/curriculum/Bootcamp/Unit-2-Asynchronous_JavaScript/0.2.2-Asynchronous_Airport_Data_Load.html">0.2.2 Asynchronous Airport Data Load</a></li></ul></li><li><a href="/curriculum/Bootcamp/Unit-3-Relational_Databases/index.html">Unit 3 Relational Databases</a><ul><li><a href="/curriculum/Bootcamp/Unit-3-Relational_Databases/0.3.1-Logical_Data_Model.html">0.3.1 Logical Data Model</a></li><li><a href="/curriculum/Bootcamp/Unit-3-Relational_Databases/0.3.10-Sequelize_part_2.html">0.3.10 Sequelize part 2</a></li><li><a href="/curriculum/Bootcamp/Unit-3-Relational_Databases/0.3.2-Implementing_the_Logical_Data_Model.html">0.3.2 Implementing the Logical Data Model</a></li><li><a href="/curriculum/Bootcamp/Unit-3-Relational_Databases/0.3.3-Basic_SQL_Commands.html">0.3.3 Basic SQL Commands</a></li><li><a href="/curriculum/Bootcamp/Unit-3-Relational_Databases/0.3.4-SQL_Joins.html">0.3.4 SQL Joins</a></li><li><a href="/curriculum/Bootcamp/Unit-3-Relational_Databases/0.3.5-Database_access_using_Node.html">0.3.5 Database access using Node</a></li><li><a href="/curriculum/Bootcamp/Unit-3-Relational_Databases/0.3.6-Populating_databases_from_JSON.html">0.3.6 Populating databases from JSON</a></li><li><a href="/curriculum/Bootcamp/Unit-3-Relational_Databases/0.3.7-Object_Relational_Mapping_part_1.html">0.3.7 Object Relational Mapping part 1</a></li><li><a href="/curriculum/Bootcamp/Unit-3-Relational_Databases/0.3.8-Object_Relational_Mapping_part_2.html">0.3.8 Object Relational Mapping part 2</a></li><li><a href="/curriculum/Bootcamp/Unit-3-Relational_Databases/0.3.9-Sequelize_part_1.html">0.3.9 Sequelize part 1</a></li></ul></li><li><a href="/curriculum/Bootcamp/Unit-4-RESTful_Servers/index.html">Unit 4 RESTful Servers</a><ul><li><a href="/curriculum/Bootcamp/Unit-4-RESTful_Servers/0.4.1-Web_Servers.html">0.4.1 Web Servers</a></li><li><a href="/curriculum/Bootcamp/Unit-4-RESTful_Servers/0.4.2-Application_Servers.html">0.4.2 Application Servers</a></li><li><a href="/curriculum/Bootcamp/Unit-4-RESTful_Servers/0.4.3-Rendering_Dynamic_Content.html">0.4.3 Rendering Dynamic Content</a></li><li><a href="/curriculum/Bootcamp/Unit-4-RESTful_Servers/0.4.4-Route_Parameters.html">0.4.4 Route Parameters</a></li><li><a href="/curriculum/Bootcamp/Unit-4-RESTful_Servers/0.4.5-Server_side_Validation.html">0.4.5 Server side Validation</a></li><li><a href="/curriculum/Bootcamp/Unit-4-RESTful_Servers/0.4.6-CRUD_operations.html">0.4.6 CRUD operations</a></li><li><a href="/curriculum/Bootcamp/Unit-4-RESTful_Servers/0.4.7-Unit_5_Challenge.html">0.4.7 Unit 5 Challenge</a></li><li><a href="/curriculum/Bootcamp/Unit-4-RESTful_Servers/0.4.8-Unit_5_Knowledge_Quiz.html">0.4.8 Unit 5 Knowledge Quiz</a></li></ul></li><li><a href="/curriculum/Bootcamp/Unit-5-Human_Computer_Interaction/index.html">Unit 5 Human Computer Interaction</a><ul><li><a href="/curriculum/Bootcamp/Unit-5-Human_Computer_Interaction/0.5.1-Human_Computer_Interaction.html">0.5.1 Human Computer Interaction</a></li><li><a href="/curriculum/Bootcamp/Unit-5-Human_Computer_Interaction/0.5.2-The_Document_Object_Model.html">0.5.2 The Document Object Model</a></li><li><a href="/curriculum/Bootcamp/Unit-5-Human_Computer_Interaction/0.5.3-HTML_forms_and_lists.html">0.5.3 HTML forms and lists</a></li><li><a href="/curriculum/Bootcamp/Unit-5-Human_Computer_Interaction/0.5.4-User_input_in_HTML.html">0.5.4 User input in HTML</a></li></ul></li><li><a href="/curriculum/Bootcamp/Unit-6-End_Of_Bootcamp_Group_Project/index.html">Unit 6 End Of Bootcamp Group Project</a><ul><li><a href="/curriculum/Bootcamp/Unit-6-End_Of_Bootcamp_Group_Project/0.6.1-Introduction.html">0.6.1 Introduction</a></li><li><a href="/curriculum/Bootcamp/Unit-6-End_Of_Bootcamp_Group_Project/0.6.2-Requirements.html">0.6.2 Requirements</a></li><li><a href="/curriculum/Bootcamp/Unit-6-End_Of_Bootcamp_Group_Project/0.6.3-Agile_Development.html">0.6.3 Agile Development</a></li><li><a href="/curriculum/Bootcamp/Unit-6-End_Of_Bootcamp_Group_Project/0.6.4-Design.html">0.6.4 Design</a></li><li><a href="/curriculum/Bootcamp/Unit-6-End_Of_Bootcamp_Group_Project/0.6.5-GitHub_Projects.html">0.6.5 GitHub Projects</a></li><li><a href="/curriculum/Bootcamp/Unit-6-End_Of_Bootcamp_Group_Project/0.6.6-Branching_and_Pull_Requests.html">0.6.6 Branching and Pull Requests</a></li><li><a href="/curriculum/Bootcamp/Unit-6-End_Of_Bootcamp_Group_Project/0.6.7-Deployment_with_Heroku.html">0.6.7 Deployment with Heroku</a></li></ul></li></ul></li><li><a href="/curriculum/Module-1/index.html">Module 1</a><ul><li><a href="/curriculum/Module-1/Unit-#-Advanced_HTML_CSS/index.html">Unit # Advanced HTML CSS</a><ul><li><a href="/curriculum/Module-1/Unit-#-Advanced_HTML_CSS/0.4.1-CSS_Fonts_and_Typography.html">0.4.1 CSS Fonts and Typography</a></li><li><a href="/curriculum/Module-1/Unit-#-Advanced_HTML_CSS/0.4.1-CSS_Fundamentals.html">0.4.1 CSS Fundamentals</a></li><li><a href="/curriculum/Module-1/Unit-#-Advanced_HTML_CSS/0.4.1-CSS_Positioning.html">0.4.1 CSS Positioning</a></li><li><a href="/curriculum/Module-1/Unit-#-Advanced_HTML_CSS/0.4.2-CSS_Flexbox_Layout.html">0.4.2 CSS Flexbox Layout</a></li><li><a href="/curriculum/Module-1/Unit-#-Advanced_HTML_CSS/0.4.4-Responsive_CSS_Media_Queries.html">0.4.4 Responsive CSS Media Queries</a></li><li><a href="/curriculum/Module-1/Unit-#-Advanced_HTML_CSS/0.4.5-Responsive_CSS_Background_Images.html">0.4.5 Responsive CSS Background Images</a></li><li><a href="/curriculum/Module-1/Unit-#-Advanced_HTML_CSS/0.4.6-Client_side_JavaScript.html">0.4.6 Client side JavaScript</a></li><li><a href="/curriculum/Module-1/Unit-#-Advanced_HTML_CSS/0.4.6-HTML_Forms.html">0.4.6 HTML Forms</a></li><li><a href="/curriculum/Module-1/Unit-#-Advanced_HTML_CSS/0.4.8-HTML_DOM_Events.html">0.4.8 HTML DOM Events</a></li><li><a href="/curriculum/Module-1/Unit-#-Advanced_HTML_CSS/0.4.8-HTML_Web_Storage_API.html">0.4.8 HTML Web Storage API</a></li></ul></li></ul></li><li><a href="/curriculum/Module-2/index.html">Module 2</a><ul><li><a href="/curriculum/Module-2/Unit-1-The_Anatomy_of_the_HTTP_request/index.html">Unit 1 The Anatomy of the HTTP request</a><ul><li><a href="/curriculum/Module-2/Unit-1-The_Anatomy_of_the_HTTP_request/2.1.1-Identifying_the_different_parts_of_HTTP.html">2.1.1 Identifying the different parts of HTTP</a></li><li><a href="/curriculum/Module-2/Unit-1-The_Anatomy_of_the_HTTP_request/2.1.2-Programmatic_HTTP_requests.html">2.1.2 Programmatic HTTP requests</a></li></ul></li><li><a href="/curriculum/Module-2/Unit-2-What_is_REST/index.html">Unit 2 What is REST</a><ul><li><a href="/curriculum/Module-2/Unit-2-What_is_REST/2.2.1-REST_and_the_openAPI_spec.html">2.2.1 REST and the openAPI spec</a></li><li><a href="/curriculum/Module-2/Unit-2-What_is_REST/2.2.2-The_OpenAPI_spec.html">2.2.2 The OpenAPI spec</a></li><li><a href="/curriculum/Module-2/Unit-2-What_is_REST/2.2.3-Build_an_OpenAPI_RESTful_service.html">2.2.3 Build an OpenAPI RESTful service</a></li><li><a href="/curriculum/Module-2/Unit-2-What_is_REST/2.2.4-Integration_tests.html">2.2.4 Integration tests</a></li><li><a href="/curriculum/Module-2/Unit-2-What_is_REST/2.2.5-Unit_2_Knowledge_quiz.html">2.2.5 Unit 2 Knowledge quiz</a></li></ul></li><li><a href="/curriculum/Module-2/Unit-3-Cryptography/index.html">Unit 3 Cryptography</a><ul><li><a href="/curriculum/Module-2/Unit-3-Cryptography/2.3.1-Hashing_Functions.html">2.3.1 Hashing Functions</a></li><li><a href="/curriculum/Module-2/Unit-3-Cryptography/2.3.2-Symmetric_Key_Encryption.html">2.3.2 Symmetric Key Encryption</a></li><li><a href="/curriculum/Module-2/Unit-3-Cryptography/2.3.3-Asymmetric_Key_Encryption.html">2.3.3 Asymmetric Key Encryption</a></li><li><a href="/curriculum/Module-2/Unit-3-Cryptography/2.3.4-Unit_3_Knowledge_Quiz.html">2.3.4 Unit 3 Knowledge Quiz</a></li></ul></li><li><a href="/curriculum/Module-2/Unit-4-Authentication/index.html">Unit 4 Authentication</a><ul><li><a href="/curriculum/Module-2/Unit-4-Authentication/2.4.1-Authentication_and_Authorisation.html">2.4.1 Authentication and Authorisation</a></li><li><a href="/curriculum/Module-2/Unit-4-Authentication/2.4.2-What_is_middleware.html">2.4.2 What is middleware</a></li><li><a href="/curriculum/Module-2/Unit-4-Authentication/2.4.3-Session_based_auth.html">2.4.3 Session based auth</a></li><li><a href="/curriculum/Module-2/Unit-4-Authentication/2.4.4-Introduction_to_OAuth.html">2.4.4 Introduction to OAuth</a></li><li><a href="/curriculum/Module-2/Unit-4-Authentication/2.4.5-Token_based_auth.html">2.4.5 Token based auth</a></li><li><a href="/curriculum/Module-2/Unit-4-Authentication/2.4.6-OpenID_Connect.html">2.4.6 OpenID Connect</a></li><li><a href="/curriculum/Module-2/Unit-4-Authentication/2.4.7-Unit_4_Knowledge_Quiz.html">2.4.7 Unit 4 Knowledge Quiz</a></li></ul></li></ul></li><li><a href="/curriculum/Module-3/index.html">Module 3</a><ul><li><a href="/curriculum/Module-3/Unit-1-The-SDLC/index.html">Unit 1 The SDLC</a><ul><li><a href="/curriculum/Module-3/Unit-1-The-SDLC/3.1.1-Business_Impact.html">3.1.1 Business Impact</a></li></ul></li><li><a href="/curriculum/Module-3/Unit-2-Website_Testing/index.html">Unit 2 Website Testing</a><ul><li><a href="/curriculum/Module-3/Unit-2-Website_Testing/0.6.1-Cypress_Testing.html">0.6.1 Cypress Testing</a></li><li><a href="/curriculum/Module-3/Unit-2-Website_Testing/0.6.2-Accessibility_Testing.html">0.6.2 Accessibility Testing</a></li></ul></li></ul></li></ul></nav>
+        <h1>The Anatomy of the HTTP request</h1>
+<h2>Overview</h2>
+<p>At the end of this module you will be building a RESTful API that has both authentication and authorisation. We are going to build up to this final challenge in a gradual way. Our journey will begin today with the building block of RESTful apis - the Hyper Text Transfer Protocol (HTTP).</p>
+<p>We are going to use <a href="https://www.postman.com/">Postman</a> to call some RESTful APIs and look in detail at the requests we send and responses we receive. Then we will look at performing these same requests using the browser's native <code>fetch</code> api.</p>
+<hr>
+<h2>Learning Objectives</h2>
+<ul>
+<li>Understand the different parts of the Hypertext Transfer Protocol (HTTP)</li>
+<li>Understand the difference between HTTP and HTTPS</li>
+<li>Understand the different HTTP verbs and which one is appropriate for modelling CRUD operations</li>
+<li>Understand the most common HTTP response codes and how these indicate success or failure in RESTful operations</li>
+<li>Become familiar with using Postman to call RESTful APIs</li>
+</ul>
+<h2>Pre-requisites</h2>
+<ul>
+<li>Install <a href="https://www.postman.com/">Postman</a></li>
+</ul>
+<h2>Lesson</h2>
+<p><iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSNpD9AFc2BFf28IAJhRKmcZeDXaleGpTEfKg7BsL4Y15rGJDbvwnQWbjcGWZ66xAF7IjurnF6DJCgG/embed" width="100%" height="444px" allowfullscreen frameborder=0></iframe></p>
+<p>HTTP stands for the 'hyper text transfer protocol'. It is a protocol or 'way of doing things' which means if you meet a standard set of requirements you can implement HTTP in any language. Lets have a look at what goes into an HTTP request:</p>
+<h3>Method (Verb)</h3>
+<p>The method part of HTTP helps to communicate what this request is trying to do. The most commonly used verbs are GET &amp; POST.</p>
+<table>
+<thead>
+<tr><th style="text-align:left">Method</th><th style="text-align:left">Function</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">GET</td><td style="text-align:left">to retrieve data</td></tr>
+<tr><td style="text-align:left">POST</td><td style="text-align:left">to create data</td></tr>
+<tr><td style="text-align:left">PUT</td><td style="text-align:left">to replace data</td></tr>
+<tr><td style="text-align:left">PATCH</td><td style="text-align:left">to update data</td></tr>
+<tr><td style="text-align:left">DELETE</td><td style="text-align:left">to remove data</td></tr>
+</tbody>
+</table>
+<p>❓ Can you see how to select these in postman?</p>
+<h3>Protocol</h3>
+<p>This is the part at the very beginning of the request. <code>http://</code> this tells the browser we are making an http request. Protocols you might come across are:</p>
+<ul>
+<li><code>http://</code> - hyper text transfer protocol</li>
+<li><code>https://</code> - secure hyper text transfer protocol (encrypted)</li>
+<li><code>file://</code> - when you open a local file in your browser</li>
+<li><code>ws://</code> - open a websocket</li>
+<li><code>ftp://</code> - when you connect to a remote file server ftp stands for file transfer protocol</li>
+<li><code>ipfs://</code> - the inter-planetary file system find out more about this at <a href="https://ipfs.io/">https://ipfs.io/</a></li>
+</ul>
+<h3>Host</h3>
+<p>This is the address or place on the internet we are trying to reach. The host address (sometimes referred to as the domain address) of the HTTP request forms the main part of the address.</p>
+<h3>Path</h3>
+<p>This comes after the host address. This is the part of the address that is subject to the RESTful pattern. If we want to get all the albums from spotify then we would use the following address.</p>
+<pre><code class="language-sh">https://api.spotify.com/v1/albums
+</code></pre>
+<ul>
+<li><code>/v1/albums</code> - is the path</li>
+<li><code>api.spotify.com</code> - is the host.</li>
+</ul>
+<h3>Parameters</h3>
+<p>There are often variables that contribute toward a RESTful address. These are called parameters if they are included in the path. In the example above if we include the id number at the end of the path, we will be returned the album with that id. The id can be different and will relate to the resource that we want to access. In the example below we can compose an address using the album id <code>12345</code>, but if we wanted a different album we can change this.</p>
+<pre><code class="language-sh">https://api.spotify.com/v1/albums/12345
+</code></pre>
+<p>❓ What is the difference between the path and parameters?</p>
+<h3>Query parameters</h3>
+<p>Query parameters can be added to the end of an address. Adding a <code>?</code> at the end of an address indicates that the following string is a list of key value pairs. In the example below after the '?' you should see a 'key' <code>artist</code> an equals <code>=</code> and then the 'value' <code>Frank%20Zappa</code> that makes a key=value pair. Look for the ampersand <code>&amp;</code> that separates the key value pairs. Query parameters must be encoded so there are no special characters or spaces. This encoding is called URIEncoding the best API in the browser to use for this is <code>window.encodeURIComponent</code>.</p>
+<pre><code class="language-javascript"><span class="hljs-string">&quot;?artist=Frank Zappa&amp;album=Hot Rats&amp;track=Peaches Èn Ragalia&quot;</span> <span class="hljs-comment">// not URI encoded</span>
+<span class="hljs-built_in">window</span>.encodeURIComponent(<span class="hljs-string">&quot;Peaches Èn Ragalia&quot;</span>) <span class="hljs-comment">// returns Peaches%20%C3%88n%20Ragalia</span>
+<span class="hljs-string">&quot;?artist=Frank%20Zappa&amp;album=Hot%20Rats&amp;track=Peaches%20%C3%88n%20Ragalia&quot;</span> <span class="hljs-comment">// safe query string</span>
+</code></pre>
+<p>All this extra information will be included in the HTTP request. Query strings have a maximum size limit (specific to the browser) and therefore aren’t good for transmitting a large amount of information</p>
+<p>❓ What are the 2 ways we can pass data in an HTTP request?</p>
+<p>❓ What is the difference between a parameter and a query parameter?</p>
+<h3>Body</h3>
+<p>All HTTP requests can have a body. The body can contain different flavors of encoded data. In the table below you can see the following data encoded in different flavors:</p>
+<pre><code class="language-javascript">{
+    <span class="hljs-attr">artist</span>: <span class="hljs-string">&quot;Frank Zappa&quot;</span>,
+    <span class="hljs-attr">album</span>: <span class="hljs-string">&quot;Hot Rats&quot;</span>,
+    <span class="hljs-attr">track</span>: <span class="hljs-string">&quot;Peaches Èn Ragalia&quot;</span>
+}
+</code></pre>
+<table>
+<thead>
+<tr><th style="text-align:left">flavor</th><th style="text-align:left">encoding</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">form-data</td><td style="text-align:left"><code>artist=Frank+Zappa&amp;album=Hot+Rats&amp;track=Peaches+%C3%88n+Ragalia</code></td></tr>
+<tr><td style="text-align:left">x-www-form-urlencoded</td><td style="text-align:left"><code>artist=Frank%20Zappa&amp;album=Hot%20Rats&amp;track=Peaches%20%C3%88n%20Ragalia</code></td></tr>
+<tr><td style="text-align:left">JSON string</td><td style="text-align:left"><code>&quot;{&quot;artist&quot;:&quot;Frank Zappa&quot;,&quot;album&quot;:&quot;Hot Rats&quot;,&quot;track&quot;:&quot;Peaches Èn Ragalia&quot;}&quot;</code></td></tr>
+<tr><td style="text-align:left">XML</td><td style="text-align:left"><code>&quot;&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;root&gt;&lt;artist&gt;Frank Zappa&lt;/artist&gt;&lt;album&gt;Hot Rats&lt;/album&gt;&lt;track&gt;Peaches Èn Ragalia&lt;/track&gt;&lt;/root&gt;&quot;</code></td></tr>
+</tbody>
+</table>
+<p>There are more kinds of encoding for example binary which is for files but this is enough to be getting on with.</p>
+<h3>Header</h3>
+<p>The header is a very important part of the HTTP request. In the header you can pass all manor of meta information about the request. We will be putting authentication credentials in the header later on. For now we can focus on the <code>Content-Type</code>. Considering there are different ways we can encode the body content, we need to have a matching header that tells the receiver how to decode our body content. Without the body and Content-Type matching the server may error with a 406 &quot;Not Acceptable&quot; status code (we will look at status codes later).</p>
+<p>Here is a list of all the different <code>Content-Type</code>s that are supported: <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">https://www.iana.org/</a></p>
+<p>❓ In postman can you see where to set a header?</p>
+<p>❓ Can you match the correct content types to the table of encodings above?</p>
+<h3>Response</h3>
+<p>The response object is similar to the request object. The main difference is a response will have a status code property. It is the responsibility of the developers building and maintaining a service to set the correct status code for a response before sending it back to the client.</p>
+<table>
+<thead>
+<tr><th style="text-align:left">Range</th><th style="text-align:left">Status</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">100 - 103</td><td style="text-align:left">Informational response</td></tr>
+<tr><td style="text-align:left">200 - 226</td><td style="text-align:left">Success</td></tr>
+<tr><td style="text-align:left">300 - 308</td><td style="text-align:left">Redirection</td></tr>
+<tr><td style="text-align:left">400 - 451</td><td style="text-align:left">Client Errors</td></tr>
+<tr><td style="text-align:left">500 - 598</td><td style="text-align:left">Server Errors</td></tr>
+</tbody>
+</table>
+<p>Read through the <a href="https://en.wikipedia.org/wiki/List_of_HTTP_status_codes">HTTP Status codes</a> so you know how to handle HTTP responses like a boss.</p>
+<h2>Assignment</h2>
+<p>Below is a URL. Can you make an HTTP request to that URL using <a href="https://www.postman.com/">postman</a>? Read the instructions that you get back from the server as each response is a different challenge piece that will lead to a final puzzle on https://applied.multiverse.io.</p>
+<ol>
+<li>Make a GET request to https://http-challenge.whitehatcoaches.org.uk/</li>
+<li>Follow the instructions you receive from the response</li>
+</ol>
+
+        <script src="/curriculum/js/tabbed-code-blocks.js"></script>
+        <script>
+            function toggleNav() {
+                const button = document.getElementById('navigation-toggle')
+                const isAriaExp = button.getAttribute('aria-expanded')
+                const newAriaExp = (isAriaExp == "false") ? "true" : "false"
+                button.setAttribute('aria-expanded', newAriaExp)
+                const nav = document.getElementById('navigation')
+                nav.style.display = nav.offsetParent ? 'none' : 'block'
+            }
+        </script>
+    </body>
+</html>
