@@ -225,3 +225,7 @@ blockquote {
 blockquote p {
   display: inline;
 }
+
+iframe {
+  border: none;
+}
