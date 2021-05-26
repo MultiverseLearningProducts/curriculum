@@ -120,7 +120,13 @@ myPromise.then(<span class="hljs-function">() =&gt;</span> {
   .then(<span class="hljs-function"><span class="hljs-params">data</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(data));
 </code></pre>
 <h2>Assignment</h2>
-<p>TODO</p>
+<ol>
+<li>Create a function <code>printWithDelay(arr, delay)</code> which prints each element of an array, pausing for the specified <code>delay</code> between each <code>console.log</code>. You will find the <code>pause</code> function below useful, which returns a promise resolving after the given amount of time.q</li>
+</ol>
+<h3>Assignment extension tasks</h3>
+<ol>
+<li>So far, we've assumed all our promises are <code>fulfilled</code> rather than <code>rejected</code>. Research how we can handle promise rejection errors when using both the <code>.then</code> and <code>async/await</code> strategies for consuming promises.</li>
+</ol>
 <h3><code>pause</code> function</h3>
 <pre><code class="language-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">pause</span>(<span class="hljs-params">time</span>) </span>{
     <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-params">resolve</span> =&gt;</span> {
