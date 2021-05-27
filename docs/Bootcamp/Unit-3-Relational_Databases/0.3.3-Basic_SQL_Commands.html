@@ -39,9 +39,8 @@
 <tr><td>2</td><td>Apple</td><td>Cupertino</td><td>147000</td></tr>
 </tbody>
 </table>
-<p><strong>Activity</strong> - in the 'chat' function, post the names of relational database you have heard of or used</p>
-<p>Tables are made up of columns, each which have a specific Data Type.</p>
-<p>The Data Types for different SQL databases vary slightly, for SQLite they are as follows:</p>
+<p>Tables are made up of columns, each which have a specific Data Type.<br>
+The Data Types for different SQL databases vary slightly, for SQLite they are as follows:</p>
 <table>
 <thead>
 <tr><th>Data type</th><th>Description</th></tr>
@@ -61,20 +60,88 @@
                           numEmployees <span class="hljs-type">INTEGER</span>);
 </code></pre>
 <p>A column (or set of columns) marked as a <code>PRIMARY KEY</code> is a column (or set of columns) that has to be unique i.e. you cannot insert rows with the same value in this column and the value cannot be null. It is good practice to have a PRIMARY KEY on each table. The syntax for adding a PRIMARY KEY is as follows:</p>
-<pre><code class="language-sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> COMPANIES(id <span class="hljs-type">INTEGER</span> <span class="hljs-keyword">PRIMARY</span> KEY, 
+<pre><code class="language-sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> companies(id <span class="hljs-type">INTEGER</span> <span class="hljs-keyword">PRIMARY</span> KEY, 
                           name TEXT, 
                           location TEXT,
                           numEmployees <span class="hljs-type">INTEGER</span>);
 </code></pre>
-<p>Here, we are specifying that the <code>id</code> column is the PRIMARY KEY i.e. has to have unique values.</p>
-<p>An alternative to creating your own unique identifier to populate an <code>id</code> column is to use an AUTO INCREMENTing number. SQL provides <a href="https://www.w3schools.com/sql/sql_autoincrement.asp">a way to to do this</a>.</p>
-<p><strong>Activity</strong> - Work through the <a href="https://www.w3schools.com/sql/sql_syntax.asp">W3Schools SQL Tutorial</a> up to and including the 'SQL Delete' lesson. This tutorial will enable you to understand how to create, read, update and delete (CRUD) data to / from a SQL database. Once you are comfortable with this syntax, move on to look at how to <a href="https://www.w3schools.com/sql/sql_create_table.asp">create a table</a> &amp; <a href="https://www.w3schools.com/sql/sql_drop_table.asp">drop a table</a>.</p>
+<p>Here, we are specifying that the <code>id</code> column is the PRIMARY KEY i.e. has to have unique values. You can also use this <a href="https://en.wikipedia.org/wiki/Idempotence">idempotent</a> command which is very useful if you use an in memory database, or when someone runs your code for the first time.</p>
+<pre><code class="language-sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> IF <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">EXISTS</span> companies(id <span class="hljs-type">INTEGER</span> <span class="hljs-keyword">PRIMARY</span> KEY, 
+                          name TEXT, 
+                          location TEXT,
+                          numEmployees <span class="hljs-type">INTEGER</span>);
+</code></pre>
+<p>An alternative to creating your own unique identifier to populate an <code>id</code> column is to use an AUTO INCREMENTing number. SQL provides <a href="https://www.w3schools.com/sql/sql_autoincrement.asp">a way to to do this</a>. Or use a Universally Unique Identifier, or UUID, which are 128 bit numbers, composed of 16 octets and represented as 32 base-16 characters that looks something like <code>27dce754-7a31-4411-bbc0-383c731b34f8</code>.</p>
+<h2>CREATE</h2>
+<p>Create new rows in the database with the following;</p>
+<pre><code class="language-sql"><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> table_name (column1, column2, column3, ...)
+<span class="hljs-keyword">VALUES</span> (value1, value2, value3, ...);
+</code></pre>
+<p>You can try...</p>
+<pre><code class="language-sql"><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> companies (name, location, numEmployees)
+<span class="hljs-keyword">VALUES</span> (&quot;Google&quot;, &quot;USA&quot;, <span class="hljs-number">135000</span>);
+</code></pre>
+<h2>READ</h2>
+<p>To read values out of the database you can use the following:</p>
+<pre><code class="language-sql"><span class="hljs-keyword">SELECT</span> column1, column2, ...
+<span class="hljs-keyword">FROM</span> table_name;
+</code></pre>
+<p>Try it</p>
+<pre><code class="language-sql"><span class="hljs-keyword">SELECT</span> name, numEmployees
+<span class="hljs-keyword">FROM</span> companies;
+</code></pre>
+<p>This statement can be extended with the <code>WHERE</code> keyword to be more selective what is read from the database. The <code>WHERE</code> clause can filter records for you. An example is below.</p>
+<pre><code class="language-sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> companies
+<span class="hljs-keyword">WHERE</span> numEmployees <span class="hljs-operator">&gt;</span> <span class="hljs-number">100000</span>;
+</code></pre>
+<p>In the statement above we return all the columns, the <code>*</code> is a short hand for all the columns which is equivalent to asking for the row. The <code>WHERE</code> clause identifies the column <code>numEmployees</code> and the condition is to only return rows where the value for this field is greater than 100000.</p>
+<table>
+<thead>
+<tr><th style="text-align:center">Operator</th><th style="text-align:left">Description</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:center">=</td><td style="text-align:left">equal to</td></tr>
+<tr><td style="text-align:center">IS</td><td style="text-align:left">equal to</td></tr>
+<tr><td style="text-align:center">&gt;</td><td style="text-align:left">greater than</td></tr>
+<tr><td style="text-align:center">&lt;</td><td style="text-align:left">less than</td></tr>
+<tr><td style="text-align:center">&gt;=</td><td style="text-align:left">greater than or equal to</td></tr>
+<tr><td style="text-align:center">&lt;=</td><td style="text-align:left">less than or equal to</td></tr>
+<tr><td style="text-align:center">&lt;&gt;</td><td style="text-align:left">not equal (not all databases support this syntax)</td></tr>
+<tr><td style="text-align:center">!=</td><td style="text-align:left">not equal</td></tr>
+<tr><td style="text-align:center">BETWEEN</td><td style="text-align:left">in a range i.e BETWEEN 50 AND 100</td></tr>
+<tr><td style="text-align:center">LIKE</td><td style="text-align:left">use the wild card LIKE &quot;%oogle&quot;<br/>[&quot;Google&quot;, &quot;Poogle&quot;, &quot;Woogle&quot;]</td></tr>
+<tr><td style="text-align:center">IN</td><td style="text-align:left">name IN (&quot;google&quot;,&quot;apple&quot;,&quot;facebook&quot;)<br/>name IN (SELECT name FROM companies;)</td></tr>
+</tbody>
+</table>
+<p>There is lots you can do with <code>SELECT</code> and <code>WHERE</code>.</p>
+<h2>UPDATE</h2>
+<p>What to change a value or set of values? You need the <code>UPDATE</code> statement.</p>
+<pre><code class="language-sql">UPDATE table_name
+<span class="hljs-keyword">SET</span> column1 <span class="hljs-operator">=</span> value1, column2 <span class="hljs-operator">=</span> value2, ...
+<span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">condition</span>;
+</code></pre>
+<p>Lets update the location of Google HQ.</p>
+<pre><code class="language-sql">UPDATE <span class="hljs-keyword">TABLE</span> companies <span class="hljs-keyword">SET</span> location<span class="hljs-operator">=</span>&quot;California&quot; <span class="hljs-keyword">WHERE</span> name<span class="hljs-operator">=</span>&quot;Google&quot;;
+</code></pre>
+<h2>DELETE</h2>
+<p>Had enough? Remove data like this.</p>
+<pre><code class="language-sql"><span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">FROM</span> table_name <span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">condition</span>;
+</code></pre>
+<p>This would delete all the companies who's location field has the value of &quot;California&quot;.</p>
+<pre><code class="language-sql"><span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">FROM</span> companies <span class="hljs-keyword">WHERE</span> location<span class="hljs-operator">=</span>&quot;California&quot;;
+</code></pre>
+<p>You can also delete entire tables;</p>
+<pre><code class="language-sql"><span class="hljs-keyword">DROP</span> <span class="hljs-keyword">TABLE</span> companies;
+</code></pre>
+<p>And yes you can really throw your toys out the pram.</p>
+<pre><code class="language-sql"><span class="hljs-keyword">DROP</span> DATABASE main;
+</code></pre>
 <h2>Assignment</h2>
 <p>Here is a UML class diagram representing a model for a restaurant ordering app.</p>
 <p><figure><img src="https://user-images.githubusercontent.com/1316724/111300668-3ed7d980-8649-11eb-99b2-5a842259c4ed.png" alt="UML Class Diagram showing Restaurant, Menu and MenuItem classes and attributes"><figcaption></figcaption></figure></p>
 <p>Imagine we write some code to create instances of these classes with real Restaurant and Menu data. The problem is all the data is lost when your app stops. The data that makes the app persists only in memory, so when the process dies, so does the data. Your challenge in this assignment is to provide a persistent way of storing this data.</p>
 <ol>
-<li><p>Using a <code>SQLite</code> Repl, compose the SQL queries to do the following:</p>
+<li>Using a <code>SQLite</code> Repl, compose the SQL queries to do the following:
 <ul>
 <li>Implement the Restaurants, Menus and MenuItems tables - make the id of each a PRIMARY KEY (this has to be unique) and make this AUTO INCREMENTing</li>
 <li>Insert rows into each table using &quot;INSERT&quot;</li>
@@ -83,15 +150,14 @@
 <li>Delete your rows using <code>DELETE</code> command</li>
 <li>Use the <code>WHERE</code> clause to filter results</li>
 </ul></li>
-<li><p>Share your Repl with your coach for review</p>
-<p>You should also be aware of 2 SQLite specific SQL statements which will help you.</p>
-<p>The <code>PRAGMA</code> command describes a table by listing its columns and indicating which column is the primary key.</p></li>
+<li>Share your Repl with your coach for review</li>
 </ol>
-<pre><code class="language-sql">     PRAGMA table_info(CUSTOMERS);
+<p>You should also be aware of 2 SQLite specific SQL statements which will help you.<br>
+The <code>PRAGMA</code> command describes a table by listing its columns and indicating which column is the primary key.</p>
+<pre><code class="language-sql">PRAGMA table_info(companies);
 </code></pre>
-<pre><code> The following command lists all the tables in the database:
-</code></pre>
-<pre><code class="language-sql">     <span class="hljs-keyword">SELECT</span> name <span class="hljs-keyword">FROM</span> sqlite_master <span class="hljs-keyword">WHERE</span> type<span class="hljs-operator">=</span><span class="hljs-string">&#x27;table&#x27;</span>
+<p>The following command lists all the tables in the database:</p>
+<pre><code class="language-sql"><span class="hljs-keyword">SELECT</span> name <span class="hljs-keyword">FROM</span> sqlite_master <span class="hljs-keyword">WHERE</span> type<span class="hljs-operator">=</span><span class="hljs-string">&#x27;table&#x27;</span>
 </code></pre>
 <h3>Assignment extension tasks</h3>
 <p>Explore the SQL documentation for the <code>SUM</code>, <code>COUNT</code> and <code>GROUP BY</code> aggregate functions</p>
