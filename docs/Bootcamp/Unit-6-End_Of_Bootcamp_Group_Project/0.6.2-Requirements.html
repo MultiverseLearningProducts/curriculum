@@ -32,7 +32,7 @@
 <tr><th>Id</th><th>Priority</th><th>Description</th></tr>
 </thead>
 <tbody>
-<tr><td>F1</td><td>MUST</td><td>The application must support at least 4 categories</td></tr>
+<tr><td>F1</td><td>MUST</td><td>The application must support at least 4 categories; <em>electronics, jewelery, men's clothing, women's clothing</em></td></tr>
 <tr><td>F2</td><td>MUST</td><td>The application must display as a minimum, an image, price and description of each item</td></tr>
 <tr><td>F3</td><td>MUST</td><td>The application must allow for items to be added to a shopping cart</td></tr>
 <tr><td>F4</td><td>MUST</td><td>The shopping cart must persist its state when the browser is closed</td></tr>
@@ -208,6 +208,7 @@
    }
 ]
 </code></pre>
+<p>hint: you might end up with a little adaption to this data <code>{&quot;category_id&quot;: &quot;?&quot;}</code> where a <code>Category</code> has many <code>Item</code> ...😉</p>
 
         <script src="/curriculum/js/tabbed-code-blocks.js"></script>
         <script>
