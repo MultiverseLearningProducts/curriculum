@@ -6,11 +6,11 @@ Welcome to the Software Engineering Programme (SWE)! We are excited you are join
 
 [Bootcamp](/curriculum/Bootcamp/index.html)
 
-* __Module 1:__ A 2 week bootcamp that builds and expands on the RESTful concept introduced in the 5-week bootcamp. Topics covered include: HTTP/HTTPS, RESTful API best practices, Building out a RESTful API, Securing an API using Basic Auth, Sessions, and Securing an API with OAuth
+* __Module 1:__ Builds and expands on the RESTful concept introduced in the 5-week bootcamp. Topics covered include: HTTP/HTTPS, RESTful API best practices, Building out a RESTful API, Securing an API using Basic Auth, Sessions, and Securing an API with OAuth
 
 * __Module 2:__ A two week bootcamp that will get you develop your proficiency with HTML, CSS and asynchronous JavaScript. You'll cover: WebSockets; web workers; XMLHTTPRequests; canvas elements; media elements; responsive design through media queries; and error handling in Javascript. By the end of the module you will be prepared to take the Microsoft Technology Associate Certification (MTA): Introduction to Programming Using JavaScript
 
-* __Module 3:__ A two week bootcamp to fully understand and navigate the software development lifecycle.  Through a mixture of independent reading and a team project, you will learn about both agile and waterfall development methodologies and experience 2 x 1-week sprints. By the end of the module you will be prepared to take the BCS Level 4 Diploma in Software Development Methodologies
+* __Module 3:__ Fully understand and navigate the software development lifecycle.  Through a mixture of independent reading and a team project, you will learn about both agile and waterfall development methodologies and experience 2 x 1-week sprints. By the end of the module you will be prepared to take the BCS Level 4 Diploma in Software Development Methodologies
 
 [Unit 3](https://multiverselearningproducts.github.io/curriculum/Module-3/Unit-1-The-SDLC/3.1.1-Business_Impact.html)
 
