@@ -106,7 +106,7 @@
 <pre><code class="language-javascript"><span class="hljs-keyword">const</span> menuListElement = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">&quot;ul&quot;</span>)
 <span class="hljs-built_in">document</span>.body.append(menuListElement)
 </code></pre>
-<p>Above we are appending a new node <code>menuListElement</code> to the root node <code>body</code>. The content of this node is going to be other nodes, or children. This is an important thing to consider as we work with our tree like structure. The content of this node is not 'content' its other nodes. We will create DOM nodes that render the data of each item in the data array. These will be 'leaf' nodes; they will terminate the branching by yielding the content. Our aim is to see and read these menu items with their prices in the browser.</p>
+<p>Above we are appending a new node <code>menuListElement</code> to the root node <code>body</code>. The content of this node is going to be other nodes, or children. This is an important thing to consider as we work with our tree like structure. The content of this node is not 'content', it's other nodes. We will create DOM nodes that render the data of each item in the data array. These will be 'leaf' nodes; they will terminate the branching by yielding the content. Our aim is to see and read these menu items with their prices in the browser.</p>
 <pre><code class="language-json">[
     {
         <span class="hljs-attr">&quot;item&quot;</span>: <span class="hljs-string">&quot;Mackerel, wakame dashi, Cornish baby beetroots&quot;</span>,
@@ -125,7 +125,7 @@
 <p>We have to create another valid DOM node. That could be a <code>&lt;li&gt;</code>, <code>&lt;article&gt;</code>, or any HTML <a href="https://www.w3schools.com/TAGS/">tag in this list</a>. As this will be an item in a list I'm going to create a <code>&lt;li&gt;</code> element.</p>
 <pre><code class="language-javascript"><span class="hljs-keyword">const</span> menuItemElement = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">&quot;li&quot;</span>)
 </code></pre>
-<p>The variable <code>menuItemElement</code> is now a valid DOM element. We have created a node that can be added to the DOM tree. At the moment it is empty; we need to add the children nodes that this node be the parent of. There are 3 pieces of content to display so this node does not actually have content it just has 3 children nodes. In the code example below I am iterating over the JSON above and dealing with each item in the JSON array using <code>forEach</code>.</p>
+<p>The variable <code>menuItemElement</code> is now a valid DOM element. We have created a node that can be added to the DOM tree. At the moment it is empty; we need to add the child nodes that this node is the parent of. There are 3 pieces of content to display so this node does not actually have content it just has 3 child nodes. In the code example below, I am iterating over the JSON above and dealing with each item in the JSON array using <code>forEach</code>.</p>
 <pre><code class="language-javascript">menuItemsData.forEach(<span class="hljs-function"><span class="hljs-params">data</span> =&gt;</span> {
     <span class="hljs-keyword">const</span> menuItemElement = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">&quot;li&quot;</span>)
     <span class="hljs-keyword">const</span> item = <span class="hljs-built_in">document</span>.createTextNode(data.item)
@@ -184,33 +184,14 @@ menuElement.append(updateFragment)
 <pre><code class="language-javascript"><span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">&#x27;li:last-child&#x27;</span>).remove()
 </code></pre>
 <h2>Assignment</h2>
-<p>Can you manipulate the DOM tree using javascript? You should be able to make a <code>GET</code> request to your server in order to retrieve restaurant data from your API server.</p>
-<pre><code class="language-json">[
-    {
-        <span class="hljs-attr">&quot;item&quot;</span>: <span class="hljs-string">&quot;Mackerel, wakame dashi, Cornish baby beetroots&quot;</span>,
-        <span class="hljs-attr">&quot;price&quot;</span>: <span class="hljs-number">17.00</span>,
-        <span class="hljs-attr">&quot;isVegetarian&quot;</span>: <span class="hljs-literal">false</span>
-    },
-    {
-        <span class="hljs-attr">&quot;item&quot;</span>: <span class="hljs-string">&quot;Heritage mixed beetroots, goats curd dumpling, vanilla&quot;</span>,
-        <span class="hljs-attr">&quot;price&quot;</span>: <span class="hljs-number">25.00</span>,
-        <span class="hljs-attr">&quot;isVegetarian&quot;</span>: <span class="hljs-literal">true</span>
-    },
-        {
-        <span class="hljs-attr">&quot;item&quot;</span>: <span class="hljs-string">&quot;Soft Shell Crab Bun, Asian Slaw, Jalapeno Mayo, Chips&quot;</span>,
-        <span class="hljs-attr">&quot;price&quot;</span>: <span class="hljs-number">19.95</span>,
-        <span class="hljs-attr">&quot;isVegetarian&quot;</span>: <span class="hljs-literal">true</span>
-    }
-]
-</code></pre>
-<p>Render the restaurant data in a web page.</p>
+<p>Can you manipulate the DOM tree using javascript? You should be able to make a <code>GET</code> request to your server in order to retrieve restaurant data from your API server. You can use the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">Fetch API</a> for this.</p>
 <ul>
-<li>Create an <code>index.html</code> page; start by adding some static structured elements to the like a header with the site's title, a nav bar and some DOM element that will be the parent for the restaurant data.</li>
-<li>Use the JSON data above and write the code to render the data into the DOM.</li>
-<li>Add a delete button to each menu item that will delete the item if it is clicked.</li>
+<li>Your <code>restaurant.handlebars</code> template should have some static structured elements like a header with the site's title, a nav bar and a childless element that will be the parent for the menu data.</li>
+<li>Use <code>fetch</code> to grab that restaurant's data (including menus and items) then render it to the page according to your design.</li>
 </ul>
 <h4>Extension</h4>
 <ul>
+<li>Add a delete button to each menu item that will delete the item if it is clicked.</li>
 <li>In a README.md file analysis manipulating the DOM using javascript by creating a list of the pros and cons based on your experience of implementing your script.</li>
 </ul>
 
