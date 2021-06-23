@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+    <head>
+        <meta charset="utf-8">
+        <title> Usability Heuristics</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="shortcut icon" type="image/x-icon" href="/curriculum/favicon.ico"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/an-old-hope.min.css">
+        <link rel="stylesheet" href="/curriculum/style.css"/>
+        <script src="/curriculum/js/highlight.min.js"></script>
+        <script src="/curriculum/js/bash.min.js"></script>
+        <script src="/curriculum/js/java.min.js"></script>
+        <script src="/curriculum/js/javascript.min.js"></script>
+        <script src="/curriculum/js/sql.min.js"></script>
+    </head>
+    <body>
+        <button 
+            id="navigation-toggle"
+            aria-expanded="false"
+            aria-haspopup="true"
+            onclick="toggleNav()"
+            onkeydown="event => {event.keyCode === 13 ? toggleNav() : null}"
+            tabindex="1">Table of contents</button>
+        <nav id="navigation"><ul><li><a href="/curriculum/Bootcamp/index.html">Bootcamp</a><ul><li><a href="/curriculum/Bootcamp/FAQ.html">FAQ</a></li><li><a href="/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/index.html">Unit 1 Object Oriented Programming</a><ul><li><a href="/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.1-JavaScript_Objects_And_Functions.html">0.1.1 JavaScript Objects And Functions</a></li><li><a href="/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.2-Test_Driven_Development.html">0.1.2 Test Driven Development</a></li><li><a href="/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.3-Objects_in_an_Airport_Domain.html">0.1.3 Objects in an Airport Domain</a></li><li><a href="/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.4-Static_functions_and_properties.html">0.1.4 Static functions and properties</a></li><li><a href="/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.5-Inheritance.html">0.1.5 Inheritance</a></li><li><a href="/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.6-UML_Modelling.html">0.1.6 UML Modelling</a></li><li><a href="/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.7-OOP_Challenge.html">0.1.7 OOP Challenge</a></li><li><a href="/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.8-End_of_Unit_Quiz_OOP.html">0.1.8 End of Unit Quiz OOP</a></li></ul></li><li><a href="/curriculum/Bootcamp/Unit-2-Asynchronous_JavaScript/index.html">Unit 2 Asynchronous JavaScript</a><ul><li><a href="/curriculum/Bootcamp/Unit-2-Asynchronous_JavaScript/0.2.1-Asynchronous_JavaScript.html">0.2.1 Asynchronous JavaScript</a></li><li><a href="/curriculum/Bootcamp/Unit-2-Asynchronous_JavaScript/0.2.2-Promises.html">0.2.2 Promises</a></li><li><a href="/curriculum/Bootcamp/Unit-2-Asynchronous_JavaScript/0.2.3-Asynchronous_Airport_Data_Load.html">0.2.3 Asynchronous Airport Data Load</a></li><li><a href="/curriculum/Bootcamp/Unit-2-Asynchronous_JavaScript/0.2.4-End_of_Unit_Quiz_Async.html">0.2.4 End of Unit Quiz Async</a></li></ul></li><li><a href="/curriculum/Bootcamp/Unit-3-Relational_Databases/index.html">Unit 3 Relational Databases</a><ul><li><a href="/curriculum/Bootcamp/Unit-3-Relational_Databases/0.3.1-Logical_Data_Model.html">0.3.1 Logical Data Model</a></li><li><a href="/curriculum/Bootcamp/Unit-3-Relational_Databases/0.3.10-Sequelize_part_2.html">0.3.10 Sequelize part 2</a></li><li><a href="/curriculum/Bootcamp/Unit-3-Relational_Databases/0.3.11-End_of_Unit_Quiz_Databases.html">0.3.11 End of Unit Quiz Databases</a></li><li><a href="/curriculum/Bootcamp/Unit-3-Relational_Databases/0.3.2-Introduction_to_Databases.html">0.3.2 Introduction to Databases</a></li><li><a href="/curriculum/Bootcamp/Unit-3-Relational_Databases/0.3.3-Basic_SQL_Commands.html">0.3.3 Basic SQL Commands</a></li><li><a href="/curriculum/Bootcamp/Unit-3-Relational_Databases/0.3.4-SQL_Joins.html">0.3.4 SQL Joins</a></li><li><a href="/curriculum/Bootcamp/Unit-3-Relational_Databases/0.3.5-Database_access_using_Node.html">0.3.5 Database access using Node</a></li><li><a href="/curriculum/Bootcamp/Unit-3-Relational_Databases/0.3.6-Populating_databases_from_JSON.html">0.3.6 Populating databases from JSON</a></li><li><a href="/curriculum/Bootcamp/Unit-3-Relational_Databases/0.3.7-Object_Relational_Mapping_part_1.html">0.3.7 Object Relational Mapping part 1</a></li><li><a href="/curriculum/Bootcamp/Unit-3-Relational_Databases/0.3.8-Object_Relational_Mapping_part_2.html">0.3.8 Object Relational Mapping part 2</a></li><li><a href="/curriculum/Bootcamp/Unit-3-Relational_Databases/0.3.9-Sequelize_part_1.html">0.3.9 Sequelize part 1</a></li></ul></li><li><a href="/curriculum/Bootcamp/Unit-4-RESTful_Servers/index.html">Unit 4 RESTful Servers</a><ul><li><a href="/curriculum/Bootcamp/Unit-4-RESTful_Servers/0.4.1-Web_Servers.html">0.4.1 Web Servers</a></li><li><a href="/curriculum/Bootcamp/Unit-4-RESTful_Servers/0.4.2-Application_Servers.html">0.4.2 Application Servers</a></li><li><a href="/curriculum/Bootcamp/Unit-4-RESTful_Servers/0.4.3-Postman.html">0.4.3 Postman</a></li><li><a href="/curriculum/Bootcamp/Unit-4-RESTful_Servers/0.4.4-Route_Parameters.html">0.4.4 Route Parameters</a></li><li><a href="/curriculum/Bootcamp/Unit-4-RESTful_Servers/0.4.5-CRUD_operations.html">0.4.5 CRUD operations</a></li><li><a href="/curriculum/Bootcamp/Unit-4-RESTful_Servers/0.4.6-Server_side_Validation.html">0.4.6 Server side Validation</a></li><li><a href="/curriculum/Bootcamp/Unit-4-RESTful_Servers/0.4.7-End_of_Unit_Quiz_RESTful.html">0.4.7 End of Unit Quiz RESTful</a></li></ul></li><li><a href="/curriculum/Bootcamp/Unit-5-Human_Computer_Interaction/index.html">Unit 5 Human Computer Interaction</a><ul><li><a href="/curriculum/Bootcamp/Unit-5-Human_Computer_Interaction/0.5.1-Human_Computer_Interaction.html">0.5.1 Human Computer Interaction</a></li><li><a href="/curriculum/Bootcamp/Unit-5-Human_Computer_Interaction/0.5.2-Server_Side_Rendering.html">0.5.2 Server Side Rendering</a></li><li><a href="/curriculum/Bootcamp/Unit-5-Human_Computer_Interaction/0.5.3-The_Document_Object_Model.html">0.5.3 The Document Object Model</a></li><li><a href="/curriculum/Bootcamp/Unit-5-Human_Computer_Interaction/0.5.4-HTML_forms_and_lists.html">0.5.4 HTML forms and lists</a></li><li><a href="/curriculum/Bootcamp/Unit-5-Human_Computer_Interaction/0.5.5-End_of_Unit_Quiz_HCI.html">0.5.5 End of Unit Quiz HCI</a></li></ul></li><li><a href="/curriculum/Bootcamp/Unit-6-End_Of_Bootcamp_Group_Project/index.html">Unit 6 End Of Bootcamp Group Project</a><ul><li><a href="/curriculum/Bootcamp/Unit-6-End_Of_Bootcamp_Group_Project/0.6.1-Introduction.html">0.6.1 Introduction</a></li><li><a href="/curriculum/Bootcamp/Unit-6-End_Of_Bootcamp_Group_Project/0.6.2-Requirements.html">0.6.2 Requirements</a></li><li><a href="/curriculum/Bootcamp/Unit-6-End_Of_Bootcamp_Group_Project/0.6.3-Agile_Development.html">0.6.3 Agile Development</a></li><li><a href="/curriculum/Bootcamp/Unit-6-End_Of_Bootcamp_Group_Project/0.6.4-Design.html">0.6.4 Design</a></li><li><a href="/curriculum/Bootcamp/Unit-6-End_Of_Bootcamp_Group_Project/0.6.5-GitHub_Projects.html">0.6.5 GitHub Projects</a></li><li><a href="/curriculum/Bootcamp/Unit-6-End_Of_Bootcamp_Group_Project/0.6.6-Branching_and_Pull_Requests.html">0.6.6 Branching and Pull Requests</a></li><li><a href="/curriculum/Bootcamp/Unit-6-End_Of_Bootcamp_Group_Project/0.6.7-Deployment_with_Heroku.html">0.6.7 Deployment with Heroku</a></li></ul></li></ul></li><li><a href="/curriculum/Module-1/index.html">Module 1</a><ul><li><a href="/curriculum/Module-1/Unit-1-Agile_user_requirements/index.html">Unit 1 Agile user requirements</a><ul><li><a href="/curriculum/Module-1/Unit-1-Agile_user_requirements/1.1.1-Introduction_to_Agile.html">1.1.1 Introduction to Agile</a></li><li><a href="/curriculum/Module-1/Unit-1-Agile_user_requirements/1.1.2-Introduction_to_user_stories.html">1.1.2 Introduction to user stories</a></li><li><a href="/curriculum/Module-1/Unit-1-Agile_user_requirements/1.1.3-Introduction_to_quality_requirements.html">1.1.3 Introduction to quality requirements</a></li></ul></li><li><a href="/curriculum/Module-1/Unit-2-Designing_UI/index.html">Unit 2 Designing UI</a><ul><li><a href="/curriculum/Module-1/Unit-2-Designing_UI/1.2.1-Usability_heuristics.html">1.2.1 Usability heuristics</a></li><li><a href="/curriculum/Module-1/Unit-2-Designing_UI/1.2.2-Composition_and_components_in_design.html">1.2.2 Composition and components in design</a></li><li><a href="/curriculum/Module-1/Unit-2-Designing_UI/1.2.3-Prototyping_UI.html">1.2.3 Prototyping UI</a></li><li><a href="/curriculum/Module-1/Unit-2-Designing_UI/1.2.4-From_low_fi_to_hi_fi.html">1.2.4 From low fi to hi fi</a></li></ul></li><li><a href="/curriculum/Module-1/Unit-3-Building_UI_with_a_framework/index.html">Unit 3 Building UI with a framework</a><ul><li><a href="/curriculum/Module-1/Unit-3-Building_UI_with_a_framework/1.3.1-Implementing_a_frontend_design.html">1.3.1 Implementing a frontend design</a></li><li><a href="/curriculum/Module-1/Unit-3-Building_UI_with_a_framework/1.3.2-Working_with_dynamic_data.html">1.3.2 Working with dynamic data</a></li><li><a href="/curriculum/Module-1/Unit-3-Building_UI_with_a_framework/1.3.3-Execute_your_designs.html">1.3.3 Execute your designs</a></li></ul></li><li><a href="/curriculum/Module-1/Unit-4-Accessibility/index.html">Unit 4 Accessibility</a><ul><li><a href="/curriculum/Module-1/Unit-4-Accessibility/1.4.1-Inclusive_design_and_accessibility.html">1.4.1 Inclusive design and accessibility</a></li><li><a href="/curriculum/Module-1/Unit-4-Accessibility/1.4.2-Working_with_new_requirements.html">1.4.2 Working with new requirements</a></li><li><a href="/curriculum/Module-1/Unit-4-Accessibility/1.4.3-Accessibility_reporting_tools.html">1.4.3 Accessibility reporting tools</a></li></ul></li><li><a href="/curriculum/Module-1/Unit-5-End_to_end_testing/index.html">Unit 5 End to end testing</a><ul><li><a href="/curriculum/Module-1/Unit-5-End_to_end_testing/1.5.1-End_to_end_testing.html">1.5.1 End to end testing</a></li><li><a href="/curriculum/Module-1/Unit-5-End_to_end_testing/1.5.2-Test_cases_and_equivalence_testing.html">1.5.2 Test cases and equivalence testing</a></li></ul></li></ul></li><li><a href="/curriculum/Module-2/index.html">Module 2</a><ul><li><a href="/curriculum/Module-2/Unit-1-The_Anatomy_of_the_HTTP_request/index.html">Unit 1 The Anatomy of the HTTP request</a><ul><li><a href="/curriculum/Module-2/Unit-1-The_Anatomy_of_the_HTTP_request/2.1.1-Identifying_the_different_parts_of_HTTP.html">2.1.1 Identifying the different parts of HTTP</a></li><li><a href="/curriculum/Module-2/Unit-1-The_Anatomy_of_the_HTTP_request/2.1.2-Programmatic_HTTP_requests.html">2.1.2 Programmatic HTTP requests</a></li></ul></li><li><a href="/curriculum/Module-2/Unit-2-What_is_REST/index.html">Unit 2 What is REST</a><ul><li><a href="/curriculum/Module-2/Unit-2-What_is_REST/2.2.1-REST_and_the_openAPI_spec.html">2.2.1 REST and the openAPI spec</a></li><li><a href="/curriculum/Module-2/Unit-2-What_is_REST/2.2.2-The_OpenAPI_spec.html">2.2.2 The OpenAPI spec</a></li><li><a href="/curriculum/Module-2/Unit-2-What_is_REST/2.2.3-Build_an_OpenAPI_RESTful_service.html">2.2.3 Build an OpenAPI RESTful service</a></li><li><a href="/curriculum/Module-2/Unit-2-What_is_REST/2.2.4-Integration_tests.html">2.2.4 Integration tests</a></li><li><a href="/curriculum/Module-2/Unit-2-What_is_REST/2.2.5-Unit_2_Knowledge_quiz.html">2.2.5 Unit 2 Knowledge quiz</a></li></ul></li><li><a href="/curriculum/Module-2/Unit-3-Cryptography/index.html">Unit 3 Cryptography</a><ul><li><a href="/curriculum/Module-2/Unit-3-Cryptography/2.3.1-Hashing_Functions.html">2.3.1 Hashing Functions</a></li><li><a href="/curriculum/Module-2/Unit-3-Cryptography/2.3.2-Symmetric_Key_Encryption.html">2.3.2 Symmetric Key Encryption</a></li><li><a href="/curriculum/Module-2/Unit-3-Cryptography/2.3.3-Asymmetric_Key_Encryption.html">2.3.3 Asymmetric Key Encryption</a></li><li><a href="/curriculum/Module-2/Unit-3-Cryptography/2.3.4-Unit_3_Knowledge_Quiz.html">2.3.4 Unit 3 Knowledge Quiz</a></li></ul></li><li><a href="/curriculum/Module-2/Unit-4-Authentication/index.html">Unit 4 Authentication</a><ul><li><a href="/curriculum/Module-2/Unit-4-Authentication/2.4.1-Authentication_and_Authorisation.html">2.4.1 Authentication and Authorisation</a></li><li><a href="/curriculum/Module-2/Unit-4-Authentication/2.4.2-What_is_middleware.html">2.4.2 What is middleware</a></li><li><a href="/curriculum/Module-2/Unit-4-Authentication/2.4.3-Session_based_auth.html">2.4.3 Session based auth</a></li><li><a href="/curriculum/Module-2/Unit-4-Authentication/2.4.4-Introduction_to_OAuth.html">2.4.4 Introduction to OAuth</a></li><li><a href="/curriculum/Module-2/Unit-4-Authentication/2.4.5-Token_based_auth.html">2.4.5 Token based auth</a></li><li><a href="/curriculum/Module-2/Unit-4-Authentication/2.4.6-OpenID_Connect.html">2.4.6 OpenID Connect</a></li><li><a href="/curriculum/Module-2/Unit-4-Authentication/2.4.7-Banking_App.html">2.4.7 Banking App</a></li><li><a href="/curriculum/Module-2/Unit-4-Authentication/2.4.8-Unit_4_Knowledge_Quiz.html">2.4.8 Unit 4 Knowledge Quiz</a></li></ul></li></ul></li><li><a href="/curriculum/Module-3/index.html">Module 3</a><ul><li><a href="/curriculum/Module-3/Unit-1-The-SDLC/index.html">Unit 1 The SDLC</a><ul><li><a href="/curriculum/Module-3/Unit-1-The-SDLC/3.1.1-The_Software_Development_Life_Cycle.html">3.1.1 The Software Development Life Cycle</a></li><li><a href="/curriculum/Module-3/Unit-1-The-SDLC/3.1.2-The_roles_and_responsibilities_in_the_SDLC_with_communication.html">3.1.2 The roles and responsibilities in the SDLC with communication</a></li><li><a href="/curriculum/Module-3/Unit-1-The-SDLC/3.1.3-Communication_in_your_teams.html">3.1.3 Communication in your teams</a></li></ul></li><li><a href="/curriculum/Module-3/Unit-2-The-7-Princibles-of-Testing/index.html">Unit 2 The 7 Princibles of Testing</a><ul><li><a href="/curriculum/Module-3/Unit-2-The-7-Princibles-of-Testing/3.2.1-The_7_Princibles_of_Testing.html">3.2.1 The 7 Princibles of Testing</a></li><li><a href="/curriculum/Module-3/Unit-2-The-7-Princibles-of-Testing/3.2.2-Continuous_Deployment.html">3.2.2 Continuous Deployment</a></li></ul></li><li><a href="/curriculum/Module-3/Unit-3-Deployment-and-Maintenance/index.html">Unit 3 Deployment and Maintenance</a><ul><li><a href="/curriculum/Module-3/Unit-3-Deployment-and-Maintenance/3.3.1-Containerisation_with_docker.html">3.3.1 Containerisation with docker</a></li><li><a href="/curriculum/Module-3/Unit-3-Deployment-and-Maintenance/3.3.2-Introduction_to_Cloud_Computing.html">3.3.2 Introduction to Cloud Computing</a></li><li><a href="/curriculum/Module-3/Unit-3-Deployment-and-Maintenance/3.3.3-Monitoring_and_Maintenance.html">3.3.3 Monitoring and Maintenance</a></li></ul></li></ul></li></ul></nav>
+        <h1>Usability Heuristics</h1>
+<h2>Learning Objectives</h2>
+<ul>
+<li>List some of the 10 heuristics in a presentation.</li>
+<li>Recognise real world examples of the 10 heurristics in digital products.</li>
+<li>Critique real world examples of the 10 heurristics in digital products, by identifying particular characteristics of good execution.</li>
+</ul>
+<h2>1 Visibility of System Status</h2>
+<blockquote>
+<p>The design should always keep users informed about what is going on, through appropriate feedback within a reasonable amount of time.</p>
+</blockquote>
+<p>Knowing what the current system status is can help users learn the outcome of their prior interactions and determine next steps. Predictible interactions create trust in the product as well as the brand.</p>
+<p><figure><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/You_are_here_map.jpg/900px-You_are_here_map.jpg" alt="you are here map" title="https://commons.wikimedia.org/wiki/User:PaulSyms22"><figcaption>https://commons.wikimedia.org/wiki/User:PaulSyms22</figcaption></figure></p>
+<h3>Examples of visibility of system status</h3>
+<ol>
+<li><strong>You are here maps</strong>: Interactive mall maps show people where they currently are to help them understand where to go next.</li>
+<li><strong>Checkout flow</strong>: Multistep processe show users which steps they've completed, they're currently working on, and what comes next.</li>
+<li><strong>Button</strong>: When you tap, or click on a button you expect some feedback, that might be a visual change or haptic feedback.</li>
+</ol>
+<p>Communicate clearly to users what the system’s state is — no action with consequences to users should be taken without informing them. Present feedback to the user as quickly as possible. Build trust through open and continuous communication.</p>
+<h2>2 Match between System and the Real World</h2>
+<blockquote>
+<p>The design should speak the users' language. Use words, phrases, and concepts familiar to the user, rather then internal jargon. Follow real-world conventions, making information appear in a natural and logical order.</p>
+</blockquote>
+<p>The language you should use depends very much on your specific users. Ensure users can understand meaning without having to go look up a word’s definition. Never assume your understanding of words or concepts will match those of your users. User research will help you uncover your users' familiar terminology, as well as their mental models around important concepts.</p>
+<h3>Examples of matching</h3>
+<ol>
+<li><strong>Stovetop controls</strong>: When stovetop controls match the layout of heating elements, users can quickly understand which control maps to each heating element.</li>
+<li><strong>&quot;Car&quot; vs &quot;Automobile&quot;</strong>: If users think about this object as a &quot;car&quot; - use that label.</li>
+<li><strong>Shopping cart icon</strong>: A shopping cart icon is easily recognizable because that feature serves the same purpose as its real-life counterpart.</li>
+</ol>
+<h2>3 User Control and Freedom</h2>
+<blockquote>
+<p>Users often perform actions by mistake. They need a clearly marked &quot;emergency exit&quot; to leave the unwanted action without having to go through an extended process.</p>
+</blockquote>
+<p>When it's easy for people to back out of a process or undo an action, it fosters a sense of freedom and confidence. Exits allow users to remain in control of the system and avoid getting stuck and feeling frustrated.</p>
+<h3>Examples of User Control</h3>
+<ol>
+<li><strong>Exit sign</strong>: Digital spaces need quick &quot;emergency&quot; exits, just like physical spaces do. For example make sure your view has a &quot;back&quot; button.</li>
+<li><strong>Undo Redo</strong>: These functions give users freedom because they don't have worry about their actions — everything is easily reversible.</li>
+<li><strong>Cancel button</strong>: Users shouldn't have to commit to a process once it's started — they should be able to easily cancel and abandon.</li>
+</ol>
+<h2>4 Consistency and Standards</h2>
+<blockquote>
+<p>Users should not have to wonder whether different words, situations, or actions mean the same thing. Follow platform and industry conventions.</p>
+</blockquote>
+<p>People spend most of their time on products other than yours. Failing to maintain consistency may increase the users' cognitive load by forcing them to learn something new.</p>
+<p>Improve learnability by maintaining both types of consistency: internal and external. Maintain consistency within a single product or a family of products (internal consistency). Follow established industry conventions (external consistency).</p>
+<h3>Examples of Consistency and Standards</h3>
+<ol>
+<li><strong>Check-in counter</strong>: Check-in counters are usually located at the front of hotels and airports. This consistency meets customers’ expectations.</li>
+<li><strong>Design system</strong>: Using elements from the same design system across the product lines lowers the learning curve of users.</li>
+<li><strong>Notifications</strong>: A standardized notification design provides a similar but distinguishable look and feel for different app pop-ups.</li>
+</ol>
+<h2>5 Error Prevention</h2>
+<blockquote>
+<p>Good error messages are important, but the best designs carefully prevent problems from occuring in the first place. Either eliminate error-prone conditions, or check for them and present users with a confirmation option before they commit to the action.</p>
+</blockquote>
+<p>There are two types of errors: slips and mistakes. Slips are unconscious errors caused by inattention. Mistakes are conscious errors based on a mismatch between the user’s mental model and the design.</p>
+<p>Prioritize your effort by preventing high-cost errors first, then deal with little frustrations. Avoid slips by providing helpful constraints and good defaults. Prevent mistakes by removing memory burdens, supporting undo, and warning your users before a significant action.</p>
+<h3>Examples of Error Prevention</h3>
+<ol>
+<li><strong>Guard rails</strong>: Guard rails on curvy mountain roads prevent drivers from falling off of cliffs.</li>
+<li><strong>Airline confirmation</strong>: The confirmation page before checking out on airline websites gives users another chance to review the flight details.</li>
+<li><strong>Date selection on a calendar</strong>: Offer good defaults and set boundaries when people book services by dates. Grey out unavailable options.</li>
+</ol>
+<h2>6 Recognition Rather Than Recall</h2>
+<blockquote>
+<p>Minimize the user's memory load by making elements, actions, and options visible. The user should not have to remember information from one part of the interface to another. Information required to use the design should be visible or easily retrievable when needed.</p>
+</blockquote>
+<p>Humans have limited short-term memories. Interfaces that promote recognition reduce the amount of cognitive effort required from users. So let people recognize information in the interface, rather than having to recall it. Offer help in-context, instead of giving users a long tutorial, give them instructions just when they need them. Reduce the information that users have to remember.</p>
+<h3>Examples of Recognition Rather Than Recall</h3>
+<ol>
+<li><strong>Lisbon</strong>: People are more likely to correctly answer the question &quot;Is Lisbon the capital of Portugal?&quot; rather than &quot;What’s the capital of Portugal?&quot;. The Russian game <em>What</em>, <em>who</em>, <em>how</em> bakes the correct anwsers into the question.</li>
+<li><strong>Comparison table</strong>: Comparison tables list key differences so that users don’t need to remember them to make comparisons.</li>
+<li><strong>Search</strong>: Search queries are presented together with the results as a reference.</li>
+</ol>
+<h2>7 Flexibility and Efficiency of Use</h2>
+<blockquote>
+<p>Shortcuts — hidden from novice users — may speed up the interaction for the expert user such that the design can cater to both inexperienced and experienced users. Allow users to tailor frequent actions.</p>
+</blockquote>
+<p>Flexible processes can be carried out in different ways, so that people can pick whichever method works for them. Create accelerators like keyboard shortcuts or touch gestures. Allow for customization, so users can make selections about how they want the product to work.</p>
+<h3>Examples of Flexibility and Efficiency of Use</h3>
+<ol>
+<li><strong>Shortcuts</strong>: Regular routes are listed on maps, but locals with more knowledge of the area can take shortcuts.</li>
+<li><strong>Keyboard Shortcuts</strong>: Keyboard shortcuts for complex products can help expert users finish their tasks more efficiently.</li>
+<li><strong>Tap to like</strong>: Social apps allow two ways to like posts. Experienced users can tap to like because it speeds up their browsing.</li>
+</ol>
+<h2>8 Aesthetic and Minimalist Design</h2>
+<blockquote>
+<p>Interfaces should not contain information which is irrelevant or rarely needed. Every extra unit of information in an interface competes with the relevant units of information and diminishes their relative visibility.</p>
+</blockquote>
+<p>This doesn't mean you have to use a flat design — it's about making sure you're keeping the content and visual design focused on the essentials. Ensure that the visual elements of the UI support the user's primary goals. Keep the content and visual design of UI focus on the essentials. Don't let unnecessary elements distract users from the information they really need. Prioritize the content and features to support primary goals.</p>
+<h3>Examples of Aesthetic and Minimalist Design</h3>
+<ol>
+<li><strong>Ornate vs. simple teapot</strong>: Excessive decorative elements can interfere with usability.</li>
+<li><strong>Communicate, don’t decorate</strong>: Over-decoration can cause distraction and make it harder for people to get the core information they need.</li>
+<li><strong>Messy vs organized UI</strong>: Messy UI increases the interaction cost for users to find their desired content; Organized UI lowers the cost.</li>
+</ol>
+<h2>9 Help Users Recognize, Diagnose, and Recover from Errors</h2>
+<blockquote>
+<p>Error messages should be expressed in plain language (no error codes), precisely indicate the problem, and constructively suggest a solution.</p>
+</blockquote>
+<p>Error messages should be presented with visual treatments that will help users notice and recognize them. Use traditional error message visuals, like bold, red text. Tell users what went wrong in language they will understand — avoid technical jargon. Offer users a solution, like a shortcut that can solve the error immediately.</p>
+<h3>Examples of Recognize, Diagnose, and Recover from Errors</h3>
+<ol>
+<li><strong>Wrong way sign</strong>: Wrong-way signs on the road remind drivers that they are heading in the wrong direction and ask them to stop.</li>
+<li><strong>Internet connection error</strong>: Good internet connection error pages show what happened and constructively instruct users on how to fix the problem.</li>
+<li><strong>No search results</strong>: Provide useful help when people encounter search-result pages returning zero results, such as popular topics.</li>
+</ol>
+<h2>10 Help and Documentation</h2>
+<blockquote>
+<p>It’s best if the design doesn’t need any additional explanation. However, it may be necessary to provide documentation to help users understand how to complete their tasks.</p>
+</blockquote>
+<p>Help and documentation content should be easy to search and focused on the user's task. Keep it concise, and list concrete steps that need to be carried out. Ensure that the help documentation is easy to search. Whenever possible, present the documentation in-context right at the moment that the user requires it. List concrete steps to be carried out.</p>
+<h3>Examples of Help and Documentation</h3>
+<ol>
+<li><strong>Airport information center</strong>: Information kiosks at airports are easily recognizable and solve customers' problems in context and immediately.</li>
+<li><strong>Frequently asked questions</strong>: Good frequently-asked-question pages anticipate and provide the helpful information that users might need.</li>
+<li><strong>Information icon</strong>: Information icons reveal tooltips to explain jargon when users touch or hover over them, which provides contextual help.</li>
+</ol>
+<h2>Assignment</h2>
+<p>Can you find examples of these 10 heuristics in real world digital products? What are your Favourite sites and services that you use every day? Why not look at these and try to find examples of the 10 heuristics in those services.</p>
+<p>You can work in pairs and divide the 10 heuristics between the two of you. Pick some sites and try to compile a complete set of 10 examples, they can be good examples or bad examples. Put your findings into a slide show then be ready to come back and share what you have found with the group.</p>
+<p><small>Nielsen, J. (1994a). Enhancing the explanatory power of usability heuristics. Proc. ACM CHI'94 Conf. (Boston, MA, April 24-28), 152-158. <a href="nngroup.com/articles/ten-usability-heuristics">nngroup.com/articles/ten-usability-heuristics</a></small></p>
+
+        <script src="/curriculum/js/tabbed-code-blocks.js"></script>
+        <script>
+            function toggleNav() {
+                const button = document.getElementById('navigation-toggle')
+                const isAriaExp = button.getAttribute('aria-expanded')
+                const newAriaExp = (isAriaExp == "false") ? "true" : "false"
+                button.setAttribute('aria-expanded', newAriaExp)
+                const nav = document.getElementById('navigation')
+                nav.style.display = nav.offsetParent ? 'none' : 'block'
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+    <head>
+        <meta charset="utf-8">
+        <title> Asynchronous Airport Data Load</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="shortcut icon" type="image/x-icon" href="/curriculum/favicon.ico"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/an-old-hope.min.css">
+        <link rel="stylesheet" href="/curriculum/style.css"/>
+        <script src="/curriculum/js/highlight.min.js"></script>
+        <script src="/curriculum/js/bash.min.js"></script>
+        <script src="/curriculum/js/java.min.js"></script>
+        <script src="/curriculum/js/javascript.min.js"></script>
+        <script src="/curriculum/js/sql.min.js"></script>
+    </head>
+    <body>
+        <button 
+            id="navigation-toggle"
+            aria-expanded="false"
+            aria-haspopup="true"
+            onclick="toggleNav()"
+            onkeydown="event => {event.keyCode === 13 ? toggleNav() : null}"
+            tabindex="1">Table of contents</button>
+        <nav id="navigation"><ul><li><a href="/curriculum/Bootcamp/index.html">Bootcamp</a><ul><li><a href="/curriculum/Bootcamp/FAQ.html">FAQ</a></li><li><a href="/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/index.html">Unit 1 Object Oriented Programming</a><ul><li><a href="/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.1-JavaScript_Objects_And_Functions.html">0.1.1 JavaScript Objects And Functions</a></li><li><a href="/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.2-Test_Driven_Development.html">0.1.2 Test Driven Development</a></li><li><a href="/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.3-Objects_in_an_Airport_Domain.html">0.1.3 Objects in an Airport Domain</a></li><li><a href="/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.4-Static_functions_and_properties.html">0.1.4 Static functions and properties</a></li><li><a href="/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.5-Inheritance.html">0.1.5 Inheritance</a></li><li><a href="/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.6-UML_Modelling.html">0.1.6 UML Modelling</a></li><li><a href="/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.7-OOP_Challenge.html">0.1.7 OOP Challenge</a></li><li><a href="/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.8-End_of_Unit_Quiz_OOP.html">0.1.8 End of Unit Quiz OOP</a></li></ul></li><li><a href="/curriculum/Bootcamp/Unit-2-Asynchronous_JavaScript/index.html">Unit 2 Asynchronous JavaScript</a><ul><li><a href="/curriculum/Bootcamp/Unit-2-Asynchronous_JavaScript/0.2.1-Asynchronous_JavaScript.html">0.2.1 Asynchronous JavaScript</a></li><li><a href="/curriculum/Bootcamp/Unit-2-Asynchronous_JavaScript/0.2.2-Promises.html">0.2.2 Promises</a></li><li><a href="/curriculum/Bootcamp/Unit-2-Asynchronous_JavaScript/0.2.3-Asynchronous_Airport_Data_Load.html">0.2.3 Asynchronous Airport Data Load</a></li><li><a href="/curriculum/Bootcamp/Unit-2-Asynchronous_JavaScript/0.2.4-End_of_Unit_Quiz_Async.html">0.2.4 End of Unit Quiz Async</a></li></ul></li><li><a href="/curriculum/Bootcamp/Unit-3-Relational_Databases/index.html">Unit 3 Relational Databases</a><ul><li><a href="/curriculum/Bootcamp/Unit-3-Relational_Databases/0.3.1-Logical_Data_Model.html">0.3.1 Logical Data Model</a></li><li><a href="/curriculum/Bootcamp/Unit-3-Relational_Databases/0.3.10-Sequelize_part_2.html">0.3.10 Sequelize part 2</a></li><li><a href="/curriculum/Bootcamp/Unit-3-Relational_Databases/0.3.11-End_of_Unit_Quiz_Databases.html">0.3.11 End of Unit Quiz Databases</a></li><li><a href="/curriculum/Bootcamp/Unit-3-Relational_Databases/0.3.2-Introduction_to_Databases.html">0.3.2 Introduction to Databases</a></li><li><a href="/curriculum/Bootcamp/Unit-3-Relational_Databases/0.3.3-Basic_SQL_Commands.html">0.3.3 Basic SQL Commands</a></li><li><a href="/curriculum/Bootcamp/Unit-3-Relational_Databases/0.3.4-SQL_Joins.html">0.3.4 SQL Joins</a></li><li><a href="/curriculum/Bootcamp/Unit-3-Relational_Databases/0.3.5-Database_access_using_Node.html">0.3.5 Database access using Node</a></li><li><a href="/curriculum/Bootcamp/Unit-3-Relational_Databases/0.3.6-Populating_databases_from_JSON.html">0.3.6 Populating databases from JSON</a></li><li><a href="/curriculum/Bootcamp/Unit-3-Relational_Databases/0.3.7-Object_Relational_Mapping_part_1.html">0.3.7 Object Relational Mapping part 1</a></li><li><a href="/curriculum/Bootcamp/Unit-3-Relational_Databases/0.3.8-Object_Relational_Mapping_part_2.html">0.3.8 Object Relational Mapping part 2</a></li><li><a href="/curriculum/Bootcamp/Unit-3-Relational_Databases/0.3.9-Sequelize_part_1.html">0.3.9 Sequelize part 1</a></li></ul></li><li><a href="/curriculum/Bootcamp/Unit-4-RESTful_Servers/index.html">Unit 4 RESTful Servers</a><ul><li><a href="/curriculum/Bootcamp/Unit-4-RESTful_Servers/0.4.1-Web_Servers.html">0.4.1 Web Servers</a></li><li><a href="/curriculum/Bootcamp/Unit-4-RESTful_Servers/0.4.2-Application_Servers.html">0.4.2 Application Servers</a></li><li><a href="/curriculum/Bootcamp/Unit-4-RESTful_Servers/0.4.3-Postman.html">0.4.3 Postman</a></li><li><a href="/curriculum/Bootcamp/Unit-4-RESTful_Servers/0.4.4-Route_Parameters.html">0.4.4 Route Parameters</a></li><li><a href="/curriculum/Bootcamp/Unit-4-RESTful_Servers/0.4.5-CRUD_operations.html">0.4.5 CRUD operations</a></li><li><a href="/curriculum/Bootcamp/Unit-4-RESTful_Servers/0.4.6-Server_side_Validation.html">0.4.6 Server side Validation</a></li><li><a href="/curriculum/Bootcamp/Unit-4-RESTful_Servers/0.4.7-End_of_Unit_Quiz_RESTful.html">0.4.7 End of Unit Quiz RESTful</a></li></ul></li><li><a href="/curriculum/Bootcamp/Unit-5-Human_Computer_Interaction/index.html">Unit 5 Human Computer Interaction</a><ul><li><a href="/curriculum/Bootcamp/Unit-5-Human_Computer_Interaction/0.5.1-Human_Computer_Interaction.html">0.5.1 Human Computer Interaction</a></li><li><a href="/curriculum/Bootcamp/Unit-5-Human_Computer_Interaction/0.5.2-Server_Side_Rendering.html">0.5.2 Server Side Rendering</a></li><li><a href="/curriculum/Bootcamp/Unit-5-Human_Computer_Interaction/0.5.3-The_Document_Object_Model.html">0.5.3 The Document Object Model</a></li><li><a href="/curriculum/Bootcamp/Unit-5-Human_Computer_Interaction/0.5.4-HTML_forms_and_lists.html">0.5.4 HTML forms and lists</a></li><li><a href="/curriculum/Bootcamp/Unit-5-Human_Computer_Interaction/0.5.5-End_of_Unit_Quiz_HCI.html">0.5.5 End of Unit Quiz HCI</a></li></ul></li><li><a href="/curriculum/Bootcamp/Unit-6-End_Of_Bootcamp_Group_Project/index.html">Unit 6 End Of Bootcamp Group Project</a><ul><li><a href="/curriculum/Bootcamp/Unit-6-End_Of_Bootcamp_Group_Project/0.6.1-Introduction.html">0.6.1 Introduction</a></li><li><a href="/curriculum/Bootcamp/Unit-6-End_Of_Bootcamp_Group_Project/0.6.2-Requirements.html">0.6.2 Requirements</a></li><li><a href="/curriculum/Bootcamp/Unit-6-End_Of_Bootcamp_Group_Project/0.6.3-Agile_Development.html">0.6.3 Agile Development</a></li><li><a href="/curriculum/Bootcamp/Unit-6-End_Of_Bootcamp_Group_Project/0.6.4-Design.html">0.6.4 Design</a></li><li><a href="/curriculum/Bootcamp/Unit-6-End_Of_Bootcamp_Group_Project/0.6.5-GitHub_Projects.html">0.6.5 GitHub Projects</a></li><li><a href="/curriculum/Bootcamp/Unit-6-End_Of_Bootcamp_Group_Project/0.6.6-Branching_and_Pull_Requests.html">0.6.6 Branching and Pull Requests</a></li><li><a href="/curriculum/Bootcamp/Unit-6-End_Of_Bootcamp_Group_Project/0.6.7-Deployment_with_Heroku.html">0.6.7 Deployment with Heroku</a></li></ul></li></ul></li><li><a href="/curriculum/Module-1/index.html">Module 1</a><ul><li><a href="/curriculum/Module-1/Unit-1-Agile_user_requirements/index.html">Unit 1 Agile user requirements</a><ul><li><a href="/curriculum/Module-1/Unit-1-Agile_user_requirements/1.1.1-Introduction_to_Agile.html">1.1.1 Introduction to Agile</a></li><li><a href="/curriculum/Module-1/Unit-1-Agile_user_requirements/1.1.2-Introduction_to_user_stories.html">1.1.2 Introduction to user stories</a></li><li><a href="/curriculum/Module-1/Unit-1-Agile_user_requirements/1.1.3-Introduction_to_quality_requirements.html">1.1.3 Introduction to quality requirements</a></li></ul></li><li><a href="/curriculum/Module-1/Unit-2-Designing_UI/index.html">Unit 2 Designing UI</a><ul><li><a href="/curriculum/Module-1/Unit-2-Designing_UI/1.2.1-Usability_heuristics.html">1.2.1 Usability heuristics</a></li><li><a href="/curriculum/Module-1/Unit-2-Designing_UI/1.2.2-Composition_and_components_in_design.html">1.2.2 Composition and components in design</a></li><li><a href="/curriculum/Module-1/Unit-2-Designing_UI/1.2.3-Prototyping_UI.html">1.2.3 Prototyping UI</a></li><li><a href="/curriculum/Module-1/Unit-2-Designing_UI/1.2.4-From_low_fi_to_hi_fi.html">1.2.4 From low fi to hi fi</a></li></ul></li><li><a href="/curriculum/Module-1/Unit-3-Building_UI_with_a_framework/index.html">Unit 3 Building UI with a framework</a><ul><li><a href="/curriculum/Module-1/Unit-3-Building_UI_with_a_framework/1.3.1-Implementing_a_frontend_design.html">1.3.1 Implementing a frontend design</a></li><li><a href="/curriculum/Module-1/Unit-3-Building_UI_with_a_framework/1.3.2-Working_with_dynamic_data.html">1.3.2 Working with dynamic data</a></li><li><a href="/curriculum/Module-1/Unit-3-Building_UI_with_a_framework/1.3.3-Execute_your_designs.html">1.3.3 Execute your designs</a></li></ul></li><li><a href="/curriculum/Module-1/Unit-4-Accessibility/index.html">Unit 4 Accessibility</a><ul><li><a href="/curriculum/Module-1/Unit-4-Accessibility/1.4.1-Inclusive_design_and_accessibility.html">1.4.1 Inclusive design and accessibility</a></li><li><a href="/curriculum/Module-1/Unit-4-Accessibility/1.4.2-Working_with_new_requirements.html">1.4.2 Working with new requirements</a></li><li><a href="/curriculum/Module-1/Unit-4-Accessibility/1.4.3-Accessibility_reporting_tools.html">1.4.3 Accessibility reporting tools</a></li></ul></li><li><a href="/curriculum/Module-1/Unit-5-End_to_end_testing/index.html">Unit 5 End to end testing</a><ul><li><a href="/curriculum/Module-1/Unit-5-End_to_end_testing/1.5.1-End_to_end_testing.html">1.5.1 End to end testing</a></li><li><a href="/curriculum/Module-1/Unit-5-End_to_end_testing/1.5.2-Test_cases_and_equivalence_testing.html">1.5.2 Test cases and equivalence testing</a></li></ul></li></ul></li><li><a href="/curriculum/Module-2/index.html">Module 2</a><ul><li><a href="/curriculum/Module-2/Unit-1-The_Anatomy_of_the_HTTP_request/index.html">Unit 1 The Anatomy of the HTTP request</a><ul><li><a href="/curriculum/Module-2/Unit-1-The_Anatomy_of_the_HTTP_request/2.1.1-Identifying_the_different_parts_of_HTTP.html">2.1.1 Identifying the different parts of HTTP</a></li><li><a href="/curriculum/Module-2/Unit-1-The_Anatomy_of_the_HTTP_request/2.1.2-Programmatic_HTTP_requests.html">2.1.2 Programmatic HTTP requests</a></li></ul></li><li><a href="/curriculum/Module-2/Unit-2-What_is_REST/index.html">Unit 2 What is REST</a><ul><li><a href="/curriculum/Module-2/Unit-2-What_is_REST/2.2.1-REST_and_the_openAPI_spec.html">2.2.1 REST and the openAPI spec</a></li><li><a href="/curriculum/Module-2/Unit-2-What_is_REST/2.2.2-The_OpenAPI_spec.html">2.2.2 The OpenAPI spec</a></li><li><a href="/curriculum/Module-2/Unit-2-What_is_REST/2.2.3-Build_an_OpenAPI_RESTful_service.html">2.2.3 Build an OpenAPI RESTful service</a></li><li><a href="/curriculum/Module-2/Unit-2-What_is_REST/2.2.4-Integration_tests.html">2.2.4 Integration tests</a></li><li><a href="/curriculum/Module-2/Unit-2-What_is_REST/2.2.5-Unit_2_Knowledge_quiz.html">2.2.5 Unit 2 Knowledge quiz</a></li></ul></li><li><a href="/curriculum/Module-2/Unit-3-Cryptography/index.html">Unit 3 Cryptography</a><ul><li><a href="/curriculum/Module-2/Unit-3-Cryptography/2.3.1-Hashing_Functions.html">2.3.1 Hashing Functions</a></li><li><a href="/curriculum/Module-2/Unit-3-Cryptography/2.3.2-Symmetric_Key_Encryption.html">2.3.2 Symmetric Key Encryption</a></li><li><a href="/curriculum/Module-2/Unit-3-Cryptography/2.3.3-Asymmetric_Key_Encryption.html">2.3.3 Asymmetric Key Encryption</a></li><li><a href="/curriculum/Module-2/Unit-3-Cryptography/2.3.4-Unit_3_Knowledge_Quiz.html">2.3.4 Unit 3 Knowledge Quiz</a></li></ul></li><li><a href="/curriculum/Module-2/Unit-4-Authentication/index.html">Unit 4 Authentication</a><ul><li><a href="/curriculum/Module-2/Unit-4-Authentication/2.4.1-Authentication_and_Authorisation.html">2.4.1 Authentication and Authorisation</a></li><li><a href="/curriculum/Module-2/Unit-4-Authentication/2.4.2-What_is_middleware.html">2.4.2 What is middleware</a></li><li><a href="/curriculum/Module-2/Unit-4-Authentication/2.4.3-Session_based_auth.html">2.4.3 Session based auth</a></li><li><a href="/curriculum/Module-2/Unit-4-Authentication/2.4.4-Introduction_to_OAuth.html">2.4.4 Introduction to OAuth</a></li><li><a href="/curriculum/Module-2/Unit-4-Authentication/2.4.5-Token_based_auth.html">2.4.5 Token based auth</a></li><li><a href="/curriculum/Module-2/Unit-4-Authentication/2.4.6-OpenID_Connect.html">2.4.6 OpenID Connect</a></li><li><a href="/curriculum/Module-2/Unit-4-Authentication/2.4.7-Banking_App.html">2.4.7 Banking App</a></li><li><a href="/curriculum/Module-2/Unit-4-Authentication/2.4.8-Unit_4_Knowledge_Quiz.html">2.4.8 Unit 4 Knowledge Quiz</a></li></ul></li></ul></li><li><a href="/curriculum/Module-3/index.html">Module 3</a><ul><li><a href="/curriculum/Module-3/Unit-1-The-SDLC/index.html">Unit 1 The SDLC</a><ul><li><a href="/curriculum/Module-3/Unit-1-The-SDLC/3.1.1-The_Software_Development_Life_Cycle.html">3.1.1 The Software Development Life Cycle</a></li><li><a href="/curriculum/Module-3/Unit-1-The-SDLC/3.1.2-The_roles_and_responsibilities_in_the_SDLC_with_communication.html">3.1.2 The roles and responsibilities in the SDLC with communication</a></li><li><a href="/curriculum/Module-3/Unit-1-The-SDLC/3.1.3-Communication_in_your_teams.html">3.1.3 Communication in your teams</a></li></ul></li><li><a href="/curriculum/Module-3/Unit-2-The-7-Princibles-of-Testing/index.html">Unit 2 The 7 Princibles of Testing</a><ul><li><a href="/curriculum/Module-3/Unit-2-The-7-Princibles-of-Testing/3.2.1-The_7_Princibles_of_Testing.html">3.2.1 The 7 Princibles of Testing</a></li><li><a href="/curriculum/Module-3/Unit-2-The-7-Princibles-of-Testing/3.2.2-Continuous_Deployment.html">3.2.2 Continuous Deployment</a></li></ul></li><li><a href="/curriculum/Module-3/Unit-3-Deployment-and-Maintenance/index.html">Unit 3 Deployment and Maintenance</a><ul><li><a href="/curriculum/Module-3/Unit-3-Deployment-and-Maintenance/3.3.1-Containerisation_with_docker.html">3.3.1 Containerisation with docker</a></li><li><a href="/curriculum/Module-3/Unit-3-Deployment-and-Maintenance/3.3.2-Introduction_to_Cloud_Computing.html">3.3.2 Introduction to Cloud Computing</a></li><li><a href="/curriculum/Module-3/Unit-3-Deployment-and-Maintenance/3.3.3-Monitoring_and_Maintenance.html">3.3.3 Monitoring and Maintenance</a></li></ul></li></ul></li></ul></nav>
+        <h1>Asynchronous Airport Data Load</h1>
+<h2>Learning Objectives</h2>
+<ul>
+<li>Create asynchronous functions to read airport data from a file</li>
+<li>Demonstrate the methods to test asynchronous code in Jest</li>
+</ul>
+<h2>Pre-requisites</h2>
+<ul>
+<li>Either completion of the <a href="/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.3-Objects_in_an_Airport_Domain">Objects in an Airport Domain</a> lesson or create a simple Airport class which takes a 3 letter IATA code as a constructor argument</li>
+<li>Save <a href="https://raw.githubusercontent.com/MultiverseLearningProducts/airports/master/airportsData.json">this file of airport data</a> locally</li>
+<li>You should be familiar with <code>Object.keys</code> as a way to access the keys of an object</li>
+<li>You should have iterated over an object in JavaScript before</li>
+<li>You should recognise deconstructing assignment</li>
+</ul>
+<h2>Lesson</h2>
+<p>Synchronous code means the code in the line above has been evaluated and any values are available for us to use on our current line. Async functions do not return straight away. For example, if we want to read something from disc, that is an async function. It will not return immediately.</p>
+<p>There are 3 ways to write and get values from async functions and in this lesson we are going to look at each of them. They are:</p>
+<ol>
+<li>Use a callback function</li>
+<li>Use Promises</li>
+<li>Use 'async await'</li>
+</ol>
+<p>As part of the Pre-requisites for this lesson you should have downloaded a file with 28,000 airports in it. The file is in JSON so we can read it into our JavaScript programme and use that data to augment an Airport instance.</p>
+<p>To start with, let's write a test like this.</p>
+<pre><code class="language-javascript">test(<span class="hljs-string">&#x27;airports have a city&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+    <span class="hljs-keyword">const</span> CDG = <span class="hljs-keyword">new</span> Airport(<span class="hljs-string">&#x27;CDG&#x27;</span>)
+    CDG.getInfo(<span class="hljs-function">(<span class="hljs-params">err, info</span>) =&gt;</span> {
+        <span class="hljs-built_in">console</span>.log(info)
+        expect(err).toBeNull()
+        expect(info.country).toEqual(<span class="hljs-string">&#x27;FR&#x27;</span>)
+    })
+})
+</code></pre>
+<p>In our test you can see we're using a callback function. In Node.js callbacks follow this signature with an <code>err</code> followed by your async value being returned. If there are no errors the <code>err</code> object is <code>null</code>. Try running the test.</p>
+<p>Let's turn to our <code>Airport</code> class and write the <code>getInfo</code> function (that will take a callback). You will have to require the <code>fs</code> or 'file system' module from Node.js.</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;fs&#x27;</span>)
+<span class="hljs-comment">// add this function to your Airport class definition</span>
+<span class="hljs-function"><span class="hljs-title">getInfo</span>(<span class="hljs-params">callback</span>)</span> {
+    fs.readFile(<span class="hljs-string">&#x27;./airports.json&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">err, data</span>) =&gt;</span> {
+        callback(err, <span class="hljs-built_in">JSON</span>.parse(<span class="hljs-built_in">String</span>(data)))
+    })
+}
+</code></pre>
+<p>This is async code. We read the file from disk. The file contents comes out as a Buffer - you can <code>console.log</code> it to have a look at it. We need to turn the Buffer into a String, then that String we turn into a JavaScript object using <code>JSON.parse</code>. Finally, we call the callback with an error if there is one or if not, we return our file content nicely parsed into JSON.</p>
+<p>In our test we expect to see the contents of airport file logged out but we don't! Why not?</p>
+<p>The reason is that the test is called synchronously, it does not wait for the result of calling <code>CDG.getInfo</code>. To test an async function in Jest, pass in a <code>done</code> function and then call it when you are done.</p>
+<pre><code class="language-javascript">test(<span class="hljs-string">&#x27;airports have a city&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">done</span>) =&gt;</span> {
+    <span class="hljs-keyword">const</span> CDG = <span class="hljs-keyword">new</span> Airport(<span class="hljs-string">&#x27;CDG&#x27;</span>)
+    CDG.getInfo(<span class="hljs-function">(<span class="hljs-params">err, info</span>) =&gt;</span> {
+        <span class="hljs-built_in">console</span>.log(info)
+        expect(err).toBeNull()
+        expect(info.country).toEqual(<span class="hljs-string">&#x27;FR&#x27;</span>)
+        done()
+    })
+})
+</code></pre>
+<p>Can you see how that is working? You should now see the file contents being logged.</p>
+<p>Look at one of the entries in the airport data. We want to filter out an airport using the 'iata' code. Can your <code>getInfo</code> function to filter out the right airport and return just that data point?</p>
+<h3>Promises</h3>
+<p>Another way to write and organise async code is using Promises. Lets refactor our getInfo function to return a Promise.</p>
+<pre><code class="language-javascript"><span class="hljs-function"><span class="hljs-title">getInfo</span>(<span class="hljs-params"></span>)</span> {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
+        fs.readFile(<span class="hljs-string">&#x27;./airports.json&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">err, data</span>) =&gt;</span> {
+            <span class="hljs-keyword">if</span> (err) <span class="hljs-keyword">return</span> reject(err)
+            
+            <span class="hljs-keyword">const</span> airports = <span class="hljs-built_in">JSON</span>.parse(<span class="hljs-built_in">String</span>(data))
+            <span class="hljs-keyword">const</span> [airport] = <span class="hljs-built_in">Object</span>.keys(airports)
+                .filter(<span class="hljs-function"><span class="hljs-params">airportCode</span> =&gt;</span> airports[airportCode].iata === <span class="hljs-built_in">this</span>.name)
+                .map(<span class="hljs-function"><span class="hljs-params">airportCode</span> =&gt;</span> airports[airportCode])
+            
+            resolve(airport)
+        })
+    })
+}
+</code></pre>
+<p>Can you see the <code>new</code> keyword? What does that tell you about a Promise? What do you initialise a Promise with? Our callback style structure that we use with the <code>fs</code> module is wrapped in a Promise. Now when resolve is finally called it will trigger the <code>.then</code> part of a Promise object.</p>
+<p>To use Promises, we need to modify our test:</p>
+<pre><code class="language-javascript">test(<span class="hljs-string">&#x27;airports have a city&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+    <span class="hljs-keyword">const</span> CDG = <span class="hljs-keyword">new</span> Airport(<span class="hljs-string">&#x27;CDG&#x27;</span>)
+    <span class="hljs-keyword">return</span> CDG.getInfo()
+        .then(<span class="hljs-function"><span class="hljs-params">info</span> =&gt;</span> {
+            expect(info.city).toEqual(<span class="hljs-string">&#x27;Paris&#x27;</span>)
+        })
+        .catch(<span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> {
+            expect(err).toBeNull()
+        })
+})
+</code></pre>
+<p>Notice now we don't need the <code>done</code> callback in the test, this is because we are returning a Promise from our test, and Jest will figure this is an async test and will wait for the Promise to resolve or reject.</p>
+<p>The Promise object is 'thenable' - you can chain a series of Promises together using <code>then</code> like this:</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">return</span> doSomeThing()
+    .then(<span class="hljs-function"><span class="hljs-params">thing</span> =&gt;</span> {
+        <span class="hljs-keyword">return</span> theNextPromise(thing)
+    })
+    .then(<span class="hljs-function"><span class="hljs-params">next</span> =&gt;</span> {
+        <span class="hljs-keyword">return</span> anotherPromise(next)
+    })
+    .catch(<span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> {
+        <span class="hljs-built_in">console</span>.error(<span class="hljs-string">&#x27;this catch block will catch any reject(err) in the chain.&#x27;</span>)
+    })
+</code></pre>
+<p>Take note you must return a Promise from the <code>then</code> block if you want to keep chaining. This avoids the pattern of deeply nesting callbacks which some people find hard to read.</p>
+<h3>Async await</h3>
+<p>Finally, we can use the <code>async</code> and <code>await</code> keywords to make our asynchronous code read more synchronously.</p>
+<p>Lets update our test:</p>
+<pre><code class="language-javascript">test(<span class="hljs-string">&#x27;can get information like the city from an airport instance&#x27;</span>, <span class="hljs-keyword">async</span> () =&gt; {
+    <span class="hljs-keyword">const</span> CDG = <span class="hljs-keyword">new</span> Airport(<span class="hljs-string">&#x27;CDG&#x27;</span>)
+    <span class="hljs-keyword">const</span> airport = <span class="hljs-keyword">await</span> CDG.getInfo()
+    expect(airport.city).toEqual(<span class="hljs-string">&#x27;Paris&#x27;</span>)
+})
+</code></pre>
+<p>Notice how we use the 2 keywords within our test. First of all we need to declare an <code>async</code> function. We use the <code>async</code> keyword before our function definition. Then <em>inside</em> the async function we use the <code>await</code> keyword to pause and wait for our async value to resolve. That means we don't need the <code>done</code> callback, we don't need to use a Promise with <code>then</code>, we can just write it nice and simply, line by line. Jest knows that this is an async test because we used the <code>async</code> keyword before the function definition.</p>
+<p>Can you refactor your <code>getInfo</code> function to use async await?</p>
+<p>It's a bit tricky because <code>fs.readFile</code> takes a callback. It's not really designed to work with async await. However from Node.js 11.0 onwards you can require a version of the <code>fs</code> functions that are wrapped in a Promise object. Add this to the top of your Airport class:</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">const</span> { readFile } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;fs/promises&#x27;</span>)
+</code></pre>
+<p>Now you can use the <code>readFile</code> function with the <code>await</code> keyword because this <code>readFile</code> function is wrapped in a Promise.</p>
+<p>This is a lot to get your head around! Async functions are a key characteristic of JavaScript. Objects, functions and async are the building blocks of the language. Spending time now learning how to work with async functions will enable you to start writing more complex code more quickly.</p>
+<h2>Assignment</h2>
+<ol>
+<li><p>In pairs, explain to each other the differences between synchronous and asynchronous functions, and how you can tell the difference in your code.</p></li>
+<li><p>Create a <a href="/curriculum/Bootcamp/FAQ#createNewProject">new Node.js project</a> for this assignment.</p></li>
+<li><p>Use the three different ways of forming async functions to read file content in your Airport class</p></li>
+<li><p>Write async tests for each of the three async functions using Jest</p></li>
+<li><p>Commit all your code into Github and share the link with your coach for review.</p></li>
+</ol>
+<h3>Assignment extension tasks</h3>
+<p>Research how to use Jest mocks to mock the reading of a file and simulate error scenarios such as the file not being found.</p>
+<h2>Additional resources</h2>
+<ul>
+<li><a href="https://dev.to/nas5w/asynchronous-javascript-how-callbacks-promises-and-async-await-work-1f7p">Asynchronous JavaScript—How Callbacks, Promises, and Async-Await Work</a></li>
+<li><a href="https://javascript.info/async">Callbacks, promises and async/await</a></li>
+</ul>
+
+        <script src="/curriculum/js/tabbed-code-blocks.js"></script>
+        <script>
+            function toggleNav() {
+                const button = document.getElementById('navigation-toggle')
+                const isAriaExp = button.getAttribute('aria-expanded')
+                const newAriaExp = (isAriaExp == "false") ? "true" : "false"
+                button.setAttribute('aria-expanded', newAriaExp)
+                const nav = document.getElementById('navigation')
+                nav.style.display = nav.offsetParent ? 'none' : 'block'
+            }
+        </script>
+    </body>
+</html>
