@@ -2,19 +2,15 @@
 
 Welcome to the Software Engineering Programme (SWE)! We are excited you are joining Multiverse to start your apprentice journey. Before you start, we want to give you a little more information on how you will be assessed and what the learning will look like. This programme is composed of the following: 
 
-* __5 week bootcamp__ prepares you to enter the workplace ready for your first challenges. We cover the basics of the software development life cycle and begin to understand the role of a software developer. As well as learning the basics of programming in HTML and Javascript, you will take on coding challenges and gain practical experience of the entire software stack.
+* [__5 week Bootcamp__](/curriculum/Bootcamp/index.html) prepares you to enter the workplace ready for your first challenges. The course content covers the entire software stack and includes, Object Oriented Programming (OOP) using JavaScript, the Unified Modelling Language (UML), RESTful APIs, relational databases and rendering dynamic content in the browser. You will also be introduced to the basics of the software development life cycle and begin to understand the role of a software developer. Each lesson includes coding challenges and the final week of the Bootcamp culminates with a group project.
 
-[Bootcamp](/curriculum/Bootcamp/index.html)
+* __Module 1:__ In this module, you will focus on designing, building and optimising a front-end, with UX, Web accessibility and performance considerations. You will also learn how to critically evaluate and utilise front-end frameworks (such as Angular, React, Vue).
 
-* __Module 1:__ Builds and expands on the RESTful concept introduced in the 5-week bootcamp. Topics covered include: HTTP/HTTPS, RESTful API best practices, Building out a RESTful API, Securing an API using Basic Auth, Sessions, and Securing an API with OAuth
+* __Module 2:__ The module builds and expands on the RESTful concepts introduced in the 5-week Bootcamp. As well as designing and developing APIs, you will secure endpoints using both Basic Authentication and OAuth. Concepts will be taught in a language independent manner to allow coding in the language/framework of your choice.  
 
-* __Module 2:__ A two week bootcamp that will get you develop your proficiency with HTML, CSS and asynchronous JavaScript. You'll cover: WebSockets; web workers; XMLHTTPRequests; canvas elements; media elements; responsive design through media queries; and error handling in Javascript. By the end of the module you will be prepared to take the Microsoft Technology Associate Certification (MTA): Introduction to Programming Using JavaScript
+* __Module 3:__ This module takes the output from the first half of the software development life cycle (tested software) and teaches the knowledge and skills needed to package and deploy that software into different environments. The module strikes a balance between understanding the theories and methodologies of software deployment and the set of technical skills to actually design and implement a deployment and maintenance strategy.
 
-* __Module 3:__ Fully understand and navigate the software development lifecycle.  Through a mixture of independent reading and a team project, you will learn about both agile and waterfall development methodologies and experience 2 x 1-week sprints. By the end of the module you will be prepared to take the BCS Level 4 Diploma in Software Development Methodologies
-
-[Unit 3](https://multiverselearningproducts.github.io/curriculum/Module-3/Unit-1-The-SDLC/3.1.1-Business_Impact.html)
-
-* __Module 4:__ A two week bootcamp to get you to EPA-readiness for the 5-day synoptic project that forms part of the Apprenticeship EPA. Through completing two individual projects, you will be prepared for the demands of the EPA synoptic project.
+* __Module 4:__ This module introduces the Open Web Application Security Project (OWASP) Top Ten Web Application Security Risks and how to mitigate against them. By the end of this module, you will understand the impact of deploying insecure software and how to protect against the most common form of attacks at all stages of the software development lifecycle.
 
 ## How will you be assessed?
 
@@ -22,14 +18,14 @@ During your sessions with your coach you will work on a variety of assignments. 
 
 * Projects to be completed after the day of learning 
 * Short answer questions around understanding of software engineering concepts 
-* Scenario based questions around role as a developer 
+* Scenario based questions around your role as a developer 
 * Questions evaluating your role in the business with your learning 
 * Individual projects you will complete throughout a module 
 * Group projects you will complete throughout a module 
 
 ## Standards of Software Engineering
 
-All the lessons you will go through during the Software Engineering Programme are directly aligned with the level 4 Software Developer programme as designed by the Institute for Apprenticeships & Technical Education.  Use this page as a reference to reflect on what you are learning and areas to develop while on the job. The standards are: 
+All the Bootcamp and Module content taught during the Software Engineering Programme is directly aligned with the [standards for the Level 4 Software Developer programme](https://www.instituteforapprenticeships.org/apprenticeship-standards/software-developer-v1-1) as designed by the Institute for Apprenticeships & Technical Education. Refer to this programme regularly to reflect on what you are learning and identify areas for development whilst on the job. The standards are also summarised below: 
 
 ### Technical Competencies
 
