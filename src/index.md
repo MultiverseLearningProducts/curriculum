@@ -16,12 +16,13 @@ Welcome to the Software Engineering Programme (SWE)! We are excited you are join
 
 During your sessions with your coach you will work on a variety of assignments. Below is a list of some of the ways you may be assessed in the programme.  
 
-* Projects to be completed after the day of learning 
-* Short answer questions around understanding of software engineering concepts 
+* Pre-module self-study, to build knowledge for your upcoming sessions
+* Short answer questions checking your understanding of software engineering concepts 
 * Scenario based questions around your role as a developer 
-* Questions evaluating your role in the business with your learning 
-* Individual projects you will complete throughout a module 
-* Group projects you will complete throughout a module 
+* Questions evaluating your role in the business 
+* Individual projects completed during a module 
+* Group projects completing during a module 
+* Independent assignments completed after a module to validate understanding
 
 ## Standards of Software Engineering
 
