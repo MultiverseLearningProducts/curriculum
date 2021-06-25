@@ -2,7 +2,7 @@
 
 Welcome to the Software Engineering Programme (SWE)! We are excited you are joining Multiverse to start your apprentice journey. Before you start, we want to give you a little more information on how you will be assessed and what the learning will look like. This programme is composed of the following: 
 
-* [__5 week Bootcamp:__](/curriculum/Bootcamp/index.html) prepares you to enter the workplace ready for your first challenges. The course content covers the entire software stack and includes, Object Oriented Programming (OOP) using JavaScript, the Unified Modelling Language (UML), RESTful APIs, relational databases and rendering dynamic content in the browser. You will also be introduced to the basics of the software development life cycle and begin to understand the role of a software developer. Each lesson includes coding challenges and the final week of the Bootcamp culminates with a group project.
+* __5 week Bootcamp:__ prepares you to enter the workplace ready for your first challenges. The course content covers the entire software stack and includes, Object Oriented Programming (OOP) using JavaScript, the Unified Modelling Language (UML), RESTful APIs, relational databases and rendering dynamic content in the browser. You will also be introduced to the basics of the software development life cycle and begin to understand the role of a software developer. Each lesson includes coding challenges and the final week of the Bootcamp culminates with a group project.
 
 * __Module 1:__ In this module, you will focus on designing, building and optimising a front-end, with UX, Web accessibility and performance considerations. You will also learn how to critically evaluate and utilise front-end frameworks (such as Angular, React, Vue).
 
