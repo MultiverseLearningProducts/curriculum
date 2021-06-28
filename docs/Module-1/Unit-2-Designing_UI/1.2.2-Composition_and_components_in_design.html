@@ -67,7 +67,74 @@ Why does the largest font size have the lowest number? i.e. <code>&lt;h1&gt;</co
 <p>For you as you think about laying out your pages the mantra of &quot;mobile first&quot; can be really helpful. Mobile screens are narrow and the layout really will be very simple stacking components (with good vertical rhythm) should see you end up with a useable layout.</p>
 <p>Then as the screen size increases you can start to make decisions about which components could be displayed next to each other in a simple grid, then with more screen real estate the grid can become more sophisticated. Cognitively and practically you'll find layout for mobile a great place to start.</p>
 <h2>Assignment</h2>
-<p>We have looked at a set of useful ideas about design above.</p>
+<p>We have looked at a set of useful ideas about design above. One key skill to practice here is the different breakpoints that will apply different CSS to your designs at different screen sizes.</p>
+<pre><code class="language-html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Responsive assignment<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+            <span class="hljs-comment">/* css for mobile goes here */</span>
+            <span class="hljs-selector-tag">header</span> {
+                <span class="hljs-attribute">height</span>: <span class="hljs-number">4rem</span>;
+            }
+            <span class="hljs-comment">/* this is for your hamburger menu for mobile */</span>
+            <span class="hljs-selector-tag">details</span> &gt; <span class="hljs-selector-tag">summary</span> { <span class="hljs-attribute">list-style</span>: none; }
+            <span class="hljs-selector-tag">details</span> &gt; <span class="hljs-selector-tag">summary</span>::-webkit-details-marker { display: none; }
+            
+            <span class="hljs-comment">/* css for mid screens goes in here */</span>
+            <span class="hljs-keyword">@media</span> screen <span class="hljs-keyword">and</span> (<span class="hljs-attribute">min-width</span>: <span class="hljs-number">30em</span>) <span class="hljs-keyword">and</span> (<span class="hljs-attribute">max-width</span>: <span class="hljs-number">60em</span>) {
+                <span class="hljs-selector-tag">header</span> {
+                    <span class="hljs-attribute">height</span>: <span class="hljs-number">5rem</span>;
+                }
+            }
+            
+            <span class="hljs-comment">/* css for massive screens goes in here */</span>
+            <span class="hljs-keyword">@media</span> screen <span class="hljs-keyword">and</span> (<span class="hljs-attribute">min-width</span>: <span class="hljs-number">60em</span>) {
+                <span class="hljs-selector-tag">header</span> {
+                    <span class="hljs-attribute">height</span>: <span class="hljs-number">6rem</span>;
+                }
+            }
+        </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">section</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;/&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;small multiverse logo&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://www.getmyfirstjob.co.uk/Portals/0/Logos/Multiverse-logo-1684076426.png&quot;</span> /&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;full multiverse logo&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://www.findatrainingprovider.co.uk/sync/tp/c9f1e2ddd86143d4b7cb6a9c29c9cf50.png&quot;</span> /&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">nav</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;dn-ns&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">details</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">summary</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">viewBox</span>=<span class="hljs-string">&quot;0 0 100 80&quot;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;40&quot;</span> <span class="hljs-attr">height</span>=<span class="hljs-string">&quot;40&quot;</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">rect</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;100&quot;</span> <span class="hljs-attr">height</span>=<span class="hljs-string">&quot;20&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">rect</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">rect</span> <span class="hljs-attr">y</span>=<span class="hljs-string">&quot;30&quot;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;100&quot;</span> <span class="hljs-attr">height</span>=<span class="hljs-string">&quot;20&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">rect</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">rect</span> <span class="hljs-attr">y</span>=<span class="hljs-string">&quot;60&quot;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;100&quot;</span> <span class="hljs-attr">height</span>=<span class="hljs-string">&quot;20&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">rect</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">summary</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">nav</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;/employers&quot;</span>&gt;</span>Employers<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;/candidates&quot;</span>&gt;</span>Candidates<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;/blog&quot;</span>&gt;</span>Blog<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;/community&quot;</span>&gt;</span>Community<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;/join-the-team&quot;</span>&gt;</span>Join the Team<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">details</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">nav</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;dn dib-ns&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;/employers&quot;</span>&gt;</span>Employers<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;/candidates&quot;</span>&gt;</span>Candidates<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;/blog&quot;</span>&gt;</span>Blog<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;/community&quot;</span>&gt;</span>Community<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;/join-the-team&quot;</span>&gt;</span>Join the Team<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre>
+<p><figure><img src="https://user-images.githubusercontent.com/4499581/123623034-e8139b80-d804-11eb-8e95-430b355a5421.gif" alt="a responsive navigation"><figcaption></figcaption></figure></p>
 
         <script src="/curriculum/js/tabbed-code-blocks.js"></script>
         <script>
