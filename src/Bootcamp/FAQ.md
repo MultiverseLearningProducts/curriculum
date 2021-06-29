@@ -4,6 +4,9 @@
 * [Node](https://nodejs.org/en/) (version which is recommended for most users)
 * [VSCode](https://code.visualstudio.com/)
 * [git](https://git-scm.com/)
+* [SQLite3](https://www.sqlite.org/download.html)
+* [DB Browser for SQLite3 ](https://sqlitebrowser.org/)
+* Google Chrome
 * You also need access to a GitHub repository
 
 ## <a name="createNewProject"></a> How do I create a new Node.js project for my lesson?
