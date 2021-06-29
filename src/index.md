@@ -1,3 +1,6 @@
+# Pre-requisites
+For details of the software you need to have installed prior to undertaking the SWE Programme, please see [SWE training pre-requisites](/curriculum/Bootcamp/FAQ#pre-reqs)
+
 # Overview of Standards and Assessments 
 
 Welcome to the Software Engineering Programme (SWE)! We are excited you are joining Multiverse to start your apprentice journey. Before you start, we want to give you a little more information on how you will be assessed and what the learning will look like. This programme is composed of the following: 

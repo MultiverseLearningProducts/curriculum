@@ -1,8 +1,14 @@
 # Frequently Asked Questions
 
+## <a name="pre-reqs">What software do I need to install for the Bootcamp?
+* [Node](https://nodejs.org/en/) (version which is recommended for most users)
+* [VSCode](https://code.visualstudio.com/)
+* [git](https://git-scm.com/)
+* You also need access to a GitHub repository
+
 ## <a name="createNewProject"></a> How do I create a new Node.js project for my lesson?
   1. Create a new directory to hold the lesson's work - do not use spaces or special characters in directory or filenames.. `cd` into it.
-  1. Run `npm init` to create a new `package.json` file. Accept all defaults.
+  1. Run `npm init` to create a new `package.json` file. Accept all defaults. The `package. json` file holds metadata relevant to the project such as the project's dependencies.
   1. Add any Node package dependencies you require using `npm install`. For the majority of Bootcamp assignments you will require:
      * `npm install jest`
   1. Modify your `package.json` to allow running of Jest tests and generation of test coverage reports:
