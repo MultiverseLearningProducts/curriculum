@@ -14,7 +14,7 @@
   ```
 
 ## <a name="runJestTests"></a> How do I run my Jest tests?
-To run all your tests use `npm run test` or use `npm run test -t` to run a single test.
+To run all your tests use `npm run test` or use `npm run test -t` _nameOfTest_ to run a single test.
 
 ## <a name="generateCoverage"></a> How do I create a Jest coverage report?
 To create a Jest coverage report run `npm run test:report`.
