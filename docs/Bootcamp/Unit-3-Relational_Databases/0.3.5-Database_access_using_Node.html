@@ -69,38 +69,37 @@
 <h2>Lesson</h2>
 <p>In this lesson we will save the database as a file written to our local disk rather than in-memory. This means that the data can be accessed even when our program has stopped running. We will interact with our database using JavaScript (Node.js).</p>
 <p>The following Node.js code creates a RESTAURANT table in a database named 'restaurants.sqlite' and inserts a row into it:</p>
-<pre><code class="language-js">const sqlite3 = require(&#x27;sqlite3&#x27;).verbose();
+<pre><code class="language-js"><span class="hljs-keyword">const</span> sqlite3 = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;sqlite3&#x27;</span>).verbose();
 
-const db = new sqlite3.Database(&#x27;./restaurants.sqlite&#x27;);
+<span class="hljs-keyword">const</span> db = <span class="hljs-keyword">new</span> sqlite3.Database(<span class="hljs-string">&#x27;./restaurants.sqlite&#x27;</span>);
 
-try {
-    db.serialize(function () { 
+<span class="hljs-keyword">try</span> {
+    db.serialize(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{ 
 
-        db.run(&quot;CREATE TABLE RESTAURANT(id INTEGER PRIMARY KEY, 
-                                        name TEXT, image TEXT&quot;);
+        db.run(<span class="hljs-string">&quot;CREATE TABLE IF NOT EXISTS RESTAURANT(id INTEGER PRIMARY KEY, name TEXT, imagelink TEXT);&quot;</span>);
 
-        let stmt;
+        <span class="hljs-keyword">let</span> stmt;
 
-        try {
-            stmt = db.prepare(`INSERT INTO Restaurants (id, name, link) VALUES 
-                        (1, &#x27;Bayroot&#x27;, &#x27;https://www.telegraph.co.uk/content/dam/Travel/Destinations/Europe/England/Brighton/brighton-restaurants-hotel-du-vin-bistro.jpg&#x27;)`);
+        <span class="hljs-keyword">try</span> {
+            stmt = db.prepare(<span class="hljs-string">`INSERT INTO Restaurants (id, name, imagelink) VALUES (1, &#x27;Bayroot&#x27;, &#x27;https://www.telegraph.co.uk/content/dam/Travel/Destinations/Europe/England/Brighton/brighton-restaurants-hotel-du-vin-bistro.jpg&#x27;)`</span>);
             stmt.run();
-        } finally {
-            // release resources 
+        } <span class="hljs-keyword">finally</span> {
+            <span class="hljs-comment">// release resources </span>
             stmt.finalize();
         }
 
-        // select the rows and print them out
-        db.each(&quot;SELECT * FROM Restaurants&quot;,
-            function (err, rows) {  
-                console.log(rows);  
+        <span class="hljs-comment">// select the rows and print them out</span>
+        db.each(<span class="hljs-string">&quot;SELECT * FROM Restaurants&quot;</span>,
+            <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err, rows</span>) </span>{  
+                <span class="hljs-built_in">console</span>.log(rows);  
             }
         );
     });
-} finally {
-    // release resources 
-    db.close();
+} <span class="hljs-keyword">finally</span> {
+    <span class="hljs-comment">// release resources </span>
+    db.close();  
 }
+
 </code></pre>
 <p>Let's walk through the code step by step.</p>
 <pre><code class="language-javascript"><span class="hljs-keyword">const</span> sqlite3 = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;sqlite3&#x27;</span>)
