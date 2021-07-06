@@ -28,23 +28,55 @@
 <h2>Pre-requisites</h2>
 <ul>
 <li><p>Familiarity with <a href="/curriculum/Bootcamp/Unit-3-Relational_Databases/0.3.5-Database_access_using_Node.html">Database access using Node.js</a></p></li>
-<li><p>Download this <a href="https://raw.githubusercontent.com/MultiverseLearningProducts/airports/master/airportsData.json">airports.json</a> file</p></li>
+<li><p>Download this <a href="https://raw.githubusercontent.com/MultiverseLearningProducts/restaurant-data/master/restaurants.json">restaurant data file</a></p></li>
 </ul>
 <h2>Lesson</h2>
-<p>The airport data you downloaded is called &quot;seed&quot; data. The data is in a <a href="https://www.w3schools.com/js/js_json_intro.asp">JSON</a> format.</p>
+<p>The restaurant data you downloaded is called &quot;seed&quot; data. The data is in a <a href="https://www.w3schools.com/js/js_json_intro.asp">JSON</a> format.</p>
 <p>Here is a representation of a an Airport object from the JSON data:</p>
-<pre><code class="language-json">{
-  <span class="hljs-attr">&quot;icao&quot;</span>: <span class="hljs-string">&quot;KPAE&quot;</span>,
-  <span class="hljs-attr">&quot;iata&quot;</span>: <span class="hljs-string">&quot;PAE&quot;</span>,
-  <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;Snohomish County (Paine Field) Airport&quot;</span>,
-  <span class="hljs-attr">&quot;city&quot;</span>: <span class="hljs-string">&quot;Everett&quot;</span>,
-  <span class="hljs-attr">&quot;state&quot;</span>: <span class="hljs-string">&quot;Washington&quot;</span>,
-  <span class="hljs-attr">&quot;country&quot;</span>: <span class="hljs-string">&quot;US&quot;</span>,
-  <span class="hljs-attr">&quot;elevation&quot;</span>: <span class="hljs-number">606</span>,
-  <span class="hljs-attr">&quot;lat&quot;</span>: <span class="hljs-number">47.90629959</span>,
-  <span class="hljs-attr">&quot;lon&quot;</span>: <span class="hljs-number">-122.2819977</span>,
-  <span class="hljs-attr">&quot;tz&quot;</span>: <span class="hljs-string">&quot;America/Los_Angeles&quot;</span>
-}
+<pre><code class="language-json">    {
+        <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;Bayroot&quot;</span>,
+        <span class="hljs-attr">&quot;image&quot;</span>: <span class="hljs-string">&quot;https://www.telegraph.co.uk/content/dam/Travel/Destinations/Europe/England/Brighton/brighton-restaurants-hotel-du-vin-bistro.jpg&quot;</span>,
+        <span class="hljs-attr">&quot;menus&quot;</span>: [
+            {
+                <span class="hljs-attr">&quot;title&quot;</span>: <span class="hljs-string">&quot;Grill&quot;</span>,
+                <span class="hljs-attr">&quot;items&quot;</span>: [
+                    {
+                        <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;Houmous Shawarma Lamb&quot;</span>,
+                        <span class="hljs-attr">&quot;price&quot;</span>: <span class="hljs-number">6.50</span>
+                    },
+                    {
+                        <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;Lamb Parcels&quot;</span>,
+                        <span class="hljs-attr">&quot;price&quot;</span>: <span class="hljs-number">5.70</span>
+                    },
+                    {
+                        <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;Meat Balls (Kebbeh)&quot;</span>,
+                        <span class="hljs-attr">&quot;price&quot;</span>: <span class="hljs-number">6.50</span>
+                    },
+                    {
+                        <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;Falafel (v)&quot;</span>,
+                        <span class="hljs-attr">&quot;price&quot;</span>: <span class="hljs-number">5.00</span>
+                    }
+                ]
+            },
+            {
+                <span class="hljs-attr">&quot;title&quot;</span>: <span class="hljs-string">&quot;Cold Mezza/Starters&quot;</span>,
+                <span class="hljs-attr">&quot;items&quot;</span>: [
+                    {
+                        <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;Houmous&quot;</span>,
+                        <span class="hljs-attr">&quot;price&quot;</span>: <span class="hljs-number">5.00</span>
+                    },
+                    {
+                        <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;Baba Ganoush (Moutabal) (v)&quot;</span>,
+                        <span class="hljs-attr">&quot;price&quot;</span>: <span class="hljs-number">5.70</span>
+                    },
+                    {
+                        <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;Stuffed Vine Leaves (Warak Enab)&quot;</span>,
+                        <span class="hljs-attr">&quot;price&quot;</span>: <span class="hljs-number">5.70</span>
+                    }
+                ]
+            }
+        ]
+    }
 </code></pre>
 <p>Key points to note are that:</p>
 <ul>
@@ -55,26 +87,24 @@
 <li>Each key-value pair is separated by a comma</li>
 <li>Keys must be always be strings and values must be a valid JSON data type i.e. one of string, number, object, array, boolean or null</li>
 </ul>
-<p>Looking at the data helps us decide what column names and data types we need to set up in our database. This is called the database schema. What column names and data types do you think we will need to store the airport data?</p>
-<p>Once we have figured out the schema, we need to compose a query that will create the AIRPORTS table if it does not already exist. We will want to run this <em>before</em> we read the data out of our file.</p>
-<pre><code class="language-sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> IF <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">EXISTS</span> airports(id <span class="hljs-type">INTEGER</span> PRIM...etc);
-</code></pre>
+<p>Looking at the data helps us decide what column names and data types we need to set up in our database. This is called the database schema. We have this already setup.</p>
 <p>To insert the data into database tables, we need to firstly asychronously load the file, then iterate over the data and insert it using Prepared Statements. Before we do this, let's use the best practise of Test Driven Development (TDD) and write a unit test.</p>
 <h3>Write a failing test</h3>
-<p>Here is an example of a Jest test which uses the <code>beforeAll</code> method to initialise the database with our tables if they don't already exist. The idea of the failing test helps you think about what you are actually trying to build.</p>
-<pre><code class="language-javascript"><span class="hljs-keyword">const</span> load = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./index&#x27;</span>)
+<p>Here is an example of a Jest test which uses the <code>beforeAll</code> method to initialise the database with our tables if they don't already exist. The test will fail as we don't yet have a load() function defined. The idea of the failing test helps you think about what you are actually trying to build.</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">const</span> sqlite3 = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;sqlite3&#x27;</span>).verbose();
+<span class="hljs-keyword">const</span> load = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./index&#x27;</span>)
 
 describe(<span class="hljs-string">&#x27;SQLite3&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
     beforeAll(<span class="hljs-function"><span class="hljs-params">done</span> =&gt;</span> {
-        db.exec(<span class="hljs-string">&#x27;CREATE TABLE IF NOT EXISTS airports(...);&#x27;</span>, done)
+        db.exec(<span class="hljs-string">&#x27;CREATE TABLE IF NOT EXISTS restaurants(...);&#x27;</span>, done)
     })
-    test(<span class="hljs-string">&#x27;airports are loaded into the database&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">done</span>) =&gt;</span> {
+    test(<span class="hljs-string">&#x27;restaurants are loaded into the database&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">done</span>) =&gt;</span> {
         load(<span class="hljs-function">(<span class="hljs-params">db</span>) =&gt;</span> {
-            db.all(<span class="hljs-string">&#x27;SELECT * FROM airports LIMIT 3;&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">err, row</span>) =&gt;</span> {
+            db.all(<span class="hljs-string">&#x27;SELECT * FROM restaurants LIMIT 3;&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">err, row</span>) =&gt;</span> {
                 expect(row.length).toBe(<span class="hljs-number">3</span>)
-                expect(row[<span class="hljs-number">0</span>].name).toBe(<span class="hljs-string">&#x27;Shenyang Dongta Airport&#x27;</span>)
-                db.get(<span class="hljs-string">&#x27;SELECT COUNT(id) AS total FROM airports;&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">err, count</span>) =&gt;</span> {
-                    expect(count.total).toBe(<span class="hljs-number">28868</span>)
+                expect(row[<span class="hljs-number">0</span>].name).toBe(<span class="hljs-string">&#x27;Bayroot&#x27;</span>)
+                db.get(<span class="hljs-string">&#x27;SELECT COUNT(id) AS total FROM restaurants;&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">err, count</span>) =&gt;</span> {
+                    expect(count.total).toBe(<span class="hljs-number">8</span>)
                     done()
                 })
             })
@@ -90,22 +120,15 @@ describe(<span class="hljs-string">&#x27;SQLite3&#x27;</span>, <span class="hljs
 <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">load</span>(<span class="hljs-params"></span>) </span>{
     <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;calling load&#x27;</span>);
     <span class="hljs-comment">// wait for the file to be read</span>
-    <span class="hljs-keyword">const</span> buffer = <span class="hljs-keyword">await</span> fsp.readFile(<span class="hljs-string">&#x27;./airports.json&#x27;</span>);
+    <span class="hljs-keyword">const</span> buffer = <span class="hljs-keyword">await</span> fsp.readFile(<span class="hljs-string">&#x27;./restaurants.json&#x27;</span>);
     <span class="hljs-keyword">const</span> restaurants = (<span class="hljs-built_in">JSON</span>.parse(<span class="hljs-built_in">String</span>(buffer)));
     <span class="hljs-keyword">return</span> restaurants;
 }
 </code></pre>
-<h3>Load the JSON data into database tables using Node.js</h3>
-<p>Now we have the data loaded, we need to loop through the array of airports and use the airport object to form an SQL insert query.</p>
-<p>We make use of <a href="https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html">Prepared Statements</a> which are key for ensure your database applications are not vulnerable to <a href="https://portswigger.net/web-security/sql-injection">SQL injection attacks</a>.</p>
-<pre><code class="language-SQL">db.prepare(&quot;INSERT INTO airports (icao, iata, name, city, state, country, elevation, lat, lon, tz) VALUES (?,?,?,?,?,?,?,?,?,?)&quot;);
-</code></pre>
-<p>All the &quot;?&quot; are placeholders for the different values that we will be inserting as we iterate over our array of data. When you call <code>db.run</code> the first argument is the string above, and the second argument is an array of all the values you want to store. The &quot;?&quot; are substituated with the data hence your values have to be in the same order as the database columns.</p>
 <h2>Assignment</h2>
 <ol>
 <li><p>Create a <a href="/curriculum/Bootcamp/FAQ#createNewProject">new Node.js project</a> for this assignment.</p></li>
-<li><p>Download this <a href="https://raw.githubusercontent.com/MultiverseLearningProducts/restaurant-data/master/restaurants.json">restaurant data file</a>.</p></li>
-<li><p>Write a unit test to verify your seed data has loaded into the database ok. This will fail initially but should pass once you complete the rest of the assignment.</p></li>
+<li><p>Write a unit test to verify your restaurant seed data has loaded into the database ok. This will fail initially but should pass once you complete the rest of the assignment.</p></li>
 <li><p>Create a js file (named <code>initialiseDB.js</code>) which contains Node.js code to create a new, persistent database containing the tables described by the UML diagram in the <a href="/curriculum/Bootcamp/Unit-3-Relational_Databases/0.3.4-SQL_Joins.html">SQL Joins</a> lesson. Ensure you create FOREIGN KEYs as appropriate.</p></li>
 <li><p>Create a js file (named <code>populateDB.js</code>) which contains code to load the restaurant JSON data and recursively insert each Restaurant, Menu &amp; MenuItem into the database. You will be looping through a <a href="https://www.geeksforgeeks.org/multidimensional-array-in-javascript/">multi-dimensional array</a>. Remember to use <code>try/catch/finally</code> blocks to handle errors and close both the statements and database.</p></li>
 <li><p>Commit your code into Github and share the link with your coach for review.</p></li>
