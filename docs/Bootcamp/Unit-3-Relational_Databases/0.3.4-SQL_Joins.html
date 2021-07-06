@@ -39,7 +39,7 @@
 <p>Instead, the <code>menus</code> table (child) needs a column which links it to the <code>restaurants</code> table (parent). The convention is to name the column with an '_id' suffix i.e.'restaurant_id'. When we create a row in the <code>menus</code> table we reference the id of the Restaurant we want the Menu to be associated with. This 'relates' the two tables and is why databases with relationships between tables are called 'relational databases'.</p>
 <p>We can use the <a href="https://www.w3schools.com/sql/sql_foreignkey.asp">FOREIGN KEY</a> constraint to specify the link between two tables. A FOREIGN KEY must refer to the PRIMARY KEY in another table. If we declare a column as a FOREIGN KEY, then, if an attempt is made to delete the related row in the other table we will get an error. The FOREIGN KEY constraint maintains the integrity of relationships between tables.</p>
 <p>Here is an example of how to add a FOREIGN KEY:</p>
-<pre><code class="language-sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> menus (id <span class="hljs-type">INT</span> <span class="hljs-keyword">PRIMARY</span> KEY, title TEXT, restaurant_id <span class="hljs-type">INT</span>, <span class="hljs-keyword">FOREIGN</span> KEY (restaurant_id) <span class="hljs-keyword">REFERENCES</span> restaurants(id))
+<pre><code class="language-sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> menus (id <span class="hljs-type">INT</span> <span class="hljs-keyword">PRIMARY</span> KEY, title TEXT, restaurant_id <span class="hljs-type">INT</span>, <span class="hljs-keyword">FOREIGN</span> KEY (restaurant_id) <span class="hljs-keyword">REFERENCES</span> restaurants(id));
 </code></pre>
 <p>How do we use the association we just created? When we query our database we use the 'JOIN' keyword in SQL. The <code>JOIN</code> keyword  makes an association between the PRIMARY KEY from one table and the FOREIGN KEY of another. Read about the <a href="https://www.w3schools.com/sql/sql_join.asp">SQL Join command</a> to understand its syntax.</p>
 <p>The statement below selects the columns we want to retrieve from both the <code>restaurants</code> table and the <code>menus</code> table:</p>
@@ -61,14 +61,21 @@
 <ol start="2">
 <li><p>Write some JOIN statements that do the following:</p>
 <ul>
-<li>SELECT a restaurant, a menu and all the menu items using a JOIN statement</li>
-<li>SELECT all the restaurants with a count of the number of menus each restaurant has</li>
-<li>SELECT all the menus, with the total cost of all the menu items summed, and have the list in descending order (most expensive first)</li>
+<li>SELECT the name of a menu from a specific restaurant and list all the menu items on this menu</li>
+<li>SELECT all the restaurants with a count of the number of menus each restaurant has. Hint: you will need to use the COUNT and GROUP BY keywords.</li>
+<li>SELECT all the menus, with the total cost of all the menu items summed, and have the list in descending order (most expensive first). Hint: you will need to use the SUM, GROUP BY and ORDER BY keywords.</li>
 </ul></li>
 <li><p>Share your Repl with your coach for review</p></li>
 </ol>
 <h3>Assignment extension tasks</h3>
 <p>Research the different types of SQL JOIN function there are.</p>
+<h2>Additional resources</h2>
+<p>We recommend the following videos for learning about SQL Joins:</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=5Rd2atcDR4s">What is a Database Foreign Key?</a></li>
+<li><a href="https://www.youtube.com/watch?v=ClcqCB4sEEs">SQL Inner Join</a></li>
+<li><a href="https://www.youtube.com/watch?v=2HVMiPPuPIM">SQL Joins for beginners</a></li>
+</ul>
 
         <script src="/curriculum/js/tabbed-code-blocks.js"></script>
         <script>

@@ -76,13 +76,13 @@
 <span class="hljs-keyword">try</span> {
     db.serialize(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{ 
 
-        db.run(<span class="hljs-string">&quot;CREATE TABLE IF NOT EXISTS RESTAURANT(id INTEGER PRIMARY KEY, name TEXT, imagelink TEXT);&quot;</span>);
+        db.run(<span class="hljs-string">&quot;CREATE TABLE IF NOT EXISTS RESTAURANTS (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, imagelink TEXT)&quot;</span>);
 
         <span class="hljs-keyword">let</span> stmt;
 
         <span class="hljs-keyword">try</span> {
-            stmt = db.prepare(<span class="hljs-string">`INSERT INTO Restaurants (id, name, imagelink) VALUES (1, &#x27;Bayroot&#x27;, &#x27;https://www.telegraph.co.uk/content/dam/Travel/Destinations/Europe/England/Brighton/brighton-restaurants-hotel-du-vin-bistro.jpg&#x27;)`</span>);
-            stmt.run();
+            stmt = db.prepare(<span class="hljs-string">`INSERT INTO RESTAURANTS (name, imagelink) VALUES (?, ?)`</span>);
+            stmt.run(<span class="hljs-string">&#x27;Bayroot&#x27;</span>, <span class="hljs-string">&#x27;https://www.telegraph.co.uk/content/dam/Travel/Destinations/Europe/England/Brighton/brighton-restaurants-hotel-du-vin-bistro.jpg&#x27;</span>);
         } <span class="hljs-keyword">finally</span> {
             <span class="hljs-comment">// release resources </span>
             stmt.finalize();
