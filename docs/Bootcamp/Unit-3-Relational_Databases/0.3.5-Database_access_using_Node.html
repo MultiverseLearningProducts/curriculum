@@ -113,8 +113,9 @@
 
 </code></pre>
 <p>Let's walk through the code step by step.</p>
-<pre><code class="language-javascript"><span class="hljs-keyword">const</span> sqlite3 = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;sqlite3&#x27;</span>).verbose;
-<span class="hljs-keyword">const</span> db = <span class="hljs-keyword">new</span> sqlite3.Database(<span class="hljs-string">&#x27;./db.sqlite&#x27;</span>);
+<pre><code class="language-javascript"><span class="hljs-keyword">const</span> sqlite3 = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;sqlite3&#x27;</span>).verbose();
+
+<span class="hljs-keyword">const</span> db = <span class="hljs-keyword">new</span> sqlite3.Database(<span class="hljs-string">&#x27;./restaurants.sqlite&#x27;</span>);
 </code></pre>
 <p>In the lines above we import the <code>sqlite3</code> package (and set the execution mode to &quot;verbose&quot; to produce detailed stack traces) then instantiate a new instance of our database for our program. We can pass some config to our <code>Database</code> constructor, here we are passing in a relative path to where the database file either already exists, or where we would like it to be created and with what name.</p>
 <p>The code uses a <a href="https://www.w3schools.com/jsref/jsref_try_catch.asp">try/finally</a> block to ensure that the statement and database are closed regardless of whether an error occurs. This is best practice to avoid memory leaks.</p>
@@ -122,9 +123,9 @@
 <p><iframe src="https://www.youtube.com/embed/wX6tszfgYp4" width="100%" height="444px" allowfullscreen frameborder=0></iframe></p>
 <h2>Assignment</h2>
 <ol>
-<li><p>Create a js file (named <code>initialiseDB.js</code>) which contains code to create all the tables described by the UML diagram in the <a href="/curriculum/Bootcamp/Unit-3-Relational_Databases/0.3.4-SQL_Joins.html">SQL Joins</a> lesson. Ensure you create FOREIGN KEYs as appropriate.</p></li>
-<li><p>Create a js file (named <code>populateDB.js</code>) which contains code to insert one row into the Restaurant table and ensure that this Restaurant has 2 Menus. Insert 2 Menu Items per Menu.</p></li>
-<li><p>Write Node.js code to list all the Menu Items belonging to a specific Menu for a specific Restaurant.</p></li>
+<li><p>Create a js file (named <code>initialiseDB.js</code>) which uses the SQL you created in the <a href="curriculum/Bootcamp/Unit-3-Relational_Databases/0.3.4-SQL_Joins">SQL Joins lesson</a> to create the Restaurant, Menu and MenuItems tables.</p></li>
+<li><p>Create a js file (named <code>populateDB.js</code>) which contains code to insert a row into the Restaurant table and given the Restaurant two Menus. Insert two Menu Items per Menu.</p></li>
+<li><p>Write code to list all the Menu Items belonging to a specific Menu for a specific Restaurant.</p></li>
 <li><p>Commit your code into Github and share the link with your coach for review.</p></li>
 </ol>
 <h3>Assignment extension tasks</h3>
