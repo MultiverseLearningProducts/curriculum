@@ -40,12 +40,8 @@
 </ol></li>
 <li><p>Installation of the SQLite node module. SQLite is a lightweight SQL database commonly used in embedded devices such as phones and games consoles. If you do not already have this installed please follow the instructions below:</p>
 <ol>
-<li><p>Create a <a href="/curriculum/Bootcamp/FAQ#createNewProject">new Node.js project</a> for this lesson.</p></li>
-<li><p>Execute <code>npm install sqlite3</code> in the directory where your <code>package.json</code> lives. If you get errors, try <code>npm install sqlite3@5.0.0</code> instead. If you still have errors, follow the instructions below (note these are Windows specific):</p>
-<ul>
-<li>Right click on VSCode and 'run as Administrator'. Navigate to the directory where your <code>package.json</code> file is and run <code>npm install --global --production windows-build-tools@4.0.0</code>.</li>
-<li>Close VSCode and run it again (this time not as administrator i.e. just double click on the icon). Execute <code>npm install sqlite3@5.0.0</code> in the directory where your <code>package.json</code> lives.</li>
-</ul></li>
+<li>Create a <a href="/curriculum/Bootcamp/FAQ#createNewProject">new Node.js project</a> for this lesson.</li>
+<li>Execute <code>npm install sqlite3</code> in the directory where your <code>package.json</code> lives. If you get errors, try <code>npm install sqlite3@5.0.0</code> instead.</li>
 </ol>
 <p>To check your install is successful, paste the following code into a file named <code>dbconnect.js</code> and run the file with <code>node dbconnect.js</code>.</p></li>
 </ul>
@@ -68,7 +64,24 @@
 </code></pre>
 <h2>Lesson</h2>
 <p>In this lesson we will save the database as a file written to our local disk rather than in-memory. This means that the data can be accessed even when our program has stopped running. We will interact with our database using JavaScript (Node.js).</p>
-<p>The following Node.js code creates a RESTAURANT table in a database named 'restaurants.sqlite' and inserts a row into it:</p>
+<p>The following Node.js code creates a RESTAURANT table in a database named 'restaurants.sqlite':</p>
+<pre><code class="language-js"><span class="hljs-keyword">const</span> sqlite3 = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;sqlite3&#x27;</span>).verbose();
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">initialise</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">const</span> db = <span class="hljs-keyword">new</span> sqlite3.Database(<span class="hljs-string">&#x27;./restaurants.sqlite&#x27;</span>);
+
+    <span class="hljs-keyword">try</span> {
+        db.serialize(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{ 
+            db.run(<span class="hljs-string">&quot;CREATE TABLE RESTAURANTS (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, imagelink TEXT)&quot;</span>);
+        });
+    } <span class="hljs-keyword">finally</span> { 
+        <span class="hljs-comment">// very important to always close database connections</span>
+        <span class="hljs-comment">// else could lead to memory leaks</span>
+        db.close();
+    }
+}
+</code></pre>
+<p>This code inserts a row into the RESTAURANT table:</p>
 <pre><code class="language-js"><span class="hljs-keyword">const</span> sqlite3 = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;sqlite3&#x27;</span>).verbose();
 
 <span class="hljs-keyword">const</span> db = <span class="hljs-keyword">new</span> sqlite3.Database(<span class="hljs-string">&#x27;./restaurants.sqlite&#x27;</span>);
@@ -76,9 +89,7 @@
 <span class="hljs-keyword">try</span> {
     db.serialize(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{ 
 
-        db.run(<span class="hljs-string">&quot;CREATE TABLE IF NOT EXISTS RESTAURANTS (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, imagelink TEXT)&quot;</span>);
-
-        <span class="hljs-keyword">let</span> stmt;
+    <span class="hljs-keyword">let</span> stmt;
 
         <span class="hljs-keyword">try</span> {
             stmt = db.prepare(<span class="hljs-string">`INSERT INTO RESTAURANTS (name, imagelink) VALUES (?, ?)`</span>);
@@ -102,19 +113,19 @@
 
 </code></pre>
 <p>Let's walk through the code step by step.</p>
-<pre><code class="language-javascript"><span class="hljs-keyword">const</span> sqlite3 = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;sqlite3&#x27;</span>)
-<span class="hljs-keyword">const</span> db = <span class="hljs-keyword">new</span> sqlite3.Database(<span class="hljs-string">&#x27;./db.sqlite&#x27;</span>)
+<pre><code class="language-javascript"><span class="hljs-keyword">const</span> sqlite3 = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;sqlite3&#x27;</span>).verbose;
+<span class="hljs-keyword">const</span> db = <span class="hljs-keyword">new</span> sqlite3.Database(<span class="hljs-string">&#x27;./db.sqlite&#x27;</span>);
 </code></pre>
-<p>In the lines above we import the <code>sqlite3</code> package then access a constructor on the <code>sqlite3</code> object and use the <code>new</code> keyword to instantiate a new instance of our database for our program. We can pass some config to our <code>Database</code> constructor, here we are passing in a relative path to where the database file either already exists, or where we would like it to be created and with what name.</p>
+<p>In the lines above we import the <code>sqlite3</code> package (and set the execution mode to &quot;verbose&quot; to produce detailed stack traces) then instantiate a new instance of our database for our program. We can pass some config to our <code>Database</code> constructor, here we are passing in a relative path to where the database file either already exists, or where we would like it to be created and with what name.</p>
 <p>The code uses a <a href="https://www.w3schools.com/jsref/jsref_try_catch.asp">try/finally</a> block to ensure that the statement and database are closed regardless of whether an error occurs. This is best practice to avoid memory leaks.</p>
-<p>The code also makes use of <a href="https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html">Prepared Statements</a> which are key for ensure your database applications are not vulnerable to <a href="https://portswigger.net/web-security/sql-injection">SQL injection attacks</a>. The &quot;?&quot; are substituated with the data hence your values have to be in the same order as the database columns. Watch this video to find out more about this kind of attack:</p>
+<p>The insert code also makes use of <a href="https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html">Prepared Statements</a> which are key for ensure your database applications are not vulnerable to <a href="https://portswigger.net/web-security/sql-injection">SQL injection attacks</a>. Watch this video to find out more about this kind of attack</p>
 <p><iframe src="https://www.youtube.com/embed/wX6tszfgYp4" width="100%" height="444px" allowfullscreen frameborder=0></iframe></p>
 <h2>Assignment</h2>
 <ol>
-<li>Write Node.js code to create a new, persistent database containing the tables described by the UML diagram in the <a href="/curriculum/Bootcamp/Unit-3-Relational_Databases/0.3.4-SQL_Joins.html">SQL Joins</a> lesson. Ensure you create FOREIGN KEYs as appropriate.</li>
-<li>Write Node.js code to insert one row into the Restaurant table and ensure that this Restaurant has 2 Menus. Insert 2 Menu Items per Menu.</li>
-<li>Write Node.js code to list all the Menu Items belonging to a specific Menu for the Restaurant.</li>
-<li>Commit your code into Github and share the link with your coach for review.</li>
+<li><p>Create a js file (named <code>initialiseDB.js</code>) which contains code to create all the tables described by the UML diagram in the <a href="/curriculum/Bootcamp/Unit-3-Relational_Databases/0.3.4-SQL_Joins.html">SQL Joins</a> lesson. Ensure you create FOREIGN KEYs as appropriate.</p></li>
+<li><p>Create a js file (named <code>populateDB.js</code>) which contains code to insert one row into the Restaurant table and ensure that this Restaurant has 2 Menus. Insert 2 Menu Items per Menu.</p></li>
+<li><p>Write Node.js code to list all the Menu Items belonging to a specific Menu for a specific Restaurant.</p></li>
+<li><p>Commit your code into Github and share the link with your coach for review.</p></li>
 </ol>
 <h3>Assignment extension tasks</h3>
 <ul>

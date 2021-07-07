@@ -127,10 +127,9 @@ describe(<span class="hljs-string">&#x27;SQLite3&#x27;</span>, <span class="hljs
 </code></pre>
 <h2>Assignment</h2>
 <ol>
-<li><p>Create a <a href="/curriculum/Bootcamp/FAQ#createNewProject">new Node.js project</a> for this assignment.</p></li>
-<li><p>Write a unit test to verify your restaurant seed data has loaded into the database ok. This will fail initially but should pass once you complete the rest of the assignment.</p></li>
-<li><p>Separate out the creation of the tables from the populating of the tables. Create a js file (named <code>initialiseDB.js</code>) which contains Node.js code to create a new, persistent database containing the tables described by the UML diagram in the <a href="/curriculum/Bootcamp/Unit-3-Relational_Databases/0.3.4-SQL_Joins.html">SQL Joins</a> lesson. Ensure you create FOREIGN KEYs as appropriate.</p></li>
-<li><p>Create a js file (named <code>populateDB.js</code>) which contains code to load the restaurant JSON data and recursively insert each Restaurant, Menu &amp; MenuItem into the database. You will be looping through a <a href="https://www.geeksforgeeks.org/multidimensional-array-in-javascript/">multi-dimensional array</a>. Remember to use <code>try/catch/finally</code> blocks to handle errors and close both the statements and database.</p></li>
+<li><p>Download this <a href="https://raw.githubusercontent.com/MultiverseLearningProducts/restaurant-data/master/restaurants.json">restaurant data file</a> to the directory where you completed the previous lesson.</p></li>
+<li><p>Write a unit test to verify your seed data has loaded into the database ok. This will fail initially but should pass once you complete the rest of the assignment.</p></li>
+<li><p>Modify the <code>populateDB.js</code> file you created in the previous lesson to include code to load the restaurant JSON data and recursively insert each Restaurant, Menu &amp; MenuItem into the database. You will be looping through a <a href="https://www.geeksforgeeks.org/multidimensional-array-in-javascript/">multi-dimensional array</a>. Remember to use <code>try/catch/finally</code> blocks to handle errors and close both the statements and database.</p></li>
 <li><p>Commit your code into Github and share the link with your coach for review.</p></li>
 </ol>
 <h3>Assignment extension tasks</h3>
@@ -138,6 +137,10 @@ describe(<span class="hljs-string">&#x27;SQLite3&#x27;</span>, <span class="hljs
 <li>Add additional unit tests to simulate exception conditions such as the seed file not being found or the database table not existing.</li>
 </ul>
 <h2>Additional resources</h2>
+<p>To support this lesson we recommend watching the following videos:</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=iiADhChRriM">Learn JSON in 10 Minutes</a></li>
+</ul>
 
         <script src="/curriculum/js/tabbed-code-blocks.js"></script>
         <script>
