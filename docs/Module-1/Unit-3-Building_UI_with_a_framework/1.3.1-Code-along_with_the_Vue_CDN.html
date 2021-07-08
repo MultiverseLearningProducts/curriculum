@@ -44,13 +44,11 @@
   },
 });
 </code></pre>
-<p>And in your HTML somewhere (within the #app div), add:</p>
-<pre><code class="language-vue"><span class="hljs-template-variable">{{ <span class="hljs-name">this.greeting</span> }}</span><span class="xml">
-</span></code></pre>
+<p>And in your HTML somewhere (within the #app div), add: <code>{{ this.greeting }}</code></p>
 <p>Refresh your page and you should see the greeting!</p>
 <h3>Establish a data state</h3>
 <p>Feel free to delete the greeting and let's turn our attention to the data state. The data state is central our app; without it, Vue has nothing to display or dynamically update. Each component can have it's own state but for now, we'll add state to the global Vue component we have created.</p>
-<p>In the Git directory where your found the source files, you will see a products.json file. Open the contents and grab everything between the curly braces.</p>
+<p>In the Git directory where your found the source files, you will see a <code>products.json</code> file. Open the contents and grab everything between the curly braces.</p>
 <p>Add this data into your Vue app's data field:</p>
 <pre><code class="language-javascript">    data: {
         <span class="hljs-attr">cart</span>: [],
