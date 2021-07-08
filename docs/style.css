@@ -207,6 +207,7 @@ th {
 }
 #navigation a,
 #navigation a:active #navigation a:visited {
+  display: inline-block;
   color: var(--mv-deep-space);
 }
 #navigation a:hover,
