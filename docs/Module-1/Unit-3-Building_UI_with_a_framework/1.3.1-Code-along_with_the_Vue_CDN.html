@@ -56,10 +56,58 @@
     <span class="hljs-comment">// add other data here</span>
 },
 </code></pre>
-<p>Now add <code>{{this.products[0].name}}</code> to your HTML source and you should see the first product's name.</p>
+<p>Now add <code>{{this.cart.length}}</code> between the parentheses in the navbar. Now open the console add type <code>app.cart.push(1)</code>. Add more items and see how Vue updates the state as well as the UI to reflect the changes. Very cool!</p>
 <h3>Create your first Vue component</h3>
+<p>Let's move on a create our first component. One of the great strengths of frontend frameworks is the ability to turn a collection of HTML into a component that can be reused and centrally managed. Let's turn our product HTML into a Product component. In <code>main.js</code>, add:</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">const</span> Product = Vue.component(<span class="hljs-string">&#x27;Product&#x27;</span>, {
+  <span class="hljs-attr">template</span>: <span class="hljs-string">`
+    &lt;div class=&quot;product&quot;&gt;
+      &lt;h3&gt;Boston Fern&lt;/h3&gt;
+      &lt;img src=&quot;./images/boston_fern_sm.jpg&quot; /&gt;
+      &lt;p&gt;
+        Sed ut perspiciatis, unde omnis iste natus error sit voluptatem
+        accusantium doloremque laudantium, totam rem aperiam eaque ipsa
+      &lt;/p&gt;
+      &lt;ul&gt;
+        &lt;li&gt;Likes moisture&lt;/li&gt;
+        &lt;li&gt;Easy care&lt;/li&gt;
+      &lt;/ul&gt;
+      &lt;p&gt;&amp;pound;6.99&lt;/p&gt;
+      &lt;div class=&quot;promo-blocks__actions&quot;&gt;
+        &lt;a class=&quot;button--anchor&quot;&gt;
+          Full Details
+        &lt;/a&gt;        
+        &lt;button&gt;
+          Add to cart
+        &lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  `</span>,
+  <span class="hljs-attr">props</span>: [<span class="hljs-string">&#x27;product&#x27;</span>],
+});
+</code></pre>
+<p>The <code>props</code> property tells the component to expect a property to be passed down called <code>product</code>. More on this shortly.</p>
+<p>Now return to your HTML and remove all the and replace with:</p>
+<pre><code class="language-javascript">&lt;div <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">&quot;promo-blocks products&quot;</span>&gt;
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">product</span>
+    <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;product in this.products&quot;</span>
+    <span class="hljs-attr">v-bind:key</span>=<span class="hljs-string">&quot;product.productId&quot;</span>
+    <span class="hljs-attr">v-bind:product</span>=<span class="hljs-string">&quot;product&quot;</span>
+  &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">product</span>&gt;</span></span>
+&lt;/div&gt;
+</code></pre>
+<p>Refresh your page and you should see the product compoment is reused and outputted three times. The problem is, all the information is the same. To solve this, we'll need to tag everything up so the content is dynamic. To do this, we'll need to reference the <code>product</code> prop that we passed down as well as the value we want. For example, to get the name of the product, we would use <code>{{product.name}}</code>.</p>
+<p>Notice the <code>v-for</code> and <code>v-bind</code>. You'll come across these often in Vue. The <code>v-for</code> command allows you to loop through an array and output HTML or bind the item (in this case, the product) to a field that can be passed to component. There are many things we can bind to, and we'll explore this in more detail later.</p>
 <h2>Assignment</h2>
+<h3>Coding challenge 1</h3>
+<p>Tag up your product component so the data gets rendered dynamically.</p>
+<h3>Coding challenge 2</h3>
+<p>You'll notice we have an array of features yet the features are currently being outputted using static HTML. Add a <code>v-for</code> to the unordered list and render out the list items dynamically.</p>
+<p>Check out the (https://vuejs.org/v2/guide/list.html)[Vue docs] for guidance if you need to.</p>
 <h2>Additional resources</h2>
+<ul>
+<li>List rendering - (https://vuejs.org/v2/guide/list.html)[Vue docs]</li>
+</ul>
 
         <script src="/curriculum/js/tabbed-code-blocks.js"></script>
         <script>
