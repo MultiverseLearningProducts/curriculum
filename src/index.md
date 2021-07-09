@@ -1,5 +1,5 @@
 # Pre-requisites
-For details of the software you need to have installed prior to undertaking the SWE Programme, please see [SWE training pre-requisites](/curriculum/Bootcamp/FAQ#pre-reqs)
+For details of the software you need to have installed prior to undertaking the SWE Programme, please see [SWE training pre-requisites](/curriculum#pre-reqs)
 
 # Overview of Standards and Assessments 
 
