@@ -62,7 +62,7 @@
 <pre><code class="language-javascript"><span class="hljs-keyword">const</span> Product = Vue.component(<span class="hljs-string">&#x27;Product&#x27;</span>, {
   <span class="hljs-attr">template</span>: <span class="hljs-string">`
     &lt;div class=&quot;product&quot;&gt;
-      &lt;h3&gt;Boston Fern&lt;/h3&gt;
+      &lt;h3&gt;{{product.name}}&lt;/h3&gt;
       &lt;img src=&quot;./images/boston_fern_sm.jpg&quot; /&gt;
       &lt;p&gt;
         Sed ut perspiciatis, unde omnis iste natus error sit voluptatem
@@ -87,7 +87,7 @@
 });
 </code></pre>
 <p>The <code>props</code> property tells the component to expect a property to be passed down called <code>product</code>. More on this shortly.</p>
-<p>Now return to your HTML and remove all the and replace with:</p>
+<p>Now return to your HTML and remove all the product HTML and replace it with:</p>
 <pre><code class="language-javascript">&lt;div <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">&quot;promo-blocks products&quot;</span>&gt;
   <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">product</span>
     <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;product in this.products&quot;</span>
@@ -96,7 +96,7 @@
   &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">product</span>&gt;</span></span>
 &lt;/div&gt;
 </code></pre>
-<p>Refresh your page and you should see the product compoment is reused and outputted three times. The problem is, all the information is the same. To solve this, we'll need to tag everything up so the content is dynamic. To do this, we'll need to reference the <code>product</code> prop that we passed down as well as the value we want. For example, to get the name of the product, we would use <code>{{product.name}}</code>.</p>
+<p>Refresh your page and you should see the product compoment is reused and outputted three times. The problem is, most of the information is the same. To solve this, we'll need to tag everything up so the content is dynamic. To do this, we'll need to reference the <code>product</code> prop that we passed down as well as the value we want. For example, to get the name of the product, we would use <code>{{product.name}}</code>.</p>
 <p>Notice the <code>v-for</code> and <code>v-bind</code>. You'll come across these often in Vue. The <code>v-for</code> command allows you to loop through an array and output HTML or bind the item (in this case, the product) to a field that can be passed to component. There are many things we can bind to, and we'll explore this in more detail later.</p>
 <h2>Assignment</h2>
 <h3>Coding challenge 1</h3>
