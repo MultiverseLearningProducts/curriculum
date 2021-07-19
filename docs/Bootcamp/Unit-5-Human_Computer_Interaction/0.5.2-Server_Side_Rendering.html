@@ -55,8 +55,8 @@
 <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">section</span>&gt;</span>
     {{#each restaurants}}
         <span class="hljs-tag">&lt;<span class="hljs-name">article</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;{{image}}&quot;</span>/&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>{{name}}<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;{{this.image}}&quot;</span>/&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>{{this.name}}<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">article</span>&gt;</span>
     {{/each}}
 <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
