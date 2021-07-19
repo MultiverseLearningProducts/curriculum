@@ -48,7 +48,7 @@
 <p>Here we need to bind the image source to the function and pass in the product. This should be enough to get the source and to render the image.</p>
 <h3>Assignment</h3>
 <h4>Coding challenge 1</h4>
-<p>We also store the image's title in our data object. Your challenge is to follow the same pattern as the <code>getImageSrc</code> method and add a <code>getImageTitle</code> method to return the title. You should end up with an image tag something like this:</p>
+<p>We also store the image's title in our data object. Your challenge is to follow the same pattern as the <code>getImageSrc</code> method and add a <code>getImageTitle</code> method to return the title. You should end up with an image tag that looks something like this:</p>
 <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;./path_to_image/image_name.jpg&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Title of image here&quot;</span> /&gt;</span>
 </code></pre>
 <h2>Computed properties</h2>
@@ -69,7 +69,15 @@
 <pre><code class="language-html">{{ footerCopyrightNotice }}
 </code></pre>
 <h2>Assignment - Coding challenge 2</h2>
-<p>Most companies will have their physical address in the footer and Plants Direct are no different! Add address, city and postcode to your data object in the main component then combine them in a computed property method and output them in your HTML. You should end up with a method that outputs something like:</p>
+<p>Most companies will have their physical address in the footer and Plants Direct are no different! Add address, city and postcode to your data object in the main component then combine them in a computed property method and output them in your HTML.</p>
+<p>JSON:</p>
+<pre><code class="language-json">    address: &#x27;21 Sussex Gardens&#x27;,
+    city: &#x27;London&#x27;,
+    postcode: &#x27;SW1 01L&#x27;,
+
+    // other field omitted
+</code></pre>
+<p>You should end up with a method that outputs something like:</p>
 <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>21 Sussex Gardens, London, SW1 01L<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 </code></pre>
 <h2>Additional resources</h2>
