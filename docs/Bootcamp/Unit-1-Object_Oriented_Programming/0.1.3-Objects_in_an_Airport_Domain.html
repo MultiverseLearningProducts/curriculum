@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+    <head>
+        <meta charset="utf-8">
+        <title> Objects in an Airport Domain</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="shortcut icon" type="image/x-icon" href="/curriculum/favicon.ico"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/an-old-hope.min.css">
+        <link rel="stylesheet" href="/curriculum/style.css"/>
+        <script src="/curriculum/js/highlight.min.js"></script>
+        <script src="/curriculum/js/bash.min.js"></script>
+        <script src="/curriculum/js/java.min.js"></script>
+        <script src="/curriculum/js/javascript.min.js"></script>
+        <script src="/curriculum/js/sql.min.js"></script>
+    </head>
+    <body>
+        <button 
+            id="navigation-toggle"
+            aria-expanded="false"
+            aria-haspopup="true"
+            onclick="toggleNav()"
+            onkeydown="event => {event.keyCode === 13 ? toggleNav() : null}"
+            tabindex="1">Table of contents</button>
+        <nav id="navigation"><ul><details><summary>Bootcamp</summary><ul><details><summary>Unit 1 Object Oriented Programming</summary><ul><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.1-JavaScript_Objects_And_Functions.html">0.1.1 JavaScript Objects And Functions</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.2-Test_Driven_Development.html">0.1.2 Test Driven Development</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.3-Objects_in_an_Airport_Domain.html">0.1.3 Objects in an Airport Domain</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.4-Static_functions_and_properties.html">0.1.4 Static functions and properties</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.5-Inheritance.html">0.1.5 Inheritance</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.6-UML_Modelling.html">0.1.6 UML Modelling</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.7-OOP_Challenge.html">0.1.7 OOP Challenge</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.8-End_of_Unit_Quiz_OOP.html">0.1.8 End of Unit Quiz OOP</a></li></ul></details><details><summary>Unit 2 Asynchronous JavaScript</summary><ul><li><a href="/curriculum\Bootcamp\Unit-2-Asynchronous_JavaScript\0.2.1-Asynchronous_JavaScript.html">0.2.1 Asynchronous JavaScript</a></li><li><a href="/curriculum\Bootcamp\Unit-2-Asynchronous_JavaScript\0.2.2-Promises.html">0.2.2 Promises</a></li><li><a href="/curriculum\Bootcamp\Unit-2-Asynchronous_JavaScript\0.2.3-Asynchronous_Airport_Data_Load.html">0.2.3 Asynchronous Airport Data Load</a></li><li><a href="/curriculum\Bootcamp\Unit-2-Asynchronous_JavaScript\0.2.4-End_of_Unit_Quiz_Async.html">0.2.4 End of Unit Quiz Async</a></li></ul></details><details><summary>Unit 3 Relational Databases</summary><ul><li><a href="/curriculum\Bootcamp\Unit-3-Relational_Databases\0.3.1-Logical_Data_Model.html">0.3.1 Logical Data Model</a></li><li><a href="/curriculum\Bootcamp\Unit-3-Relational_Databases\0.3.10-Sequelize_part_2.html">0.3.10 Sequelize part 2</a></li><li><a href="/curriculum\Bootcamp\Unit-3-Relational_Databases\0.3.11-End_of_Unit_Quiz_Databases.html">0.3.11 End of Unit Quiz Databases</a></li><li><a href="/curriculum\Bootcamp\Unit-3-Relational_Databases\0.3.2-Introduction_to_Databases.html">0.3.2 Introduction to Databases</a></li><li><a href="/curriculum\Bootcamp\Unit-3-Relational_Databases\0.3.3-Basic_SQL_Commands.html">0.3.3 Basic SQL Commands</a></li><li><a href="/curriculum\Bootcamp\Unit-3-Relational_Databases\0.3.4-SQL_Joins.html">0.3.4 SQL Joins</a></li><li><a href="/curriculum\Bootcamp\Unit-3-Relational_Databases\0.3.5-Database_access_using_Node.html">0.3.5 Database access using Node</a></li><li><a href="/curriculum\Bootcamp\Unit-3-Relational_Databases\0.3.6-Populating_databases_from_JSON.html">0.3.6 Populating databases from JSON</a></li><li><a href="/curriculum\Bootcamp\Unit-3-Relational_Databases\0.3.7-Object_Relational_Mapping_part_1.html">0.3.7 Object Relational Mapping part 1</a></li><li><a href="/curriculum\Bootcamp\Unit-3-Relational_Databases\0.3.8-Object_Relational_Mapping_part_2.html">0.3.8 Object Relational Mapping part 2</a></li><li><a href="/curriculum\Bootcamp\Unit-3-Relational_Databases\0.3.9-Sequelize_part_1.html">0.3.9 Sequelize part 1</a></li></ul></details><details><summary>Unit 4 RESTful Servers</summary><ul><li><a href="/curriculum\Bootcamp\Unit-4-RESTful_Servers\0.4.1-Web_Servers.html">0.4.1 Web Servers</a></li><li><a href="/curriculum\Bootcamp\Unit-4-RESTful_Servers\0.4.2-Application_Servers.html">0.4.2 Application Servers</a></li><li><a href="/curriculum\Bootcamp\Unit-4-RESTful_Servers\0.4.3-Postman.html">0.4.3 Postman</a></li><li><a href="/curriculum\Bootcamp\Unit-4-RESTful_Servers\0.4.4-Route_Parameters.html">0.4.4 Route Parameters</a></li><li><a href="/curriculum\Bootcamp\Unit-4-RESTful_Servers\0.4.5-CRUD_operations.html">0.4.5 CRUD operations</a></li><li><a href="/curriculum\Bootcamp\Unit-4-RESTful_Servers\0.4.6-Server_side_Validation.html">0.4.6 Server side Validation</a></li><li><a href="/curriculum\Bootcamp\Unit-4-RESTful_Servers\0.4.7-End_of_Unit_Quiz_RESTful.html">0.4.7 End of Unit Quiz RESTful</a></li></ul></details><details><summary>Unit 5 Human Computer Interaction</summary><ul><li><a href="/curriculum\Bootcamp\Unit-5-Human_Computer_Interaction\0.5.1-Human_Computer_Interaction.html">0.5.1 Human Computer Interaction</a></li><li><a href="/curriculum\Bootcamp\Unit-5-Human_Computer_Interaction\0.5.2-Server_Side_Rendering.html">0.5.2 Server Side Rendering</a></li><li><a href="/curriculum\Bootcamp\Unit-5-Human_Computer_Interaction\0.5.3-The_Document_Object_Model.html">0.5.3 The Document Object Model</a></li><li><a href="/curriculum\Bootcamp\Unit-5-Human_Computer_Interaction\0.5.4-HTML_forms_and_lists.html">0.5.4 HTML forms and lists</a></li><li><a href="/curriculum\Bootcamp\Unit-5-Human_Computer_Interaction\0.5.5-End_of_Unit_Quiz_HCI.html">0.5.5 End of Unit Quiz HCI</a></li></ul></details><details><summary>Unit 6 End Of Bootcamp Group Project</summary><ul><li><a href="/curriculum\Bootcamp\Unit-6-End_Of_Bootcamp_Group_Project\0.6.1-Introduction.html">0.6.1 Introduction</a></li><li><a href="/curriculum\Bootcamp\Unit-6-End_Of_Bootcamp_Group_Project\0.6.2-Requirements.html">0.6.2 Requirements</a></li><li><a href="/curriculum\Bootcamp\Unit-6-End_Of_Bootcamp_Group_Project\0.6.3-Agile_Development.html">0.6.3 Agile Development</a></li><li><a href="/curriculum\Bootcamp\Unit-6-End_Of_Bootcamp_Group_Project\0.6.4-Design.html">0.6.4 Design</a></li><li><a href="/curriculum\Bootcamp\Unit-6-End_Of_Bootcamp_Group_Project\0.6.5-GitHub_Projects.html">0.6.5 GitHub Projects</a></li><li><a href="/curriculum\Bootcamp\Unit-6-End_Of_Bootcamp_Group_Project\0.6.6-Branching_and_Pull_Requests.html">0.6.6 Branching and Pull Requests</a></li><li><a href="/curriculum\Bootcamp\Unit-6-End_Of_Bootcamp_Group_Project\0.6.7-Deployment_with_Heroku.html">0.6.7 Deployment with Heroku</a></li></ul></details></ul></details><details><summary>Module 1</summary><ul><details><summary>Unit 1 Agile user requirements</summary><ul><li><a href="/curriculum\Module-1\Unit-1-Agile_user_requirements\1.1.1-Introduction_to_Agile.html">1.1.1 Introduction to Agile</a></li><li><a href="/curriculum\Module-1\Unit-1-Agile_user_requirements\1.1.2-Personas.html">1.1.2 Personas</a></li><li><a href="/curriculum\Module-1\Unit-1-Agile_user_requirements\1.1.3-User_Stories.html">1.1.3 User Stories</a></li><li><a href="/curriculum\Module-1\Unit-1-Agile_user_requirements\1.1.4-Requirements.html">1.1.4 Requirements</a></li><li><a href="/curriculum\Module-1\Unit-1-Agile_user_requirements\1.1.5-Next_Steps.html">1.1.5 Next Steps</a></li></ul></details><details><summary>Unit 2 Designing UI</summary><ul><li><a href="/curriculum\Module-1\Unit-2-Designing_UI\1.2.1-Usability_heuristics.html">1.2.1 Usability heuristics</a></li><li><a href="/curriculum\Module-1\Unit-2-Designing_UI\1.2.2-Composition_and_components_in_design.html">1.2.2 Composition and components in design</a></li><li><a href="/curriculum\Module-1\Unit-2-Designing_UI\1.2.3-Prototyping_UI.html">1.2.3 Prototyping UI</a></li><li><a href="/curriculum\Module-1\Unit-2-Designing_UI\1.2.4-Next_Steps.html">1.2.4 Next Steps</a></li></ul></details><details><summary>Unit 3 Building UI with a framework</summary><ul><li><a href="/curriculum\Module-1\Unit-3-Building_UI_with_a_framework\1.3.1-Part_1_Getting_started_with_the_Vue_CDN.html">1.3.1 Part 1 Getting started with the Vue CDN</a></li><li><a href="/curriculum\Module-1\Unit-3-Building_UI_with_a_framework\1.3.2-Moving_to_the_Vue_CLI.html">1.3.2 Moving to the Vue CLI</a></li><li><a href="/curriculum\Module-1\Unit-3-Building_UI_with_a_framework\1.3.2-Part_2_Vue_methods_and_computed_properties.html">1.3.2 Part 2 Vue methods and computed properties</a></li><li><a href="/curriculum\Module-1\Unit-3-Building_UI_with_a_framework\1.3.2-Part_3_Events_and_Adding_to_cart.html">1.3.2 Part 3 Events and Adding to cart</a></li><li><a href="/curriculum\Module-1\Unit-3-Building_UI_with_a_framework\1.3.3-Deploying_your_Vue_app.html">1.3.3 Deploying your Vue app</a></li><li><a href="/curriculum\Module-1\Unit-3-Building_UI_with_a_framework\1.3.4-Glossary_of_terms.html">1.3.4 Glossary of terms</a></li></ul></details><details><summary>Unit 4 Accessibility</summary><ul><li><a href="/curriculum\Module-1\Unit-4-Accessibility\1.4.1-Inclusive_design.html">1.4.1 Inclusive design</a></li><li><a href="/curriculum\Module-1\Unit-4-Accessibility\1.4.2-Accessibility.html">1.4.2 Accessibility</a></li><li><a href="/curriculum\Module-1\Unit-4-Accessibility\1.4.3-Next_Steps.html">1.4.3 Next Steps</a></li></ul></details><details><summary>Unit 5 End to end testing</summary><ul><li><a href="/curriculum\Module-1\Unit-5-End_to_end_testing\1.5.1-End_to_end_testing.html">1.5.1 End to end testing</a></li><li><a href="/curriculum\Module-1\Unit-5-End_to_end_testing\1.5.2-Test_cases_and_equivalence_testing.html">1.5.2 Test cases and equivalence testing</a></li></ul></details></ul></details><details><summary>Module 2</summary><ul><details><summary>Unit 1 Securing RESTful APIs</summary><ul><li><a href="/curriculum\Module-2\Unit-1-Securing_RESTful_APIs\2.1.1-Designing_RESTful_APIs.html">2.1.1 Designing RESTful APIs</a></li><li><a href="/curriculum\Module-2\Unit-1-Securing_RESTful_APIs\2.1.2-What_makes_for_REST.html">2.1.2 What makes for REST</a></li><li><a href="/curriculum\Module-2\Unit-1-Securing_RESTful_APIs\2.1.3-Basic_Auth.html">2.1.3 Basic Auth</a></li><li><a href="/curriculum\Module-2\Unit-1-Securing_RESTful_APIs\2.1.4-Next_steps.html">2.1.4 Next steps</a></li></ul></details><details><summary>Unit 2 OAuth with OpenID Connect</summary><ul><li><a href="/curriculum\Module-2\Unit-2-OAuth_with_OpenID_Connect\2.2.1-Securing_with_OAuth.html">2.2.1 Securing with OAuth</a></li><li><a href="/curriculum\Module-2\Unit-2-OAuth_with_OpenID_Connect\2.2.2-Session_and_token_management.html">2.2.2 Session and token management</a></li><li><a href="/curriculum\Module-2\Unit-2-OAuth_with_OpenID_Connect\2.2.3-OpenID_Connect.html">2.2.3 OpenID Connect</a></li><li><a href="/curriculum\Module-2\Unit-2-OAuth_with_OpenID_Connect\2.2.4-API_Assignment.html">2.2.4 API Assignment</a></li></ul></details></ul></details><details><summary>Module 3</summary><ul><details><summary>Unit 1 The SDLC</summary><ul><li><a href="/curriculum\Module-3\Unit-1-The-SDLC\3.1.1-The_Software_Development_Life_Cycle.html">3.1.1 The Software Development Life Cycle</a></li><li><a href="/curriculum\Module-3\Unit-1-The-SDLC\3.1.2-The_roles_and_responsibilities_in_the_SDLC_with_communication.html">3.1.2 The roles and responsibilities in the SDLC with communication</a></li><li><a href="/curriculum\Module-3\Unit-1-The-SDLC\3.1.3-Communication_in_your_teams.html">3.1.3 Communication in your teams</a></li></ul></details><details><summary>Unit 2 The 7 Princibles of Testing</summary><ul><li><a href="/curriculum\Module-3\Unit-2-The-7-Princibles-of-Testing\3.2.1-The_7_Princibles_of_Testing.html">3.2.1 The 7 Princibles of Testing</a></li><li><a href="/curriculum\Module-3\Unit-2-The-7-Princibles-of-Testing\3.2.2-Continuous_Deployment.html">3.2.2 Continuous Deployment</a></li></ul></details><details><summary>Unit 3 Deployment and Maintenance</summary><ul><li><a href="/curriculum\Module-3\Unit-3-Deployment-and-Maintenance\3.3.1-Containerisation_with_docker.html">3.3.1 Containerisation with docker</a></li><li><a href="/curriculum\Module-3\Unit-3-Deployment-and-Maintenance\3.3.2-Introduction_to_Cloud_Computing.html">3.3.2 Introduction to Cloud Computing</a></li><li><a href="/curriculum\Module-3\Unit-3-Deployment-and-Maintenance\3.3.3-Monitoring_and_Maintenance.html">3.3.3 Monitoring and Maintenance</a></li></ul></details></ul></details><details><summary>Module 4</summary><ul><details><summary>Unit 1 Open Web Application Security Project</summary><ul><li><a href="/curriculum\Module-4\Unit-1-Open_Web_Application_Security_Project\4.1.1-Introduction_to_the_OWASP_Top_Ten.html">4.1.1 Introduction to the OWASP Top Ten</a></li><li><a href="/curriculum\Module-4\Unit-1-Open_Web_Application_Security_Project\4.1.2-Injection_Attacks.html">4.1.2 Injection Attacks</a></li><li><a href="/curriculum\Module-4\Unit-1-Open_Web_Application_Security_Project\4.1.3-Broken_Authentication.html">4.1.3 Broken Authentication</a></li><li><a href="/curriculum\Module-4\Unit-1-Open_Web_Application_Security_Project\4.1.3-Exposing_Sensitive_Data.html">4.1.3 Exposing Sensitive Data</a></li><li><a href="/curriculum\Module-4\Unit-1-Open_Web_Application_Security_Project\4.1.4-Monitoring_for_attacks.html">4.1.4 Monitoring for attacks</a></li><li><a href="/curriculum\Module-4\Unit-1-Open_Web_Application_Security_Project\4.1.5-The_role_of_a_Penetration_Tester.html">4.1.5 The role of a Penetration Tester</a></li><li><a href="/curriculum\Module-4\Unit-1-Open_Web_Application_Security_Project\4.1.6-Next_Steps.html">4.1.6 Next Steps</a></li></ul></details></ul></details></ul></nav>
+        <h1>Objects in an Airport Domain</h1>
+<h2>Learning Objectives</h2>
+<ul>
+<li>Recognise how real world objects are represented in code</li>
+<li>Locate particular properties in a deeply nested set of objects</li>
+<li>Create and Execute a suit of unit tests</li>
+</ul>
+<h2>Pre-requisites</h2>
+<ul>
+<li>Familiarity with <a href="/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.2-Test_Driven_Development">Test Driven Development</a></li>
+<li>Familiarity with <a href="/curriculum/Bootcamp/Unit-1-Object_Oriented_Programming/0.1.1-JavaScript_Objects_And_Functions">JavaScript Objects and Functions</a></li>
+</ul>
+<h2>Lesson</h2>
+<p>In this lesson are going to create an Airport system. This exercise is designed to introduce you to the idea of Object Oriented Programming (OOP). In OOP we construct our programs using objects which are abstractions of real life objects. For example, it is common for a person who uses a program to be represented in the program with a User object.</p>
+<p>Note that JavaScript is a loosely typed language, meaning you don't have to specify what type of information will be stored in a variable in advance. Other languages such as Java are strongly typed, requiring all variables to declare their types. TypeScript layers strong static typing onto JavaScript as well as supporting encapsulation via <code>private</code> properties.</p>
+<h3>👩🏾‍💻👨🏻‍💻 In pairs</h3>
+<p>What are some of the objects that you might expect to find in an Airport?</p>
+<h3>Objects and Classes</h3>
+<p>Our Airport system is going to have the following objects in it:</p>
+<ol>
+<li>Bag</li>
+<li>Passenger</li>
+<li>Plane</li>
+<li>Airport</li>
+</ol>
+<p>What does a Bag have? A weight. It also has a relationship to a Person (or in Airport terms, a Passenger) who takes a Bag on holiday. One of the important things to think about in OOP is which object is responsible for what properties or behaviours. In our Airport system there are going to be many Bags. In our code we could create each Bag like this:</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">const</span> bag = {<span class="hljs-attr">weight</span>: <span class="hljs-number">16</span>}
+</code></pre>
+<p>however, someone might come along and make a Bag like this instead:</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">const</span> bag = {<span class="hljs-attr">kg</span>: <span class="hljs-number">16</span>}
+</code></pre>
+<p>We therefore want to standardise our Bag construction. Why do you think we might want to do that?</p>
+<p>What we want is a way to create Bags that all follow the same template. Like a rubber stamp, stamping out the same graphic each time.</p>
+<p><figure><img src="https://media.giphy.com/media/LpGDCmF87M24T6Sn6p/giphy.gif" alt="animation of a person repeatedly stamping an Approved status onto paper"><figcaption></figcaption></figure></p>
+<p>The way to make yourself a 'rubber object stamper' is to create a class and use the <code>new</code> keyword to instantiate instances of your class. In other words you use the <code>Bag</code> class to make Bag objects in your program.</p>
+<pre><code class="language-javascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Bag</span> </span>{
+    
+    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">weight</span>)</span> {
+        <span class="hljs-built_in">this</span>.weight = weight
+    }
+}
+
+<span class="hljs-keyword">const</span> bag = <span class="hljs-keyword">new</span> Bag(<span class="hljs-number">16</span>)
+<span class="hljs-built_in">console</span>.log(bag.weight) <span class="hljs-comment">// 16</span>
+</code></pre>
+<p>In the code example above we declare a class using the <code>class</code> keyword. The name of the class should be capitalised and singular.</p>
+<p>After the class name comes the block that contains the class definition. When we create a new Bag we want it to have a weight, hence we declare a 'constructor' function which will be called with zero or more arguments when we use the <code>new</code> keyword.</p>
+<p>Can you see how we add a property <code>weight</code> to the <code>this</code> object? <code>this</code> refers to the instance of the class that we just created.</p>
+<h3>TDD for Bags</h3>
+<p>How would you write a unit test for this Bag class?</p>
+<p>If we try to create a Bag without a weight - the constructor should throw an Error. This protects our program from trying to do calculations on <code>bag.weight</code> and reading <code>undefined</code> as the value.</p>
+<p>Why might the weight be undefined?</p>
+<p>Our failing test will include this assertion:</p>
+<pre><code class="language-javascript">expect(<span class="hljs-function">() =&gt;</span> <span class="hljs-keyword">new</span> Bag()).toThrowError(<span class="hljs-string">&#x27;bag must have a weight&#x27;</span>)
+</code></pre>
+<p>Notice how we have to run a function inside <code>expect</code> to trigger the error and catch it. If we just wrote the following:</p>
+<pre><code class="language-javascript">expect(<span class="hljs-keyword">new</span> Bag()).toThrowError(<span class="hljs-string">&#x27;bag must have a weight&#x27;</span>)
+</code></pre>
+<p>it would be like calling expect with <code>Error</code> and then expecting the Error to throw (which it won't, it's too late, the trap has been sprung). We'll need to update our Bag class to throw an Error if no weight is passed into the constructor. We throw an Error using this syntax:</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">&#x27;some error message in here&#x27;</span>)
+</code></pre>
+<p>Can you spot the <code>new</code> keyword above? What do you think that is doing in the Error class definition?</p>
+<h3>Bags belong to a Passenger</h3>
+<p>Our Airport system has Bags. We also need to create Passengers. Let's make a Passenger class with the following properties:</p>
+<ul>
+<li>A name</li>
+<li>Bags</li>
+</ul>
+<p>People often fly with a more than one Bag. Our Passengers should be able to carry multiple Bags. What data structure would work well here?</p>
+<p>To add a Bag to a Passenger we should be able to call a function on the instance of a Passenger. Read the code below:</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">const</span> bob = <span class="hljs-keyword">new</span> Passenger(<span class="hljs-string">&#x27;Bob the Builder&#x27;</span>)
+<span class="hljs-keyword">const</span> bobsCabinBag = <span class="hljs-keyword">new</span> Bag(<span class="hljs-number">9</span>)
+<span class="hljs-keyword">const</span> bobsHullBag = <span class="hljs-keyword">new</span> Bag(<span class="hljs-number">23</span>)
+bob.addBag(bobsCabinBag)
+bob.addBag(bobsHullBag)
+<span class="hljs-built_in">console</span>.log(bob.bags) <span class="hljs-comment">// [ Bag { weight: 9 }, Bag { weight: 23 } ]</span>
+</code></pre>
+<p>The way to define a function on a class is like this:</p>
+<pre><code class="language-javascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Passenger</span> </span>{
+    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">name</span>)</span> {
+        <span class="hljs-built_in">this</span>.name = name
+        <span class="hljs-built_in">this</span>.bags = []
+    }
+
+    <span class="hljs-function"><span class="hljs-title">addBag</span>(<span class="hljs-params">bag</span>)</span> {
+        <span class="hljs-built_in">this</span>.bags.push(bag)
+    }
+}
+
+<span class="hljs-built_in">module</span>.exports = Passenger
+</code></pre>
+<h2>Assignment</h2>
+<ol>
+<li><p>Create a <a href="/curriculum#createNewProject">new Node.js project</a> for this assignment.</p></li>
+<li><p>Use TDD to create unit tests for the Bag and Passenger classes. These tests will fail initially as the classes won't exist. <em>Follow <a href="/curriculum#runJestTests">these instructions for running your tests</a>.</em></p></li>
+<li><p>Implement the Bag and Passenger classes. Make sure the unit tests pass.</p></li>
+<li><p>Now we have Passengers with Bags, they are ready to board their flight! Use TDD to create unit tests for the Plane and Airport classes. Include tests for:</p>
+<ul>
+<li>reading the weight of a Bag belonging to a specific Passenger on a specific Plane at a specific Airport</li>
+<li>creating multiple Airports and Planes</li>
+<li>landing Planes at Airports <em>i.e airport.land(plane)</em></li>
+<li>boarding Passengers onto a Plane</li>
+<li>give a plane an inbound property (the name of the airport it is currently landed in)</li>
+<li>give a plane a destination property so you can set where it will fly too</li>
+</ul></li>
+<li><p>Commit your code into Github and share the link with your coach for review</p></li>
+</ol>
+<h2>Assignment extension task</h2>
+<ol>
+<li>Take a copy of your solution and covert it to use TypeScript. What differences do you notice? Note that the TypeScript files must use <code>export = NameOfClass;</code> rather than <code>module.exports</code>.</li>
+<li>Document your classes using the <a href="https://jsdoc.app/">JSDoc</a> comment structure and generate the HTML documentation. Why do you think this documentation could be useful?</li>
+<li>Commit your Typescript solution and generated HTML to your Git repository.</li>
+</ol>
+
+        <script src="/curriculum/js/tabbed-code-blocks.js"></script>
+        <script>
+            function toggleNav() {
+                const button = document.getElementById('navigation-toggle')
+                const isAriaExp = button.getAttribute('aria-expanded')
+                const newAriaExp = (isAriaExp == "false") ? "true" : "false"
+                button.setAttribute('aria-expanded', newAriaExp)
+                const nav = document.getElementById('navigation')
+                nav.style.display = nav.offsetParent ? 'none' : 'block'
+            }
+        </script>
+    </body>
+</html>

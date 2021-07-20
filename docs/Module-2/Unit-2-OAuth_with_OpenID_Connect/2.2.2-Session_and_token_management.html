@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+    <head>
+        <meta charset="utf-8">
+        <title> What is middleware?</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="shortcut icon" type="image/x-icon" href="/curriculum/favicon.ico"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/an-old-hope.min.css">
+        <link rel="stylesheet" href="/curriculum/style.css"/>
+        <script src="/curriculum/js/highlight.min.js"></script>
+        <script src="/curriculum/js/bash.min.js"></script>
+        <script src="/curriculum/js/java.min.js"></script>
+        <script src="/curriculum/js/javascript.min.js"></script>
+        <script src="/curriculum/js/sql.min.js"></script>
+    </head>
+    <body>
+        <button 
+            id="navigation-toggle"
+            aria-expanded="false"
+            aria-haspopup="true"
+            onclick="toggleNav()"
+            onkeydown="event => {event.keyCode === 13 ? toggleNav() : null}"
+            tabindex="1">Table of contents</button>
+        <nav id="navigation"><ul><details><summary>Bootcamp</summary><ul><details><summary>Unit 1 Object Oriented Programming</summary><ul><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.1-JavaScript_Objects_And_Functions.html">0.1.1 JavaScript Objects And Functions</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.2-Test_Driven_Development.html">0.1.2 Test Driven Development</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.3-Objects_in_an_Airport_Domain.html">0.1.3 Objects in an Airport Domain</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.4-Static_functions_and_properties.html">0.1.4 Static functions and properties</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.5-Inheritance.html">0.1.5 Inheritance</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.6-UML_Modelling.html">0.1.6 UML Modelling</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.7-OOP_Challenge.html">0.1.7 OOP Challenge</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.8-End_of_Unit_Quiz_OOP.html">0.1.8 End of Unit Quiz OOP</a></li></ul></details><details><summary>Unit 2 Asynchronous JavaScript</summary><ul><li><a href="/curriculum\Bootcamp\Unit-2-Asynchronous_JavaScript\0.2.1-Asynchronous_JavaScript.html">0.2.1 Asynchronous JavaScript</a></li><li><a href="/curriculum\Bootcamp\Unit-2-Asynchronous_JavaScript\0.2.2-Promises.html">0.2.2 Promises</a></li><li><a href="/curriculum\Bootcamp\Unit-2-Asynchronous_JavaScript\0.2.3-Asynchronous_Airport_Data_Load.html">0.2.3 Asynchronous Airport Data Load</a></li><li><a href="/curriculum\Bootcamp\Unit-2-Asynchronous_JavaScript\0.2.4-End_of_Unit_Quiz_Async.html">0.2.4 End of Unit Quiz Async</a></li></ul></details><details><summary>Unit 3 Relational Databases</summary><ul><li><a href="/curriculum\Bootcamp\Unit-3-Relational_Databases\0.3.1-Logical_Data_Model.html">0.3.1 Logical Data Model</a></li><li><a href="/curriculum\Bootcamp\Unit-3-Relational_Databases\0.3.10-Sequelize_part_2.html">0.3.10 Sequelize part 2</a></li><li><a href="/curriculum\Bootcamp\Unit-3-Relational_Databases\0.3.11-End_of_Unit_Quiz_Databases.html">0.3.11 End of Unit Quiz Databases</a></li><li><a href="/curriculum\Bootcamp\Unit-3-Relational_Databases\0.3.2-Introduction_to_Databases.html">0.3.2 Introduction to Databases</a></li><li><a href="/curriculum\Bootcamp\Unit-3-Relational_Databases\0.3.3-Basic_SQL_Commands.html">0.3.3 Basic SQL Commands</a></li><li><a href="/curriculum\Bootcamp\Unit-3-Relational_Databases\0.3.4-SQL_Joins.html">0.3.4 SQL Joins</a></li><li><a href="/curriculum\Bootcamp\Unit-3-Relational_Databases\0.3.5-Database_access_using_Node.html">0.3.5 Database access using Node</a></li><li><a href="/curriculum\Bootcamp\Unit-3-Relational_Databases\0.3.6-Populating_databases_from_JSON.html">0.3.6 Populating databases from JSON</a></li><li><a href="/curriculum\Bootcamp\Unit-3-Relational_Databases\0.3.7-Object_Relational_Mapping_part_1.html">0.3.7 Object Relational Mapping part 1</a></li><li><a href="/curriculum\Bootcamp\Unit-3-Relational_Databases\0.3.8-Object_Relational_Mapping_part_2.html">0.3.8 Object Relational Mapping part 2</a></li><li><a href="/curriculum\Bootcamp\Unit-3-Relational_Databases\0.3.9-Sequelize_part_1.html">0.3.9 Sequelize part 1</a></li></ul></details><details><summary>Unit 4 RESTful Servers</summary><ul><li><a href="/curriculum\Bootcamp\Unit-4-RESTful_Servers\0.4.1-Web_Servers.html">0.4.1 Web Servers</a></li><li><a href="/curriculum\Bootcamp\Unit-4-RESTful_Servers\0.4.2-Application_Servers.html">0.4.2 Application Servers</a></li><li><a href="/curriculum\Bootcamp\Unit-4-RESTful_Servers\0.4.3-Postman.html">0.4.3 Postman</a></li><li><a href="/curriculum\Bootcamp\Unit-4-RESTful_Servers\0.4.4-Route_Parameters.html">0.4.4 Route Parameters</a></li><li><a href="/curriculum\Bootcamp\Unit-4-RESTful_Servers\0.4.5-CRUD_operations.html">0.4.5 CRUD operations</a></li><li><a href="/curriculum\Bootcamp\Unit-4-RESTful_Servers\0.4.6-Server_side_Validation.html">0.4.6 Server side Validation</a></li><li><a href="/curriculum\Bootcamp\Unit-4-RESTful_Servers\0.4.7-End_of_Unit_Quiz_RESTful.html">0.4.7 End of Unit Quiz RESTful</a></li></ul></details><details><summary>Unit 5 Human Computer Interaction</summary><ul><li><a href="/curriculum\Bootcamp\Unit-5-Human_Computer_Interaction\0.5.1-Human_Computer_Interaction.html">0.5.1 Human Computer Interaction</a></li><li><a href="/curriculum\Bootcamp\Unit-5-Human_Computer_Interaction\0.5.2-Server_Side_Rendering.html">0.5.2 Server Side Rendering</a></li><li><a href="/curriculum\Bootcamp\Unit-5-Human_Computer_Interaction\0.5.3-The_Document_Object_Model.html">0.5.3 The Document Object Model</a></li><li><a href="/curriculum\Bootcamp\Unit-5-Human_Computer_Interaction\0.5.4-HTML_forms_and_lists.html">0.5.4 HTML forms and lists</a></li><li><a href="/curriculum\Bootcamp\Unit-5-Human_Computer_Interaction\0.5.5-End_of_Unit_Quiz_HCI.html">0.5.5 End of Unit Quiz HCI</a></li></ul></details><details><summary>Unit 6 End Of Bootcamp Group Project</summary><ul><li><a href="/curriculum\Bootcamp\Unit-6-End_Of_Bootcamp_Group_Project\0.6.1-Introduction.html">0.6.1 Introduction</a></li><li><a href="/curriculum\Bootcamp\Unit-6-End_Of_Bootcamp_Group_Project\0.6.2-Requirements.html">0.6.2 Requirements</a></li><li><a href="/curriculum\Bootcamp\Unit-6-End_Of_Bootcamp_Group_Project\0.6.3-Agile_Development.html">0.6.3 Agile Development</a></li><li><a href="/curriculum\Bootcamp\Unit-6-End_Of_Bootcamp_Group_Project\0.6.4-Design.html">0.6.4 Design</a></li><li><a href="/curriculum\Bootcamp\Unit-6-End_Of_Bootcamp_Group_Project\0.6.5-GitHub_Projects.html">0.6.5 GitHub Projects</a></li><li><a href="/curriculum\Bootcamp\Unit-6-End_Of_Bootcamp_Group_Project\0.6.6-Branching_and_Pull_Requests.html">0.6.6 Branching and Pull Requests</a></li><li><a href="/curriculum\Bootcamp\Unit-6-End_Of_Bootcamp_Group_Project\0.6.7-Deployment_with_Heroku.html">0.6.7 Deployment with Heroku</a></li></ul></details></ul></details><details><summary>Module 1</summary><ul><details><summary>Unit 1 Agile user requirements</summary><ul><li><a href="/curriculum\Module-1\Unit-1-Agile_user_requirements\1.1.1-Introduction_to_Agile.html">1.1.1 Introduction to Agile</a></li><li><a href="/curriculum\Module-1\Unit-1-Agile_user_requirements\1.1.2-Personas.html">1.1.2 Personas</a></li><li><a href="/curriculum\Module-1\Unit-1-Agile_user_requirements\1.1.3-User_Stories.html">1.1.3 User Stories</a></li><li><a href="/curriculum\Module-1\Unit-1-Agile_user_requirements\1.1.4-Requirements.html">1.1.4 Requirements</a></li><li><a href="/curriculum\Module-1\Unit-1-Agile_user_requirements\1.1.5-Next_Steps.html">1.1.5 Next Steps</a></li></ul></details><details><summary>Unit 2 Designing UI</summary><ul><li><a href="/curriculum\Module-1\Unit-2-Designing_UI\1.2.1-Usability_heuristics.html">1.2.1 Usability heuristics</a></li><li><a href="/curriculum\Module-1\Unit-2-Designing_UI\1.2.2-Composition_and_components_in_design.html">1.2.2 Composition and components in design</a></li><li><a href="/curriculum\Module-1\Unit-2-Designing_UI\1.2.3-Prototyping_UI.html">1.2.3 Prototyping UI</a></li><li><a href="/curriculum\Module-1\Unit-2-Designing_UI\1.2.4-Next_Steps.html">1.2.4 Next Steps</a></li></ul></details><details><summary>Unit 3 Building UI with a framework</summary><ul><li><a href="/curriculum\Module-1\Unit-3-Building_UI_with_a_framework\1.3.1-Part_1_Getting_started_with_the_Vue_CDN.html">1.3.1 Part 1 Getting started with the Vue CDN</a></li><li><a href="/curriculum\Module-1\Unit-3-Building_UI_with_a_framework\1.3.2-Moving_to_the_Vue_CLI.html">1.3.2 Moving to the Vue CLI</a></li><li><a href="/curriculum\Module-1\Unit-3-Building_UI_with_a_framework\1.3.2-Part_2_Vue_methods_and_computed_properties.html">1.3.2 Part 2 Vue methods and computed properties</a></li><li><a href="/curriculum\Module-1\Unit-3-Building_UI_with_a_framework\1.3.2-Part_3_Events_and_Adding_to_cart.html">1.3.2 Part 3 Events and Adding to cart</a></li><li><a href="/curriculum\Module-1\Unit-3-Building_UI_with_a_framework\1.3.3-Deploying_your_Vue_app.html">1.3.3 Deploying your Vue app</a></li><li><a href="/curriculum\Module-1\Unit-3-Building_UI_with_a_framework\1.3.4-Glossary_of_terms.html">1.3.4 Glossary of terms</a></li></ul></details><details><summary>Unit 4 Accessibility</summary><ul><li><a href="/curriculum\Module-1\Unit-4-Accessibility\1.4.1-Inclusive_design.html">1.4.1 Inclusive design</a></li><li><a href="/curriculum\Module-1\Unit-4-Accessibility\1.4.2-Accessibility.html">1.4.2 Accessibility</a></li><li><a href="/curriculum\Module-1\Unit-4-Accessibility\1.4.3-Next_Steps.html">1.4.3 Next Steps</a></li></ul></details><details><summary>Unit 5 End to end testing</summary><ul><li><a href="/curriculum\Module-1\Unit-5-End_to_end_testing\1.5.1-End_to_end_testing.html">1.5.1 End to end testing</a></li><li><a href="/curriculum\Module-1\Unit-5-End_to_end_testing\1.5.2-Test_cases_and_equivalence_testing.html">1.5.2 Test cases and equivalence testing</a></li></ul></details></ul></details><details><summary>Module 2</summary><ul><details><summary>Unit 1 Securing RESTful APIs</summary><ul><li><a href="/curriculum\Module-2\Unit-1-Securing_RESTful_APIs\2.1.1-Designing_RESTful_APIs.html">2.1.1 Designing RESTful APIs</a></li><li><a href="/curriculum\Module-2\Unit-1-Securing_RESTful_APIs\2.1.2-What_makes_for_REST.html">2.1.2 What makes for REST</a></li><li><a href="/curriculum\Module-2\Unit-1-Securing_RESTful_APIs\2.1.3-Basic_Auth.html">2.1.3 Basic Auth</a></li><li><a href="/curriculum\Module-2\Unit-1-Securing_RESTful_APIs\2.1.4-Next_steps.html">2.1.4 Next steps</a></li></ul></details><details><summary>Unit 2 OAuth with OpenID Connect</summary><ul><li><a href="/curriculum\Module-2\Unit-2-OAuth_with_OpenID_Connect\2.2.1-Securing_with_OAuth.html">2.2.1 Securing with OAuth</a></li><li><a href="/curriculum\Module-2\Unit-2-OAuth_with_OpenID_Connect\2.2.2-Session_and_token_management.html">2.2.2 Session and token management</a></li><li><a href="/curriculum\Module-2\Unit-2-OAuth_with_OpenID_Connect\2.2.3-OpenID_Connect.html">2.2.3 OpenID Connect</a></li><li><a href="/curriculum\Module-2\Unit-2-OAuth_with_OpenID_Connect\2.2.4-API_Assignment.html">2.2.4 API Assignment</a></li></ul></details></ul></details><details><summary>Module 3</summary><ul><details><summary>Unit 1 The SDLC</summary><ul><li><a href="/curriculum\Module-3\Unit-1-The-SDLC\3.1.1-The_Software_Development_Life_Cycle.html">3.1.1 The Software Development Life Cycle</a></li><li><a href="/curriculum\Module-3\Unit-1-The-SDLC\3.1.2-The_roles_and_responsibilities_in_the_SDLC_with_communication.html">3.1.2 The roles and responsibilities in the SDLC with communication</a></li><li><a href="/curriculum\Module-3\Unit-1-The-SDLC\3.1.3-Communication_in_your_teams.html">3.1.3 Communication in your teams</a></li></ul></details><details><summary>Unit 2 The 7 Princibles of Testing</summary><ul><li><a href="/curriculum\Module-3\Unit-2-The-7-Princibles-of-Testing\3.2.1-The_7_Princibles_of_Testing.html">3.2.1 The 7 Princibles of Testing</a></li><li><a href="/curriculum\Module-3\Unit-2-The-7-Princibles-of-Testing\3.2.2-Continuous_Deployment.html">3.2.2 Continuous Deployment</a></li></ul></details><details><summary>Unit 3 Deployment and Maintenance</summary><ul><li><a href="/curriculum\Module-3\Unit-3-Deployment-and-Maintenance\3.3.1-Containerisation_with_docker.html">3.3.1 Containerisation with docker</a></li><li><a href="/curriculum\Module-3\Unit-3-Deployment-and-Maintenance\3.3.2-Introduction_to_Cloud_Computing.html">3.3.2 Introduction to Cloud Computing</a></li><li><a href="/curriculum\Module-3\Unit-3-Deployment-and-Maintenance\3.3.3-Monitoring_and_Maintenance.html">3.3.3 Monitoring and Maintenance</a></li></ul></details></ul></details><details><summary>Module 4</summary><ul><details><summary>Unit 1 Open Web Application Security Project</summary><ul><li><a href="/curriculum\Module-4\Unit-1-Open_Web_Application_Security_Project\4.1.1-Introduction_to_the_OWASP_Top_Ten.html">4.1.1 Introduction to the OWASP Top Ten</a></li><li><a href="/curriculum\Module-4\Unit-1-Open_Web_Application_Security_Project\4.1.2-Injection_Attacks.html">4.1.2 Injection Attacks</a></li><li><a href="/curriculum\Module-4\Unit-1-Open_Web_Application_Security_Project\4.1.3-Broken_Authentication.html">4.1.3 Broken Authentication</a></li><li><a href="/curriculum\Module-4\Unit-1-Open_Web_Application_Security_Project\4.1.3-Exposing_Sensitive_Data.html">4.1.3 Exposing Sensitive Data</a></li><li><a href="/curriculum\Module-4\Unit-1-Open_Web_Application_Security_Project\4.1.4-Monitoring_for_attacks.html">4.1.4 Monitoring for attacks</a></li><li><a href="/curriculum\Module-4\Unit-1-Open_Web_Application_Security_Project\4.1.5-The_role_of_a_Penetration_Tester.html">4.1.5 The role of a Penetration Tester</a></li><li><a href="/curriculum\Module-4\Unit-1-Open_Web_Application_Security_Project\4.1.6-Next_Steps.html">4.1.6 Next Steps</a></li></ul></details></ul></details></ul></nav>
+        <h1>What is middleware?</h1>
+<h2>Learning Objectives</h2>
+<ul>
+<li>Describe the middleware design pattern</li>
+<li>Use what you have learnt in previous lessons to secure an API using Basic Auth</li>
+</ul>
+<h3>Lesson</h3>
+<p>Your API should support a `User' resource. A user will need at least a name, email and password:</p>
+<table>
+<thead>
+<tr><th>HTTP Method</th><th>URL</th><th>Status code</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>GET</td><td><code>/users</code></td><td>200</td><td>retrieve all users</td></tr>
+<tr><td>POST</td><td><code>/users</code></td><td>201</td><td>create a new user</td></tr>
+<tr><td>GET</td><td><code>/users/{id}</code></td><td>200</td><td>retrieve a specific user</td></tr>
+<tr><td>PUT</td><td><code>/users/{id}</code></td><td>200</td><td>update a user</td></tr>
+<tr><td>DELETE</td><td><code>/users/{id}</code></td><td>200</td><td>delete a user</td></tr>
+</tbody>
+</table>
+<p>Our User resource in an unsecured state is just like any other resource like airports, training shoes or albums. However we are going to treat it differently.</p>
+<p>To protect resources we need to authenticate the user making the request. We are using basic auth to do that by putting the <em>username:password</em> in the headers of the request.</p>
+<p>Our server now needs to check the request is authentic and from a user it knows before responding. That check needs to happen before we respond.</p>
+<p><figure><img src="https://miro.medium.com/max/960/1*Fnreje0WgqdBjjLXop9L0A.png" alt="middleware diagram"><figcaption></figcaption></figure></p>
+<p>As that check happens in the middle of the request response cycle, it has been given the name of middleware. This is a generic design pattern you will see in many systems.</p>
+<p>A whole series of things can happen in middleware not just authentication, but also authorisation. Thats why the diagram above has 2 middleware rings. There are 2 middlewares the request has to pass through before it gets to the controller. Below is a general pattern for a middleware function.</p>
+<pre><code class="language-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">request, response, next</span>) </span>{
+  <span class="hljs-comment">// check or change something in the request</span>
+  <span class="hljs-comment">// maybe its not ok so from here you might</span>
+  <span class="hljs-keyword">return</span> response.code(<span class="hljs-number">403</span>) <span class="hljs-comment">// status code 403 forbidden</span>
+  <span class="hljs-comment">// the controller was never reached!</span>
+  <span class="hljs-comment">// maybe all is well and you can contiune with the request</span>
+  <span class="hljs-comment">// calling next() finishes this middleware and goes onto</span>
+  <span class="hljs-comment">// either the next middleware or into the controller/route handler itself</span>
+  <span class="hljs-keyword">return</span> next()
+}
+</code></pre>
+<p>❓ What other things might you want to do in middleware?</p>
+<p>❓ is the password sent on every request or cached?</p>
+<p>We are going to implement middlewares on our server. First of you need to authenticate the request and only accept requests from users your server knows about (the users in your database). We don't want any user to be able to see a list of all the other users, that is our authorisation rule.</p>
+<h3>Assignment</h3>
+<ul>
+<li>Create an API which allows Create, Read, Update and Delete of a User using either SpringBoot or Node.js</li>
+<li>Enhance your API to protect your User resources with Basic Authentication (see code examples below) and check the incoming username and password against the details held in the database you created in the previous lesson</li>
+<li>(Optional) Create a simple form which sends a username and password to your API using Basic Auth (i.e. simulates what Postman was doing in the previous lesson).</li>
+</ul>
+<p>|Javascript|Java|</p>
+<pre><code class="language-javascript"><span class="hljs-comment">// check for a basic auth header with correct credentials</span>
+app.use(basicAuth({
+  <span class="hljs-attr">authorizer</span>: dbAuthorizer, <span class="hljs-comment">// customer authorizer,</span>
+  <span class="hljs-attr">authorizeAsync</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// we check the db which makes this async</span>
+  <span class="hljs-attr">challenge</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">unauthorizedResponse</span>: <span class="hljs-function">(<span class="hljs-params">req</span>) =&gt;</span> {
+    <span class="hljs-keyword">return</span> <span class="hljs-string">`unauthorized. ip: <span class="hljs-subst">${req.ip}</span>`</span>
+  }
+}));
+
+<span class="hljs-comment">// our custom async authorizer middleware, this is called for each request</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">dbAuthorizer</span>(<span class="hljs-params">username, password, callback</span>) </span>{
+  <span class="hljs-keyword">const</span> sql = <span class="hljs-string">&quot;select password from users where username = ?;&quot;</span>;
+  db.get(sql, [username], <span class="hljs-keyword">async</span> (err, user) =&gt; {
+    err ? callback(err) : bcrypt.compare(password, user.password, callback);
+  });
+</code></pre>
+<pre><code class="language-java"><span class="hljs-meta">@Configuration</span>
+<span class="hljs-meta">@EnableWebSecurity</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SecurityConfiguration</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">WebSecurityConfigurerAdapter</span> </span>{
+
+    <span class="hljs-meta">@Autowired</span>
+    <span class="hljs-keyword">private</span> DataSource dataSource;
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">configure</span><span class="hljs-params">(HttpSecurity httpSecurity)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+        <span class="hljs-comment">// do not use the line below in production apps!!</span>
+        httpSecurity.csrf().disable(); <span class="hljs-comment">// hack to support DELETE method</span>
+        httpSecurity.authorizeRequests().anyRequest().authenticated()
+                .and().httpBasic();
+    }
+
+    <span class="hljs-meta">@Autowired</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">configureGlobal</span><span class="hljs-params">(AuthenticationManagerBuilder authentication)</span>
+            <span class="hljs-keyword">throws</span> Exception </span>{
+        <span class="hljs-comment">// use jdbc authentication (for in memory authentication use authentication.inMemoryAuthentication())</span>
+        authentication.jdbcAuthentication()
+                .dataSource(dataSource)
+                .authoritiesByUsernameQuery(<span class="hljs-string">&quot;select username,authority &quot;</span>
+                        + <span class="hljs-string">&quot;from authorities &quot;</span>
+                        + <span class="hljs-string">&quot;where username = ?&quot;</span>)
+                .usersByUsernameQuery(
+                        <span class="hljs-string">&quot;select username, password, &#x27;true&#x27; as enabled from users where username = ?&quot;</span>);
+
+    }
+
+    <span class="hljs-meta">@Bean</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> PasswordEncoder <span class="hljs-title">passwordEncoder</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// specify we want the password hashed using bcrypt</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> BCryptPasswordEncoder();
+    }
+}
+</code></pre>
+<hr>
+<h1>Session based Auth</h1>
+<h2>Learning Objectives</h2>
+<ul>
+<li>Understand the limitations of Basic Auth</li>
+<li>Know why and how to use sessions on a server</li>
+</ul>
+<h2>Pre-requisites</h2>
+<ul>
+<li>Ensure you have the Postman application installed</li>
+</ul>
+<h2>Materials needed</h2>
+<ul>
+<li>Postman application</li>
+<li>VS Code (for Javascript development) or IntelliJ (for Java development)</li>
+</ul>
+<h2>What's wrong with Basic Auth?</h2>
+<ul>
+<li>The password is sent over the wire in base64 encoding which can be easily decoded (if Basic Auth is used, it should always go over HTTPS for this reason)</li>
+<li>The password is sent repeatedly i.e. on each request meaning there is a large attack window</li>
+<li>The password is cached by the web browser, therefore it could be silently reused by any other request to the server e.g. CSRF</li>
+<li>The password may be stored permanently in the browser hence could be stolen by another user on a shared machine</li>
+</ul>
+<h2>Sessions</h2>
+<p>Wouldn't it be much better if after being authenticated the server could keep track of which users it had already checked the passwords for. This is the purpose of sessions on a server. They are a means by which the server can keep track of who is who. Without sessions our server will just treat each request the same.</p>
+<p>Lets have a look at trying to manage state on a server. Start a new project just for this Counter example. Lets be really simple and just imagine we have a counter.</p>
+<pre><code class="language-javascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Counter</span> </span>{
+    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"></span>)</span> {
+        <span class="hljs-built_in">this</span>.value = <span class="hljs-number">1</span>
+    }
+
+    <span class="hljs-function"><span class="hljs-title">inc</span>(<span class="hljs-params"></span>)</span> {
+        <span class="hljs-built_in">this</span>.value += <span class="hljs-number">1</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.value.toString()
+    }
+}
+</code></pre>
+<p>We want to expose this to our users so they can make requests and receive incrementing values i.e. 1,2,3,4,5 etc</p>
+<pre><code class="language-javascript">app.get(<span class="hljs-string">&#x27;/counter&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+    <span class="hljs-keyword">const</span> counter = <span class="hljs-keyword">new</span> Counter()
+    res.send(counter.inc())
+})
+</code></pre>
+<p>❓ What is the problem with this?</p>
+<p>Lets pull the counter out of the route and have it in the scope of the server instance:</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">const</span> counter = <span class="hljs-keyword">new</span> Counter()
+
+app.get(<span class="hljs-string">&#x27;/counter&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+    res.send(counter.inc())
+})
+</code></pre>
+<p>❓ What is the problem with this? (try different browser windows)</p>
+<p>The behaviour we are after is each connected client gets their own dedicated counter. So as they refresh their individual page, their personal counter increments.</p>
+<p>For this we will need to extend our server by adding sessions. The session object will be added to the request object. Each individually connected client will be allocated a <code>req.session.id</code> unique to them and there interaction with the server. On the session object we can store values for that connection. For example:</p>
+<pre><code class="language-javascript">req.session.user_id = user.id
+</code></pre>
+<p>You can only store JSON stringable values so our instance of our counter cannot be stored as it will get turned into the string representation of the class instance. No good to us. So we will use the <code>req.session.id</code> as a hashkey so we can lookup the counter for each particular connected client.</p>
+<h3>Use Sessions</h3>
+<p>To add sessions <code>npm i express-session</code> then use the following config:</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">const</span> session = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;express-session&#x27;</span>)
+<span class="hljs-keyword">const</span> sessionSettings = {
+    <span class="hljs-attr">secret</span>: <span class="hljs-string">&quot;best cohort ever&quot;</span>,
+    <span class="hljs-attr">resave</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">saveUninitialized</span>: <span class="hljs-literal">true</span>
+}
+app.use(session(sessionSettings))
+</code></pre>
+<p>Update your Counter class to keep track of every instance (use a static property).</p>
+<pre><code class="language-javascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Counter</span> </span>{
+    <span class="hljs-keyword">static</span> lookup = {}
+    
+    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">id</span>)</span> {
+        <span class="hljs-built_in">this</span>.value = <span class="hljs-number">1</span>
+        Counter.lookup[id] = <span class="hljs-built_in">this</span> <span class="hljs-comment">// every counter we create is added to the lookup hash map which we can access at Counter.lookup</span>
+    }
+
+    <span class="hljs-function"><span class="hljs-title">inc</span>(<span class="hljs-params"></span>)</span> {
+        <span class="hljs-built_in">this</span>.value += <span class="hljs-number">1</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.value.toString()
+    }
+}
+</code></pre>
+<p>Add a middleware function that will run on every request this makes sure new requests have an instance of the counter they can access with their session id:</p>
+<pre><code class="language-javascript">app.use(<span class="hljs-function">(<span class="hljs-params">req, res, next</span>) =&gt;</span> {
+    Counter.lookup[req.session.id] = Counter.lookup[req.session.id] || <span class="hljs-keyword">new</span> Counter(req.session.id)
+    next()
+})
+</code></pre>
+<p>finally in the route return the next value</p>
+<pre><code class="language-javascript">app.get(<span class="hljs-string">&#x27;/counter&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+    res.send(Counter.lookup[req.session.id].inc())
+})
+</code></pre>
+<p>❓ How can we use this functionality to authenticate a user only once?</p>
+<p>This is now a more familiar concept to you. Getting a session assigned to you is like 'logging' in. To 'log out' you just remove that counter from the session.</p>
+<h2>Assignment</h2>
+<ul>
+<li>Implement sessions on your server</li>
+<li>Add <code>/login</code> and <code>/logout</code> routes</li>
+<li>The <code>/login</code> route should be the only route that accepts a Basic Auth request</li>
+<li>Once a user is authenticated with Basic Auth add them to a session</li>
+<li>Update <code>/users/:id</code> to only return the user info if the user is in a session</li>
+<li>If a user is in a session and visits the <code>/logout</code> route this should end their session,  and they will no longer be able to access <code>/users/:id</code></li>
+<li>Put your solution on Github and share it with your coach</li>
+</ul>
+<h2>Further resources</h2>
+<p><iframe src="https://www.youtube.com/embed/B2MbcnJmGuk" width="100%" height="444px" allowfullscreen frameborder=0></iframe></p>
+<p>In this video Bernard demo's the Counter example.</p>
+<hr>
+<h1>Introduction to OAuth</h1>
+<h2>Learning Objectives</h2>
+<ul>
+<li>Know that OAuth uses tokens to secure APIs</li>
+<li>Recall the structure of a JWT</li>
+<li>Represent the OAuth flow in a UML sequence diagram</li>
+</ul>
+<h2>Pre-requisites</h2>
+<ul>
+<li>Install the PlantUML plugin to VSCode to allow you to create sequence diagrams.</li>
+</ul>
+<h2>The problem with sessions</h2>
+<p>Sessions are great, but your clients are now bound to 1 machine. If I have a cluster of computers managing incoming requests and your session is in the memory of machine 1, I can't bounce you to machine 2 to lighten the load.</p>
+<p>❓ Why not?</p>
+<p>Sessions are stateful. To achieve the same thing as a session (auth you once then keep track of you) I could use a token based auth system.</p>
+<h2>What is OAuth?</h2>
+<p>OAuth (2.0) is an open standard for authorization. It controls authorization to a protected resource such as an API.</p>
+<p>If you’ve ever signed up to a new application and agreed to let it access your Facebook or phone contacts, then you’ve used OAuth. OAuth provides secure delegated access which means an application can access resources from a server on behalf of the user, without them having to share their credentials. It does this by allowing an Identity Provider (we will be using Auth0) to issue access tokens. The token informs the API that the bearer of the token is authorized to access the API.</p>
+<p><figure><img src="https://static01.nyt.com/images/2017/06/18/nyregion/12nytoday3/12nytoday3-superJumbo.jpg?quality=90&amp;auto=webp" alt="clubber getting their hand stamped" title="Photo: Caitlin Ochs for The New York Times"><figcaption>Photo: Caitlin Ochs for The New York Times</figcaption></figure></p>
+<p>In a nightclub when you enter and pay your entry fee you will often be stamped or presented with a bracelet to ware on your wrist. This shows the security staff on the door that you have paid, and you can enter and leave the club for that evening. The bracelet or stamp is like a token the club (Identity Provider) has issue. With a legitimate stamp or bracelet the door staff (API middleware) check it and then if its ok let you in (to the controller).</p>
+<h2>What makes OAuth secure?</h2>
+<ul>
+<li>Token management means we can track each device that uses the API (and revoke access if we want)</li>
+<li>OAuth provides 'scopes' which allow for fine-grained authorization</li>
+<li>Tokens expire, making it very hard for them to be reused</li>
+</ul>
+<p>Let's look at this diagram which illustrates the OAuth flow we are going to be using to secure our API resource:</p>
+<p><figure><img src="https://user-images.githubusercontent.com/1316724/102925060-9cb1b680-448a-11eb-8177-7eda1802026f.png" alt="oauth flow showing how an identify provider issues a token which is used to secure a resource"><figcaption></figcaption></figure></p>
+<h2>JWT</h2>
+<p>Whilst OAuth does not mandate any specific format for tokens, the recommendation is to use JSON Web Tokens (JWTs). A JWT is easy to identify, it is three strings separated by a <code>.</code></p>
+<p>Here is an example:</p>
+<p><code>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtZXNzYWdlIjoiSGVsbG8gZnJvbSBXaGl0ZUhhdCEifQ.XSYkatPu3LirweyU13rLWblqQRNvbqoJJ0qwX_mdYgM</code></p>
+<p>Use https://jwt.io to see the secret message hidden inside this token!</p>
+<p><strong>Activity</strong>: Create your own messages and send them to the Slack channel!</p>
+<p>A JWT is made up of 3 parts:</p>
+<ul>
+<li><strong>Header</strong> - specifies the type of token and the algorithm used to sign the token</li>
+<li><strong>Payload</strong> - the information that we want to transmit and other information about our token</li>
+<li><strong>Signature</strong> - verifies who sent the token and that the token has not been tampered with</li>
+</ul>
+<p>To create the signature part you have to take the encoded header, the encoded payload, a secret, the algorithm specified in the header, and sign that.</p>
+<pre><code class="language-ruby">SHA1(base64Encode(Header) + &quot;.&quot; + base64Encode(Payload), secret)
+// SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c &lt;- that is the Signature part
+</code></pre>
+<h2>Assignment</h2>
+<ol>
+<li><p>Sign up to the <a href="https://developer.spotify.com/documentation/web-api/">Spotify API</a>.</p></li>
+<li><p>Choose a selection of <a href="https://developer.spotify.com/documentation/web-api/reference/">API endpoints</a> (we suggest using GET endpoints to avoid affecting any your playlists) and select to &quot;Try out in Web Console&quot;. Enable Chrome Developer Tools and study the HTTP requests made when &quot;Get Token&quot; is selected and when &quot;Try It&quot; is selected. Hint: Enable &quot;Preserve log&quot; so you can see all messages across calls and &quot;Disable cache&quot; so you don't get cached results.</p></li>
+<li><p>Read the 'Implicit Grant Flow' section of the <a href="https://developer.spotify.com/documentation/general/guides/authorization-guide/#implicit-grant-flow">Spotify Authorization guide</a>. This is the OAuth flow used by the Spotify Developer website.</p></li>
+<li><p>Create a sequence diagram which illustrates this OAuth Implicit Grant Flow used by the Spotify Developer website. Add messages which illustrate how tokens are obtained and the flow if the Spotify user is not logged in.</p></li>
+</ol>
+<h2>Assignment extension tasks</h2>
+<p>Study the other authentication flows detailed in the <a href="https://developer.spotify.com/documentation/general/guides/authorization-guide">Spotify Authorization guide</a>. What are the differences between them and in what scenario is each one used?</p>
+<h2>Additional resources</h2>
+<p>For further reading about OAuth you many find <a href="https://developer.okta.com/blog/2019/10/21/illustrated-guide-to-oauth-and-oidc">this OAuth overview</a> useful.</p>
+<hr>
+<h1>Token based Auth (OAuth)</h1>
+<h2>Overview</h2>
+<p>Today we are going to implement the Auth0 flow. We are then going to outsource our User accounts and authentication to Auth0.</p>
+<h2>Learning Objectives</h2>
+<ul>
+<li>Use token based authorization to protect resources</li>
+</ul>
+<h2>Pre-requisites</h2>
+<ul>
+<li>An Auth0 account</li>
+</ul>
+<h1>Lesson</h1>
+<p>In this lesson you will sign up to Auth0, a commercial implementation of OAuth, used by <a href="https://auth0.com/customers/">many well known companies</a> to secure their Web APIs.</p>
+<ol>
+<li><p>Go to https://auth0.com/signup</p></li>
+<li><p>Ensure you create a PERSONAL account type.</p></li>
+<li><p>Navigate to your Dashboard and select to <code>Create API</code> for your Users API using the same details as below <figure><img src="https://user-images.githubusercontent.com/1316724/102825938-b2b26f00-43d7-11eb-8eb5-444ba240a13b.PNG" alt="Auth0 Users API" title="Users API"><figcaption>Users API</figcaption></figure></p></li>
+<li><p>Navigate to the <code>Test</code> tab of your new API. You will see that a new application has been created called UsersAPI(Test Application) which is authorized to access the API.</p>
+<p>You will see a section called <code>Asking Auth0 for tokens from my application</code>. Let's look in more detail at the parameters passed as part of the cURL request:</p>
+<table>
+<thead>
+<tr><th>Element</th><th>Explanation</th></tr>
+</thead>
+<tbody>
+<tr><td>audience</td><td>represents the resource which we are trying to access</td></tr>
+<tr><td>grant_type</td><td>we are using <code>client_credentials</code> OAuth flow as we are making a machine -&gt; machine connection hence schemes like username + password or social logins don't make sense. You can read more about this flow <a href="https://auth0.com/docs/flows/client-credentials-flow">here</a>. If you are creating an SPA you should use the <a href="https://auth0.com/docs/flows/authorization-code-flow-with-proof-key-for-code-exchange-pkce">Authorization Code Flow with Proof Key for Code Exchange (PKCE)</a> instead (we will cover this later).</td></tr>
+<tr><td>client_id</td><td>this is the id of the UsersAPI(Test Application) which is authorised to access the UsersAPI.</td></tr>
+<tr><td>client_secret</td><td>this is the client secret of the UsersAPI(Test Application) which is authorised to access the UsersAPI.</td></tr>
+</tbody>
+</table>
+</li>
+<li><p>Use the information from the cURL request to help you construct a Postman request to obtain a new OAuth token.</p></li>
+<li><p>You should see a 200 success status and the body of the response should contain an <code>access_token</code>. Paste it into the Debugger at https://jwt.io and explore the contents.</p>
+<p>Common claims held within JWTs are:</p>
+<ul>
+<li>Issuer (iss)</li>
+<li>Subject (sub)</li>
+<li>Audience (aud)</li>
+<li>Expiration time (exp)</li>
+<li>Not before (nbf)</li>
+<li>Issued at (iat)</li>
+<li>JWT ID (jti)</li>
+</ul></li>
+</ol>
+<h2>Securing your API with OAuth</h2>
+<p>Open the code for the Users API you created yesterday. This is currently secured using Basic Auth and we are going to modify it to be secured instead by OAuth.</p>
+<h3>Javascript developers</h3>
+<p>To support OAuth, you need to install some specific dependencies:</p>
+<table>
+<thead>
+<tr><th><strong>Dependency</strong></th><th><strong>Purpose</strong></th></tr>
+</thead>
+<tbody>
+<tr><td>express-jwt</td><td>Provides Express middleware for validating JWTs</td></tr>
+<tr><td>jwks-rsa</td><td>Used to retrieve the public key used for signing the JWT</td></tr>
+<tr><td>cors</td><td>Used to support Cross-origin resource sharing (CORS) - a mechanism that allows resources to be requested from another domain outside the domain from which the first resource was served</td></tr>
+<tr><td>dotenv</td><td>Used to support the use of environment variables</td></tr>
+</tbody>
+</table>
+<ol>
+<li><p>We will be storing details of your Auth0 account in an <code>.env</code> file hence you must add <code>.env</code> to your <code>.gitignore</code> to avoid the sensitive data being saved to git.</p></li>
+<li><p>Install the following node package dependencies:<br>
+<code>npm install cors dotenv express-jwt jwks-rsa</code></p></li>
+<li><p>Remove the dependency to <code>express-basic-auth</code></p></li>
+<li><p>Add the following to the start of your <code>app.js</code> file as follows</p></li>
+</ol>
+<pre><code class="language-javascript"><span class="hljs-keyword">const</span> jwt = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;express-jwt&#x27;</span>);
+<span class="hljs-keyword">const</span> jwksRsa = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;jwks-rsa&#x27;</span>);
+<span class="hljs-keyword">const</span> cors = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;cors&#x27;</span>); 
+
+<span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;dotenv&#x27;</span>).config(<span class="hljs-string">&#x27;.env&#x27;</span>); <span class="hljs-comment">// Note: env vars should not be used in production</span>
+</code></pre>
+<ol>
+<li>Add the following line AFTER the call to initialise Express</li>
+</ol>
+<pre><code class="language-javascript">app.use(cors());
+</code></pre>
+<ol>
+<li><p>Create a <code>.env</code> file to hold environment variables and add the following entries (substituting in your personal Auth0 domain):</p>
+<p><code>AUTH0_AUDIENCE=https://users</code></p>
+<p><code>AUTH0_DOMAIN=[your domain].eu.auth0.com</code></p></li>
+<li><p>Add a function to check for a valid OAuth (JWT) token:</p></li>
+</ol>
+<pre><code class="language-javascript"><span class="hljs-comment">// create middleware for checking the JWT</span>
+<span class="hljs-keyword">const</span> checkJwt = jwt({
+  <span class="hljs-attr">secret</span>: jwksRsa.expressJwtSecret({
+    <span class="hljs-attr">cache</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">rateLimit</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">jwksRequestsPerMinute</span>: <span class="hljs-number">5</span>,
+    <span class="hljs-attr">jwksUri</span>: <span class="hljs-string">`https://<span class="hljs-subst">${process.env.AUTH0_DOMAIN}</span>.well-known/jwks.json`</span>
+  }),
+  <span class="hljs-attr">audience</span>: process.env.AUTH0_AUDIENCE,
+  <span class="hljs-attr">issuer</span>: <span class="hljs-string">`https://<span class="hljs-subst">${process.env.AUTH0_DOMAIN}</span>`</span>,
+  <span class="hljs-attr">algorithms</span>: [<span class="hljs-string">&#x27;RS256&#x27;</span>]
+});
+
+</code></pre>
+<ol>
+<li>Secure your API:</li>
+</ol>
+<pre><code class="language-javascript">app.get(<span class="hljs-string">&quot;/users/:id&quot;</span>, checkJwt, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+</code></pre>
+<h2>Java developers</h2>
+<p>You will make use of Spring security libraries which support OAuth.</p>
+<ol>
+<li>Add the dependencies to your <code>pom.xml</code> file:</li>
+</ol>
+<pre><code class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">properties</span>&gt;</span>
+        ...
+        <span class="hljs-tag">&lt;<span class="hljs-name">spring-security.version</span>&gt;</span>5.4.2<span class="hljs-tag">&lt;/<span class="hljs-name">spring-security.version</span>&gt;</span>
+        ...
+    <span class="hljs-tag">&lt;/<span class="hljs-name">properties</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.security<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-security-oauth2-resource-server<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>${spring-security.version}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.security<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-security-oauth2-jose<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>${spring-security.version}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.security<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-security-config<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>${spring-security.version}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+</code></pre>
+<ol start="2">
+<li>Create a new class which checks that the JWT has the correct audience value</li>
+</ol>
+<pre><code class="language-java"><span class="hljs-keyword">import</span> org.springframework.security.oauth2.core.OAuth2Error;
+<span class="hljs-keyword">import</span> org.springframework.security.oauth2.core.OAuth2TokenValidator;
+<span class="hljs-keyword">import</span> org.springframework.security.oauth2.core.OAuth2TokenValidatorResult;
+<span class="hljs-keyword">import</span> org.springframework.security.oauth2.jwt.Jwt;
+
+<span class="hljs-comment">/**
+ * Validates that the JWT is intended for our API.
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AudienceValidator</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">OAuth2TokenValidator</span>&lt;<span class="hljs-title">Jwt</span>&gt; </span>{
+
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> String audience;
+
+    AudienceValidator(String audience) {
+        <span class="hljs-keyword">this</span>.audience = audience;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> OAuth2TokenValidatorResult <span class="hljs-title">validate</span><span class="hljs-params">(Jwt jwt)</span> </span>{
+        OAuth2Error error = <span class="hljs-keyword">new</span> OAuth2Error(<span class="hljs-string">&quot;invalid_token&quot;</span>, <span class="hljs-string">&quot;The required audience is missing&quot;</span>, <span class="hljs-keyword">null</span>);
+
+        <span class="hljs-keyword">if</span> (jwt.getAudience().contains(audience)) {
+            <span class="hljs-keyword">return</span> OAuth2TokenValidatorResult.success();
+        }
+        <span class="hljs-keyword">return</span> OAuth2TokenValidatorResult.failure(error);
+    }
+}
+</code></pre>
+<ol start="3">
+<li>Modifiy your SecurityConfiguration to use OAuth</li>
+</ol>
+<pre><code class="language-java"><span class="hljs-meta">@Configuration</span>
+<span class="hljs-meta">@EnableWebSecurity</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SecurityConfiguration</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">WebSecurityConfigurerAdapter</span> </span>{
+
+    <span class="hljs-meta">@Value(&quot;${auth0.audience}&quot;)</span>
+    <span class="hljs-keyword">private</span> String audience;
+
+    <span class="hljs-meta">@Value(&quot;${spring.security.oauth2.resourceserver.jwt.issuer-uri}&quot;)</span>
+    <span class="hljs-keyword">private</span> String issuer;
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">configure</span><span class="hljs-params">(HttpSecurity httpSecurity)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+        httpSecurity.authorizeRequests()
+                .anyRequest()
+                .authenticated()
+                <span class="hljs-comment">// ** IMPORTANT! do not use the line below in production apps!! **</span>
+                .and().csrf().disable()
+                .and().cors()
+                .and().oauth2ResourceServer().jwt();
+    }
+
+    <span class="hljs-comment">/**
+     * Required to enable CORS - NOT suitable for production code!
+     *
+     * <span class="hljs-doctag">@return</span> CorsConfigurationSource cors configuration
+     */</span>
+    <span class="hljs-meta">@Bean</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> CorsConfigurationSource <span class="hljs-title">corsConfigurationSource</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">final</span> CorsConfiguration configuration = <span class="hljs-keyword">new</span> CorsConfiguration();
+
+        <span class="hljs-comment">// ** IMPORTANT! do not use the line below in production apps!! **</span>
+        <span class="hljs-comment">// ** Specify specific origins instead</span>
+        configuration.setAllowedOriginPatterns(Arrays.asList(<span class="hljs-string">&quot;*&quot;</span>));
+        configuration.setAllowedMethods(Arrays.asList(<span class="hljs-string">&quot;GET&quot;</span>, <span class="hljs-string">&quot;POST&quot;</span>, <span class="hljs-string">&quot;PUT&quot;</span>, <span class="hljs-string">&quot;DELETE&quot;</span>));
+        configuration.setAllowCredentials(<span class="hljs-keyword">true</span>);
+        configuration.setAllowedHeaders(Arrays.asList(<span class="hljs-string">&quot;Authorization&quot;</span>, <span class="hljs-string">&quot;Cache-Control&quot;</span>, <span class="hljs-string">&quot;Content-Type&quot;</span>));
+
+        <span class="hljs-keyword">final</span> UrlBasedCorsConfigurationSource source = <span class="hljs-keyword">new</span> UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration(<span class="hljs-string">&quot;/**&quot;</span>, configuration);
+
+        <span class="hljs-keyword">return</span> source;
+    }
+
+    <span class="hljs-meta">@Bean</span>
+    <span class="hljs-function">JwtDecoder <span class="hljs-title">jwtDecoder</span><span class="hljs-params">()</span> </span>{
+        NimbusJwtDecoder jwtDecoder = (NimbusJwtDecoder)
+                JwtDecoders.fromOidcIssuerLocation(issuer);
+
+        OAuth2TokenValidator&lt;Jwt&gt; audienceValidator = <span class="hljs-keyword">new</span> AudienceValidator(audience);
+        OAuth2TokenValidator&lt;Jwt&gt; withIssuer = JwtValidators.createDefaultWithIssuer(issuer);
+        OAuth2TokenValidator&lt;Jwt&gt; withAudience = <span class="hljs-keyword">new</span> DelegatingOAuth2TokenValidator&lt;&gt;(withIssuer, audienceValidator);
+
+        jwtDecoder.setJwtValidator(withAudience);
+
+        <span class="hljs-keyword">return</span> jwtDecoder;
+    }
+}
+</code></pre>
+<ol start="4">
+<li>Add a new file <code>application.yml</code> under <code>src/main/resources</code> to specify your Auth0 domain and audience</li>
+</ol>
+<pre><code class="language-xml">auth0:
+  audience: https://users
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://[your Auth0 domain].eu.auth0.com/
+</code></pre>
+<h3>Secured</h3>
+<p>Now test your middleware. You should not be able to access <code>/users/:id</code>. You will get a status code of 401 and a message about 'UnauthorizedError: No authorization token was found'.</p>
+<p>Now we need to get our token. At the moment we are authenticating our users in the <code>/login</code> route and adding their id to <code>req.session.userId</code>. Instead of adding an authenticated user to a session we are going to call out to Auth0.com and request a token. We'll then send this token back to the user.</p>
+<p>If you're using JavaScript, you can use <a href="https://npmjs.com/node-fetch">node-fetch</a> to make the request, the body of the POST request you can find on the Auth0 'Test' tab. It should look something like this:</p>
+<p><em>YOUR_CLIENT_ID below needs to be replaced with the value in the example body from the Auth0 'Test' tab, same with YOUR_CLIENT_SECRET</em></p>
+<pre><code class="language-javascript"><span class="hljs-comment">// user is Authenticated - Get a token</span>
+<span class="hljs-keyword">const</span> auth0Config = {
+    <span class="hljs-attr">client_id</span>: YOUR_CLIENT_ID,
+    <span class="hljs-attr">client_secret</span>: YOUR_CLIENT_SECRET,
+    <span class="hljs-attr">audience</span>: <span class="hljs-string">&#x27;http://localhost:3000/&#x27;</span>,
+    <span class="hljs-attr">grant_type</span>: <span class="hljs-string">&#x27;client_credentials&#x27;</span>
+}
+<span class="hljs-keyword">const</span> {access_token} = <span class="hljs-keyword">await</span> fetch(<span class="hljs-string">&#x27;https://dev-7954hoz9.eu.auth0.com/oauth/token&#x27;</span>, {
+    <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;POST&#x27;</span>,
+    <span class="hljs-attr">headers</span>: {
+        <span class="hljs-string">&#x27;content-type&#x27;</span>: <span class="hljs-string">&#x27;application/json&#x27;</span>
+    },
+    <span class="hljs-attr">body</span>: <span class="hljs-built_in">JSON</span>.stringify(auth0Config)
+}).then(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> res.json())
+
+res.send(access_token)
+</code></pre>
+<h3>Calling your API</h3>
+<ol>
+<li><p>Call <code>/login</code> to obtain an Auth0 token</p></li>
+<li><p>Call <code>/users/:id</code> with an <code>Authorization</code> header that uses a <code>Bearer Token</code> set to this token. Hopefully you should see a 200 OK response! See below for an example (this is generated by Postman).</p></li>
+</ol>
+<pre><code class="language-json">{
+    <span class="hljs-attr">&quot;Authorization&quot;</span>: <span class="hljs-string">&quot;Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ijk3ZFlFdUxYTmNQRkxYRXdZc0JwLSJ9.eyJpc3MiOiJodHRwczovL2Rldi03OTU0aG96OS5ldS5hdXRoMC5jb20vIiwic3ViIjoiaHg4YVBnMEw2UmFESGZ6cjRzTUJINkliWWo1Nkg3WGtAY2xpZW50cyIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6MzAwMS8iLCJpYXQiOjE2MTE3NDE5NTgsImV4cCI6MTYxMTgyODM1OCwiYXpwIjoiaHg4YVBnMEw2UmFESGZ6cjRzTUJINkliWWo1Nkg3WGsiLCJndHkiOiJjbGllbnQtY3JlZGVudGlhbHMifQ.FIDcKqc0AK0cj8K4PVvhmkRe7JSJhFVQMPsg9G5N7au8mN0J7ZcnMmL6UFADB1g3mXMWg_FttPOxF3KwvA8ylO3TAkHWKl-V5yY1akvaUNHfgV7lAhMpVMov_B9VRVecZR5AEImXDbcTDWcTIaa92AXos4RxXHjUhhbgJdCt50dL4F3QwA9WLiEfu72XOUId9_o1zRyvY7fSdsV9v1g2hdDWC1EmMVxSBsULxw98Rna0zNUlH66P0CJTqsnN3Z0qU-7ouRPNJZThQwBVHWtMqBTedibxq1ZxJGfYONlD-L-_gprxZmFv0wCQAJGgM8jkJym3OjYPdA7tavJbs2jQWA&quot;</span>
+}
+</code></pre>
+<p>❓ How is this different from the Basic Auth that we have been using?</p>
+<h2>Assignment</h2>
+<p>Implement token based authorization using Auth0 as a token provider. Use the instructions above to secure your API.</p>
+<p>Verify everything is secure and working ok - you should not be able to access the <code>/users/:id</code> route without a token.</p>
+<h3>Assignment extension tasks</h3>
+<p>Add the ability to secure individual endpoints based on <a href="https://auth0.com/docs/scopes/api-scopes">API scopes</a>. One scope should allow read access i.e. allow access to only the <code>GET /users</code> and <code>GET /users/{id?}</code> endpoints and the other scope should allow access to all endpoints. Java developers may find this <a href="https://auth0.com/blog/securing-spring-boot-apis-and-spas-with-oauth2/">help for managing scopes for Java developers</a> article useful.</p>
+
+        <script src="/curriculum/js/tabbed-code-blocks.js"></script>
+        <script>
+            function toggleNav() {
+                const button = document.getElementById('navigation-toggle')
+                const isAriaExp = button.getAttribute('aria-expanded')
+                const newAriaExp = (isAriaExp == "false") ? "true" : "false"
+                button.setAttribute('aria-expanded', newAriaExp)
+                const nav = document.getElementById('navigation')
+                nav.style.display = nav.offsetParent ? 'none' : 'block'
+            }
+        </script>
+    </body>
+</html>
