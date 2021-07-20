@@ -48,10 +48,10 @@
 
   <span class="hljs-comment">// other elements omitted</span>
 </code></pre>
-<p>You'll notice we only support one route for now, which is the index route. This route wants to load the Home component - more on this below.</p>
-<h3>Reimagining our app</h3>
-<p>When using the Vue router, we render components inside a <code>router-view</code> tag. This raises the question: how to we render what's on the home page with this new set-up? The answer is we need to introduce a Home component. This component will be responsible for the main home page content and will render the three products that are currently rendered from the index.html file.</p>
-<p>Remove the home content from index.html and add it into a Home component in your main.js file. You should end up with something like this:</p>
+<p>You'll notice we only support one route for now, which is the index route.</p>
+<h2>Reimagining our app</h2>
+<p>When using the Vue router, we render components inside a <code>router-view</code> tag. This raises the question: how do we render what's on the home page into the router-view with this new set-up? The answer is we need to introduce a Home component. This component will be responsible for the main home page content and will render the three products that are currently rendered from the <code>index.html</code> file.</p>
+<p>Remove the home content from <code>index.html</code> and add it into a Home component in your <code>main.js</code> file. You should end up with something like this:</p>
 <pre><code class="language-javascript"><span class="hljs-keyword">const</span> Home = Vue.component(<span class="hljs-string">&#x27;Home&#x27;</span>, {
   <span class="hljs-attr">template</span>: <span class="hljs-string">`
     &lt;div&gt;
@@ -71,7 +71,7 @@
   `</span>,
 });
 </code></pre>
-<p>Replace the content you remove in index.html with router-view tags. You should end up with something like this:</p>
+<p>Replace the content you removed in the <code>index.html</code> file with <code>router-view</code> tags. You should end up with something like this:</p>
 <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">main</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;container&quot;</span>&gt;</span>
     <span class="hljs-comment">&lt;!-- add this line --&gt;</span>
@@ -79,7 +79,7 @@
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span>
 </code></pre>
-<p>If you refresh your page now it should work, but our products are now showing. This is because the Home component has no concept of a Product at this point in time. We have to pass the products as a <code>prop</code> if it is to work.</p>
+<p>If you refresh your page now, it should work, but our products are not showing. This is because the Home component has no concept of a Product at this point in time. We have to pass the products as a <code>prop</code> if it is to work.</p>
 <p>Modify your router tag to:</p>
 <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">router-view</span> <span class="hljs-attr">v-bind:products</span>=<span class="hljs-string">&quot;this.products&quot;</span> /&gt;</span>
 </code></pre>
@@ -87,7 +87,7 @@
 <p>The last thing we need to do is tell the Home component to expect a property called <code>products</code>. To do that, you may remember we need to add a <code>props</code> field to the home component:</p>
 <pre><code class="language-javascript"><span class="hljs-keyword">const</span> Home = Vue.component(<span class="hljs-string">&#x27;Home&#x27;</span>, {
   <span class="hljs-attr">template</span>: <span class="hljs-string">`
-    &lt;!-- HTML omitted --&gt;
+    HTML omitted
   `</span>,
   <span class="hljs-attr">props</span>: [<span class="hljs-string">&#x27;products&#x27;</span>], <span class="hljs-comment">// add this line</span>
   <span class="hljs-attr">methods</span>: {
@@ -95,8 +95,8 @@
   },
 });
 </code></pre>
-<p>Now when you refresh your page, your Home component will be able to &quot;see&quot; the products passed down via the router view.</p>
-<p>The last step is to replace our main menu with <code>router-links</code> ready for the coding challenge. Replace the main menu links in index.html with:</p>
+<p>Now when you refresh your page, your Home component will be able to &quot;see&quot; the products passed down as props via the router view.</p>
+<p>The last step is to replace our main menu with <code>router-links</code> ready for the coding challenge. Replace the main menu links in <code>index.html</code> with:</p>
 <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;navbar__navigation&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">router-link</span> <span class="hljs-attr">to</span>=<span class="hljs-string">&quot;/&quot;</span>&gt;</span>Home<span class="hljs-tag">&lt;/<span class="hljs-name">router-link</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">router-link</span> <span class="hljs-attr">to</span>=<span class="hljs-string">&quot;/about&quot;</span>&gt;</span>About<span class="hljs-tag">&lt;/<span class="hljs-name">router-link</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
@@ -104,8 +104,7 @@
 <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
 </code></pre>
 <h2>Assignment - Coding challenge 1</h2>
-<p>You'll notice that the new router links actually work, except no component is rendered. Your coding challenge is to create two new routes for <code>/about</code> and <code>/contact</code><br>
-and two new components <code>About</code> and <code>Contact</code> that are loaded into the router view when requested.</p>
+<p>You'll notice that the new router links actually work, except no component is rendered. Your coding challenge is to create two new routes for <code>/about</code> and <code>/contact</code> and two new components <code>About</code> and <code>Contact</code> that are loaded into the router view when requested.</p>
 <h2>Additional resources</h2>
 <ul>
 <li><a href="https://router.vuejs.org/guide/#javascript">Guide to Vue routing</a></li>
