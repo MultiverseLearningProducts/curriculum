@@ -32,11 +32,20 @@
 <h2>Learn how events work</h2>
 <p>You'll notice that we've got the 'Full details' and the 'Add to cart' buttons, but neither of them work because we haven't wired them up. Let's rectify that and wire up the Add to cart button so it adds the product IDs to the cart.</p>
 <h3>Step 1</h3>
+<p>In your index.html file, add the line in bold to your product component render tag:</p>
+<pre><code class="language-javascript">&lt;product
+  v-<span class="hljs-keyword">for</span>=<span class="hljs-string">&quot;product in this.products&quot;</span>
+  v-bind:key=<span class="hljs-string">&quot;product.productId&quot;</span>
+  v-bind:product=<span class="hljs-string">&quot;product&quot;</span>
+  *v-on:add-to-cart=<span class="hljs-string">&quot;updateCart&quot;</span>*
+&gt;&lt;/product&gt;
+</code></pre>
+<h3>Step 2</h3>
 <p>In your product component, modify the button as follows:</p>
 <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">v-on:click</span>=<span class="hljs-string">&quot;addToCart(product)&quot;</span>&gt;</span>Add to cart<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
 </code></pre>
 <p>The <code>v-on</code> tells Vue to add an event listener to the button and to run the <code>addToCart</code> method on click. If you're familiar with JavaScript events, you'll appreciate that this is a nice efficiency gain as you no longer need to write and manage events yourself.</p>
-<h3>Step 2</h3>
+<h3>Step 3</h3>
 <p>Add a new method to the methods object in the product component to handle the click:</p>
 <pre><code class="language-javascript"><span class="hljs-comment">// Product component</span>
 
@@ -52,7 +61,7 @@
 <li><p>Use a centralised state management tool like Vuex</p></li>
 </ul>
 <p>Using Vuex at this point is a little overkill as there are only two components. For that reason, let's emit an event and solve the problem that way. We'll incorporate Vuex later when our app becomes more complex</p>
-<h3>Step 3</h3>
+<h3>Step 4</h3>
 <p>Head back to your <code>addToCart</code> function in the product component and add:</p>
 <pre><code class="language-javascript"><span class="hljs-comment">// Product component</span>
 
@@ -63,7 +72,7 @@
 </code></pre>
 <p>Firstly we've change the <code>addedToCart</code> property on the product to be equal to the opposite of what it currently is. For example, if <code>addedToCart</code> is false, <code>!product.addedToCart</code> will return true because a false becomes true when used with the NOT operator. In a similar fashion, if <code>addedToCart</code> is true, then <code>!product.addedToCart</code> will return false because the NOT operator will only return true if the variable is 'falsy' (ask your coach if this concept is confusing).</p>
 <p>Next up, we emit the event back up to the main component using the event <code>add-to-cart</code>. The main component receives this signal, and fires the <code>updateCart</code> method, which receives the product ID.</p>
-<h3>Step 4</h3>
+<h3>Step 5</h3>
 <p>Now in your main component, add the following method into the methods object:</p>
 <pre><code class="language-javascript"><span class="hljs-comment">// Main component</span>
 
