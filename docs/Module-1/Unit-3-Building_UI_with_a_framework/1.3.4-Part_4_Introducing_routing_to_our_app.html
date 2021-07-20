@@ -2,7 +2,7 @@
 <html lang="en-GB">
     <head>
         <meta charset="utf-8">
-        <title> Pre-requisites</title>
+        <title> Vue routing</title>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link rel="shortcut icon" type="image/x-icon" href="/curriculum/favicon.ico"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/an-old-hope.min.css">
@@ -22,108 +22,94 @@
             onkeydown="event => {event.keyCode === 13 ? toggleNav() : null}"
             tabindex="1">Table of contents</button>
         <nav id="navigation"><ul><details><summary>Bootcamp</summary><ul><details><summary>Unit 1 Object Oriented Programming</summary><ul><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.1-JavaScript_Objects_And_Functions.html">0.1.1 JavaScript Objects And Functions</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.2-Test_Driven_Development.html">0.1.2 Test Driven Development</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.3-Objects_in_an_Airport_Domain.html">0.1.3 Objects in an Airport Domain</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.4-Static_functions_and_properties.html">0.1.4 Static functions and properties</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.5-Inheritance.html">0.1.5 Inheritance</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.6-UML_Modelling.html">0.1.6 UML Modelling</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.7-OOP_Challenge.html">0.1.7 OOP Challenge</a></li><li><a href="/curriculum\Bootcamp\Unit-1-Object_Oriented_Programming\0.1.8-End_of_Unit_Quiz_OOP.html">0.1.8 End of Unit Quiz OOP</a></li></ul></details><details><summary>Unit 2 Asynchronous JavaScript</summary><ul><li><a href="/curriculum\Bootcamp\Unit-2-Asynchronous_JavaScript\0.2.1-Asynchronous_JavaScript.html">0.2.1 Asynchronous JavaScript</a></li><li><a href="/curriculum\Bootcamp\Unit-2-Asynchronous_JavaScript\0.2.2-Promises.html">0.2.2 Promises</a></li><li><a href="/curriculum\Bootcamp\Unit-2-Asynchronous_JavaScript\0.2.3-Asynchronous_Airport_Data_Load.html">0.2.3 Asynchronous Airport Data Load</a></li><li><a href="/curriculum\Bootcamp\Unit-2-Asynchronous_JavaScript\0.2.4-End_of_Unit_Quiz_Async.html">0.2.4 End of Unit Quiz Async</a></li></ul></details><details><summary>Unit 3 Relational Databases</summary><ul><li><a href="/curriculum\Bootcamp\Unit-3-Relational_Databases\0.3.1-Logical_Data_Model.html">0.3.1 Logical Data Model</a></li><li><a href="/curriculum\Bootcamp\Unit-3-Relational_Databases\0.3.10-Sequelize_part_2.html">0.3.10 Sequelize part 2</a></li><li><a href="/curriculum\Bootcamp\Unit-3-Relational_Databases\0.3.11-End_of_Unit_Quiz_Databases.html">0.3.11 End of Unit Quiz Databases</a></li><li><a href="/curriculum\Bootcamp\Unit-3-Relational_Databases\0.3.2-Introduction_to_Databases.html">0.3.2 Introduction to Databases</a></li><li><a href="/curriculum\Bootcamp\Unit-3-Relational_Databases\0.3.3-Basic_SQL_Commands.html">0.3.3 Basic SQL Commands</a></li><li><a href="/curriculum\Bootcamp\Unit-3-Relational_Databases\0.3.4-SQL_Joins.html">0.3.4 SQL Joins</a></li><li><a href="/curriculum\Bootcamp\Unit-3-Relational_Databases\0.3.5-Database_access_using_Node.html">0.3.5 Database access using Node</a></li><li><a href="/curriculum\Bootcamp\Unit-3-Relational_Databases\0.3.6-Populating_databases_from_JSON.html">0.3.6 Populating databases from JSON</a></li><li><a href="/curriculum\Bootcamp\Unit-3-Relational_Databases\0.3.7-Object_Relational_Mapping_part_1.html">0.3.7 Object Relational Mapping part 1</a></li><li><a href="/curriculum\Bootcamp\Unit-3-Relational_Databases\0.3.8-Object_Relational_Mapping_part_2.html">0.3.8 Object Relational Mapping part 2</a></li><li><a href="/curriculum\Bootcamp\Unit-3-Relational_Databases\0.3.9-Sequelize_part_1.html">0.3.9 Sequelize part 1</a></li></ul></details><details><summary>Unit 4 RESTful Servers</summary><ul><li><a href="/curriculum\Bootcamp\Unit-4-RESTful_Servers\0.4.1-Web_Servers.html">0.4.1 Web Servers</a></li><li><a href="/curriculum\Bootcamp\Unit-4-RESTful_Servers\0.4.2-Application_Servers.html">0.4.2 Application Servers</a></li><li><a href="/curriculum\Bootcamp\Unit-4-RESTful_Servers\0.4.3-Postman.html">0.4.3 Postman</a></li><li><a href="/curriculum\Bootcamp\Unit-4-RESTful_Servers\0.4.4-Route_Parameters.html">0.4.4 Route Parameters</a></li><li><a href="/curriculum\Bootcamp\Unit-4-RESTful_Servers\0.4.5-CRUD_operations.html">0.4.5 CRUD operations</a></li><li><a href="/curriculum\Bootcamp\Unit-4-RESTful_Servers\0.4.6-Server_side_Validation.html">0.4.6 Server side Validation</a></li><li><a href="/curriculum\Bootcamp\Unit-4-RESTful_Servers\0.4.7-End_of_Unit_Quiz_RESTful.html">0.4.7 End of Unit Quiz RESTful</a></li></ul></details><details><summary>Unit 5 Human Computer Interaction</summary><ul><li><a href="/curriculum\Bootcamp\Unit-5-Human_Computer_Interaction\0.5.1-Human_Computer_Interaction.html">0.5.1 Human Computer Interaction</a></li><li><a href="/curriculum\Bootcamp\Unit-5-Human_Computer_Interaction\0.5.2-Server_Side_Rendering.html">0.5.2 Server Side Rendering</a></li><li><a href="/curriculum\Bootcamp\Unit-5-Human_Computer_Interaction\0.5.3-The_Document_Object_Model.html">0.5.3 The Document Object Model</a></li><li><a href="/curriculum\Bootcamp\Unit-5-Human_Computer_Interaction\0.5.4-HTML_forms_and_lists.html">0.5.4 HTML forms and lists</a></li><li><a href="/curriculum\Bootcamp\Unit-5-Human_Computer_Interaction\0.5.5-End_of_Unit_Quiz_HCI.html">0.5.5 End of Unit Quiz HCI</a></li></ul></details><details><summary>Unit 6 End Of Bootcamp Group Project</summary><ul><li><a href="/curriculum\Bootcamp\Unit-6-End_Of_Bootcamp_Group_Project\0.6.1-Introduction.html">0.6.1 Introduction</a></li><li><a href="/curriculum\Bootcamp\Unit-6-End_Of_Bootcamp_Group_Project\0.6.2-Requirements.html">0.6.2 Requirements</a></li><li><a href="/curriculum\Bootcamp\Unit-6-End_Of_Bootcamp_Group_Project\0.6.3-Agile_Development.html">0.6.3 Agile Development</a></li><li><a href="/curriculum\Bootcamp\Unit-6-End_Of_Bootcamp_Group_Project\0.6.4-Design.html">0.6.4 Design</a></li><li><a href="/curriculum\Bootcamp\Unit-6-End_Of_Bootcamp_Group_Project\0.6.5-GitHub_Projects.html">0.6.5 GitHub Projects</a></li><li><a href="/curriculum\Bootcamp\Unit-6-End_Of_Bootcamp_Group_Project\0.6.6-Branching_and_Pull_Requests.html">0.6.6 Branching and Pull Requests</a></li><li><a href="/curriculum\Bootcamp\Unit-6-End_Of_Bootcamp_Group_Project\0.6.7-Deployment_with_Heroku.html">0.6.7 Deployment with Heroku</a></li></ul></details></ul></details><details><summary>Module 1</summary><ul><details><summary>Unit 1 Agile user requirements</summary><ul><li><a href="/curriculum\Module-1\Unit-1-Agile_user_requirements\1.1.1-Introduction_to_Agile.html">1.1.1 Introduction to Agile</a></li><li><a href="/curriculum\Module-1\Unit-1-Agile_user_requirements\1.1.2-Personas.html">1.1.2 Personas</a></li><li><a href="/curriculum\Module-1\Unit-1-Agile_user_requirements\1.1.3-User_Stories.html">1.1.3 User Stories</a></li><li><a href="/curriculum\Module-1\Unit-1-Agile_user_requirements\1.1.4-Requirements.html">1.1.4 Requirements</a></li><li><a href="/curriculum\Module-1\Unit-1-Agile_user_requirements\1.1.5-Next_Steps.html">1.1.5 Next Steps</a></li></ul></details><details><summary>Unit 2 Designing UI</summary><ul><li><a href="/curriculum\Module-1\Unit-2-Designing_UI\1.2.1-Usability_heuristics.html">1.2.1 Usability heuristics</a></li><li><a href="/curriculum\Module-1\Unit-2-Designing_UI\1.2.2-Composition_and_components_in_design.html">1.2.2 Composition and components in design</a></li><li><a href="/curriculum\Module-1\Unit-2-Designing_UI\1.2.3-Prototyping_UI.html">1.2.3 Prototyping UI</a></li><li><a href="/curriculum\Module-1\Unit-2-Designing_UI\1.2.4-Next_Steps.html">1.2.4 Next Steps</a></li></ul></details><details><summary>Unit 3 Building UI with a framework</summary><ul><li><a href="/curriculum\Module-1\Unit-3-Building_UI_with_a_framework\1.3-Welcome_to_unit_3.html">1.3 Welcome to unit 3</a></li><li><a href="/curriculum\Module-1\Unit-3-Building_UI_with_a_framework\1.3.1-Part_1_Getting_started_with_the_Vue_CDN.html">1.3.1 Part 1 Getting started with the Vue CDN</a></li><li><a href="/curriculum\Module-1\Unit-3-Building_UI_with_a_framework\1.3.2-Moving_to_the_Vue_CLI.html">1.3.2 Moving to the Vue CLI</a></li><li><a href="/curriculum\Module-1\Unit-3-Building_UI_with_a_framework\1.3.2-Part_2_Vue_methods_and_computed_properties.html">1.3.2 Part 2 Vue methods and computed properties</a></li><li><a href="/curriculum\Module-1\Unit-3-Building_UI_with_a_framework\1.3.3-Deploying_your_Vue_app.html">1.3.3 Deploying your Vue app</a></li><li><a href="/curriculum\Module-1\Unit-3-Building_UI_with_a_framework\1.3.3-Part_3_Events_and_Adding_to_cart.html">1.3.3 Part 3 Events and Adding to cart</a></li><li><a href="/curriculum\Module-1\Unit-3-Building_UI_with_a_framework\1.3.4-Glossary_of_terms.html">1.3.4 Glossary of terms</a></li><li><a href="/curriculum\Module-1\Unit-3-Building_UI_with_a_framework\1.3.4-Part_4_Introducing_routing_to_our_app.html">1.3.4 Part 4 Introducing routing to our app</a></li></ul></details><details><summary>Unit 4 Accessibility</summary><ul><li><a href="/curriculum\Module-1\Unit-4-Accessibility\1.4.1-Inclusive_design.html">1.4.1 Inclusive design</a></li><li><a href="/curriculum\Module-1\Unit-4-Accessibility\1.4.2-Accessibility.html">1.4.2 Accessibility</a></li><li><a href="/curriculum\Module-1\Unit-4-Accessibility\1.4.3-Next_Steps.html">1.4.3 Next Steps</a></li></ul></details><details><summary>Unit 5 End to end testing</summary><ul><li><a href="/curriculum\Module-1\Unit-5-End_to_end_testing\1.5.1-End_to_end_testing.html">1.5.1 End to end testing</a></li><li><a href="/curriculum\Module-1\Unit-5-End_to_end_testing\1.5.2-Test_cases_and_equivalence_testing.html">1.5.2 Test cases and equivalence testing</a></li></ul></details></ul></details><details><summary>Module 2</summary><ul><details><summary>Unit 1 Securing RESTful APIs</summary><ul><li><a href="/curriculum\Module-2\Unit-1-Securing_RESTful_APIs\2.1.1-Designing_RESTful_APIs.html">2.1.1 Designing RESTful APIs</a></li><li><a href="/curriculum\Module-2\Unit-1-Securing_RESTful_APIs\2.1.2-What_makes_for_REST.html">2.1.2 What makes for REST</a></li><li><a href="/curriculum\Module-2\Unit-1-Securing_RESTful_APIs\2.1.3-Basic_Auth.html">2.1.3 Basic Auth</a></li><li><a href="/curriculum\Module-2\Unit-1-Securing_RESTful_APIs\2.1.4-Next_steps.html">2.1.4 Next steps</a></li></ul></details><details><summary>Unit 2 OAuth with OpenID Connect</summary><ul><li><a href="/curriculum\Module-2\Unit-2-OAuth_with_OpenID_Connect\2.2.1-Securing_with_OAuth.html">2.2.1 Securing with OAuth</a></li><li><a href="/curriculum\Module-2\Unit-2-OAuth_with_OpenID_Connect\2.2.2-Session_and_token_management.html">2.2.2 Session and token management</a></li><li><a href="/curriculum\Module-2\Unit-2-OAuth_with_OpenID_Connect\2.2.3-OpenID_Connect.html">2.2.3 OpenID Connect</a></li><li><a href="/curriculum\Module-2\Unit-2-OAuth_with_OpenID_Connect\2.2.4-API_Assignment.html">2.2.4 API Assignment</a></li></ul></details></ul></details><details><summary>Module 3</summary><ul><details><summary>Unit 1 The SDLC</summary><ul><li><a href="/curriculum\Module-3\Unit-1-The-SDLC\3.1.1-The_Software_Development_Life_Cycle.html">3.1.1 The Software Development Life Cycle</a></li><li><a href="/curriculum\Module-3\Unit-1-The-SDLC\3.1.2-The_roles_and_responsibilities_in_the_SDLC_with_communication.html">3.1.2 The roles and responsibilities in the SDLC with communication</a></li><li><a href="/curriculum\Module-3\Unit-1-The-SDLC\3.1.3-Communication_in_your_teams.html">3.1.3 Communication in your teams</a></li></ul></details><details><summary>Unit 2 The 7 Princibles of Testing</summary><ul><li><a href="/curriculum\Module-3\Unit-2-The-7-Princibles-of-Testing\3.2.1-The_7_Princibles_of_Testing.html">3.2.1 The 7 Princibles of Testing</a></li><li><a href="/curriculum\Module-3\Unit-2-The-7-Princibles-of-Testing\3.2.2-Continuous_Deployment.html">3.2.2 Continuous Deployment</a></li></ul></details><details><summary>Unit 3 Deployment and Maintenance</summary><ul><li><a href="/curriculum\Module-3\Unit-3-Deployment-and-Maintenance\3.3.1-Containerisation_with_docker.html">3.3.1 Containerisation with docker</a></li><li><a href="/curriculum\Module-3\Unit-3-Deployment-and-Maintenance\3.3.2-Introduction_to_Cloud_Computing.html">3.3.2 Introduction to Cloud Computing</a></li><li><a href="/curriculum\Module-3\Unit-3-Deployment-and-Maintenance\3.3.3-Monitoring_and_Maintenance.html">3.3.3 Monitoring and Maintenance</a></li></ul></details></ul></details><details><summary>Module 4</summary><ul><details><summary>Unit 1 Open Web Application Security Project</summary><ul><li><a href="/curriculum\Module-4\Unit-1-Open_Web_Application_Security_Project\4.1.1-Introduction_to_the_OWASP_Top_Ten.html">4.1.1 Introduction to the OWASP Top Ten</a></li><li><a href="/curriculum\Module-4\Unit-1-Open_Web_Application_Security_Project\4.1.2-Injection_Attacks.html">4.1.2 Injection Attacks</a></li><li><a href="/curriculum\Module-4\Unit-1-Open_Web_Application_Security_Project\4.1.3-Broken_Authentication.html">4.1.3 Broken Authentication</a></li><li><a href="/curriculum\Module-4\Unit-1-Open_Web_Application_Security_Project\4.1.3-Exposing_Sensitive_Data.html">4.1.3 Exposing Sensitive Data</a></li><li><a href="/curriculum\Module-4\Unit-1-Open_Web_Application_Security_Project\4.1.4-Monitoring_for_attacks.html">4.1.4 Monitoring for attacks</a></li><li><a href="/curriculum\Module-4\Unit-1-Open_Web_Application_Security_Project\4.1.5-The_role_of_a_Penetration_Tester.html">4.1.5 The role of a Penetration Tester</a></li><li><a href="/curriculum\Module-4\Unit-1-Open_Web_Application_Security_Project\4.1.6-Next_Steps.html">4.1.6 Next Steps</a></li></ul></details></ul></details></ul></nav>
-        <h1>Pre-requisites</h1>
-<p>For details of the software you need to have installed prior to undertaking the SWE Programme, please see <a href="/curriculum#pre-reqs">SWE training pre-requisites</a></p>
-<h1>Overview of Standards and Assessments</h1>
-<p>Welcome to the Software Engineering Programme (SWE)! We are excited you are joining Multiverse to start your apprentice journey. Before you start, we want to give you a little more information on how you will be assessed and what the learning will look like. This programme is composed of the following:</p>
+        <h1>Vue routing</h1>
+<p>Most apps as they grow need to support routing. Routing in the context of frameworks is the binding of components to URLs so that when a request comes in for a URL such as <code>/about</code>, the <code>About</code> component is rendered into the view. Vue has an entire library dedicated to routing and we'll explore it now.</p>
+<h2>Learning Objectives</h2>
 <ul>
-<li><p><strong>5 week Bootcamp:</strong> prepares you to enter the workplace ready for your first challenges. The course content covers the entire software stack and includes, Object Oriented Programming (OOP) using JavaScript, the Unified Modelling Language (UML), RESTful APIs, relational databases and rendering dynamic content in the browser. You will also be introduced to the basics of the software development life cycle and begin to understand the role of a software developer. Each lesson includes coding challenges and the final week of the Bootcamp culminates with a group project.</p></li>
-<li><p><strong>Module 1:</strong> In this module, you will focus on designing, building and optimising a front-end, with UX, Web accessibility and performance considerations. You will also learn how to critically evaluate and utilise front-end frameworks (such as Angular, React, Vue).</p></li>
-<li><p><strong>Module 2:</strong> The module builds and expands on the RESTful concepts introduced in the 5-week Bootcamp. As well as designing and developing APIs, you will secure endpoints using both Basic Authentication and OAuth. Concepts will be taught in a language independent manner to allow coding in the language/framework of your choice.</p></li>
-<li><p><strong>Module 3:</strong> This module takes the output from the first half of the software development life cycle (tested software) and teaches the knowledge and skills needed to package and deploy that software into different environments. The module strikes a balance between understanding the theories and methodologies of software deployment and the set of technical skills to actually design and implement a deployment and maintenance strategy.</p></li>
-<li><p><strong>Module 4:</strong> This module introduces the Open Web Application Security Project (OWASP) Top Ten Web Application Security Risks and how to mitigate against them. By the end of this module, you will understand the impact of deploying insecure software and how to protect against the most common form of attacks at all stages of the software development lifecycle.</p></li>
+<li>Learn how Vue routing works</li>
+<li>Integrate routing into our app</li>
 </ul>
-<h2>How will you be assessed?</h2>
-<p>During your sessions with your coach you will work on a variety of assignments. Below is a list of some of the ways you may be assessed in the programme.</p>
-<ul>
-<li>Pre-module self-study, to build knowledge for your upcoming sessions</li>
-<li>Short answer questions checking your understanding of software engineering concepts</li>
-<li>Scenario based questions around your role as a developer</li>
-<li>Questions evaluating your role in the business</li>
-<li>Individual projects completed during a module</li>
-<li>Group projects completing during a module</li>
-<li>Independent assignments completed after a module to validate understanding</li>
-</ul>
-<h2>Standards of Software Engineering</h2>
-<p>All the Bootcamp and Module content taught during the Software Engineering Programme is directly aligned with the <a href="https://www.instituteforapprenticeships.org/apprenticeship-standards/software-developer-v1-1">standards for the Level 4 Software Developer programme</a> as designed by the Institute for Apprenticeships &amp; Technical Education. Refer to this programme regularly to reflect on what you are learning and identify areas for development whilst on the job. The Knowledge, Skills and Behaviours for this standards are also summarised below:</p>
-<h3>Knowledge</h3>
-<ul>
-<li>K1: all stages of the software development life-cycle (what each stage contains, including the inputs and outputs)</li>
-<li>K2: roles and responsibilities within the software development lifecycle (who is responsible for what)</li>
-<li>K3: the roles and responsibilities of the project life-cycle within your organisation, and your role</li>
-<li>K4: how best to communicate using the different communication methods and how to adapt appropriately to different audiences</li>
-<li>K5: the similarities and differences between different software development methodologies, such as agile and waterfall.</li>
-<li>K6: how teams work effectively to produce software and how to contribute appropriately</li>
-<li>K7: software design approaches and patterns, to identify reusable solutions to commonly occurring problems</li>
-<li>K8: organisational policies and procedures relating to the tasks being undertaken, and when to follow them. For example the storage and treatment of GDPR sensitive data.</li>
-<li>K9: algorithms, logic and data structures relevant to software development for example:- arrays- stacks- queues- linked lists- trees- graphs- hash tables- sorting algorithms- searching algorithms- critical sections and race conditions</li>
-<li>K10: principles and uses of relational and non-relational databases</li>
-<li>K11: software designs and functional or technical specifications</li>
-<li>K12: software testing frameworks and methodologies</li>
-</ul>
-<h3>Skills</h3>
-<ul>
-<li>S1: create logical and maintainable code</li>
-<li>S2: develop effective user interfaces</li>
-<li>S3: link code to data sets</li>
-<li>S4: test code and analyse results to correct errors found using unit testing</li>
-<li>S5: conduct a range of test types, such as Integration, System, User Acceptance, Non-Functional, Performance and Security testing.</li>
-<li>S6: identify and create test scenarios</li>
-<li>S7: apply structured techniques to problem solving, debug code and understand the structure of programmes in order to identify and resolve issues</li>
-<li>S8: create simple software designs to effectively communicate understanding of the program</li>
-<li>S9: create analysis artefacts, such as use cases and/or user stories</li>
-<li>S10: build, manage and deploy code into the relevant environment</li>
-<li>S11: apply an appropriate software development approach according to the relevant paradigm (for example object oriented, event driven or procedural)</li>
-<li>S12: follow software designs and functional or technical specifications</li>
-<li>S13: follow testing frameworks and methodologies</li>
-<li>S14: follow company, team or client approaches to continuous integration, version and source control</li>
-<li>S15: communicate software solutions and ideas to technical and non-technical stakeholders</li>
-<li>S16: apply algorithms, logic and data structures</li>
-<li>S17: interpret and implement a given design whist remaining compliant with security and maintainability requirements</li>
-</ul>
-<h3>Behaviours</h3>
-<ul>
-<li>B1: Works independently and takes responsibility. For example, has a disciplined and responsible approach to risk and stays motivated and committed when facing challenges</li>
-<li>B2: Applies logical thinking. For example, uses clear and valid reasoning when making decisions related to undertaking work instructions</li>
-<li>B3: Maintains a productive, professional and secure working environment</li>
-<li>B4: Works collaboratively with a wide range of people in different roles, internally and externally, with a positive attitude to inclusion &amp; diversity</li>
-<li>B5: Acts with integrity with respect to ethical, legal and regulatory ensuring the protection of personal data, safety and security.</li>
-<li>B6: Shows initiative and takes responsibility for solving problems within their own remit, being resourceful when faced with a problem to solve.</li>
-<li>B7: Communicates effectively in a variety of situations to both a technical and non-technical audience.</li>
-<li>B8: Shows curiosity to the business context in which the solution will be used, displaying an inquisitive approach to solving the problem. This includes the curiosity to explore new opportunities, techniques and the tenacity to improve methods and maximise performance of the solution and creativity in their approach to solutions.</li>
-<li>B9: Committed to continued professional development.</li>
-</ul>
-<h1>Frequently Asked Questions</h1>
-<h2><a name="pre-reqs">What software do I need to install for the Bootcamp?</h2>
-<ul>
-<li><a href="https://nodejs.org/en/">Node</a> (version which is recommended for most users)</li>
-<li><a href="https://code.visualstudio.com/">VSCode</a></li>
-<li><a href="https://git-scm.com/">git</a></li>
-<li><a href="https://www.sqlite.org/download.html">SQLite3</a></li>
-<li><a href="https://sqlitebrowser.org/">DB Browser for SQLite3 </a></li>
-<li>Google Chrome</li>
-<li>You also need access to a GitHub repository</li>
-</ul>
-<h2><a name="createNewProject"></a> How do I create a new Node.js project for my lesson?</h2>
-<ol>
-<li>Create a new directory to hold the lesson's work - do not use spaces or special characters in directory or filenames.. <code>cd</code> into it.</li>
-<li>Run <code>npm init</code> to create a new <code>package.json</code> file. Accept all defaults. The <code>package. json</code> file holds metadata relevant to the project such as the project's dependencies.</li>
-<li>Add any Node package dependencies you require using <code>npm install</code>. For the majority of Bootcamp assignments you will require:
-<ul>
-<li><code>npm install jest</code></li>
-</ul></li>
-<li>Modify your <code>package.json</code> to allow running of Jest tests and generation of test coverage reports:</li>
-</ol>
-<pre><code class="language-json">  &quot;scripts&quot;: {
-  &quot;test&quot;: &quot;jest&quot;,
-  &quot;test:report&quot;: &quot;jest --coverage=true&quot;
-}
+<h2>How Vue routing works</h2>
+<p>Vue's router works by creating a new instance of the Vue router and passing in an array of routes.</p>
+<p>Add the following into main.js:</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">const</span> router = <span class="hljs-keyword">new</span> VueRouter({
+  <span class="hljs-attr">routes</span>: [
+    {
+      <span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;/&#x27;</span>,
+      <span class="hljs-attr">component</span>: Home,
+    },
+  ],
+});
 </code></pre>
-<h2><a name="runJestTests"></a> How do I run my Jest tests?</h2>
-<p>To run all your tests use <code>npm run test</code> or use <code>npm run test -t</code> to run a single test.</p>
-<h2><a name="generateCoverage"></a> How do I create a Jest coverage report?</h2>
-<p>To create a Jest coverage report run <code>npm run test:report</code>.</p>
-<p>You should see that Jest generates a 'coverage' report in your project folder under <code>/coverage/Icov-report/index.html</code>. Open this in your browser to view coverage by line, branch, function and statement.</p>
+<p>We then need to pass our new router object into our main component like so:</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> app = <span class="hljs-keyword">new</span> Vue({
+  router,
+  <span class="hljs-attr">el</span>: <span class="hljs-string">&#x27;#app&#x27;</span>,
+
+  <span class="hljs-comment">// other elements omitted</span>
+</code></pre>
+<p>You'll notice we only support one route for now, which is the index route. This route wants to load the Home component - more on this below.</p>
+<h3>Reimagining our app</h3>
+<p>When using the Vue router, we render components inside a <code>router-view</code> tag. This raises the question: how to we render what's on the home page with this new set-up? The answer is we need to introduce a Home component. This component will be responsible for the main home page content and will render the three products that are currently rendered from the index.html file.</p>
+<p>Remove the home content from index.html and add it into a Home component in your main.js file. You should end up with something like this:</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">const</span> Home = Vue.component(<span class="hljs-string">&#x27;Home&#x27;</span>, {
+  <span class="hljs-attr">template</span>: <span class="hljs-string">`
+    &lt;div&gt;
+      &lt;h2&gt;Popular plants&lt;/h2&gt;
+      &lt;p&gt;
+        Want to &quot;fernish&quot; your home? Then you&#x27;re in the right place! Take a
+        look at our selection of plants below.
+      &lt;/p&gt;
+      &lt;div class=&quot;promo-blocks products&quot;&gt;
+        &lt;product
+          v-for=&quot;product in products&quot;
+          v-bind:key=&quot;product.productId&quot;
+          v-bind:product=&quot;product&quot;
+        &gt;&lt;/product&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  `</span>,
+});
+</code></pre>
+<p>Replace the content you remove in index.html with router-view tags. You should end up with something like this:</p>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">main</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;container&quot;</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- add this line --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">router-view</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span>
+</code></pre>
+<p>If you refresh your page now it should work, but our products are now showing. This is because the Home component has no concept of a Product at this point in time. We have to pass the products as a <code>prop</code> if it is to work.</p>
+<p>Modify your router tag to:</p>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">router-view</span> <span class="hljs-attr">v-bind:products</span>=<span class="hljs-string">&quot;this.products&quot;</span> /&gt;</span>
+</code></pre>
+<p>Given what we've covered so far, you may be able to see and explain what's going on here!</p>
+<p>The last thing we need to do is tell the Home component to expect a property called <code>products</code>. To do that, you may remember we need to add a <code>props</code> field to the home component:</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">const</span> Home = Vue.component(<span class="hljs-string">&#x27;Home&#x27;</span>, {
+  <span class="hljs-attr">template</span>: <span class="hljs-string">`
+    &lt;!-- HTML omitted --&gt;
+  `</span>,
+  <span class="hljs-attr">props</span>: [<span class="hljs-string">&#x27;products&#x27;</span>], <span class="hljs-comment">// add this line</span>
+  <span class="hljs-attr">methods</span>: {
+    <span class="hljs-comment">// methods omitted</span>
+  },
+});
+</code></pre>
+<p>Now when you refresh your page, your Home component will be able to &quot;see&quot; the products passed down via the router view.</p>
+<p>The last step is to replace our main menu with <code>router-links</code> ready for the coding challenge. Replace the main menu links in index.html with:</p>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;navbar__navigation&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">router-link</span> <span class="hljs-attr">to</span>=<span class="hljs-string">&quot;/&quot;</span>&gt;</span>Home<span class="hljs-tag">&lt;/<span class="hljs-name">router-link</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">router-link</span> <span class="hljs-attr">to</span>=<span class="hljs-string">&quot;/about&quot;</span>&gt;</span>About<span class="hljs-tag">&lt;/<span class="hljs-name">router-link</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">router-link</span> <span class="hljs-attr">to</span>=<span class="hljs-string">&quot;/contact&quot;</span>&gt;</span>Contact<span class="hljs-tag">&lt;/<span class="hljs-name">router-link</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+</code></pre>
+<h2>Assignment - Coding challenge 1</h2>
+<p>You'll notice that the new router links actually work, except no component is rendered. Your coding challenge is to create two new routes for <code>/about</code> and <code>/contact</code><br>
+and two new components <code>About</code> and <code>Contact</code> that are loaded into the router view when requested.</p>
+<h2>Additional resources</h2>
+<ul>
+<li><a href="https://router.vuejs.org/guide/#javascript">Guide to Vue routing</a></li>
+</ul>
 
         <script src="/curriculum/js/tabbed-code-blocks.js"></script>
         <script>
