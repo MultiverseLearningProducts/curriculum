@@ -4,18 +4,6 @@ This module focuses on building out your front-end design in your framework of c
 
 If this is your first time using a framework, use Vue with us and learn how quickly and fun it can be to set-up a front-end in a framework!
 
-## What's in the unit
+# Alternative courses
 
-This unit is split into a number of parts:
-
-- Introduction (this is it!)
-
-- Code-along using the Vue.js CDN (including challenges!) for instant gratification
-
-- Moving to the Vue CLI (Command Line Interface) for live-reloading, better project management and more
-
-- Deployment via Github pages/Netlify
-
-- Glossary of terms
-
-Enjoy!
+We'e made every effort to make the session notes as easy to follow as we can but we understand everyone learns in different ways. If you're a visual learner and would prefer to learn via video, we would highly recommend the free courses over at [Vue Mastery](https://www.vuemastery.com/courses).
