@@ -72,7 +72,7 @@
 </code></pre>
 <p>Firstly we've change the <code>addedToCart</code> property on the product to be equal to the opposite of what it currently is. For example, if <code>addedToCart</code> is false, <code>!product.addedToCart</code> will return true because a false becomes true when used with the NOT operator. In a similar fashion, if <code>addedToCart</code> is true, then <code>!product.addedToCart</code> will return false because the NOT operator will only return true if the variable is 'falsy' (ask your coach if this concept is confusing).</p>
 <p>Next up, we emit the event back up to the main component using the event <code>add-to-cart</code>. The main component receives this signal, and fires the <code>updateCart</code> method, which receives the product ID. Let's visualise this process in a diagram:</p>
-<p><img src="https://raw.githubusercontent.com/MultiverseLearningProducts/curriculum/85ffe15d30900e38c8a25ce1b5090a79dcdcb910/assets/images/mod1_event_emitting.svg" title="Module 1 - Emitting events" alt="Module 1 - Emitting events"></p>
+<p><img src="https://raw.githubusercontent.com/MultiverseLearningProducts/curriculum/110839b3aa868a32fa774cea501252742ffad9cc/assets/images/mod1_event_emitting.svg" title="Module 1 - Emitting events" alt="Module 1 - Emitting events"></p>
 <h3>Step 5</h3>
 <p>Now in your main component, add the following method into the methods object:</p>
 <pre><code class="language-javascript"><span class="hljs-comment">// Main component</span>
