@@ -78,7 +78,7 @@
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span>
 </code></pre>
-<p>This cleans up on HTML source nicely. If you refresh your page now, it should work, however, the products don't. This is because the Home component has no concept of a Product at this point in time. We have to pass the products as a <code>prop</code> if it is to work.</p>
+<p>This cleans up on HTML source nicely. If you refresh your page now, it should work, however, the products are rendering. This is because the Home component has no concept of the Products at this point in time. We have to pass the products as a <code>prop</code> if it is to work.</p>
 <p>Modify your router tag to:</p>
 <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">router-view</span> <span class="hljs-attr">v-bind:products</span>=<span class="hljs-string">&quot;this.products&quot;</span> /&gt;</span>
 </code></pre>
