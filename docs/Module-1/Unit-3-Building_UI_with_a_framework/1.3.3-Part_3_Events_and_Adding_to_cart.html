@@ -68,10 +68,12 @@
 <pre><code class="language-javascript"><span class="hljs-comment">// Product component</span>
 
 <span class="hljs-function"><span class="hljs-title">addToCart</span>(<span class="hljs-params">product</span>)</span> {
+  product.addedToCart = !product.addedToCart;
   <span class="hljs-built_in">this</span>.$emit(<span class="hljs-string">&#x27;add-to-cart&#x27;</span>, product.productId);
 }
 </code></pre>
-<p>Here we emit the event back up to the main component using the event <code>add-to-cart</code>. The main component receives this signal, and fires the <code>updateCart</code> method, which receives the product ID.</p>
+<p>Firstly we've change the <code>addedToCart</code> property on the product to be equal to the opposite of what it currently is. For example, if <code>addedToCart</code> is false, <code>!product.addedToCart</code> will return true because a false becomes true when used with the NOT operator. In a similar fashion, if <code>addedToCart</code> is true, then <code>!product.addedToCart</code> will return false because the NOT operator will only return true if the variable is 'falsy' (ask your coach if this concept is confusing).</p>
+<p>Next up, we emit the event back up to the main component using the event <code>add-to-cart</code>. The main component receives this signal, and fires the <code>updateCart</code> method, which receives the product ID.</p>
 <h3>Step 5</h3>
 <p>Now in your main component, add the following method into the methods object:</p>
 <pre><code class="language-javascript"><span class="hljs-comment">// Main component</span>
