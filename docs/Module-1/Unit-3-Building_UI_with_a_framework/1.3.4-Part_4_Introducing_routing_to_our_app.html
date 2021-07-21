@@ -95,14 +95,13 @@
 });
 </code></pre>
 <p>Now when you refresh your page, your Home component will be able to &quot;see&quot; the products passed down as props via the router view.</p>
-<p>The last step is to replace our main menu with <code>router-links</code> ready for the coding challenge. Replace the main menu links in <code>index.html</code> with:</p>
+<p>The last step is to replace our main menu with <code>router-links</code> ready for the coding challenge. Vue will find and replace router links with anchor tags so we can navigate between pages. Replace the main menu links in <code>index.html</code> with:</p>
 <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;navbar__navigation&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">router-link</span> <span class="hljs-attr">to</span>=<span class="hljs-string">&quot;/&quot;</span>&gt;</span>Home<span class="hljs-tag">&lt;/<span class="hljs-name">router-link</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">router-link</span> <span class="hljs-attr">to</span>=<span class="hljs-string">&quot;/about&quot;</span>&gt;</span>About<span class="hljs-tag">&lt;/<span class="hljs-name">router-link</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">router-link</span> <span class="hljs-attr">to</span>=<span class="hljs-string">&quot;/contact&quot;</span>&gt;</span>Contact<span class="hljs-tag">&lt;/<span class="hljs-name">router-link</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
 </code></pre>
-<p>Vue will find and replace router links with anchor tags so we can navigate between pages.</p>
 <h2>Assignment - Coding challenge 1</h2>
 <p>You'll notice that the new router links actually work, but no component is rendered on a click. Your coding challenge is to create two new routes for <code>/about</code> and <code>/contact</code> and two new components <code>About</code> and <code>Contact</code> that are loaded into the router view when requested.</p>
 <h2>Additional resources</h2>
