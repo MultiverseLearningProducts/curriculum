@@ -27,11 +27,11 @@
 <h2>Learning Objectives</h2>
 <ul>
 <li>Learn how Vue routing works</li>
-<li>Integrate routing into our app</li>
+<li>Integrate routing into your app</li>
 </ul>
 <h2>How Vue routing works</h2>
 <p>Vue's router works by creating a new instance of the Vue router and passing in an array of routes.</p>
-<p>Add the following into main.js:</p>
+<p>Add the following into <code>main.js</code>:</p>
 <pre><code class="language-javascript"><span class="hljs-keyword">const</span> router = <span class="hljs-keyword">new</span> VueRouter({
   <span class="hljs-attr">routes</span>: [
     {
@@ -48,9 +48,9 @@
 
   <span class="hljs-comment">// other elements omitted</span>
 </code></pre>
-<p>You'll notice we only support one route for now, which is the index route.</p>
+<p>You'll notice we only support one route for now, which is the index route. This route is configured to render the Home component.</p>
 <h2>Reimagining our app</h2>
-<p>When using the Vue router, we render components inside a <code>router-view</code> tag. This raises the question: how do we render the home page into the router-view when someone requests the index route? One answer is to introduce a Home component. This component will be responsible for the main home page content and will render the three products that are currently rendered from the <code>index.html</code> file.</p>
+<p>When using the Vue router, we render components inside a <code>router-view</code> tag. Since we don't want the home page content to render on other pages, this raises the question: how do we render the current content on the home page into the router view? One answer is to introduce a Home component. This component will be responsible for the main home page content and will render the three products that are currently rendered from the <code>index.html</code> file.</p>
 <p>Remove the home content from <code>index.html</code> and add it into a Home component in your <code>main.js</code> file. You should end up with something like this:</p>
 <pre><code class="language-javascript"><span class="hljs-keyword">const</span> Home = Vue.component(<span class="hljs-string">&#x27;Home&#x27;</span>, {
   <span class="hljs-attr">template</span>: <span class="hljs-string">`
@@ -74,12 +74,11 @@
 <p>Replace the content you removed in the <code>index.html</code> file with <code>router-view</code> tags. You should end up with something like this:</p>
 <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">main</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;container&quot;</span>&gt;</span>
-    <span class="hljs-comment">&lt;!-- add this line --&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">router-view</span> /&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span>
 </code></pre>
-<p>If you refresh your page now, it should work, but our products are not showing. This is because the Home component has no concept of a Product at this point in time. We have to pass the products as a <code>prop</code> if it is to work.</p>
+<p>This cleans up on HTML source nicely. If you refresh your page now, it should work, however, the products don't. This is because the Home component has no concept of a Product at this point in time. We have to pass the products as a <code>prop</code> if it is to work.</p>
 <p>Modify your router tag to:</p>
 <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">router-view</span> <span class="hljs-attr">v-bind:products</span>=<span class="hljs-string">&quot;this.products&quot;</span> /&gt;</span>
 </code></pre>
@@ -103,8 +102,9 @@
   <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">router-link</span> <span class="hljs-attr">to</span>=<span class="hljs-string">&quot;/contact&quot;</span>&gt;</span>Contact<span class="hljs-tag">&lt;/<span class="hljs-name">router-link</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
 </code></pre>
+<p>Vue will find and replace router links with anchor tags so we can navigate between pages.</p>
 <h2>Assignment - Coding challenge 1</h2>
-<p>You'll notice that the new router links actually work, except no component is rendered. Your coding challenge is to create two new routes for <code>/about</code> and <code>/contact</code> and two new components <code>About</code> and <code>Contact</code> that are loaded into the router view when requested.</p>
+<p>You'll notice that the new router links actually work, but no component is rendered on a click. Your coding challenge is to create two new routes for <code>/about</code> and <code>/contact</code> and two new components <code>About</code> and <code>Contact</code> that are loaded into the router view when requested.</p>
 <h2>Additional resources</h2>
 <ul>
 <li><a href="https://router.vuejs.org/guide/#javascript">Guide to Vue routing</a></li>
