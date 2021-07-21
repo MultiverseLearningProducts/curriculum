@@ -50,7 +50,8 @@
 </code></pre>
 <p>You'll notice we only support one route for now, which is the index route. This route is configured to render the Home component.</p>
 <h2>Re-imagining our app</h2>
-<p>When using the Vue router, we render components inside a <code>router-view</code> tag. Since we don't want the home page content to render on other pages, this raises the question: how do we render the current content on the home page into the router view? One answer is to introduce a Home component. This component will be responsible for the main home page content and will render the three products that are currently rendered from the <code>index.html</code> file.</p>
+<p>When using the Vue router, we render components inside a <code>router-view</code> tag. Since we don't want the home page content to render on other pages, this raises the question: how do we render the current content on the home page into the router view?</p>
+<p>One solution is to introduce a Home component. This component will be responsible for the main home page content and will render the three products that are currently rendered from the <code>index.html</code> file.</p>
 <p>Remove the home content from <code>index.html</code> and add it into a Home component in your <code>main.js</code> file. You should end up with something like this:</p>
 <pre><code class="language-javascript"><span class="hljs-keyword">const</span> Home = Vue.component(<span class="hljs-string">&#x27;Home&#x27;</span>, {
   <span class="hljs-attr">template</span>: <span class="hljs-string">`
