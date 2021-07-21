@@ -65,6 +65,7 @@
           v-for=&quot;product in products&quot;
           v-bind:key=&quot;product.productId&quot;
           v-bind:product=&quot;product&quot;
+          v-on:add-to-cart=&quot;updateCart&quot;
         &gt;&lt;/product&gt;
       &lt;/div&gt;
     &lt;/div&gt;
