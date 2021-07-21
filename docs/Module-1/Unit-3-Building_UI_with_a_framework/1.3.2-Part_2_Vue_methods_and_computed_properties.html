@@ -31,7 +31,7 @@
 </ul>
 <h3>Vue methods</h3>
 <p>Vue exposes a number of objects for us to use. You've already used two of them in the form of <code>props</code> and the <code>data</code> objects and now we'll leverage the <code>methods</code> object.</p>
-<p>In your code, add a <code>methods</code> object in the product component (make sure it's in the product component else you'll get errors!). Within the object, add a <code>getImageSrc</code> method as follows:</p>
+<p>In your code, add a <code>methods</code> object in the Product component (make sure it's in the Product component else you'll get errors!). Within the object, add a <code>getImageSrc</code> method as follows:</p>
 <pre><code class="language-javascript"><span class="hljs-keyword">const</span> Product = Vue.component(<span class="hljs-string">&#x27;Product&#x27;</span>, {
   <span class="hljs-comment">// other objects omitted</span>
 
@@ -42,7 +42,7 @@
   },
 });
 </code></pre>
-<p>Notice here that we're passing in the product and we're then using this object to access its own properties. This means we need a way to get the product into the method via our HTML. Replace the current image tag in your product component's HTML with:</p>
+<p>Notice here that we're passing in the product and we're then using this object to access its own properties. This means we need a way to get the product into the method via our HTML. Replace the current image tag in your Product component's HTML with:</p>
 <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">v-bind:src</span>=<span class="hljs-string">&quot;getImageSrc(product)&quot;</span> /&gt;</span>
 </code></pre>
 <p>Here we need to bind the image source to the function and pass in the product. This should be enough to get the source and to render the image.</p>

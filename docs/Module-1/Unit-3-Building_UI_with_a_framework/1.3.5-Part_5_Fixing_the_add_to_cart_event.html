@@ -34,13 +34,13 @@
 </ul>
 <h2>Fixing the Add to cart event</h2>
 <h3>Step 1</h3>
-<p>We're already emitting the event from the product component, so our first port of call is to add some code in the Home component to handle the emit from the product component. In your home component, add the following method to the methods object:</p>
+<p>We're already emitting the event from the Product component, so our first port of call is to add some code in the Home component to handle the emit from the Product component. In your Home component, add the following method to the methods object:</p>
 <pre><code class="language-javascript"><span class="hljs-function"><span class="hljs-title">updateCart</span>(<span class="hljs-params">productId</span>)</span> {
   <span class="hljs-built_in">this</span>.$emit(<span class="hljs-string">&#x27;update-cart&#x27;</span>, productId);
 }
 </code></pre>
 <h3>Step 2</h3>
-<p>Then in your <code>index.html</code>, your router view needs to be modify to register an event with the home component:</p>
+<p>Then in your <code>index.html</code>, your router view needs to be modify to register an event with the Home component:</p>
 <pre><code class="language-js">&lt;router-view v-bind:products=<span class="hljs-string">&quot;this.products&quot;</span> v-on:update-cart=<span class="hljs-string">&quot;updateCart&quot;</span> /&gt;
 </code></pre>
 <p>And that's it! You should find that the event emits up two levels while passing along the product ID. this then gets pushed to the cart array in the main app component.</p>
