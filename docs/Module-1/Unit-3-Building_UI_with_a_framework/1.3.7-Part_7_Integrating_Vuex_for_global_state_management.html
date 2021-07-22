@@ -110,7 +110,9 @@
 <h3>Fixing the footer brand and address</h3>
 <h4>Step 1</h4>
 <p>In the business module, add the following getters:</p>
-<pre><code class="language-js">getters: {
+<pre><code class="language-js"><span class="hljs-comment">// Business module</span>
+
+<span class="hljs-attr">getters</span>: {
   <span class="hljs-function"><span class="hljs-title">getFullAddress</span>(<span class="hljs-params">state</span>)</span> {
     <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${state.address}</span>, <span class="hljs-subst">${state.city}</span>, <span class="hljs-subst">${state.postcode}</span>`</span>;
   },
@@ -122,14 +124,16 @@
 <p>The <code>state</code> parameter here is somewhat abstract as we don't actually pass in the state when using the getter methods. In this instance, it refers to the current data state of the store.</p>
 <h4>Step 2</h4>
 <p>In your app component, modify the computed methods as follows:</p>
-<pre><code class="language-js"> computed: {
-    <span class="hljs-function"><span class="hljs-title">footerCopyrightNotice</span>(<span class="hljs-params"></span>)</span> {
-      <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;2021 &#x27;</span> + store.getters.getBrand;
-    },
-    <span class="hljs-function"><span class="hljs-title">footerAddress</span>(<span class="hljs-params"></span>)</span> {
-      <span class="hljs-keyword">return</span> store.getters.getFullAddress;
-    },
+<pre><code class="language-js"><span class="hljs-comment">// app component</span>
+
+<span class="hljs-attr">computed</span>: {
+  <span class="hljs-function"><span class="hljs-title">footerCopyrightNotice</span>(<span class="hljs-params"></span>)</span> {
+    <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;2021 &#x27;</span> + store.getters.getBrand;
   },
+  <span class="hljs-function"><span class="hljs-title">footerAddress</span>(<span class="hljs-params"></span>)</span> {
+    <span class="hljs-keyword">return</span> store.getters.getFullAddress;
+  },
+},
 </code></pre>
 <p>This should fix the footer output.</p>
 <h3>How do getters work?</h3>
@@ -139,11 +143,15 @@
 <p>Currently our products aren't displaying. This is because the Home component needs to grab them from the store and pass them down to the Product component to render them.</p>
 <h4>Step 1</h4>
 <p>Head to your <code>index.html</code> file and remove everything from router view:</p>
-<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">router-view</span> /&gt;</span>
-</code></pre>
+<pre><code class="language-html"><span class="hljs-comment">&lt;!-- index.html -- &gt;
+
+&lt;router-view /&gt;
+</span></code></pre>
 <h4>Step 2</h4>
 <p>Next up, add the <code>getAllProducts</code> method to the Product store's getters object:</p>
-<pre><code class="language-js">getters: {
+<pre><code class="language-js"><span class="hljs-comment">// Product store</span>
+
+<span class="hljs-attr">getters</span>: {
   <span class="hljs-function"><span class="hljs-title">getAllProducts</span>(<span class="hljs-params">state</span>)</span> {
     <span class="hljs-keyword">return</span> state.products;
   },
@@ -169,7 +177,9 @@
 </code></pre>
 <h4>Step 4</h4>
 <p>Don't forget to remove the event from the router link in the Product component:</p>
-<pre><code class="language-js">&lt;router-link
+<pre><code class="language-js"><span class="hljs-comment">// Product component</span>
+
+&lt;router-link
   v-bind:to=<span class="hljs-string">&quot;{ name: &#x27;productDetails&#x27;, params: {productId: product.productId} }&quot;</span>
   v-on:add-to-cart=<span class="hljs-string">&quot;addToCart&quot;</span> <span class="hljs-comment">// remove this line</span>
   <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">&quot;button--anchor&quot;</span>
@@ -186,9 +196,11 @@
 <h3>Fixing the Add to cart button</h3>
 <p>Currently the text changes, but we're not committing anything to the store and changing the cart.</p>
 <h4>Step 1</h4>
-<p>Cut the <code>updateCart</code> method from your app component and move it to the Cart store's mutations object. This is the same solution you wrote for the coding challenge that adds/removes a Product ID from the cart.</p>
+<p>Cut the <code>updateCart</code> method from your app component and move it to the Cart modules's mutations object. This is the same solution you wrote for the coding challenge that adds/removes a Product ID from the cart.</p>
 <p>It could look something like:</p>
-<pre><code class="language-js">mutations: {
+<pre><code class="language-js"><span class="hljs-comment">// Cart module</span>
+
+<span class="hljs-attr">mutations</span>: {
   <span class="hljs-function"><span class="hljs-title">updateCart</span>(<span class="hljs-params">state, productId</span>)</span> {
     <span class="hljs-keyword">if</span> (!state.cart.includes(productId)) {
       <span class="hljs-keyword">return</span> state.cart.push(productId);
@@ -200,7 +212,9 @@
 <p>Be sure to remove the empty methods object from your app component.</p>
 <h4>Step 2</h4>
 <p>In your Product component, replace the <code>addToCart</code> method with the following version:</p>
-<pre><code class="language-js"><span class="hljs-function"><span class="hljs-title">addToCart</span>(<span class="hljs-params">product</span>)</span> {
+<pre><code class="language-js"><span class="hljs-comment">// Product component</span>
+
+<span class="hljs-function"><span class="hljs-title">addToCart</span>(<span class="hljs-params">product</span>)</span> {
   product.addedToCart = !product.addedToCart;
   <span class="hljs-built_in">this</span>.$store.commit(<span class="hljs-string">&#x27;updateCart&#x27;</span>, product.productId);
 },
@@ -208,15 +222,19 @@
 <p>Here we perform the NOT trick on the product then we use <code>commit</code> to commit the change to the store by passing the event name and the new value.</p>
 <h4>Step 3</h4>
 <p>Replace the cart length code in the header with:</p>
-<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;cart&quot;</span>&gt;</span>Cart ({{$store.getters.getCartLength}})<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<pre><code class="language-html"><span class="hljs-comment">&lt;!-- index.html --&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;cart&quot;</span>&gt;</span>Cart ({{$store.getters.getCartLength}})<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 </code></pre>
 <p>The <code>$store</code> object is an object Vue exposes so we can query getters from a page such as the index page.</p>
 <p>This should be enough to get your cart up and running again!</p>
 <h3>Fixing the Property detail content</h3>
 <p>The penultimate fix to get Vuex fully up and running is to get the product details to show up on the Product page. To do this, we'll use the dynamic ID we are passing via the router link to find the product by ID in the store. We'll then add this product to the local state via a lifecycle method so we can output the details. Let's go through it bit by bit:</p>
 <h4>Step 1</h4>
-<p>Firstly, add the method to find a product by ID to the Product store's getter methods object:</p>
-<pre><code class="language-js">getters: {
+<p>Firstly, add the method to find a product by ID to the Product module's getter methods object:</p>
+<pre><code class="language-js"><span class="hljs-comment">// Product module</span>
+
+<span class="hljs-attr">getters</span>: {
   <span class="hljs-function"><span class="hljs-title">getAllProducts</span>(<span class="hljs-params">state</span>)</span> {
     <span class="hljs-keyword">return</span> state.products;
   },
@@ -230,7 +248,9 @@
 <p>This is quirky construct that is a function that returns a function that returns the results of the find method. We need this in order for the state and the <code>productId</code> to be passed in.</p>
 <h4>Step 2</h4>
 <p>Next, we need to use the <code>mounted</code> lifecycle method to call the method we created above. We then assign the results to the local data state. We use <code>this.$route.params.productId</code>, which is another handy object Vue allows us to use to get the Product ID that we specified in the router link in Part 6.</p>
-<pre><code class="language-js"><span class="hljs-keyword">const</span> ProductDetails = Vue.component(<span class="hljs-string">&#x27;Product-Details&#x27;</span>, {
+<pre><code class="language-js"><span class="hljs-comment">// Main.js</span>
+
+<span class="hljs-keyword">const</span> ProductDetails = Vue.component(<span class="hljs-string">&#x27;Product-Details&#x27;</span>, {
   <span class="hljs-attr">template</span>: <span class="hljs-string">`
     // Template omitted
   `</span>,
@@ -247,7 +267,9 @@
 <p>A lifecycle method is a method that fires when an event happens. They are consistent and predictable and in our case, the <code>mounted</code> method can be used to request data once the component has been mounted (added) to the DOM.</p>
 <h4>Step 3</h4>
 <p>The last step is to add in some methods to add the product to cart and to fetch the second image in the images array:</p>
-<pre><code class="language-js">methods: {
+<pre><code class="language-js"><span class="hljs-comment">// Product Details component</span>
+
+<span class="hljs-attr">methods</span>: {
   <span class="hljs-function"><span class="hljs-title">getImage</span>(<span class="hljs-params">product</span>)</span> {
     <span class="hljs-keyword">return</span> product.images[<span class="hljs-number">1</span>].imageSrc;
   },
