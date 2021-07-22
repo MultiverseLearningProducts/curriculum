@@ -101,7 +101,7 @@
 <p>As you'll know, all of our components use data from the main app component, but now we want to change this so they get the data from our newly created store. Let's fix the issues one by one:</p>
 <h3>Fixing the footer brand and address</h3>
 <h4>Step 1</h4>
-<p>In the business module, add the following getters`:</p>
+<p>In the business module, add the following getters:</p>
 <pre><code class="language-js">getters: {
   <span class="hljs-function"><span class="hljs-title">getFullAddress</span>(<span class="hljs-params">state</span>)</span> {
     <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${state.address}</span>, <span class="hljs-subst">${state.city}</span>, <span class="hljs-subst">${state.postcode}</span>`</span>;
@@ -111,6 +111,7 @@
   },
 },
 </code></pre>
+<p>The <code>state</code> parameter here is somewhat abstract as we don't actually pass in the state when using the getter methods. In anycase, it refers to the current data state of the module.</p>
 <h4>Step 2</h4>
 <p>In your app component, modify the computed methods as follows:</p>
 <pre><code class="language-js"> computed: {
