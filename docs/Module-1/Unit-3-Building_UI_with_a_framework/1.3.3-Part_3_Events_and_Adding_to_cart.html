@@ -30,7 +30,7 @@
 <li>Add products to the cart</li>
 </ul>
 <h2>Learn how events work</h2>
-<p>You'll notice that we've got the 'Full details' and the 'Add to cart' buttons, but neither of them work because we haven't wired them up. Let's rectify that and wire up the Add to cart button so it adds the product IDs to the cart.</p>
+<p>You'll notice that we've got the 'Full details' and the 'Add to cart' buttons, but neither of them work because we haven't wired them up. Let's rectify that and wire up the Add to cart button so it adds the Product IDs to the cart.</p>
 <h3>Step 1</h3>
 <p>In your Product component, modify the button as follows:</p>
 <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">v-on:click</span>=<span class="hljs-string">&quot;addToCart(product)&quot;</span>&gt;</span>Add to cart<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
@@ -48,7 +48,7 @@
 <h3>Problem solving</h3>
 <p>Now we have a problem to solve. We need to push the product's ID into the cart array, but the cart exists in the data object that belongs to the main component. For security and data integrity reasons, we can't directly access it via the Product component. There are a number of ways to solve this and two examples are:</p>
 <ul>
-<li><p><code>Emit</code> an event up to the main component and pass up the ID to a method that can add the product ID to the cart</p></li>
+<li><p><code>Emit</code> an event up to the main component and pass up the ID to a method that can add the Product ID to the cart</p></li>
 <li><p>Use a centralised state management tool like Vuex</p></li>
 </ul>
 <p>Using Vuex at this point is a little overkill as there are only two components. For that reason, let's emit an event and solve the problem that way. We'll incorporate Vuex later when our app becomes more complex</p>
@@ -73,7 +73,7 @@
 }
 </code></pre>
 <p>Firstly we've change the <code>addedToCart</code> property on the product to be equal to the opposite of what it currently is. For example, if <code>addedToCart</code> is false, <code>!product.addedToCart</code> will return true because a false becomes true when used with the NOT operator. In a similar fashion, if <code>addedToCart</code> is true, then <code>!product.addedToCart</code> will return false because the NOT operator will only return true if the variable is 'falsy' (ask your coach if this concept is confusing).</p>
-<p>Next up, we emit the event back up to the main component using the event <code>add-to-cart</code>. The main component receives this signal, and fires the <code>updateCart</code> method, which receives the product ID.</p>
+<p>Next up, we emit the event back up to the main component using the event <code>add-to-cart</code>. The main component receives this signal, and fires the <code>updateCart</code> method, which receives the Product ID.</p>
 <h3>Step 5</h3>
 <p>Now in your main component, add the following method into the methods object:</p>
 <pre><code class="language-javascript"><span class="hljs-comment">// Main component</span>
@@ -83,7 +83,7 @@
   <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.cart);
 },
 </code></pre>
-<p>Notice here we simply push the ID into the cart, then log the cart array (you can remove the console log later). If all has gone well you should see the product ID added to the cart and the cart value in the header incrementing.</p>
+<p>Notice here we simply push the ID into the cart, then log the cart array (you can remove the console log later). If all has gone well you should see the Product ID added to the cart and the cart value in the header incrementing.</p>
 <p>We can now get our button to react to the changes by adding the following ternary operator:</p>
 <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">v-on:click</span>=<span class="hljs-string">&quot;addToCart(product)&quot;</span>&gt;</span>
   {{ product.addedToCart === true ? &quot;Remove from cart&quot; : &quot;Add to cart&quot; }}
