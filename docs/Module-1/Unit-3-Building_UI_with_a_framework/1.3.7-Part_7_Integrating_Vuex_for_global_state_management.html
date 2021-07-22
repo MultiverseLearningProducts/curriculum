@@ -185,7 +185,57 @@
 },
 </code></pre>
 <p>Here we perform the NOT trick on the product then we use <code>commit</code> to commit the change to the store by passing the event name and the new value.</p>
+<h3>Step 3</h3>
+<p>Replace the cart length code in the header with:</p>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;cart&quot;</span>&gt;</span>Cart ({{$store.getters.getCartLength}})<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<p>The <code>$store</code> object is an object Vue exposes so we can query getters from a page such as the index page.</p>
 <p>This should be enough to get your cart up and running again!</p>
+<h2>Fixing the Property detail content</h2>
+<p>The penultimate fix to get Vuex fully up and running is to get the product details to show up on the Product page. To do this, we'll use the dynamic ID we are passing via the router link to find the product by ID in the store. We'll then add this product to the local state so we can output it via a lifecycle method. Let's go through it bit by bit:</p>
+<h3>Step 1</h3>
+<p>Firstly, add the method to find a product by ID to the Product store's getter methods object:</p>
+<pre><code class="language-js">getProduct: <span class="hljs-function">(<span class="hljs-params">state</span>) =&gt;</span> <span class="hljs-function">(<span class="hljs-params">productId</span>) =&gt;</span> {
+  <span class="hljs-keyword">return</span> state.products.find(
+    <span class="hljs-function">(<span class="hljs-params">product</span>) =&gt;</span> product.productId === <span class="hljs-built_in">parseInt</span>(productId)
+  );
+},
+</code></pre>
+<p>This is quirky construct that is a function that returns and function that returns the results of the find method. Quirky or not, it's what we need to do in order for the state to be passed in and for us to be able pass in the productId.</p>
+<h3>Step 2</h3>
+<p>Next, we need to use the <code>mounted</code> lifecycle method to call the method we created above. We then assign the results to the local data state. We use <code>this.$route.params.productId</code>, which is another handy object Vue allows us to use to get the product ID that we specified in the router link in Part 6.</p>
+<pre><code class="language-js"><span class="hljs-keyword">const</span> ProductDetails = Vue.component(<span class="hljs-string">&#x27;Product-Details&#x27;</span>, {
+  <span class="hljs-attr">template</span>: <span class="hljs-string">`
+    // Template omitted
+  `</span>,
+  <span class="hljs-function"><span class="hljs-title">data</span>(<span class="hljs-params"></span>)</span> {
+    <span class="hljs-keyword">return</span> {
+      <span class="hljs-attr">product</span>: {},
+    };
+  },
+  <span class="hljs-function"><span class="hljs-title">mounted</span>(<span class="hljs-params"></span>)</span> {
+    <span class="hljs-built_in">this</span>.product = <span class="hljs-built_in">this</span>.$store.getters.getProduct(<span class="hljs-built_in">this</span>.$route.params.productId);
+  },
+});
+</code></pre>
+<h3>Step 3</h3>
+<p>The last step is to add in some methods to add the product to cart and to fetch the second image in the images array:</p>
+<pre><code class="language-js">methods: {
+  <span class="hljs-function"><span class="hljs-title">getImage</span>(<span class="hljs-params">product</span>)</span> {
+    <span class="hljs-keyword">return</span> product.images[<span class="hljs-number">1</span>].imageSrc;
+  },
+  <span class="hljs-function"><span class="hljs-title">addToCart</span>(<span class="hljs-params">product</span>)</span> {
+    product.addedToCart = !product.addedToCart;
+    <span class="hljs-built_in">this</span>.$store.commit(<span class="hljs-string">&#x27;updateCart&#x27;</span>, product.productId);
+  },
+},
+</code></pre>
+<p>You should now see the product details and be able to add/remove the product to/from the cart! In addition, the state should hold when you return to the home page. Add the product to the cart, return home, and you should still see the item in the cart and you should see that the product's 'Add to cart' button has changed to 'Remove from cart'.</p>
+<h2>Assignment - Coding challenge</h2>
+<p>You may notice that there's an error in the console:</p>
+<p><code>TypeError: Cannot read property '1' of undefined</code></p>
+<p>Part 1: Why is this error being thrown?</p>
+<p>Part 2: How can you fix it?</p>
 
         <script src="/curriculum/js/tabbed-code-blocks.js"></script>
         <script>
