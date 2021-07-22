@@ -143,8 +143,10 @@
 </code></pre>
 <h3>Step 2</h3>
 <p>Next up, add the <code>getAllProducts</code> method to the Product store's getters object:</p>
-<pre><code class="language-js"><span class="hljs-function"><span class="hljs-title">getAllProducts</span>(<span class="hljs-params">state</span>)</span> {
-  <span class="hljs-keyword">return</span> state.products;
+<pre><code class="language-js">getters: {
+  <span class="hljs-function"><span class="hljs-title">getAllProducts</span>(<span class="hljs-params">state</span>)</span> {
+    <span class="hljs-keyword">return</span> state.products;
+  },
 },
 </code></pre>
 <h3>Step 3</h3>
@@ -164,6 +166,14 @@
   <span class="hljs-attr">v-bind:key</span>=<span class="hljs-string">&quot;product.productId&quot;</span>
   <span class="hljs-attr">v-bind:product</span>=<span class="hljs-string">&quot;product&quot;</span>
 &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">product</span>&gt;</span>
+</code></pre>
+<h3>Step 4</h3>
+<p>Don't forget to remove the event from the router link in the Product component:</p>
+<pre><code class="language-js">&lt;router-link
+  v-bind:to=<span class="hljs-string">&quot;{ name: &#x27;productDetails&#x27;, params: {productId: product.productId} }&quot;</span>
+  v-on:add-to-cart=<span class="hljs-string">&quot;addToCart&quot;</span> <span class="hljs-comment">// remove this line</span>
+  <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">&quot;button--anchor&quot;</span>
+&gt;&lt;/router-link&gt;
 </code></pre>
 <h2>Fixing the Add to cart button</h2>
 <p>Currently the text changes, but we're not committing anything to the store and changing the cart.</p>
