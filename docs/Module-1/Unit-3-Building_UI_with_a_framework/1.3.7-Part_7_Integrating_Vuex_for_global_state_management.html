@@ -101,7 +101,7 @@
 <p>As you'll know, all of our components use data from the main app component, but now we want to change this so they get the data from our newly created store. Let's fix the issues one by one:</p>
 <h3>Fixing the footer brand and address</h3>
 <h4>Step 1</h4>
-<p>In the <code>business</code> module, add the following <code>getters</code>:</p>
+<p>In the business module, add the following getters`:</p>
 <pre><code class="language-js">getters: {
   <span class="hljs-function"><span class="hljs-title">getFullAddress</span>(<span class="hljs-params">state</span>)</span> {
     <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${state.address}</span>, <span class="hljs-subst">${state.city}</span>, <span class="hljs-subst">${state.postcode}</span>`</span>;
@@ -112,7 +112,7 @@
 },
 </code></pre>
 <h4>Step 2</h4>
-<p>In your app component, modify the <code>computed</code> methods as follows:</p>
+<p>In your app component, modify the computed methods as follows:</p>
 <pre><code class="language-js"> computed: {
     <span class="hljs-function"><span class="hljs-title">footerCopyrightNotice</span>(<span class="hljs-params"></span>)</span> {
       <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;2021 &#x27;</span> + store.getters.getBrand;
@@ -123,8 +123,8 @@
   },
 </code></pre>
 <p>This should fix the footer output.</p>
-<h2>How do <code>getters</code> work?</h2>
-<p>In order to access our store, we now need to use well-defined <code>getter</code> methods that exist on one of our modules. These methods only READ from the store, and can't modify or update it in any way. In this case, <code>getBrand</code> and <code>getFullAddress</code> belong to the <code>business</code> module and return the brand name and the address. We'll be using this getter pattern a good deal to fix the other data issues, so take a moment to review your changes to understand how it works.</p>
+<h2>How do getters work?</h2>
+<p>In order to access our store, we now need to use well-defined <code>getter</code> methods that exist on one of our modules. These methods only READ from the store, and can't modify or update it in any way. In this case, <code>getBrand</code> and <code>getFullAddress</code> belong to the business module and return the brand name and the address. We'll be using this getter pattern a good deal to fix the other data issues, so take a moment to review your changes to understand how it works.</p>
 
         <script src="/curriculum/js/tabbed-code-blocks.js"></script>
         <script>
