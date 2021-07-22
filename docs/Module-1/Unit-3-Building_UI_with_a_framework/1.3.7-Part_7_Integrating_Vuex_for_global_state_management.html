@@ -188,7 +188,9 @@
 <p>This should now load the products onto the home page.</p>
 <h4>Step 5</h4>
 <p>Remove the <code>updateCart</code> method for now:</p>
-<pre><code class="language-js"><span class="hljs-comment">// remove this method</span>
+<pre><code class="language-js"><span class="hljs-comment">// Product component</span>
+
+<span class="hljs-comment">// remove this method</span>
 <span class="hljs-function"><span class="hljs-title">updateCart</span>(<span class="hljs-params">productId</span>)</span> {
   <span class="hljs-built_in">this</span>.$emit(<span class="hljs-string">&#x27;update-cart&#x27;</span>, productId);
 },
