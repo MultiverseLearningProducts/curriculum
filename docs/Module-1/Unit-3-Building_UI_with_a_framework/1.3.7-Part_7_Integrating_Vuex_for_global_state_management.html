@@ -118,7 +118,7 @@
   },
 },
 </code></pre>
-<p>The <code>state</code> parameter here is somewhat abstract as we don't actually pass in the state when using the getter methods. In anycase, it refers to the current data state of the module.</p>
+<p>The <code>state</code> parameter here is somewhat abstract as we don't actually pass in the state when using the getter methods. In this instance, it refers to the current data state of the store.</p>
 <h4>Step 2</h4>
 <p>In your app component, modify the computed methods as follows:</p>
 <pre><code class="language-js"> computed: {
@@ -133,6 +133,59 @@
 <p>This should fix the footer output.</p>
 <h2>How do getters work?</h2>
 <p>In order to access our store, we now need to use well-defined <code>getter</code> methods that exist on one of our modules. These methods only READ from the store, and can't modify or update it in any way. In this case, <code>getBrand</code> and <code>getFullAddress</code> belong to the business module and return the brand name and the address. We'll be using this getter pattern a good deal to fix the other data issues, so take a moment to review your changes to understand how it works.</p>
+<h2>Fixing the products display</h2>
+<p>Currently our products aren't displaying. This is because the Home component needs to grab them from the store and pass them down to the Product component to render them.</p>
+<h3>Step 1</h3>
+<p>Head to your <code>index.html</code> file and remove everything from router view and update the cart length to get the length from the cart</p>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">router-view</span> /&gt;</span>
+</code></pre>
+<h3>Step 2</h3>
+<p>Next up, add the <code>getAllProducts</code> method to the Product store's getters object:</p>
+<pre><code class="language-js"><span class="hljs-function"><span class="hljs-title">getAllProducts</span>(<span class="hljs-params">state</span>)</span> {
+  <span class="hljs-keyword">return</span> state.products;
+},
+</code></pre>
+<h3>Step 3</h3>
+<p>Add a computed method to the Home component to grab all the products and use this in the template to loop through each product. Also, while you're there, remove the <code>add-to-cart</code> event as we'll no longer need it.</p>
+<pre><code class="language-js"><span class="hljs-comment">// Home component</span>
+
+<span class="hljs-attr">computed</span>: {
+  <span class="hljs-function"><span class="hljs-title">getAllProducts</span>(<span class="hljs-params"></span>)</span> {
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.$store.getters.getAllProducts;
+  },
+},
+</code></pre>
+<pre><code class="language-html"><span class="hljs-comment">&lt;!-- Home component --&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">product</span>
+  <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;product in getAllProducts&quot;</span>
+  <span class="hljs-attr">v-bind:key</span>=<span class="hljs-string">&quot;product.productId&quot;</span>
+  <span class="hljs-attr">v-bind:product</span>=<span class="hljs-string">&quot;product&quot;</span>
+&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">product</span>&gt;</span>
+</code></pre>
+<h2>Fixing the Add to cart button</h2>
+<p>Currently the text changes, but we're not committing anything to the store and changing the cart.</p>
+<h3>Step 1</h3>
+<p>Add the <code>updateCart</code> method to the Cart store's mutations object. This is the same solution you wrote for the coding challenge that adds/removes a Product ID from the cart.</p>
+<p>It could look something like:</p>
+<pre><code class="language-js">mutations: {
+  <span class="hljs-function"><span class="hljs-title">updateCart</span>(<span class="hljs-params">state, productId</span>)</span> {
+    <span class="hljs-keyword">if</span> (!state.cart.includes(productId)) {
+      <span class="hljs-keyword">return</span> state.cart.push(productId);
+    }
+    state.cart.splice(state.cart.indexOf(productId), <span class="hljs-number">1</span>);
+  },
+},
+</code></pre>
+<h3>Step 2</h3>
+<p>In your Product component, add the following method:</p>
+<pre><code class="language-js"><span class="hljs-function"><span class="hljs-title">addToCart</span>(<span class="hljs-params">product</span>)</span> {
+  product.addedToCart = !product.addedToCart;
+  <span class="hljs-built_in">this</span>.$store.commit(<span class="hljs-string">&#x27;updateCart&#x27;</span>, product.productId);
+},
+</code></pre>
+<p>Here we perform the NOT trick on the product then we use <code>commit</code> to commit the change to the store by passing the event name and the new value.</p>
+<p>This should be enough to get your cart up and running again!</p>
 
         <script src="/curriculum/js/tabbed-code-blocks.js"></script>
         <script>
