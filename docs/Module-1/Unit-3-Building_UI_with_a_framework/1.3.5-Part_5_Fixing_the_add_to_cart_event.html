@@ -41,7 +41,7 @@
 </code></pre>
 <h3>Step 2</h3>
 <p>Then in your <code>index.html</code>, your router view needs to be modified to register an event with the Home component:</p>
-<pre><code class="language-js">&lt;router-view v-bind:products=<span class="hljs-string">&quot;this.products&quot;</span> v-on:update-cart=<span class="hljs-string">&quot;updateCart&quot;</span> /&gt;
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">router-view</span> <span class="hljs-attr">v-bind:products</span>=<span class="hljs-string">&quot;this.products&quot;</span> <span class="hljs-attr">v-on:update-cart</span>=<span class="hljs-string">&quot;updateCart&quot;</span> /&gt;</span>
 </code></pre>
 <p>And that's it! You should find that the event emits up two levels while passing along the Product ID. This then gets pushed to the cart array in the main app component.</p>
 
