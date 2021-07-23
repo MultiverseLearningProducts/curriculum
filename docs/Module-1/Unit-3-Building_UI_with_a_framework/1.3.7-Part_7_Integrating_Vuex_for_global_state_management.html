@@ -182,7 +182,7 @@
 &lt;router-link
   v-bind:to=<span class="hljs-string">&quot;{ name: &#x27;productDetails&#x27;, params: {productId: product.productId} }&quot;</span>
   v-on:add-to-cart=<span class="hljs-string">&quot;addToCart&quot;</span> <span class="hljs-comment">// remove this line</span>
-  <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">&quot;button--anchor&quot;</span>
+  <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">&quot;anchor--button&quot;</span>
 &gt;&lt;/router-link&gt;
 </code></pre>
 <p>This should now load the products onto the home page.</p>
@@ -231,7 +231,7 @@
 <p>The <code>$store</code> object is an object Vue exposes so we can query getters from a page such as the index page.</p>
 <p>This should be enough to get your cart up and running again!</p>
 <h3>Fixing the Property detail content</h3>
-<p>The penultimate fix to get Vuex fully up and running is to get the product details to show up on the Product page. To do this, we'll use the dynamic ID we are passing via the router link to find the product by ID in the store. We'll then add this product to the local state via a lifecycle method so we can output the details. Let's go through it bit by bit:</p>
+<p>The penultimate fix to get Vuex fully up and running is to get the Product Details to show up on the Product page. To do this, we'll use the dynamic ID we are passing via the router link to find the product by ID in the store. We'll then add this product to the local state via a lifecycle method so we can output the details. Let's go through it bit by bit:</p>
 <h4>Step 1</h4>
 <p>Firstly, add the method to find a product by ID to the Product module's getter methods object:</p>
 <pre><code class="language-js"><span class="hljs-comment">// Product module</span>
@@ -266,7 +266,7 @@
   },
 });
 </code></pre>
-<p>A lifecycle method is a method that fires when an event happens. They are consistent and predictable and in our case, the <code>mounted</code> method can be used to request data once the component has been mounted (added) to the DOM.</p>
+<p>A lifecycle method is a group of events that fire at predicatable times during the create of a Vue component. In our case, the <code>mounted</code> method can be used to request data once the component has been mounted (added) to the DOM.</p>
 <h4>Step 3</h4>
 <p>The last step is to add in some methods to add the product to cart and to fetch the second image in the images array:</p>
 <pre><code class="language-js"><span class="hljs-comment">// Product Details component</span>
@@ -281,7 +281,7 @@
   },
 },
 </code></pre>
-<p>You should now see the product details and be able to add/remove the product to/from the cart! In addition, the state should hold when you return to the home page. Add the product to the cart, return home, and you should still see the item in the cart. You should also see that the product's 'Add to cart' button has changed to 'Remove from cart'.</p>
+<p>You should now see the Product Details and be able to add/remove the product to/from the cart! In addition, the state should hold when you return to the home page. Add the product to the cart, return home, and you should still see the item in the cart. You should also see that the product's 'Add to cart' button has changed to 'Remove from cart'.</p>
 <h2>Assignment - Coding challenge</h2>
 <p>You may notice that there's an error in the console on the property details page:</p>
 <pre><code>vue:<span class="hljs-number">6</span> TypeError: Cannot read property <span class="hljs-string">&#x27;1&#x27;</span> of undefined
