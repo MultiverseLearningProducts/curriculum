@@ -95,7 +95,9 @@
 </code></pre>
 <h3>Step 2</h3>
 <p>Now create new file in your <code>tests</code> dir called <code>product.spec.js</code> and add:</p>
-<pre><code class="language-js">describe(<span class="hljs-string">&#x27;Product&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+<pre><code class="language-js"><span class="hljs-comment">// product.spec.js</span>
+
+describe(<span class="hljs-string">&#x27;Product&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
   beforeEach(<span class="hljs-function">() =&gt;</span> {
     cy.visit(<span class="hljs-string">&#x27;/&#x27;</span>); <span class="hljs-comment">// 1</span>
   });
