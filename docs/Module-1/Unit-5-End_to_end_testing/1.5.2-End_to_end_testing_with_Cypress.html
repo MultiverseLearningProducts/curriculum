@@ -81,7 +81,8 @@
 <h2>A TDD approach to our first test</h2>
 <p>Our products really should show an &quot;Out of stock&quot; notice if the stock level is equal to zero and if the product is out of stock, we shouldn't show the Add to cart button. Let's write a failing test for this first, then add the functionality to make it pass.</p>
 <h3>Step 1</h3>
-<p>Cypress recommends adding a data attribute to the element or elements we want to capture. We can of course always capture by CSS ID or class, but both of these things may change at some point and then our tests will break. Add the attribute as follows:</p>
+<p>Cypress recommends adding a data attribute to the element or elements we want to capture. This ensures that even if IDs and classes change, the data selectors won't.</p>
+<p>In your <code>main.js</code> file, modify your Product component by adding <code>data-cy=&quot;product&quot;</code> to the main div:</p>
 <pre><code class="language-js"><span class="hljs-comment">// main.js</span>
 
 <span class="hljs-keyword">const</span> Product = Vue.component(<span class="hljs-string">&#x27;Product&#x27;</span>, {
@@ -93,13 +94,29 @@
 });
 </code></pre>
 <h3>Step 2</h3>
-<pre><code class="language-js">it(<span class="hljs-string">&#x27;should find an out of stock notice and but no add to cart button&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
-  cy.get(<span class="hljs-string">&#x27;[data-cy=product]&#x27;</span>)
-    .eq(<span class="hljs-number">0</span>)
-    .should(<span class="hljs-string">&#x27;contain&#x27;</span>, <span class="hljs-string">&#x27;Out of stock :(&#x27;</span>)
-    .and(<span class="hljs-string">&#x27;not.contain&#x27;</span>, <span class="hljs-string">&#x27;Add to cart&#x27;</span>);
+<p>Now create new file in your <code>tests</code> dir called <code>product.spec.js</code> and add:</p>
+<pre><code class="language-js">describe(<span class="hljs-string">&#x27;Product&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+  beforeEach(<span class="hljs-function">() =&gt;</span> {
+    <span class="hljs-comment">// 1</span>
+    cy.visit(<span class="hljs-string">&#x27;/&#x27;</span>);
+  });
+
+  it(<span class="hljs-string">&#x27;should find an out of stock notice but no add to cart button&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+    cy.get(<span class="hljs-string">&#x27;[data-cy=product]&#x27;</span>) <span class="hljs-comment">// 2</span>
+      .eq(<span class="hljs-number">0</span>) <span class="hljs-comment">// 3</span>
+      .should(<span class="hljs-string">&#x27;contain&#x27;</span>, <span class="hljs-string">&#x27;Out of stock :(&#x27;</span>) <span class="hljs-comment">// 4</span>
+      .and(<span class="hljs-string">&#x27;not.contain&#x27;</span>, <span class="hljs-string">&#x27;Add to cart&#x27;</span>); <span class="hljs-comment">// 5</span>
+  });
 });
 </code></pre>
+<p>Here, we are:</p>
+<ol>
+<li><p>Using the <code>beforeEach</code> method to visit our <code>baseUrl</code> in the <code>cypress.json</code> file before each test.</p></li>
+<li><p>Getting the product divs using the attribute <code>[data-cy=product]</code></p></li>
+<li><p>Filtering by the first one</p></li>
+<li><p>Making the assertion that somewhere in this block, the text 'Out of stock :(' will be found</p></li>
+<li><p>Making the assertion that the text 'Add to cart' will not be found</p></li>
+</ol>
 
         <script src="/curriculum/js/tabbed-code-blocks.js"></script>
         <script>
