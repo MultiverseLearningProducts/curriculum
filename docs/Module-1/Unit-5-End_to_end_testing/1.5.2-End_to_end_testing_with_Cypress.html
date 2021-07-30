@@ -116,6 +116,25 @@
 <li><p>Making the assertion that somewhere in this block, the text 'Out of stock :(' will be found</p></li>
 <li><p>Making the assertion that the text 'Add to cart' will not be found</p></li>
 </ol>
+<h3>Step 3</h3>
+<p>Save your code and the tests should re-run. Of course, they will fail, but we'll fix that next.</p>
+<h2>Fixing our broken test</h2>
+<p>Now we need to turn our attention to our Vue.js code to add an out of stock notice if the stock level is equal to zero and to only show the the 'Add to cart' button if the stock level is greater than zero.</p>
+<p>In your <code>Product</code> component, add:</p>
+<pre><code class="language-js">&lt;p v-<span class="hljs-keyword">if</span>=<span class="hljs-string">&quot;product.stockLevel === 0&quot;</span>&gt;Out <span class="hljs-keyword">of</span> stock :(&lt;/p&gt;
+</code></pre>
+<p>And on the Add to cart button:</p>
+<pre><code class="language-js">&lt;button
+  v-on:click=<span class="hljs-string">&quot;addToCart(product)&quot;</span>
+  v-<span class="hljs-keyword">if</span>=<span class="hljs-string">&quot;product.stockLevel &gt; 0&quot;</span> <span class="hljs-comment">// add this line</span>
+&gt;
+  {{ product.addedToCart ? <span class="hljs-string">&quot;Remove from cart&quot;</span> : <span class="hljs-string">&quot;Add to cart&quot;</span> }}
+&lt;/button&gt;
+</code></pre>
+<p>Now if you re-run your Cypress test, it should pass!</p>
+<h2>Assignment - Coding challenge</h2>
+<p>You'll remember that the footer address and copyright notices are return by computed methods on the footer component. It makes sense then, to test these to ensure that they consistently work as our app grows and we make changes.</p>
+<p>Your challenge is to add a <code>footer.spec.js</code> test file and test the output is what we expect.</p>
 
         <script src="/curriculum/js/tabbed-code-blocks.js"></script>
         <script>
