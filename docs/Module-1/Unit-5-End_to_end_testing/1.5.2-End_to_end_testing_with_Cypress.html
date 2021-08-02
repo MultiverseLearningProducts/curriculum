@@ -51,18 +51,16 @@
 // other files
 </code></pre>
 <h3>Step 2</h3>
-<p>In your <code>cypress.json</code> file, we're going to add the URL of your Live Server so we can tell Cypress which URL to load without repeating it for every test. In your file, add:</p>
+<p>In your <code>cypress.json</code> file, we're going to add the URL of your Live Server so we can tell Cypress which URL to load without repeating it for every test. We're also going to specify which folder to serve our tests from. In your file, add:</p>
 <pre><code class="language-json">{
   <span class="hljs-attr">&quot;baseUrl&quot;</span>: <span class="hljs-string">&quot;http://127.0.0.1:5500/your_directory/index.html#/&quot;</span>,
   <span class="hljs-attr">&quot;integrationFolder&quot;</span>: <span class="hljs-string">&quot;cypress/tests&quot;</span>
 }
 </code></pre>
-<p>In our case, we're running the Live Server on port 5500 and want Cypress to load our <code>index.html</code> - the same page where Vue mounts itself on the <code>app</code> component. We've also added a configuration item to serve the tests from a <code>/tests</code> folder.</p>
+<p>In our case, we're running the Live Server on port 5500 and want Cypress to load our <code>index.html</code> - the same page where Vue mounts itself on the <code>app</code> component. We've also added a configuration item to serve the tests from a <code>/tests</code> folder. You might wonder why we've done this? Well, it's really a matter of preference more than anything but also shows the how useful the config can be in certain situations. Some developers may find it clearer that all tests live in the 'tests' folder, so let's roll with this!</p>
 <h3>Step 3</h3>
 <p>Delete the <code>integrations</code> folder and create an empty folder in the Cypress directory called <code>tests</code>.</p>
-<blockquote>
 <p>All of the tests you add in the tests folder will combine to produce the E2E test coverage we want</p>
-</blockquote>
 <h2>Typical Cypress test structure</h2>
 <p>A good test should follow the pattern:</p>
 <ol>
