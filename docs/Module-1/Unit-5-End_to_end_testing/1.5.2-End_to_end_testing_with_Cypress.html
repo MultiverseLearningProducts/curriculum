@@ -57,7 +57,8 @@
   <span class="hljs-attr">&quot;integrationFolder&quot;</span>: <span class="hljs-string">&quot;cypress/tests&quot;</span>
 }
 </code></pre>
-<p>In our case, we're running the Live Server on port 5500 and want Cypress to load our <code>index.html</code> - the same page where Vue mounts itself on the <code>app</code> component. We've also added a configuration item to serve the tests from a <code>/tests</code> folder. You might wonder why we've done this? Well, it's really a matter of preference more than anything but also shows the how useful the config can be in certain situations. Some developers may find it clearer that all tests live in the 'tests' folder, so let's roll with this!</p>
+<p>In our case, we're running the Live Server on port 5500 and want Cypress to load our <code>index.html</code> - the same page where Vue mounts itself on the <code>app</code> component. We've also added a configuration item to serve the tests from a <code>/tests</code> folder.</p>
+<p>You might wonder why we've done this? Well, it's really a matter of preference more than anything but also shows the how useful the config can be in certain situations. Some developers may find it clearer that all tests live in the 'tests' folder, so let's roll with this!</p>
 <h3>Step 3</h3>
 <p>Delete the <code>integrations</code> folder and create an empty folder in the Cypress directory called <code>tests</code>.</p>
 <p>All of the tests you add in the tests folder will combine to produce the E2E test coverage we want</p>
