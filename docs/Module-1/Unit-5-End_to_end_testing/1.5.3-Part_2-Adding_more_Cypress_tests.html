@@ -73,7 +73,10 @@
 });
 </code></pre>
 <p>If you run your tests now, you should find that the tests pass.</p>
+<p>At this point, we <em>could</em> in theory check that the cart in the navbar has the full compliment of products added, but instead, we'll let the component where that belongs take care of that (see the coding challenge below).</p>
 <h2>Assignment - Coding challenge</h2>
+<p>Part 1: the first part of this coding challenge is to add a <code>navbar.spec.js</code> file and test the cart output. Don't forget you can reuse the <code>addProductsToCart</code> command you created before to add the products to the cart.</p>
+<p>Part 2: you'll notice the the active link, also in the navbar, has a <code>router-link-exact-active</code> class added by Vue Router. Write a test to verify this class gets added to the home page and at least one other page after clicking the link. Hint: in Cypress, get the element as normal then call the <code>click()</code> function to visit the link.</p>
 
         <script src="/curriculum/js/tabbed-code-blocks.js"></script>
         <script>
