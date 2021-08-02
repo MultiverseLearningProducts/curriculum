@@ -135,7 +135,7 @@ describe(<span class="hljs-string">&#x27;Product&#x27;</span>, <span class="hljs
 <p>&quot;A ﬂaky test is a test that fails to produce a consistent result each time it is run&quot;</p>
 </blockquote>
 <p>Now, thinking about the test that we've just added, would you say it is flaky?</p>
-<p>We're very much writing this app in a dev environment, but if it were a live project, having to change the first product's stock level to zero just for this test to pass would not be a good idea. Instead, we would launch the app in a testing/staging environment and use <code>seed data</code> to ensure our tests produce consistent results.</p>
+<p>We're very much writing this app in a dev environment, but if it were a live project, having to change the first product's stock level to zero just for this test to pass would not be a good idea. Instead, we would launch the app in a testing/staging environment and use test data to ensure our tests produce consistent results.</p>
 <p>In this instance, since we're in practice mode, you can simply change the stock level back to a positive number and skip the test:</p>
 <pre><code class="language-js">it.skip(<span class="hljs-string">&#x27;should find an out of stock notice but no add to cart button&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
   <span class="hljs-comment">// test code omitted</span>
