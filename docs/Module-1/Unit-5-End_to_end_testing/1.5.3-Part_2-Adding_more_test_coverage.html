@@ -33,7 +33,9 @@
 <p>Each Product component has an &quot;Add to cart&quot; button that adds the product to the cart and changes the text of the button. Adding the product to the cart belongs, for the most part, to the cart module in Vuex and the data is rendered in the nav bar (i.e 'Cart (1)'). For that reason, for now, we'll simply test whether the button state changes and that that functionality works as intended for our users.</p>
 <p>In order to do this we need to add a mechanism that adds one or more of the products to the cart. Now, this sounds like a useful piece of functionality that we would want to reuse and fortunately in Cypress, we can leverage the commands file (cypress/support/commands.js) to add a command.</p>
 <p>In your commands file, add:</p>
-<pre><code class="language-js">Cypress.Commands.add(<span class="hljs-string">&#x27;addProductsToCart&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+<pre><code class="language-js"><span class="hljs-comment">// cypress/support/commands.js</span>
+
+Cypress.Commands.add(<span class="hljs-string">&#x27;addProductsToCart&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
   cy.get(<span class="hljs-string">&#x27;[data-cy=product--addToCart]&#x27;</span>).each(<span class="hljs-function">(<span class="hljs-params">$el, index</span>) =&gt;</span> {
     $el.click();
   });
@@ -60,7 +62,9 @@
 <h2>Testing the Add to cart button</h2>
 <p>To test all of the buttons, we can grab all of the elements, loop through them and then test if they contain the string 'Remove from cart'.</p>
 <p>This is the full code:</p>
-<pre><code class="language-js">it(<span class="hljs-string">&#x27;should change the button text when clicked&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+<pre><code class="language-js"><span class="hljs-comment">// product.spec.js</span>
+
+it(<span class="hljs-string">&#x27;should change the button text when clicked&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
   cy.addProductsToCart();
 
   cy.get(<span class="hljs-string">&#x27;[data-cy=product--addToCart]&#x27;</span>).each(<span class="hljs-function">(<span class="hljs-params">$el, index</span>) =&gt;</span> {
