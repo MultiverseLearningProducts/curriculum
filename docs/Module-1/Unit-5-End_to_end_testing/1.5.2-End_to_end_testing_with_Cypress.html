@@ -80,7 +80,7 @@
 <h2>A TDD approach to our first test</h2>
 <p>Our products really should show an &quot;Out of stock&quot; notice if the stock level is equal to zero and we shouldn't show the Add to cart button if the product is out of stock. Let's write a failing test for this first, then add the functionality to make it pass.</p>
 <h3>Step 1</h3>
-<p>Cypress recommends adding a data attribute to the element or elements we want to capture. This ensures that even if IDs and classes change, the data selectors won't change.</p>
+<p>Cypress recommends adding data attributes to the elements we want to capture. This ensures that even if IDs and classes change, your tests will still run because they are powered by data attributes.</p>
 <p>In your <code>main.js</code> file, modify your Product component by adding <code>data-cy=&quot;product&quot;</code> to the main div:</p>
 <pre><code class="language-js"><span class="hljs-comment">// main.js</span>
 
