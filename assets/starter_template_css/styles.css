@@ -1,0 +1,192 @@
+body {
+  font-family: 'Open Sans', serif;
+}
+
+h1,
+h2,
+h3 {
+  color: #45425a;
+  font-family: 'Roboto';
+  margin-top: 0.5rem;
+}
+
+p {
+  max-width: 66ch;
+  line-height: 1.5;
+}
+
+a {
+  color: #acc12f;
+}
+
+button {
+  padding: 0.41rem;
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+img {
+  max-width: 100%;
+}
+
+main {
+  margin: 1.5rem 0;
+}
+
+footer {
+  font-size: small;
+  margin-top: 5rem;
+  padding: 1rem 0;
+  height: 15rem;
+  background-color: #575c55;
+  color: ivory;
+}
+
+button:hover,
+.anchor--button:hover {
+  background-color: #acc12f;
+}
+
+.navbar {
+  background-color: #575c55;
+  padding: 1.5rem 0 1rem 0;
+  color: ivory;
+}
+
+.navbar__heading {
+  margin-bottom: 1rem;
+}
+
+.navbar__heading a {
+  font-family: 'Roboto';
+  margin-top: 0.5rem;
+  font-size: 2rem;
+  font-weight: bold;
+  color: ivory;
+  height: 100%;
+  text-decoration: none;
+}
+
+.navbar__navigation a {
+  text-decoration: none;
+}
+
+.navbar__navigation a.router-link-exact-active {
+  text-decoration: underline;
+}
+
+.container {
+  position: relative;
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.promo-blocks > div {
+  margin-right: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.promo-blocks > div:last-child {
+  margin-right: 0;
+}
+
+.promo-section {
+  margin-top: 3rem;
+}
+
+.promo-blocks ul {
+  margin-left: 1.5rem;
+  list-style: disc;
+}
+
+.anchor--button,
+button {
+  font-size: 1rem;
+  border: 0;
+  background-color: #45425a;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  margin-right: 0.5rem;
+}
+
+.anchor--button {
+  padding: 0.5rem;
+}
+
+.promo-blocks__actions {
+  display: flex;
+  align-items: center;
+}
+
+.heading__sub {
+  font-size: 1rem;
+  font-style: italic;
+  display: block;
+  margin-top: 0.8rem;
+}
+
+.button--active {
+  background-color: #acc12f;
+}
+
+.product img,
+.promo-blocks > div img {
+  max-height: 12rem;
+}
+
+@media screen and (max-width: 1024px) {
+  .product {
+    margin-top: 2rem;
+  }
+
+  .navbar__heading {
+    text-align: center;
+  }
+
+  .navbar__navigation {
+    text-align: center;
+  }
+
+  .navbar__cart {
+    text-align: right;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .product-details aside {
+    margin-left: 1rem;
+  }
+
+  .navbar__inner .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .navbar__navigation {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .navbar__navigation li {
+    margin: 0 0.5rem;
+  }
+
+  .promo-blocks {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .product {
+    flex: 1 1 287px;
+  }
+
+  .product-details {
+    display: flex;
+  }
+}
