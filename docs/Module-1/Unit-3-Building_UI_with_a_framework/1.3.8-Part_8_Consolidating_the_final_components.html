@@ -59,7 +59,9 @@
 </code></pre>
 <h3>Step 2</h3>
 <p>In your app component, add a template and chop out <code>main</code>, <code>router-view</code>, etc, from your source and add it here. Don't forget to add a container div to surround everything else you'll get errors and the content won't show.</p>
-<pre><code class="language-js">template: <span class="hljs-string">`
+<pre><code class="language-js"><span class="hljs-comment">// app component</span>
+
+<span class="hljs-attr">template</span>: <span class="hljs-string">`
   &lt;div&gt; // container div
     &lt;Navbar /&gt;
     &lt;main&gt;

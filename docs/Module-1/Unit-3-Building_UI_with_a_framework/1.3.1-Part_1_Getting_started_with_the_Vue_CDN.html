@@ -44,7 +44,9 @@
 <p>This gets the lastest version of Vue from the CDN.</p>
 <p>Next up, we need to create an instance of Vue and tell us which element to mount on, which is just a fancy way of saying the element Vue will target to dynamically update content.</p>
 <p>In <code>main.js</code>, add:</p>
-<pre><code class="language-javascript"><span class="hljs-keyword">var</span> app = <span class="hljs-keyword">new</span> Vue({
+<pre><code class="language-javascript"><span class="hljs-comment">// main.js</span>
+
+<span class="hljs-keyword">var</span> app = <span class="hljs-keyword">new</span> Vue({
   <span class="hljs-attr">el</span>: <span class="hljs-string">&#x27;#app&#x27;</span>,
   <span class="hljs-attr">data</span>: {
     <span class="hljs-attr">greeting</span>: <span class="hljs-string">&#x27;Hello, Vue!&#x27;</span>,
@@ -57,7 +59,9 @@
 <p>Feel free to delete the greeting and let's turn our attention to the data state. The data state is central to our app. Without it, Vue has nothing to display or dynamically update. Each component can have its own state if needed but for now, we'll add state to the global Vue component we have created.</p>
 <p>In the Git directory where you found the source files, you will see a <code>products.json</code> file. Open the contents and grab everything between the curly braces.</p>
 <p>Add this data into your Vue app's data field:</p>
-<pre><code class="language-javascript">data: {
+<pre><code class="language-javascript"><span class="hljs-comment">// app component / main.js</span>
+
+<span class="hljs-attr">data</span>: {
     <span class="hljs-attr">cart</span>: [],
     <span class="hljs-comment">// add other data here</span>
 },
@@ -65,7 +69,9 @@
 <p>Now add <code>{{this.cart.length}}</code> between the parentheses in the navbar and then open the console add type <code>app.cart.push(1)</code>. Add more items and see how Vue updates the state as well as the UI to reflect the changes. Very cool!</p>
 <h3>Create your first Vue component</h3>
 <p>Let's move on and create our first component. One of the great strengths of frontend frameworks is the ability to turn a collection of HTML into a component that can be reused and centrally managed. Let's turn our product HTML into a Product component. In <code>main.js</code>, add:</p>
-<pre><code class="language-javascript"><span class="hljs-keyword">const</span> Product = Vue.component(<span class="hljs-string">&#x27;Product&#x27;</span>, {
+<pre><code class="language-javascript"><span class="hljs-comment">// main.js</span>
+
+<span class="hljs-keyword">const</span> Product = Vue.component(<span class="hljs-string">&#x27;Product&#x27;</span>, {
   <span class="hljs-attr">template</span>: <span class="hljs-string">`
     &lt;div class=&quot;product&quot;&gt;
       &lt;h3&gt;{{product.name}}&lt;/h3&gt;

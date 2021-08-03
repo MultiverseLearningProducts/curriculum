@@ -46,9 +46,9 @@
 </code></pre>
 <p>Refresh your page and click one of the Add to cart buttons. You should see the product logged to the console.</p>
 <h3>Problem solving</h3>
-<p>Now we have a problem to solve. We need to push the product's ID into the cart array, but the cart exists in the data object that belongs to the main component. For security and data integrity reasons, we can't directly access it via the Product component. There are a number of ways to solve this and two examples are:</p>
+<p>Now we have a problem to solve. We need to push the product's ID into the cart array, but the cart exists in the data object that belongs to the app component. For security and data integrity reasons, we can't directly access it via the Product component. There are a number of ways to solve this and two examples are:</p>
 <ul>
-<li><p><code>Emit</code> an event up to the main component and pass up the ID to a method that can add the Product ID to the cart</p></li>
+<li><p><code>Emit</code> an event up to the app component and pass up the ID to a method that can add the Product ID to the cart</p></li>
 <li><p>Use a centralised state management tool like Vuex</p></li>
 </ul>
 <p>Using Vuex at this point is a little overkill as there are only two components. For that reason, let's emit an event and solve the problem that way. We'll incorporate Vuex later when our app becomes more complex</p>
@@ -74,10 +74,10 @@
 </code></pre>
 <p>Firstly we've change the <code>addedToCart</code> property on the product to be equal to the opposite of what it currently is. For example, if <code>addedToCart</code> is false, <code>!product.addedToCart</code> will return true because a false becomes true when used with the NOT operator.</p>
 <p>In a similar fashion, if <code>addedToCart</code> is true, then <code>!product.addedToCart</code> will return false because the NOT operator will only return true if the variable is 'falsy' (ask your coach if this concept is confusing).</p>
-<p>Next up, we emit the event back up to the main component using the event <code>add-to-cart</code>. The main component receives this signal, and fires the <code>updateCart</code> method, which receives the Product ID.</p>
+<p>Next up, we emit the event back up to the app component using the event <code>add-to-cart</code>. The app component receives this signal, and fires the <code>updateCart</code> method, which receives the Product ID.</p>
 <h3>Step 5</h3>
-<p>Now in your main component, add the following method into the methods object:</p>
-<pre><code class="language-javascript"><span class="hljs-comment">// Main component</span>
+<p>Now in your app component, add the following method into the methods object:</p>
+<pre><code class="language-javascript"><span class="hljs-comment">// app component</span>
 
 <span class="hljs-function"><span class="hljs-title">updateCart</span>(<span class="hljs-params">productId</span>)</span> {
   <span class="hljs-built_in">this</span>.cart.push(productId);
@@ -93,7 +93,7 @@
 <h2>Assignment - Coding challenge</h2>
 <p>The problem we have now is that you can continue to click the button and the ID will get added to the cart array over and over again.</p>
 <ul>
-<li><p>Modify the <code>updateCart</code> method in your main component so that it checks whether the ID <em>already</em> exists in the cart array</p></li>
+<li><p>Modify the <code>updateCart</code> method in your app component so that it checks whether the ID <em>already</em> exists in the cart array</p></li>
 <li><p>If it doesn't exist, push the ID into the array and return</p></li>
 <li><p>If it does exist, use a method to find the array item and remove it</p></li>
 </ul>

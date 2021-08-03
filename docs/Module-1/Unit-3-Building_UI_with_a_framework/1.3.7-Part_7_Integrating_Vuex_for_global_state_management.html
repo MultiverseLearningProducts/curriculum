@@ -132,7 +132,7 @@
     <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;2021 &#x27;</span> + store.getters.getBrand;
   },
   <span class="hljs-function"><span class="hljs-title">footerAddress</span>(<span class="hljs-params"></span>)</span> {
-    <span class="hljs-keyword">return</span> store.getters.getFullAddress;
+    <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;Our address: &#x27;</span> + store.getters.getFullAddress;
   },
 },
 </code></pre>
@@ -149,29 +149,29 @@
 &lt;router-view /&gt;
 </span></code></pre>
 <h4>Step 2</h4>
-<p>Next up, add the <code>getAllProducts</code> method to the Product store's getters object:</p>
+<p>Next up, add the <code>getNProducts</code> method to the Product store's getters object. This will allow us to get <em>n</em> number of properties for display on the home page:</p>
 <pre><code class="language-js"><span class="hljs-comment">// Product store</span>
 
 <span class="hljs-attr">getters</span>: {
-  <span class="hljs-function"><span class="hljs-title">getAllProducts</span>(<span class="hljs-params">state</span>)</span> {
-    <span class="hljs-keyword">return</span> state.products;
+  <span class="hljs-attr">getNProducts</span>: <span class="hljs-function">(<span class="hljs-params">state</span>) =&gt;</span> <span class="hljs-function">(<span class="hljs-params">n</span>) =&gt;</span> {
+    <span class="hljs-keyword">return</span> state.products.filter(<span class="hljs-function">(<span class="hljs-params">element, index</span>) =&gt;</span> index &lt; n);
   },
 },
 </code></pre>
 <h4>Step 3</h4>
-<p>Add a computed method to the Home component to grab all the products and use this in the template to loop through each product. Also, while you're there, remove the <code>add-to-cart</code> event as we'll no longer need it.</p>
+<p>Add a method to the Home component to get the products and use this in the template to loop through each product. Also, while you're there, remove the <code>add-to-cart</code> event as we'll no longer need it.</p>
 <pre><code class="language-js"><span class="hljs-comment">// Home component</span>
 
-<span class="hljs-attr">computed</span>: {
-  <span class="hljs-function"><span class="hljs-title">getAllProducts</span>(<span class="hljs-params"></span>)</span> {
-    <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.$store.getters.getAllProducts;
+<span class="hljs-attr">methods</span>: {
+  <span class="hljs-function"><span class="hljs-title">getProducts</span>(<span class="hljs-params">n</span>)</span> {
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.$store.getters.getNProducts(n);
   },
 },
 </code></pre>
 <pre><code class="language-html"><span class="hljs-comment">&lt;!-- Home component --&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">product</span>
-  <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;product in getAllProducts&quot;</span>
+  <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;product in getProducts(3)&quot;</span>
   <span class="hljs-attr">v-bind:key</span>=<span class="hljs-string">&quot;product.productId&quot;</span>
   <span class="hljs-attr">v-bind:product</span>=<span class="hljs-string">&quot;product&quot;</span>
 &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">product</span>&gt;</span>
@@ -238,8 +238,8 @@
 <pre><code class="language-js"><span class="hljs-comment">// Product module</span>
 
 <span class="hljs-attr">getters</span>: {
-  <span class="hljs-function"><span class="hljs-title">getAllProducts</span>(<span class="hljs-params">state</span>)</span> {
-    <span class="hljs-keyword">return</span> state.products;
+  <span class="hljs-attr">getNProducts</span>: <span class="hljs-function">(<span class="hljs-params">state</span>) =&gt;</span> <span class="hljs-function">(<span class="hljs-params">n</span>) =&gt;</span> {
+    <span class="hljs-keyword">return</span> state.products.filter(<span class="hljs-function">(<span class="hljs-params">element, index</span>) =&gt;</span> index &lt; n);
   },
   <span class="hljs-attr">getProduct</span>: <span class="hljs-function">(<span class="hljs-params">state</span>) =&gt;</span> <span class="hljs-function">(<span class="hljs-params">productId</span>) =&gt;</span> {
     <span class="hljs-keyword">return</span> state.products.find(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">product</span>) </span>{
@@ -248,7 +248,7 @@
   },
 },
 </code></pre>
-<p>This is quirky construct that is a function that returns a function that returns the results of the find method. We need this in order for the state and the <code>productId</code> to be passed in.</p>
+<p>This is quirky construct like the <code>getNProducts</code> function that is a function that returns a function that returns the results of the find method. We need this in order for the state and the <code>productId</code> to be passed in.</p>
 <h4>Step 2</h4>
 <p>Next, we need to use the <code>mounted</code> lifecycle method to call the method we created above. We then assign the results to the local data state. We use <code>this.$route.params.productId</code>, which is another handy object Vue exposes that allows us to get the Product ID that we specified in the router link in Part 6.</p>
 <pre><code class="language-js"><span class="hljs-comment">// Main.js</span>

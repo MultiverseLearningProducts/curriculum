@@ -51,7 +51,7 @@
 <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;./path_to_image/image_name.jpg&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Title of image here&quot;</span> /&gt;</span>
 </code></pre>
 <h2>Computed properties</h2>
-<p>Vue methods can take arguments and can be used when we want something to happen in our component. For example; changing the image/title as we did above as well as handling events such as click event. Computed properties on the other hand, don't take arguments and are used to compose data from data that already exists. To illustrate this, we'll return to our main component and we'll add a computed properties object.</p>
+<p>Vue methods can take arguments and can be used when we want something to happen in our component. For example; changing the image/title as we did above as well as handling events such as click event. Computed properties on the other hand, don't take arguments and are used to compose data from data that already exists. To illustrate this, we'll return to our app component and we'll add a computed properties object.</p>
 <p>The first step is to add the brand data item to our data object:</p>
 <pre><code class="language-json">  brand: &#x27;Plants Direct&#x27;,
   // other fields omitted
@@ -68,16 +68,18 @@
 <pre><code class="language-html">{{ footerCopyrightNotice }}
 </code></pre>
 <h3>Assignment - Coding challenge</h3>
-<p>Most companies will have their physical address in the footer and Plants Direct are no different! Add address, city and postcode to your data object in the main component then combine them in a computed property method and output them in your HTML.</p>
+<p>Most companies will have their physical address in the footer and Plants Direct are no different! Add address, city and postcode to your data object in the app component then combine them in a computed property method and output them in your HTML.</p>
 <p>JSON:</p>
-<pre><code class="language-javascript">address: <span class="hljs-string">&#x27;21 Sussex Gardens&#x27;</span>,
+<pre><code class="language-javascript"><span class="hljs-comment">// app component / main.js</span>
+
+<span class="hljs-attr">address</span>: <span class="hljs-string">&#x27;21 Sussex Gardens&#x27;</span>,
 <span class="hljs-attr">city</span>: <span class="hljs-string">&#x27;London&#x27;</span>,
 <span class="hljs-attr">postcode</span>: <span class="hljs-string">&#x27;SW1 01L&#x27;</span>,
 
 <span class="hljs-comment">// other fields omitted</span>
 </code></pre>
 <p>You should end up with a method that outputs something like:</p>
-<pre><code class="language-html">21 Sussex Gardens, London, SW1 01L
+<pre><code class="language-html">Our address: 21 Sussex Gardens, London, SW1 01L
 </code></pre>
 <h2>Additional resources</h2>
 <ul>
