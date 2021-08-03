@@ -242,9 +242,9 @@
     <span class="hljs-keyword">return</span> state.products.filter(<span class="hljs-function">(<span class="hljs-params">element, index</span>) =&gt;</span> index &lt; n);
   },
   <span class="hljs-attr">getProduct</span>: <span class="hljs-function">(<span class="hljs-params">state</span>) =&gt;</span> <span class="hljs-function">(<span class="hljs-params">productId</span>) =&gt;</span> {
-    <span class="hljs-keyword">return</span> state.products.find(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">product</span>) </span>{
-      <span class="hljs-keyword">return</span> product.productId === <span class="hljs-built_in">parseInt</span>(productId);
-    });
+    <span class="hljs-keyword">return</span> state.products.find(
+      <span class="hljs-function">(<span class="hljs-params">product</span>) =&gt;</span> product.productId === <span class="hljs-built_in">parseInt</span>(productId)
+    );
   },
 },
 </code></pre>
