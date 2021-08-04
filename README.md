@@ -5,6 +5,10 @@
 
 This is a repository of apprentice facing lessons and coach notes. Published on Github pages [https://multiverselearningproducts.github.io/curriculum](https://multiverselearningproducts.github.io/curriculum).
 
+## Additional Resources
+
+Additional curriculum resources (e.g. slides) can be found in the following [Google drive](https://drive.google.com/drive/folders/1N9TI7awO4Hu_lvo60k8GOa8MeJ6fPCQU)
+
 ## Usage
 
 Clone the repo. Make sure you have push permissions to this repo. To publish your changes run;
@@ -14,6 +18,10 @@ npm run publish
 ```
 
 That will build the markdown pages into html pages and then push to github. See the site here [https://multiverselearningproducts.github.io/curriculum](https://multiverselearningproducts.github.io/curriculum)
+
+## Optional Lessons
+
+Optional lessons are marked with an asterisk *
 
 ## Images
 
