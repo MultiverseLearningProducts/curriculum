@@ -30,7 +30,8 @@
 <li>Understand the challenges of creating end-to-end tests</li>
 </ul>
 <h3>What are end-to-end tests?</h3>
-<p>End-to-end tests are at the opposite end of the spectrum to unit tests. Unit tests take the smallest piece of an application (usually functions) and ensure it works as expected. End-to-end tests on the other hand test the application in its entirety, ensuring all its components (UI, database, server etc.) work together. They essentially mimic an actual user interacting with your application.</p>
+<p>End-to-end tests are at the opposite end of the spectrum to unit tests. Unit tests take the smallest piece of an application (usually functions) and ensure it works as expected. End-to-end tests on the other hand test the application in its entirety, ensuring all its components (UI, database, server etc.) work together. They essentially mimic an actual user interacting with your application. In the middle we have integration tests, which test sub-systems within your application.</p>
+<p><figure><img src="https://user-images.githubusercontent.com/44523714/128892812-824ce1e3-97e2-4fdd-8bbc-5f5811237d05.png" alt="Testing pyramid: unit tests make up the base of the pyramid; integration tests in the middle; end-to-end tests at the top"><figcaption></figcaption></figure></p>
 <h3>Why are end-to-end tests beneficial?</h3>
 <p>Application codebases can be very large and complicated. Even if we are confident that are code is suitably modular, it's always possible that some change we make is going to have some unintended consequence we can't foresee. Thus, before we release any changes to our users, we want to ensure that they won't break any of the features our application offers.</p>
 <p>One way to do this is to make a big list of all your application's features and, before reach release, have an employee manually test each one of these features to ensure they all work. This takes many hours and is extremely tedious.</p>
