@@ -80,8 +80,8 @@
                 <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Easy care<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span><span class="hljs-symbol">&amp;pound;</span>6.99<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;promo-blocks__actions&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button--anchor&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;promo-blocks__actions&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;button--anchor&quot;</span>&gt;</span>
                 Full Details
                 <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>        
                 <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>
@@ -92,7 +92,7 @@
     )
 }
 </code></pre>
-<p>Notice, its just a javascript function. The function returns HTML. The input, the <code>props</code> property, references all the items that are passed into the component. You will see in the next code sample how this javascript function is called (It will look like HTML). In the example above I am using 'destructed assignment' to pull the variables out of the <code>product</code> object that is passed into the component via the <code>props</code> argument. More on this shortly.</p>
+<p>Notice, its just a javascript function. The function returns HTML (mostly some subtle differences like <code>className</code> not <code>class</code> why do you think this name has to change?). The input, the <code>props</code> property, references all the items that are passed into the component. You will see in the next code sample how this javascript function is called (It will look like HTML). In the example above I am using 'destructed assignment' to pull the variables out of the <code>product</code> object that is passed into the component via the <code>props</code> argument. More on this shortly.</p>
 <p>Now return to your <code>App.js</code> and iterate over the data and render each product using your new React <code>Product</code> component.</p>
 <pre><code class="language-javascript"><span class="hljs-keyword">import</span> data <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./products.json&#x27;</span>
 <span class="hljs-keyword">import</span> { Product } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./Product&#x27;</span>
@@ -100,7 +100,7 @@
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">App</span>(<span class="hljs-params"></span>) </span>{
   <span class="hljs-keyword">return</span> (
     <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;App&quot;</span>&gt;</span>
-      {data.products.map(product =&gt; <span class="hljs-tag">&lt;<span class="hljs-name">Product</span> <span class="hljs-attr">product</span>=<span class="hljs-string">{product}</span> /&gt;</span>)}
+      {data.products.map(product =&gt; <span class="hljs-tag">&lt;<span class="hljs-name">Product</span> <span class="hljs-attr">key</span>=<span class="hljs-string">{product.productId}</span> <span class="hljs-attr">product</span>=<span class="hljs-string">{product}</span> /&gt;</span>)}
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
   );
 }
@@ -115,7 +115,8 @@ Product.Product
 <p>The <code>App</code> is just a javascript function. It returns HTML, the HTML has javascript embed into it within curly braces. I'm just writing plain old javascript within the curly braces to <code>.map</code> over an array. Whats interesting is the way we call the function that we exported from the <code>./Product.js</code> file. We are using it as if it were an HTML tag. HTML can have HTML attributes with associated values like below, <code>onclick</code> and <code>type</code>:</p>
 <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;function (event) {event.preventDefault()};&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>&gt;</span>Click Me<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
 </code></pre>
-<p>React components can be used in the same way. You can add <em>HTML like</em> attributes with values. In our example above we are adding an <em>HTML like</em> attribute called 'product' and associating that with a value which here is the individual product item that we are mapping over from the array of products.</p>
+<p>React components can values passed to them in the same way. You can add <em>HTML like</em> attributes with values. In our example above we are adding an <em>HTML like</em> attribute called 'product' and associating that with a value which here is the individual product item that we are mapping over from the array of products.</p>
+<p>We are also iterating and creating lots of similar components. React wants us to give each <code>Product</code> a unique <code>key</code>. You will see error messages if you fail to do this. I'm using the unique <code>productId</code> that I can see is in the data object that I'm passing into the component. The <code>key</code> attribute helps React keep track of everything in the DOM and stops it getting in a muddle.</p>
 <p>Refresh your page and you should see the product component is reused and outputted three times. The problem is, most of the information is the same. To solve this, we'll need to make sure all the content is dynamic. To do this, we'll need to reference the data in the <code>Product</code> component and place the variables that represent different values i.e. price to the correct place in the HTML.</p>
 <h2>Assignment - Coding challenge</h2>
 <h3>Part 1</h3>
