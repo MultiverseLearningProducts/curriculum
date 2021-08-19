@@ -30,7 +30,7 @@
 <li>Add products to the cart</li>
 </ul>
 <h2>Learn how events work</h2>
-<p>You'll notice that we've got the 'Full details' and the 'Add to cart' buttons, but neither of them work because we haven't wired them up. Let's rectify that and wire up the Add to cart button so it adds the Product IDs to the cart.</p>
+<p>You'll notice that we've got the 'Full details' and the 'Add to cart' buttons, but neither of them work because we haven't wired them up. Let's rectify that and wire up the Add to cart button so it adds the Product to the cart.</p>
 <h3>Step 1</h3>
 <p>In your <code>Product</code> component add an event listener and event handler called <code>addToCart</code> to the <code>&lt;button&gt;</code> element. When we click on the button we'll see that product logged in the console. Below are the code snippets. Use the <code>Img</code> component as a reference for how to add this to your <code>Product</code> component.</p>
 <pre><code class="language-javascript"><span class="hljs-keyword">const</span> addToCart = <span class="hljs-function">(<span class="hljs-params">product</span>) =&gt;</span> {
@@ -42,13 +42,13 @@
 &lt;/button&gt;
 </code></pre>
 <h3>Problem solving</h3>
-<p>Now we have a problem to solve. In the data that we import from our <code>products.json</code> file there is a property called 'cart' that is an Array. We need to push the product into the cart array, but the cart exists in the data object that belongs to the <code>App</code> component that is out side the scope of our <code>Product</code> component.</p>
+<p>Now we have a problem to solve. In the data that we import from our <code>products.json</code> file there is a property called 'cart' that is an Array. We need to push the product into the cart array, but the cart exists in the data object that belongs to the <code>App</code> component that is outside the scope of our <code>Product</code> component.</p>
 <p>There are a number of ways to solve this and two examples are:</p>
 <ul>
 <li>pass down a function into the child component 'Product' from the parent component <code>App</code> that the child calls with a value from it's own scope.</li>
 <li>Use a centralised state management tool like Redux</li>
 </ul>
-<p>Using Redux at this point is a little overkill as there are only three components. For that reason, let's pass props up the tree from the child component into the parent. We'll incorporate Redux later when our app becomes more complex</p>
+<p>Using Redux at this point is a little overkill as there are only three components in our app. For that reason, let's pass a function down the component tree into the child component from the parent. We'll incorporate Redux later when our app becomes more complex</p>
 <p>Let's visualise the process in a diagram:</p>
 <table>
 <thead>
@@ -97,7 +97,7 @@
 <ul>
 <li>Can you display the <em>number</em> of items in the cart on the screen?</li>
 </ul>
-<p>The problem we have now is that you can continue to click the button and the ID will get added to the cart array over and over again.</p>
+<p>The problem we have now is that you can continue to click the button and the product will get added to the cart array over and over again.</p>
 <ul>
 <li><p>Modify the <code>addToCart</code> method in your app component so that it checks whether the product <em>already</em> exists in the cart array.</p></li>
 <li><p>The product data object has a property called <code>addedToCart</code> which is a Boolean. Can you insure this is updated as the item is added/removed from the cart</p></li>
