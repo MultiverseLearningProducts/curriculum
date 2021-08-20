@@ -39,7 +39,7 @@
 <li>The event handler dispatches an 'action'</li>
 <li>The store receives the action and filters it down through all the resolvers looking for a match</li>
 <li>A resolver updates the store</li>
-<li>The newly updated store triggers a re-render of all the components that depend on that <em>reactive</em> variable with the newly updated value</li>
+<li>Redux triggers a re-render of all the components that have used a selector to select those <em>reactive</em> variables from within the store with the newly updated value</li>
 </ol>
 <p>Our <strong>cart</strong> is a good candidate for the store because it is an example of global state. The data of all the <strong>data.products</strong> is also something that can live in the store as that will save us having to pass it around when we want to read from it.</p>
 <h2>Get on board the refactor tractor 🚜</h2>
@@ -93,7 +93,7 @@ ReactDOM.render(
 <span class="hljs-comment">// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals</span>
 reportWebVitals();
 </code></pre>
-<p>From the top of the file, we are importing some tools and a <strong>Provider</strong> Component from our newly added modules. Next we create a slice of a redux store, this has a name, state and reducers. We then create a redux store object by calling <strong>configureStore</strong> and then pass this into the <strong>Provider</strong> component.</p>
+<p>From the top of the file, we are importing some tools, <code>{ configureStore, createSlice }</code> and a <strong>Provider</strong> Component from our newly added modules. Next we create a slice of a redux store, this has a name, state and reducers. We then create a redux store object by calling <strong>configureStore</strong> and then pass this into the <strong>Provider</strong> component.</p>
 <h3>Establish the initial state of the store</h3>
 <p>Our store has the initial state of the cart (an empty array), and the products.</p>
 <h3>Read values from the store</h3>
@@ -114,8 +114,8 @@ reportWebVitals();
 </code></pre>
 <p><strong>useSelector</strong> returns a <em>reactive</em> variable that is selected from the store's state via a function. We pass <strong>useSelector</strong> a function that must pick out the values we want to read from and be <em>reactive</em>.</p>
 <p>Check this works OK.</p>
-<p>In the <strong>ProductDetails</strong> component you can do the same. Create a selector that picks out a product from the products in the store i.e. <strong>state.products.find</strong>.</p>
-<p>You can now remove the data import from the <strong>App</strong> component, and remove the way we pass data down though the <strong>Home</strong> component etc.</p>
+<p>In the <strong>ProductDetails</strong> component you can do the same. Create a selector function that picks out a product from the products in the store i.e. <strong>useSelector(state =&gt; state.products.find...)</strong></p>
+<p>You can now remove the data import from the <strong>App</strong> component, and remove the way we passed data down though the <strong>Home</strong> component via props etc.</p>
 <pre><code class="language-javascript">    &lt;Route path=<span class="hljs-string">&quot;/&quot;</span>&gt;
         <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Home</span> <span class="hljs-attr">addToCart</span>=<span class="hljs-string">{addToCart}</span> /&gt;</span></span>
     &lt;/Route&gt;
@@ -147,12 +147,12 @@ reportWebVitals();
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> { addToCart } = initialState.actions
 </code></pre>
-<p>Notice on the last line above I'm exposing the <strong>addToCart</strong> function so I can call it from else where in the app.</p>
+<p>🉐 Notice on the last line above I'm exposing the <strong>addToCart</strong> function so I can call it from elsewhere in the app.</p>
 <h3>Dispatch those actions from our components</h3>
 <p>In the UI when I click on the 'Add to cart' button I want to <em>dispatch</em> that action. I need 2 things to dispatch an action.</p>
 <ol>
-<li><strong>useDispatch</strong></li>
-<li>the action to dispatch</li>
+<li><strong>useDispatch</strong> from 'react-redux'</li>
+<li>the action to dispatch from my own redux store</li>
 </ol>
 <p>In your <strong>Product</strong> component import the above 2 items. Then create an instance of <em>dispatch</em> then call <em>dispatch()</em> with your action called with the right parameter. See the example below.</p>
 <pre><code class="language-javascript"><span class="hljs-keyword">import</span> { Link } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;react-router-dom&#x27;</span>
@@ -188,7 +188,7 @@ reportWebVitals();
 </ul>
 <p>You should now see the Product Details and be able to add/remove the product to/from the cart! In addition, the state should hold when you return to the home page. Add the product to the cart, return home, and you should still see the item in the cart. You should also see that the product's 'Add to cart' button has changed to 'Remove from cart'.</p>
 <h2>Additional resources</h2>
-<p><figure><img src="https://redux.js.org/tutorials/quick-start" alt="Redux quick start"><figcaption></figcaption></figure></p>
+<p><a href="https://redux.js.org/tutorials/quick-start">Redux quick start</a></p>
 
         <script src="/curriculum/js/tabbed-code-blocks.js"></script>
         <script>

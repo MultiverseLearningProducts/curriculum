@@ -60,7 +60,7 @@
     <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">{props.image.imageSrc}</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">{props.image.title}</span> /&gt;</span></span>
 }
 </code></pre>
-<p>Can you see how the <em>reactive</em> variable and the corresponding function to update it are destructured from the result of calling <code>useState()</code>. I am calling <code>useState('')</code> with an empty string <code>''</code> that will be the initial starting value of this <em>reactive</em> variable.</p>
+<p>Can you see how the <em>reactive</em> variable and the corresponding function to update it are destructured from the result of calling <code>useState()</code>. I am calling <code>useState('')</code> with an empty string <code>''</code> that will be the initial starting value of the <strong>overlay</strong> <em>reactive</em> variable.</p>
 <h3>Stateful overlays</h3>
 <p>I'm imagining we can have different overlays over the image. We need to change up the HTML of the component to do this nicely. I'm going to wrap the image in a <code>&lt;figure&gt;</code> element and display the image with either or text and an emoji over the top of it. I'm just going to bake the styles into the HTML as they are structural and I want us to focus on using state in React. Later you can refactor this css and put it in your style sheet.</p>
 <pre><code class="language-javascript"><span class="hljs-keyword">import</span> { useState } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>

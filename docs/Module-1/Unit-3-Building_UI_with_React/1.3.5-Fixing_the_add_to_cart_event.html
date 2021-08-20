@@ -25,14 +25,14 @@
         <h1>Fixing the add to cart event</h1>
 <p>Now that we've moved the <strong>Home</strong> component from the top level of the component tree, our <code>addToCart</code> setter and state will no longer be in the scope of the top App component as the Home component is now rendering the products further down the tree.</p>
 <p>This is now an issue because we will want to display the number of items in the cart in the header section at the top level of the app, at present it is trapped inside the <strong>Home</strong> component and when we navigate to <strong>About</strong> or <strong>Contact</strong> we lose the ability to access and reference the number of items in the cart.</p>
-<p>We want the cart state to be global for our app so it need to be at the highest level component the <strong>App</strong> component. We need to move the cart state up from the <strong>Home</strong> component and pass the props down to <strong>Home</strong> and <strong>Product</strong>. This is a common framework pattern in React to share state between many components.</p>
+<p>We want the cart state to be global for our app so it needs to be in the highest level component (the <strong>App</strong> component). We need to move the cart state up from the <strong>Home</strong> component and pass the props down to <strong>Home</strong> and <strong>Product</strong>. This is a common framework pattern in React to share state between many components.</p>
 <h2>Learning Objectives</h2>
 <ul>
 <li>Conceptualise the tree like structure you are building</li>
 <li>Demonstrate an understanding of the relationship between components in the tree by successfully refactoring code</li>
 </ul>
 <h2>Fixing the Add to cart event</h2>
-<p>Let move the <strong>[cart, setCart]</strong> and <strong>addToCart</strong> variables and functions out of <strong>Home</strong> and into <strong>App</strong>. Now pass down the <strong>addToCart</strong> function from <strong>App</strong> to <strong>Home</strong> to <strong>Product</strong>. When you are passing <strong>addToCart</strong> down to the <strong>Product</strong> component you will now have to reference it like this:</p>
+<p>Let move the <strong>[cart, setCart]</strong> and <strong>addToCart</strong> variables and functions out of <strong>Home</strong> and into <strong>App</strong>. Now pass down the <strong>addToCart</strong> function from <strong>App</strong> to <strong>Home</strong> to <strong>Product</strong>. When you are passing <strong>addToCart</strong> down to the <strong>Product</strong> component you will now have to reference it using <strong>props.addToCart</strong> like this:</p>
 <pre><code class="language-javascript">&lt;Product key={product.productId} product={product} addToCart={props.addToCart} /&gt;
 </code></pre>
 <h2>Move the header to the <strong>App</strong> component</h2>
