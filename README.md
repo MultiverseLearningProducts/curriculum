@@ -54,7 +54,7 @@ To create a tabbed code block use the following markdown
 
 There are 3 rules to follow:
 
-1. Use the block delimiter `:::` at the beginning and end of your tabbed code block
+1. Use the block delimiter `|Javascript|Java|` at the beginning __and__ end of your tabbed code block
 1. Create the tabs with the pipe character your text here will become the label and the hash i.e. "Javascript" -> #javascript
 1. In the code blocks that follow don't create line breaks between them i.e make sure your different language blocks butt up to each other.
 
