@@ -27,52 +27,58 @@
 <ul>
 <li>Know that OAuth uses tokens to secure APIs</li>
 <li>Understand the structure of a JSON Web Token (JWT)</li>
-<li>Understand the OAuth flow</li>
-</ul>
-<h2>Pre-requisites</h2>
-<ul>
-<li>Install the PlantUML plugin to VSCode to allow you to create sequence diagrams.</li>
+<li>Understand the OAuth Implicit Grant Flow</li>
 </ul>
 <h2>What is OAuth?</h2>
-<p>OAuth (2.0) is an open standard for authorization. It controls authorization to a protected resource such as an API.</p>
-<p>If you’ve ever signed up to a new application and agreed to let it access your Facebook or phone contacts, then you’ve used OAuth. OAuth provides secure delegated access which means an application can access resources from a server on behalf of the user, without them having to share their credentials. It does this by allowing an Identity Provider (we will be using Auth0) to issue access tokens. The token informs the API that the bearer of the token is authorized to access the API.</p>
-<p><figure><img src="https://static01.nyt.com/images/2017/06/18/nyregion/12nytoday3/12nytoday3-superJumbo.jpg?quality=90&amp;auto=webp" alt="clubber getting their hand stamped" title="Photo: Caitlin Ochs for The New York Times"><figcaption>Photo: Caitlin Ochs for The New York Times</figcaption></figure></p>
-<p>In a nightclub when you enter and pay your entry fee you will often be stamped or presented with a bracelet to ware on your wrist. This shows the security staff on the door that you have paid, and you can enter and leave the club for that evening. The bracelet or stamp is like a token the club (Identity Provider) has issue. With a legitimate stamp or bracelet the door staff (API middleware) check it and then if its ok let you in (to the controller).</p>
-<h2>What makes OAuth secure?</h2>
+<p>OAuth (2.0) is an open standard for <em>authorisation</em> using access tokens.</p>
+<p>If you've signed up to a new application using Facebook or Google login then you’ve used OAuth. OAuth provides secure &quot;delegated access&quot; which means an application can access resources from a server on behalf of the user, without them having to share their credentials.</p>
+<p>In the example below, we sign up to a new application, Canva, using our Google account.</p>
+<p><img width="256" alt="sign up to Canva" src="https://user-images.githubusercontent.com/1316724/130577304-1346484b-b581-499e-9586-827498ccd6e5.PNG"></p>
+<p>Google asks us to login and requests that we allow Canva access to specific information (scopes) about our Google account to allow Canva to complete the sign up process.</p>
+<p><img width="332" alt="consent to allow Canva to use Google profile detail" src="https://user-images.githubusercontent.com/1316724/130577369-4488f97b-a1fb-4803-8e33-b2fdc92df0eb.PNG"></p>
+<p>Canva is never aware of our login credentials, Google takes care of the authentication process and issues an access token to Canva to allow it to access an API which will return specific profile information.</p>
+<p>OAuth focusses solely on authorising access to resources. The authentication process is achieved through OpenID Connect which we will discuss in detail in a future lesson.</p>
+<p>OAuth supports authorisation for a number of different use cases including:</p>
 <ul>
-<li>Token management means we can track each device that uses the API (and revoke access if we want)</li>
-<li>OAuth provides 'scopes' which allow for fine-grained authorization</li>
-<li>Tokens expire, making it very hard for them to be reused</li>
+<li>Server-server</li>
+<li>Web Apps</li>
+<li>Single Page Apps</li>
+<li>Native Mobile App</li>
 </ul>
-<p>Let's look at this diagram which illustrates the OAuth flow we are going to be using to secure our API resource:</p>
-<p><figure><img src="https://user-images.githubusercontent.com/1316724/102925060-9cb1b680-448a-11eb-8177-7eda1802026f.png" alt="oauth flow showing how an identify provider issues a token which is used to secure a resource"><figcaption></figcaption></figure></p>
-<h2>JWT</h2>
+<p>TODO - add a simple diagram</p>
+<h2>Token structure</h2>
 <p>Whilst OAuth does not mandate any specific format for tokens, the recommendation is to use JSON Web Tokens (JWTs). A JWT is easy to identify, it is three strings separated by a <code>.</code></p>
 <p>Here is an example:</p>
 <p><code>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtZXNzYWdlIjoiSGVsbG8gZnJvbSBXaGl0ZUhhdCEifQ.XSYkatPu3LirweyU13rLWblqQRNvbqoJJ0qwX_mdYgM</code></p>
 <p>Use https://jwt.io to see the secret message hidden inside this token!</p>
-<p><strong>Activity</strong>: Create your own messages and send them to the Slack channel!</p>
 <p>A JWT is made up of 3 parts:</p>
 <ul>
-<li><strong>Header</strong> - specifies the type of token and the algorithm used to sign the token</li>
-<li><strong>Payload</strong> - the information that we want to transmit and other information about our token</li>
+<li><strong>Header</strong> - specifies the type of token and the cryptographic algorithm used to sign the token</li>
+<li><strong>Payload</strong> - contains a set of &quot;claims&quot; such as the time the token was issued, it's expiry time etc.</li>
 <li><strong>Signature</strong> - verifies who sent the token and that the token has not been tampered with</li>
 </ul>
-<p>To create the signature part you have to take the encoded header, the encoded payload, a secret, the algorithm specified in the header, and sign that.</p>
-<pre><code class="language-ruby">SHA1(base64Encode(Header) + &quot;.&quot; + base64Encode(Payload), secret)
-// SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c &lt;- that is the Signature part
-</code></pre>
+<h2>What makes OAuth secure?</h2>
+<ul>
+<li>Token management means we can track each device that uses the API and revoke access if required</li>
+<li>Tokens expire, making it very hard for them to be reused</li>
+<li>OAuth provides 'scopes' which allow for fine-grained authorisation e.g. only allow access to this specific API method for these specific user types</li>
+</ul>
 <h2>Assignment</h2>
 <ol>
 <li><p>Sign up to the <a href="https://developer.spotify.com/documentation/web-api/">Spotify API</a>. This API uses OAuth to secure it.</p></li>
 <li><p>Choose a selection of <a href="https://developer.spotify.com/documentation/web-api/reference/">API endpoints</a> (we suggest using GET endpoints to avoid affecting any your playlists) and select to &quot;Try out in Web Console&quot;. Enable Chrome Developer Tools and study the HTTP requests made when &quot;Get Token&quot; is selected and when &quot;Try It&quot; is selected. Hint: Enable &quot;Preserve log&quot; so you can see all messages across calls and &quot;Disable cache&quot; so you don't get cached results.</p></li>
 <li><p>Read the 'Implicit Grant Flow' section of the <a href="https://developer.spotify.com/documentation/general/guides/authorization-guide/#implicit-grant-flow">Spotify Authorization guide</a>. This is the OAuth flow used by the Spotify Developer website.</p></li>
 <li><p>Create a sequence diagram which illustrates this OAuth Implicit Grant Flow used by the Spotify Developer website. Add messages which illustrate how tokens are obtained and the flow if the Spotify user is not logged in.</p></li>
+<li><p>Commit your sequence diagram to GitHub and share the link with your coach for review.</p></li>
 </ol>
 <h2>Assignment extension tasks</h2>
 <p>Study the other authentication flows detailed in the <a href="https://developer.spotify.com/documentation/general/guides/authorization-guide">Spotify Authorization guide</a>. What are the differences between them and in what scenario is each one used?</p>
 <h2>Additional resources</h2>
-<p>For further reading about OAuth you many find <a href="https://developer.okta.com/blog/2019/10/21/illustrated-guide-to-oauth-and-oidc">this OAuth overview</a> useful.</p>
+<p>For further reading about OAuth you may find these resources useful:</p>
+<ul>
+<li><p><a href="https://developer.okta.com/blog/2019/10/21/illustrated-guide-to-oauth-and-oidc">Illustrated guide to OAuth and OpenID Connect</a></p></li>
+<li><p><a href="https://developer.okta.com/blog/2017/06/21/what-the-heck-is-oauth">What the heck is OAuth</a></p></li>
+</ul>
 
         <script src="/curriculum/js/tabbed-code-blocks.js"></script>
         <script>

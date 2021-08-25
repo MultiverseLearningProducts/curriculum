@@ -25,16 +25,17 @@
         <h1>OpenID Connect</h1>
 <h2>Learning Objectives</h2>
 <ul>
+<li>Understand the difference between OAuth and OpenID Connect</li>
 <li>Know that Auth0 can store usernames and passwords on your behalf</li>
 <li>Set up Auth0's universal login</li>
 </ul>
 <h2>Lesson</h2>
-<p>OAuth deals specifically with authorisation of resources, <strong>OpenID Connect</strong> is a protocol which is built on top of OAuth 2.0 and focusses on user authentication. It is widely used to enable user logins on consumer websites and mobile apps.</p>
+<p>OAuth deals specifically with authorization of resources, <strong>OpenID Connect</strong> is a protocol which is built on top of OAuth 2.0 and focusses on user authentication. It is widely used to enable user logins on consumer websites and mobile apps.</p>
 <p><figure><img src="https://user-images.githubusercontent.com/1316724/102927348-b8b75700-448e-11eb-9d0d-3d7fa4e6e1ea.png" alt="sequence diagram showing the OpenID Connect authorization flow"><figcaption></figcaption></figure></p>
 <p>OpenID Connect uses an additional JSON Web Token (JWT), called an ID token, to hold basic profile information about the authenticated (logged in) user e.g. their name or email address. Here is an example:</p>
 <p><code>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkZyZWQgRmxpbnRzdG9uZSIsImVtYWlsIjoiZnJlZC5mbGludHN0b25lQHdoaXRlaGF0Lm9yZy51ayIsImlhdCI6MTUxNjIzOTAyMn0.DlHfHG2qZXpWszZv-X8LwoQkZUlqVgaXoRmnHXE2y_I</code></p>
 <p>Use https://jwt.io to find out the name and email hidden in the JWT ID token.</p>
-<p>So, instead of passing a user name and password to our Login page and looking this up in our user database, we will delegate authentication to Auth0. This avoid us having to store usernames and passwords (a good thing!) but means that users need to be registered in the Auth0 dashboard.</p>
+<p>So, instead of passing a username and password to our Login page and looking this up in our credentials database, we will delegate authentication to Auth0. This avoid us having to store usernames and passwords (a good thing!) but means that users need to be registered in the Auth0 dashboard.</p>
 <h2>Implementing authentication using Auth0</h2>
 <p><figure><img src="https://user-images.githubusercontent.com/4499581/105991041-39273400-609b-11eb-9078-6975f7a5e2bc.png" alt="Regular Web App Option on Auth0"><figcaption></figcaption></figure></p>
 <ol>
