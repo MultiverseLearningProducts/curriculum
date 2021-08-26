@@ -30,7 +30,7 @@
 <li>Set up Auth0's universal login</li>
 </ul>
 <h2>Lesson</h2>
-<p>OAuth deals specifically with <em>authorisation</em>. OpenID Connect (OIDC) is a protocol which is built on top of OAuth 2.0 and focusses on user <em>authentication</em>. It is widely used to enable user logins on websites and mobile apps.</p>
+<p>OAuth deals specifically with <em>authorization</em>. OpenID Connect (OIDC) is a protocol which is built on top of OAuth 2.0 and focusses on user <em>authentication</em>. It is widely used to enable user logins on websites and mobile apps.</p>
 <p><figure><img src="https://user-images.githubusercontent.com/1316724/102927348-b8b75700-448e-11eb-9d0d-3d7fa4e6e1ea.png" alt="sequence diagram showing the OIDC authorization flow"><figcaption></figcaption></figure></p>
 <p>OIDC allows apps to verify the identity of the end user and obtain basic profile information such as name and email address. This profile information is held within another JWT known as the ID token.</p>
 <blockquote>
@@ -41,7 +41,7 @@
 <h3>Adding usernames &amp; passwords to Auth0</h3>
 <p>Navigate to <code>User Management-&gt;Users</code> and choose to <code>Create User</code>. Enter the credentials and click <code>Create</code>. Repeat for any other users you have. Note that Auth0 will take care of hashing the passwords for you.</p>
 <h3>Creating a login page</h3>
-<p>Auth0's login page can be integrated into many different types of apps including mobile, single page apps and regular web apps. For this lesson we will choose to add login/logout functionality to a &quot;regular web app&quot;.</p>
+<p>Auth0's login page can be integrated into many different types of apps including mobile, single page apps and regular web apps. For this lesson we will choose to add login/logout and profile functionality to a &quot;regular web app&quot;.</p>
 <p><figure><img src="https://user-images.githubusercontent.com/4499581/105991041-39273400-609b-11eb-9078-6975f7a5e2bc.png" alt="Regular Web App Option on Auth0"><figcaption></figcaption></figure></p>
 <ol>
 <li><p>Using the Auth0 Dashboard, navigate to <code>Applications</code> and choose to <code>Create Application</code>. Choose <code>Regular Web Applications</code>.</p></li>
@@ -50,12 +50,13 @@
 <li>Node.js(Express)</li>
 <li>EXPLORE SAMPLE APP</li>
 <li>SAVE AND DOWNLOAD APP<br>
-This will create a new application called <code>My App</code> and download the code as a zip file</li>
+This will create a new application called <code>My App</code> in the Auth0 Dashboard and will download the code for a sample web app as a zip file. You can read more about how the sample web app works <a href="https://auth0.com/docs/quickstart/webapp/express">here</a>.</li>
 </ul></li>
+<li><p>Navigate to the Auth0 Dashboard <code>Applications-&gt;APIs</code> and authorise <code>My App</code> to have access to the Messages API.</p></li>
 <li><p>Extract the zip and import the code into VSCode</p></li>
-<li><p>Edit the <code>.env</code> file to include your app specific settings (these will be visible in your Auth0 Dashboard under <code>Applications-&gt;My App</code>)</p></li>
+<li><p>Edit the <code>.env</code> file to include your app specific settings (these will be visible in your Auth0 Dashboard under <code>Applications-&gt;My App</code>). You may also need to change the PORT if it clashes with the port your API is running on.</p></li>
 <li><p>Add <code>.env</code> to your <code>.gitignore</code> to avoid details of your Auth0 account being saved to git.</p></li>
-<li><p>Follow the instructions to start the sample application, then navigate to <code>http://localhost:3000/</code> - you should see the following web page.</p>
+<li><p>Follow the instructions to start the sample application, then navigate to <code>http://localhost:</code>YOUR_API_PORT_NUMBER. The following web page should be displayed.</p>
 <p><img width="956" alt="generated sample app home page" src="https://user-images.githubusercontent.com/1316724/130907482-76adf6aa-db76-4dda-a722-e20f18ab3ec5.PNG"></p></li>
 <li><p>Clicking &quot;Login&quot; will display the <a href="https://auth0.com/docs/universal-login">Auth0 Universal Login</a> page</p>
 <p><img width="246" alt="Auth0 universal login" src="https://user-images.githubusercontent.com/1316724/130907646-2c17c434-0a17-42c2-957e-e11c9360fd7b.PNG"></p></li>
@@ -67,67 +68,47 @@ This will create a new application called <code>My App</code> and download the c
 <p>Well done, you have successfully authenticated a user using OIDC!</p>
 <h2>Assignment</h2>
 <p>In the previous lesson you used OAuth to secure your Messages API. In this lesson you used OIDC to implement user authentication and add login/logout functionality to a web app. Now we need to connect the two parts!</p>
-<p>In this assignment you are required to extend your web app to call the Messages API.</p>
-<p><a href="https://github.com/auth0/express-openid-connect/blob/master/EXAMPLES.md#4-obtaining-access-tokens-to-call-external-apis">This documentation</a> will help you obtain the necessary token.</p>
-<p>Study HTTP calls</p>
-<p>You also have a couple of middleware functions from the library to help protect all and individual routes. The library adds a <a href="https://auth0.github.io/express-openid-connect/interfaces/requestcontext.html">RequestContext</a> object onto the <code>req</code> object in express. You can access the logged in user like this <code>req.oidc.user</code>. You can view their token like this <code>req.oidc.accessToken</code>. Below are two of the main functions in the library to get you going.</p>
-<table>
-<thead>
-<tr><th style="text-align:left">middleware</th><th style="text-align:left">purpose</th></tr>
-</thead>
-<tbody>
-<tr><td style="text-align:left">auth</td><td style="text-align:left">this adds <code>req.oidc</code> to all your requests</td></tr>
-<tr><td style="text-align:left">requiresAuth</td><td style="text-align:left">use this to protect routes that require a user to be logged in</td></tr>
-</tbody>
-</table>
-<pre><code class="language-javascript">app.get(<span class="hljs-string">&#x27;/profile&#x27;</span>, requiresAuth(), <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
-  res.send(req.oidc.user)
-})
-
-<span class="hljs-comment">/**
-{
-    &quot;nickname&quot;: &quot;bernard.mordan&quot;,
-    &quot;name&quot;: &quot;bernard.mordan<span class="hljs-doctag">@multiverse</span>.io&quot;,
-    &quot;picture&quot;: &quot;https://s.gravatar.com/avatar/52c5aa1584c1dc479342c603b30ff9e2?s=480&amp;r=pg&amp;d=https%3A%2F%2Fcdn.auth0.com%2Favatars%2Fbe.png&quot;,
-    &quot;updated_at&quot;: &quot;2021-01-27T11:43:17.588Z&quot;,
-    &quot;email&quot;: &quot;bernard.mordan<span class="hljs-doctag">@multiverse</span>.io&quot;,
-    &quot;email_verified&quot;: false,
-    &quot;sub&quot;: &quot;auth0|601151d59c2f080069ec8597&quot;
-}
-*/</span>
+<p>In this assignment you are required to extend your web app to call the Messages API only if the user is logged in.</p>
+<p>You will need to modify the <code>server.js</code> file config section to be as follows.</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">const</span> config = {
+  <span class="hljs-attr">authorizationParams</span>: {
+    <span class="hljs-attr">response_type</span>: <span class="hljs-string">&#x27;code&#x27;</span>,
+    <span class="hljs-attr">audience</span>: <span class="hljs-string">&#x27;messagesAPI&#x27;</span>,
+  },
+  <span class="hljs-attr">authRequired</span>: <span class="hljs-literal">false</span>,
+  <span class="hljs-attr">auth0Logout</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">clientSecret</span>: process.env.SECRET, 
+  <span class="hljs-attr">baseURL</span>: <span class="hljs-string">&#x27;http://localhost:3000&#x27;</span>,
+  <span class="hljs-attr">clientID</span>: process.env.CLIENT_ID,
+  <span class="hljs-attr">issuerBaseURL</span>: process.env.ISSUER_BASE_URL
+};
 </code></pre>
-<p>That last property the <code>sub</code> is a unique id number for that user. That might be useful...</p>
-<h2>Summary</h2>
-<p>Below is the code to bootstrap a server that will use Auth0 to create, authenticate and manage authorization of users.</p>
-<pre><code class="language-javascript"><span class="hljs-keyword">const</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;express&#x27;</span>)
-<span class="hljs-keyword">const</span> app = express()
-<span class="hljs-keyword">const</span> { sequelize } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./models&#x27;</span>)
-<span class="hljs-keyword">const</span> { auth } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;express-openid-connect&#x27;</span>)
+<p>You can then use the following code to call the Messages API.</p>
+<pre><code class="language-javascript">    <span class="hljs-comment">// retrieve the access token</span>
+    <span class="hljs-keyword">const</span> { token_type, access_token } = req.oidc.accessToken; 
 
-<span class="hljs-keyword">const</span> openIDconfig = {
-    <span class="hljs-attr">authRequired</span>: <span class="hljs-literal">false</span>,
-    <span class="hljs-attr">auth0Logout</span>: <span class="hljs-literal">true</span>,
-    <span class="hljs-attr">secret</span>: <span class="hljs-string">&#x27;a long, randomly-generated string stored in env that you make up&#x27;</span>,
-    <span class="hljs-attr">baseURL</span>: <span class="hljs-string">&#x27;http://localhost:3000&#x27;</span>,
-    <span class="hljs-attr">clientID</span>: YOUR_CLIENT_ID,
-    <span class="hljs-attr">issuerBaseURL</span>: <span class="hljs-string">&#x27;https://YOUR_AUTH0_DOMAIN.eu.auth0.com&#x27;</span>
+    <span class="hljs-comment">// call the API with the access token</span>
+    <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> fetch(<span class="hljs-string">`http://localhost:8080/messages`</span>, {
+      <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;GET&#x27;</span>,
+      <span class="hljs-attr">headers</span>: {
+        <span class="hljs-string">&#x27;Accept&#x27;</span>: <span class="hljs-string">&#x27;application/json&#x27;</span>,
+        <span class="hljs-string">&#x27;Authorization&#x27;</span>: <span class="hljs-string">`<span class="hljs-subst">${token_type}</span> <span class="hljs-subst">${access_token}</span>`</span>
+      }
+    });
+    <span class="hljs-keyword">const</span> message = <span class="hljs-keyword">await</span> response.json();
+    <span class="hljs-built_in">console</span>.log(message)
+
+  } <span class="hljs-keyword">catch</span> (error) {
+    <span class="hljs-built_in">console</span>.error(error);
   }
-
-app.use(express.json())
-app.use(auth(openIDconfig))
-
-<span class="hljs-comment">// app.get(&#x27;/login&#x27;) this is created by express-openid-connect and displays a login widget</span>
-<span class="hljs-comment">// app.get(&#x27;/callback&#x27;) this is created by express-openid-connect and fetches an authenticated user their token</span>
-<span class="hljs-comment">// app.get(&#x27;/logout&#x27;) this is created by express-openid-connect and will end a users token based session</span>
-
-app.get(<span class="hljs-string">&#x27;/&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
-    res.send(req.oidc.user || <span class="hljs-string">&quot;No user logged in&quot;</span>)
-})
-
-app.listen(<span class="hljs-number">3000</span>, <span class="hljs-function">() =&gt;</span> {
-    sequelize.sync().then(<span class="hljs-function">() =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;All ready for banking&quot;</span>))
-})
 </code></pre>
+<p>One the integration is complete, commit your code to GitHub and share the link with your coach for review.</p>
+<h2>Additional Resources</h2>
+<p>The following resources summarise the process of integrating OIDC into a web app and calling an API.</p>
+<ul>
+<li><p><a href="https://auth0.com/docs/quickstart/webapp/express">Adding user login, logout, and profile to a Node.js Express application</a></p></li>
+<li><p><a href="https://github.com/auth0/express-openid-connect/blob/master/EXAMPLES.md#4-obtaining-access-tokens-to-call-external-apis">Obtaining access tokens to call external APIs</a></p></li>
+</ul>
 
         <script src="/curriculum/js/tabbed-code-blocks.js"></script>
         <script>
