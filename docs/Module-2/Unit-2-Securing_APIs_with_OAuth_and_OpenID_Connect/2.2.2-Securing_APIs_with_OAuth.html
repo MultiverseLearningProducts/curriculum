@@ -29,17 +29,17 @@
 <li>Secure an API using OAuth</li>
 </ul>
 <h1>Lesson</h1>
-<p>In this lesson you will use <a href="https://auth0.com">Auth0</a>, a commercial implementation of the OAuth standard, to secure your Message API using the programming language of your choice.</p>
+<p>In this lesson you will use <a href="https://auth0.com">Auth0</a>, a commercial implementation of the OAuth standard, to secure your Messages API using the programming language of your choice.</p>
 <p>Auth0 is used by <a href="https://auth0.com/customers/">many well known companies</a> to secure their Web APIs. Auth0 can be used both for authentication of users and authorization to access specific APIs. In this lesson we are going to focus on API authorization via tokens issued by the Auth0 platform.</p>
-<p>The diagram below illustrates the OAuth flow we are going to be using to secure our API resource. It consists of a client app requesting a token from Auth0, then passing this token as authorization to access the Messages API:</p>
+<p>The diagram below illustrates the OAuth flow we will use to secure our API resource. It consists of a client app requesting a token from Auth0, then passing this token as authorization to access the Messages API:</p>
 <p><figure><img src="https://user-images.githubusercontent.com/1316724/130851116-4ec3c57e-d2e3-4b58-8924-218e504a95cd.png" alt="OAuth Flow showing how an identify provider issues a token which is used to secure a resource"><figcaption></figcaption></figure></p>
 <h2>Auth0 sign up and configuration</h2>
-<p>The first step we need to take is to create an account with Auth0 and configure a new logical API and Application.</p>
+<p>We firstly need to create an account with Auth0 and configure a new logical API and Application.</p>
 <ol>
 <li><p>Go to https://auth0.com/signup - enter your email and then create a PERSONAL account type</p></li>
-<li><p>Navigate to your Dashboard and select <code>Applications-&gt;APIs-&gt;Create API</code>. Name your new API <code>MessagesAPI</code> and set the Identifier to be <code>messagesAPI</code>. Remember that we are not actually creating an fully-fledged API here, we are merely assigning a logical name for the API which Auth0 can use to secure access</p>
+<li><p>Navigate to your Dashboard and select <code>Applications-&gt;APIs-&gt;Create API</code>. Name your new API <code>MessagesAPI</code> and set the Identifier to be <code>messagesAPI</code>. Note that we are not actually creating a real API here, we are merely assigning a logical name for the API which Auth0 can use to secure access.</p>
 <p><img width="772" alt="Auth0 Messages API" src="https://user-images.githubusercontent.com/1316724/130799393-057d6bad-ee25-4a2c-a204-745f543af7b8.PNG"></p></li>
-<li><p>Click on your new API and navigate to the <code>Test</code> tab. Click on <code>Create &amp; Authorize Test Application</code>. This will generate a logical name for an Application which will be authorised to access the Messages API.</p>
+<li><p>Click on your new API and navigate to the <code>Test</code> tab. Click on <code>Create &amp; Authorize Test Application</code>. Again, we are not creating a real App here, we are merely assigning a logical name for an Application which will be authorised to access the Messages API.</p>
 <p>You will then be presented with example code (in multiple languages) for your test application to request tokens from Auth0 and to send tokens to the MessagesAPI.</p></li>
 <li><p>Use the example cURL request to help you construct a Postman request to obtain a new OAuth token.</p></li>
 <li><p>If all goes well, you should receive a 200 OK and the body of the response should contain a JWT access token. Paste this into https://jwt.io and explore the contents.</p>
@@ -49,34 +49,13 @@
 <p>Now we have the ability to request and send tokens, we need to integrate Auth0 with the code for our Messages API created in a previous lesson. Our Messages API was previously secured using Basic Auth, you now need to change the security mechanism to be OAuth.</p>
 <ol>
 <li><p>You will need to research how to use OAuth in your language framework. The Additional Resources section of this page details how to set this up for Java (Spring Boot) and JavaScript (Express) developers. <strong>Note that your Auth0 Domain, Client ID and Client Secret are considered sensitive data</strong> therefore you should ensure you use environment variables / configuration files to hold this information and add the file(s) to <code>.gitignore</code> to avoid the data being saved to git.</p></li>
-<li><p>Use Postman to send a token to an API endpoint. The token must be sent in an HTTP <code>Authorization</code> header of type <code>Bearer Token</code></p>
+<li><p>Use Postman to send a token to an API endpoint. The token must be sent in an HTTP <code>Authorization</code> header of type <code>Bearer Token</code>, for example:</p>
 <pre><code class="language-json">    Authorization: &quot;Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjV1SlZpY09mY1FTQ19FRTF2VER2ZyJ9.eyJpc3MiOiJodHRwczovL2Rldi0xdTF5ZzYtbS5ldS5hdXRoMC5jb20vIiwic3ViIjoid1V1cGpaTVZiVlA5VlNaeGp0dElkTnVDeDd4TXhJR1hAY2xpZW50cyIsImF1ZCI6Imh0dHBzOi8vbWFuZHlzYXBpIiwiaWF0IjoxNjI5ODk4NTgwLCJleHAiOjE2Mjk5ODQ5ODAsImF6cCI6IndVdXBqWk1WYlZQOVZTWnhqdHRJZE51Q3g3eE14SUdYIiwiZ3R5IjoiY2xpZW50LWNyZWRlbnRpYWxzIn0.FJyDPCgTUiwWw2707A56qwtlsUTJ-qqZDdY0CTW7m7kTqigJ0bayRuAa1KzJDB5HhBdDdLnVv1nzcWrOKvPd-84_51pnax8EOVkkW_vO4RL_zp89tENC9dHtXGMUqXhIwWMtiIjHoF1xJUmLfrlqmR9n3KtZr8cdELlTO7a1uESwCSQtd-iCtJ3mX2hkJ-zudmzHRxhTHGnR5XSQSx50JzKG24WXF7z-wAFuCgTadlyVvngytU0_MjyuS937kxqfDWVROy-xbo696k0iGcaH_fZo5YGkCPhKucx04FeZef52PwBelJZuN9gi6GGvj9JsZSb476Wf9Le2Y8qKwOeg2Q&quot;
 </code></pre></li>
 <li><p>Verify you are not able to access any <code>/messages</code> routes without a token. You should receive a status code of 401 Unauthorized.</p></li>
-<li><p>Commit your code to GitHub and share the link with your coach for review.</p></li>
+<li><p>Commit your code to GitHub and notify your coach that this assignment is complete.</p></li>
 </ol>
 <h3>Assignment extension tasks</h3>
-<ol>
-<li><p>Replace the Postman call with an App which requests a token and then calls your MessageAPI. You can use use the sample code from the Auth0 <code>Test</code> tab or use JavaScript <a href="https://npmjs.com/node-fetch">node-fetch</a> to make the request.</p>
-<pre><code class="language-javascript"><span class="hljs-comment">// user is authenticated - get a token</span>
-<span class="hljs-keyword">const</span> auth0Config = {
-    <span class="hljs-attr">client_id</span>: YOUR_CLIENT_ID,              <span class="hljs-comment">// replace with the Test application client id</span>
-    <span class="hljs-attr">client_secret</span>: YOUR_CLIENT_SECRET,      <span class="hljs-comment">// replace with the Test application client secret</span>
-    <span class="hljs-attr">audience</span>: <span class="hljs-string">&#x27;messageAPI&#x27;</span>,
-    <span class="hljs-attr">grant_type</span>: <span class="hljs-string">&#x27;client_credentials&#x27;</span>
-}
-<span class="hljs-keyword">const</span> {access_token} = <span class="hljs-keyword">await</span> fetch(<span class="hljs-string">&#x27;https://YOUR_DOMAIN/oauth/token&#x27;</span>, {
-    <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;POST&#x27;</span>,
-    <span class="hljs-attr">headers</span>: {
-        <span class="hljs-string">&#x27;content-type&#x27;</span>: <span class="hljs-string">&#x27;application/json&#x27;</span>
-    },
-    <span class="hljs-attr">body</span>: <span class="hljs-built_in">JSON</span>.stringify(auth0Config)
-}).then(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> res.json())
-
-res.send(access_token)
-</code></pre></li>
-</ol>
-<p>TODO - add in call API code</p>
 <ol>
 <li>Add the ability to secure individual endpoints based on <a href="https://auth0.com/docs/scopes/api-scopes">API scopes</a>. One scope should allow read access i.e. allow access to only the <code>GET /messages</code> and <code>GET /messages/{id?}</code> endpoints and the other scope should allow access to all endpoints. Java developers may find this <a href="https://auth0.com/blog/securing-spring-boot-apis-and-spas-with-oauth2/">help for managing scopes for Java developers</a> article useful.</li>
 </ol>

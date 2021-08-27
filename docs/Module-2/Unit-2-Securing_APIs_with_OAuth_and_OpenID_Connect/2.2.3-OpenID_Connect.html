@@ -78,7 +78,7 @@ This will create a new application called <code>My App</code> in the Auth0 Dashb
   <span class="hljs-attr">authRequired</span>: <span class="hljs-literal">false</span>,
   <span class="hljs-attr">auth0Logout</span>: <span class="hljs-literal">true</span>,
   <span class="hljs-attr">clientSecret</span>: process.env.SECRET, 
-  <span class="hljs-attr">baseURL</span>: <span class="hljs-string">&#x27;http://localhost:3000&#x27;</span>,
+  <span class="hljs-attr">baseURL</span>: <span class="hljs-string">&#x27;http://localhost:&#x27;</span>+process.env.PORT,
   <span class="hljs-attr">clientID</span>: process.env.CLIENT_ID,
   <span class="hljs-attr">issuerBaseURL</span>: process.env.ISSUER_BASE_URL
 };
@@ -102,7 +102,7 @@ This will create a new application called <code>My App</code> in the Auth0 Dashb
     <span class="hljs-built_in">console</span>.error(error);
   }
 </code></pre>
-<p>One the integration is complete, commit your code to GitHub and share the link with your coach for review.</p>
+<p>One the integration is complete, commit your code to GitHub and notify your coach that this assignment is complete.</p>
 <h2>Additional Resources</h2>
 <p>The following resources summarise the process of integrating OIDC into a web app and calling an API.</p>
 <ul>
