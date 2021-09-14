@@ -1,0 +1,38 @@
+@font-face {
+    font-family: "AtlasGrotesk-Medium";
+    src: url("https://multiverselearningproducts.github.io/curriculum/fonts/AtlasGrotesk-Medium.otf")
+        format("opentype");
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: "AtlasGrotesk-Regular";
+    src: url("https://multiverselearningproducts.github.io/curriculum/fonts/AtlasGrotesk-Regular.otf")
+        format("opentype");
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: "AtlasGrotesk-RegularItalic";
+    src: url("https://multiverselearningproducts.github.io/curriculum/fonts/AtlasGrotesk-RegularItalic.otf")
+        format("opentype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+    --mv-ultraviolet: #4d61f4;
+    --mv-supernova: #ffe352;
+    --mv-white-dwarf: #f4f4f4;
+    --mv-molten: #ff7c66;
+    --mv-electron: #64abff;
+    --mv-deep-space: #242456;
+    --mv-aurora: #59d8a1;
+    --mv-gray: #c8c8d5;
+}
+body {
+    font-family: 'AtlasGrotesk-Regular';
+}
+img {
+    max-width: 100%;
+}
