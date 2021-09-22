@@ -3,7 +3,6 @@
   <head>
     <title>SWE at Multiverse</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="/curriculum/slides.css"/>
     <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
   </head>
   <body>
@@ -12,6 +11,12 @@
       const local = ['localhost', '127.0.0.1', '0.0.0.0'].includes(window.location.hostname)
       const baseUrl = local ? '/assets/slides' : '/curriculum/slides'
       remark.create({sourceUrl: `${baseUrl}/${window.location.hash.substring(1) || 'default'}.md`})
+      
+      const style = document.createElement('link')
+      style.type = 'text/css'
+      style.rel = 'stylesheet'
+      style.href = local ? '../slides.css' : 'https://multiverselearningproducts.github.io/curriculum/slides.css'
+      document.head.appendChild(style)
     </script>
   </body>
 </html>
