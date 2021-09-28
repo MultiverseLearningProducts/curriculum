@@ -1,26 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>SWE at WhiteHat</title>
+    <title>SWE at Multiverse</title>
     <meta charset="utf-8">
-    <style>
-      @font-face {
-        font-family: 'Roboto';
-        src: '/Roboto-Regular.ttf'
-      }
-      body {
-        font-family: 'Roboto';
-      }
-      img {
-        max-width: 100%;
-      }
-    </style>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
   </head>
   <body>
     <textarea id="source"></textarea>
-    <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
     <script>
-      remark.create({sourceUrl: `/swe/slides/${window.location.hash.substring(1) || 'default'}.md`})
+      const local = ['localhost', '127.0.0.1', '0.0.0.0'].includes(window.location.hostname)
+      const baseUrl = local ? '/assets/slides' : '/curriculum/slides'
+      remark.create({sourceUrl: `${baseUrl}/${window.location.hash.substring(1) || 'default'}.md`})
+      
+      const style = document.createElement('link')
+      style.type = 'text/css'
+      style.rel = 'stylesheet'
+      style.href = local ? '../slides.css' : 'https://multiverselearningproducts.github.io/curriculum/slides.css'
+      document.head.appendChild(style)
     </script>
   </body>
 </html>
