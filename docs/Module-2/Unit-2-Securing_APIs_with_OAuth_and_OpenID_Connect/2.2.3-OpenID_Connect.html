@@ -31,7 +31,7 @@
 </ul>
 <h2>Lesson</h2>
 <p>OAuth deals specifically with <em>authorization</em>. OpenID Connect (OIDC) is a protocol which is built on top of OAuth 2.0 and focusses on user <em>authentication</em>. It is widely used to enable user logins on websites and mobile apps.</p>
-<p><figure><img src="https://user-images.githubusercontent.com/1316724/131079947-85492473-ee7f-4826-b327-c6d84640dc8c.png" alt="Open ID Connect flow shown in a UML sequence diagram"><figcaption></figcaption></figure></p>
+<p><figure><img src="https://user-images.githubusercontent.com/1316724/135565726-9727d8d9-55dc-42e5-81b4-ac6d9dfbc928.png" alt="Open ID Connect flow illustrated in a sequence diagram"><figcaption></figcaption></figure></p>
 <p>OIDC allows apps to verify the identity of the end user and obtain basic profile information such as name and email address. This profile information is held within another JWT known as the ID token.</p>
 <blockquote>
 <p>Use https://jwt.io to find out the name and email hidden in this JWT ID token <code>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkZyZWQgRmxpbnRzdG9uZSIsImVtYWlsIjoiZnJlZC5mbGludHN0b25lQHdoaXRlaGF0Lm9yZy51ayIsImlhdCI6MTUxNjIzOTAyMn0.DlHfHG2qZXpWszZv-X8LwoQkZUlqVgaXoRmnHXE2y_I</code></p>
@@ -41,7 +41,7 @@
 <h3>Adding usernames &amp; passwords to Auth0</h3>
 <p>Navigate to <code>User Management-&gt;Users</code> and choose to <code>Create User</code>. Enter the credentials and click <code>Create</code>. Repeat for any other users you have. Note that Auth0 will take care of hashing the passwords for you.</p>
 <h3>Creating a login page</h3>
-<p>Auth0's login page can be integrated into many different types of apps including mobile, single page apps and regular web apps. For this lesson we will choose to add login/logout and profile functionality to a &quot;regular web app&quot;.</p>
+<p>Auth0's login page can be integrated into many different types of apps including mobile, single page apps and regular web apps. For this lesson we will choose to add login/logout and profile functionality to a &quot;regular web app&quot;. Note that regular web apps are server-side apps where the source code is not publicly exposed, hence they can use the <a href="https://auth0.com/docs/authorization/flows/authorization-code-flow">OAuth Authorization Code Flow</a> which exchanges an Authorization Code for a token.</p>
 <p><figure><img src="https://user-images.githubusercontent.com/4499581/105991041-39273400-609b-11eb-9078-6975f7a5e2bc.png" alt="Regular Web App Option on Auth0"><figcaption></figcaption></figure></p>
 <ol>
 <li><p>Using the Auth0 Dashboard, navigate to <code>Applications</code> and choose to <code>Create Application</code>. Choose <code>Regular Web Applications</code>.</p></li>
@@ -83,8 +83,9 @@ This will create a new application called <code>My App</code> in the Auth0 Dashb
   <span class="hljs-attr">issuerBaseURL</span>: process.env.ISSUER_BASE_URL
 };
 </code></pre>
-<p>You can then use the following code to call the Messages API.</p>
-<pre><code class="language-javascript">    <span class="hljs-comment">// retrieve the access token</span>
+<p>You will then need to create a new <code>/messages</code> page which displays the user's messages. You can  use the following code to access a token and call the Messages API.</p>
+<pre><code class="language-javascript">  <span class="hljs-keyword">try</span> { 
+    <span class="hljs-comment">// retrieve the access token</span>
     <span class="hljs-keyword">const</span> { token_type, access_token } = req.oidc.accessToken; 
 
     <span class="hljs-comment">// call the API with the access token</span>
