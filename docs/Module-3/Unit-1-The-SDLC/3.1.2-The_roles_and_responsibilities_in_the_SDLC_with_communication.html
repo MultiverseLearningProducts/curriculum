@@ -40,7 +40,7 @@
 <tr><td style="text-align:left">Project Sponsor</td><td style="text-align:left">Owns the project is accountable to the organisation for delivery of business benefits (feasibility study) controls the scope of the project</td></tr>
 <tr><td style="text-align:left">Managers</td><td style="text-align:left">advise, have a say, own part of the solution</td></tr>
 <tr><td style="text-align:left">Users</td><td style="text-align:left">People who use the current system, and will use the new system. Need to articulate their individual processes and buy into the new solution</td></tr>
-<tr><td style="text-align:left">Project Manager</td><td style="text-align:left">esponsible for development and deliverable to the Project Sponsor</td></tr>
+<tr><td style="text-align:left">Project Manager</td><td style="text-align:left">responsible for development and deliverable to the Project Sponsor</td></tr>
 <tr><td style="text-align:left">Business Analysts</td><td style="text-align:left">Eliciting, documenting, analysing requirements</td></tr>
 <tr><td style="text-align:left">Testers</td><td style="text-align:left">Help validate business analysts elicited requirements are testable</td></tr>
 <tr><td style="text-align:left">Developers</td><td style="text-align:left">Can consult with business analysts, verify that requirements are clearly defined and add technical detail to proposals</td></tr>
@@ -68,7 +68,7 @@
             const nav = document.getElementById('navigation')
             nav.style.display = nav.offsetParent ? 'none' : 'block'
         }
-        ; (function footerNav() {
+        function footerNav() {
             const links = document.getElementsByClassName('nav-link')
             const hrefs = Array.from(links).map(a => a.getAttribute('href'))
             const index = hrefs.findIndex(href => {
@@ -92,8 +92,8 @@
                 next.href = hrefs[nextIndex]
                 document.getElementById('footer-nav').append(next)
             }
-        })()
-
+        }
+        window.addEventListener('DOMContentLoaded', footerNav)
     </script>
 </body>
 

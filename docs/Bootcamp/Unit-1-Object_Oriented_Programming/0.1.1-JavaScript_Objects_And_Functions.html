@@ -101,7 +101,7 @@ How can we access the name of the parents?</p>
             const nav = document.getElementById('navigation')
             nav.style.display = nav.offsetParent ? 'none' : 'block'
         }
-        ; (function footerNav() {
+        function footerNav() {
             const links = document.getElementsByClassName('nav-link')
             const hrefs = Array.from(links).map(a => a.getAttribute('href'))
             const index = hrefs.findIndex(href => {
@@ -125,8 +125,8 @@ How can we access the name of the parents?</p>
                 next.href = hrefs[nextIndex]
                 document.getElementById('footer-nav').append(next)
             }
-        })()
-
+        }
+        window.addEventListener('DOMContentLoaded', footerNav)
     </script>
 </body>
 
