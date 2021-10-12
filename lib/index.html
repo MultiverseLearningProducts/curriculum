@@ -1,38 +1,68 @@
 <!DOCTYPE html>
 <html lang="en-GB">
-    <head>
-        <meta charset="utf-8">
-        <title><%=title%></title>
-        <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <link rel="shortcut icon" type="image/x-icon" href="/curriculum/favicon.ico"/>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/an-old-hope.min.css">
-        <link rel="stylesheet" href="/curriculum/style.css"/>
-        <script src="/curriculum/js/highlight.min.js"></script>
-        <script src="/curriculum/js/bash.min.js"></script>
-        <script src="/curriculum/js/java.min.js"></script>
-        <script src="/curriculum/js/javascript.min.js"></script>
-        <script src="/curriculum/js/sql.min.js"></script>
-    </head>
-    <body>
-        <button 
-            id="navigation-toggle"
-            aria-expanded="false"
-            aria-haspopup="true"
-            onclick="toggleNav()"
-            onkeydown="event => {event.keyCode === 13 ? toggleNav() : null}"
-            tabindex="1">Table of contents</button>
-        <%=nav%>
+
+<head>
+    <meta charset="utf-8">
+    <title>
+        <%=title%>
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" type="image/x-icon" href="/curriculum/favicon.ico" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/an-old-hope.min.css">
+    <link rel="stylesheet" href="/curriculum/style.css" />
+    <script src="/curriculum/js/highlight.min.js"></script>
+    <script src="/curriculum/js/bash.min.js"></script>
+    <script src="/curriculum/js/java.min.js"></script>
+    <script src="/curriculum/js/javascript.min.js"></script>
+    <script src="/curriculum/js/sql.min.js"></script>
+</head>
+
+<body>
+    <button id="navigation-toggle" aria-expanded="false" aria-haspopup="true" onclick="toggleNav()"
+        onkeydown="event => {event.keyCode === 13 ? toggleNav() : null}" tabindex="1">Table of contents</button>
+    <%=nav%>
         <%=content%>
-        <script src="/curriculum/js/tabbed-code-blocks.js"></script>
-        <script>
-            function toggleNav() {
-                const button = document.getElementById('navigation-toggle')
-                const isAriaExp = button.getAttribute('aria-expanded')
-                const newAriaExp = (isAriaExp == "false") ? "true" : "false"
-                button.setAttribute('aria-expanded', newAriaExp)
-                const nav = document.getElementById('navigation')
-                nav.style.display = nav.offsetParent ? 'none' : 'block'
-            }
-        </script>
-    </body>
+            <nav id="footer-nav"></nav>
+            <script src="/curriculum/js/tabbed-code-blocks.js"></script>
+            <script>
+                function toggleNav() {
+                    const button = document.getElementById('navigation-toggle')
+                    const isAriaExp = button.getAttribute('aria-expanded')
+                    const newAriaExp = (isAriaExp == "false") ? "true" : "false"
+                    button.setAttribute('aria-expanded', newAriaExp)
+                    const nav = document.getElementById('navigation')
+                    nav.style.display = nav.offsetParent ? 'none' : 'block'
+                }
+                ; (function footerNav() {
+                    const nav = document.getElementById('footer-nav')
+                    const links = document.getElementsByClassName('nav-link')
+                    const hrefs = Array.from(links).map(a => a.getAttribute('href'))
+                    const current = hrefs.findIndex(href => {
+                        const page = href.split("/").pop()
+                        const current = window.location.href.split("/").pop()
+                        return page === current
+                    })
+                    const prevIndex = current - 1
+                    const nextIndex = current + 1
+                    if (prevIndex > -1) {
+                        const a = document.createElement('a')
+                        const link = document.createTextNode("◀︎ Prev")
+                        a.appendChild(link)
+                        a.title = "Previous session notes"
+                        a.href = hrefs[prevIndex]
+                        nav.appendChild(a)
+                    }
+                    if (nextIndex < hrefs.length) {
+                        const a = document.createElement('a')
+                        const link = document.createTextNode("Next ►")
+                        a.appendChild(link)
+                        a.title = "Next session notes"
+                        a.href = hrefs[nextIndex]
+                        nav.appendChild(a)
+                    }
+                })()
+
+            </script>
+</body>
+
 </html>
