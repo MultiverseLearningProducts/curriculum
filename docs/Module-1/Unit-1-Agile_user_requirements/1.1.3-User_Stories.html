@@ -56,29 +56,28 @@
             nav.style.display = nav.offsetParent ? 'none' : 'block'
         }
         ; (function footerNav() {
-            const nav = document.getElementById('footer-nav')
             const links = document.getElementsByClassName('nav-link')
             const hrefs = Array.from(links).map(a => a.getAttribute('href'))
-            const current = hrefs.findIndex(href => {
+            const index = hrefs.findIndex(href => {
                 const page = href.split("/").pop()
                 const current = window.location.href.split("/").pop()
                 return page === current
             })
-            const prevIndex = current - 1
-            const nextIndex = current + 1
+            const prevIndex = index - 1
+            const nextIndex = index + 1
             if (prevIndex > -1) {
                 const prev = document.createElement('a') 
                 prev.appendChild(document.createTextNode("◀︎ Prev"))
                 prev.title = "Previous session notes"
                 prev.href = hrefs[prevIndex]
-                nav.appendChild(prev)
+                document.getElementById('footer-nav').prepend(prev)
             }
             if (nextIndex < hrefs.length) {
                 const next = document.createElement('a') 
                 next.appendChild(document.createTextNode("Next ►"))
                 next.title = "Next session notes"
                 next.href = hrefs[nextIndex]
-                nav.appendChild(next)
+                document.getElementById('footer-nav').append(next)
             }
         })()
 
