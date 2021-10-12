@@ -236,11 +236,11 @@ iframe {
   max-width: 48rem;
   margin: 2rem auto;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 }
 
 #footer-nav a {
   text-decoration: none;
-  color: #c8c8d5;
+  color: #ff7c66;
 }
