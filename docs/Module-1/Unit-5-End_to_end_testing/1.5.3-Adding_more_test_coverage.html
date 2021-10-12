@@ -118,6 +118,7 @@ it(<span class="hljs-string">&#x27;should change the button text when clicked&#x
                 next.href = hrefs[nextIndex]
                 document.getElementById('footer-nav').append(next)
             }
+            window.removeEventListener('DOMContentLoaded', footerNav)
         }
         window.addEventListener('DOMContentLoaded', footerNav)
     </script>

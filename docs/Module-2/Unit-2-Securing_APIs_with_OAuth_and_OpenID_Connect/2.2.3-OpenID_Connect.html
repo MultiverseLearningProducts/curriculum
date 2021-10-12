@@ -145,6 +145,7 @@ This will create a new application called <code>My App</code> in the Auth0 Dashb
                 next.href = hrefs[nextIndex]
                 document.getElementById('footer-nav').append(next)
             }
+            window.removeEventListener('DOMContentLoaded', footerNav)
         }
         window.addEventListener('DOMContentLoaded', footerNav)
     </script>

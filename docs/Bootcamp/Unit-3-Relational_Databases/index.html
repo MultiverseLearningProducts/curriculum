@@ -61,6 +61,7 @@
                 next.href = hrefs[nextIndex]
                 document.getElementById('footer-nav').append(next)
             }
+            window.removeEventListener('DOMContentLoaded', footerNav)
         }
         window.addEventListener('DOMContentLoaded', footerNav)
     </script>

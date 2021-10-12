@@ -123,6 +123,7 @@ describe(<span class="hljs-string">&#x27;Restaurants&#x27;</span>, <span class="
                 next.href = hrefs[nextIndex]
                 document.getElementById('footer-nav').append(next)
             }
+            window.removeEventListener('DOMContentLoaded', footerNav)
         }
         window.addEventListener('DOMContentLoaded', footerNav)
     </script>

@@ -129,6 +129,7 @@ We are about to create a user interface for our restaurant app, before we start 
                 next.href = hrefs[nextIndex]
                 document.getElementById('footer-nav').append(next)
             }
+            window.removeEventListener('DOMContentLoaded', footerNav)
         }
         window.addEventListener('DOMContentLoaded', footerNav)
     </script>

@@ -131,6 +131,7 @@ A convention is to UPPERCASE the keywords in SQL it can make it easier to read t
                 next.href = hrefs[nextIndex]
                 document.getElementById('footer-nav').append(next)
             }
+            window.removeEventListener('DOMContentLoaded', footerNav)
         }
         window.addEventListener('DOMContentLoaded', footerNav)
     </script>

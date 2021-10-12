@@ -169,6 +169,7 @@ app.post(<span class="hljs-string">&#x27;/restaurants&#x27;</span>, images.singl
                 next.href = hrefs[nextIndex]
                 document.getElementById('footer-nav').append(next)
             }
+            window.removeEventListener('DOMContentLoaded', footerNav)
         }
         window.addEventListener('DOMContentLoaded', footerNav)
     </script>
