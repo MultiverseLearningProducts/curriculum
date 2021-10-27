@@ -40,7 +40,8 @@
 <li>In VirtualBox create a new VM (Virtual Machine) and name it, select type <strong>Linux</strong>, version <strong>Debian(64-bit)</strong></li>
 <li>Choose 'create' and accept all the default options</li>
 <li>In the settings of the new VM goto <strong>storage</strong> in the section for the optical disc select the .iso image for the raspberry pi you just downloaded</li>
-<li>When you start the machine it will boot from this - select install from the list</li>
+<li>When you start the machine it will boot from this - select <strong>install</strong> from the list</li>
+<li>When it comes to select the GRUB loader choose <code>/dev/sda (ata-VBOX_HARDDISK...)</code></li>
 <li>Finally you'll see you now can run a little computer inside your big computer!</li>
 </ul>
 <p>This VM will behave like a distinct computer, for example it has it's own ip address on your network, you can install software on it.</p>
@@ -60,20 +61,118 @@
 <li>Worker nodes</li>
 </ul>
 <p>The manager nodes do the work of managing the cluster, labeling and keeping track of worker nodes and services. There might be a number of manager nodes so one can be swapped out if need be and everything will keep running. Same with worker nodes. In a cluster you want to be able to power down any node without impacting the services, and be able to then provision and join a replacement node into the cluster if you want to.</p>
-<p>If you can replace nodes why can't you add them too? You can. This is called horizontal scaling. You start with a cluster of 3 nodes and as demand for your services increases you can match that demand by adding nodes. For example in the autumn/fall Walmarts has a spike in website traffic around '<a href="https://en.wikipedia.org/wiki/Black_Friday_(shopping)">black friday</a>' so they anticipate the extra demand by scaling horizontally adding extra nodes. After the holiday season Walmart don't need all those extra nodes as demand reduces, so to save the costs of keeping all that availability there they can scale back and remove the extra nodes. You often here infrastructure set up like this as 'elastic'.</p>
+<p>If you can replace nodes why can't you add them too? You can. This is called horizontal scaling. You start with a cluster of 3 nodes and as demand for your services increases you can match that demand by adding nodes. For example in the autumn/fall Walmarts has a spike in website traffic around '<a href="https://en.wikipedia.org/wiki/Black_Friday_(shopping)">black friday</a>' so they anticipate the extra demand by scaling horizontally adding extra nodes. After the holiday season Walmart don't need all those extra nodes as demand reduces, so to save the costs of keeping all that availability there they can scale back and remove the extra nodes. You often here infrastructure set up like this described as 'elastic'.</p>
+<h3>Set up your own cluster</h3>
+<p>There are different ways you can create a cluster for yourself. You can pay for VMs on <a href="https://aws.amazon.com/">AWS</a>, <a href="https://www.digitalocean.com/">DigitalOcean</a>, <a href="https://azure.microsoft.com/en-gb/free/">Azure</a> or <a href="https://www.scaleway.com/en/">Scaleway</a> (Scaleway is ARM based servers). Whatever service you use you'll need to<br>
+do the following:</p>
+<ul>
+<li>create at least 3 nodes</li>
+<li>enable ssh (usually you have to add your public ssh key <strong>BEFORE</strong> you create your node)</li>
+<li>install a flavour of Linux like Ubuntu, Debian or Busybox (Alpine)</li>
+<li>find the ip addresses of each node and make a note of them <code>ifconfig</code></li>
+<li>name each node by updating <code>/etc/hosts</code> and <code>/etc/hostname</code> i.e. <code>192.168.56.101 manager01</code></li>
+</ul>
+<h4>VirtualBox</h4>
+<ul>
+<li>Install ruby</li>
+<li>Install <a href="https://www.vagrantup.com/downloads">Vagrant</a></li>
+<li>create a <code>Vagrantfile</code> and add the following</li>
+</ul>
+<pre><code class="language-ruby"><span class="hljs-comment"># -*- mode: ruby -*-</span>
+<span class="hljs-comment"># vi: set ft=ruby :</span>
+
+<span class="hljs-variable">$install_docker_script</span> = <span class="hljs-string">&lt;&lt;SCRIPT
+echo &quot;Installing dependencies ...&quot;
+sudo apt-get update
+echo Installing Docker...
+curl -sSL https://get.docker.com/ | sh
+sudo usermod -aG docker vagrant
+SCRIPT</span>
+
+BOX_NAME = <span class="hljs-string">&quot;ubuntu/xenial64&quot;</span>
+MEMORY = <span class="hljs-string">&quot;512&quot;</span>
+MANAGERS = <span class="hljs-number">2</span>
+MANAGER_IP = <span class="hljs-string">&quot;172.20.20.1&quot;</span>
+WORKERS = <span class="hljs-number">2</span>
+WORKER_IP = <span class="hljs-string">&quot;172.20.20.10&quot;</span>
+CPUS = <span class="hljs-number">2</span>
+VAGRANTFILE_API_VERSION = <span class="hljs-string">&quot;2&quot;</span>
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) <span class="hljs-keyword">do</span> <span class="hljs-params">|config|</span>
+    <span class="hljs-comment">#Common setup</span>
+    config.vm.box = BOX_NAME
+    config.vm.synced_folder <span class="hljs-string">&quot;.&quot;</span>, <span class="hljs-string">&quot;/vagrant&quot;</span>
+    config.vm.provision <span class="hljs-string">&quot;shell&quot;</span>,<span class="hljs-symbol">inline:</span> <span class="hljs-variable">$install_docker_script</span>, <span class="hljs-symbol">privileged:</span> <span class="hljs-literal">true</span>
+    config.vm.provider <span class="hljs-string">&quot;virtualbox&quot;</span> <span class="hljs-keyword">do</span> <span class="hljs-params">|vb|</span>
+      vb.memory = MEMORY
+      vb.cpus = CPUS
+    <span class="hljs-keyword">end</span>
+    <span class="hljs-comment">#Setup Manager Nodes</span>
+    (<span class="hljs-number">1</span>..MANAGERS).each <span class="hljs-keyword">do</span> <span class="hljs-params">|i|</span>
+        config.vm.define <span class="hljs-string">&quot;manager0<span class="hljs-subst">#{i}</span>&quot;</span> <span class="hljs-keyword">do</span> <span class="hljs-params">|manager|</span>
+          manager.vm.network <span class="hljs-symbol">:private_network</span>, <span class="hljs-symbol">ip:</span> <span class="hljs-string">&quot;<span class="hljs-subst">#{MANAGER_IP}</span><span class="hljs-subst">#{i}</span>&quot;</span>
+          manager.vm.hostname = <span class="hljs-string">&quot;manager0<span class="hljs-subst">#{i}</span>&quot;</span>
+          <span class="hljs-keyword">if</span> i == <span class="hljs-number">1</span>
+            <span class="hljs-comment">#Only configure port to host for Manager01</span>
+            config.vm.network <span class="hljs-symbol">:forwarded_port</span>, <span class="hljs-symbol">guest:</span> <span class="hljs-number">80</span>, <span class="hljs-symbol">host:</span> <span class="hljs-number">80</span>
+            config.vm.network <span class="hljs-symbol">:forwarded_port</span>, <span class="hljs-symbol">guest:</span> <span class="hljs-number">5432</span>, <span class="hljs-symbol">host:</span> <span class="hljs-number">5432</span>
+            config.vm.network <span class="hljs-symbol">:forwarded_port</span>, <span class="hljs-symbol">guest:</span> <span class="hljs-number">2368</span>, <span class="hljs-symbol">host:</span> <span class="hljs-number">2368</span>
+            manager.vm.network <span class="hljs-symbol">:forwarded_port</span>, <span class="hljs-symbol">guest:</span> <span class="hljs-number">8080</span>, <span class="hljs-symbol">host:</span> <span class="hljs-number">8080</span>
+            manager.vm.network <span class="hljs-symbol">:forwarded_port</span>, <span class="hljs-symbol">guest:</span> <span class="hljs-number">5000</span>, <span class="hljs-symbol">host:</span> <span class="hljs-number">5000</span>
+            manager.vm.network <span class="hljs-symbol">:forwarded_port</span>, <span class="hljs-symbol">guest:</span> <span class="hljs-number">9000</span>, <span class="hljs-symbol">host:</span> <span class="hljs-number">9000</span>
+          <span class="hljs-keyword">end</span>
+        <span class="hljs-keyword">end</span>
+    <span class="hljs-keyword">end</span>
+    <span class="hljs-comment">#Setup Woker Nodes</span>
+    (<span class="hljs-number">1</span>..WORKERS).each <span class="hljs-keyword">do</span> <span class="hljs-params">|i|</span>
+        config.vm.define <span class="hljs-string">&quot;worker0<span class="hljs-subst">#{i}</span>&quot;</span> <span class="hljs-keyword">do</span> <span class="hljs-params">|worker|</span>
+            worker.vm.network <span class="hljs-symbol">:private_network</span>, <span class="hljs-symbol">ip:</span> <span class="hljs-string">&quot;<span class="hljs-subst">#{WORKER_IP}</span><span class="hljs-subst">#{i}</span>&quot;</span>
+            worker.vm.hostname = <span class="hljs-string">&quot;worker0<span class="hljs-subst">#{i}</span>&quot;</span>
+        <span class="hljs-keyword">end</span>
+    <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<ul>
+<li><code>vagrant up</code></li>
+<li><code>vagrant ssh manager01</code></li>
+<li><code>vagrant ssh manager02</code></li>
+<li><code>vagrant ssh worker01</code></li>
+<li><code>vagrant ssh worker02</code></li>
+</ul>
+<h4>Play With Docker</h4>
+<ul>
+<li><a href="https://labs.play-with-docker.com/">https://labs.play-with-docker.com/</a></li>
+<li>Login with your Docker account (create one if you need to)</li>
+<li>Start a session (you have 4 hours of compute time)</li>
+<li>Add instances (they will already have ip addresses and names)</li>
+</ul>
+<h4>Create the Cluster</h4>
+<p>Once you have your set of nodes ready select a 'manager' node and run the following docker command to initialise that node as the manager.</p>
+<pre><code class="language-sh">`sudo docker swarm init --advertise-addr NODE1_IP_ADDRESS`
+</code></pre>
+<p>Swap <code>NODE1_IP_ADDRESS</code> with the ip address of your manager node. You'll get a command to then run on your worker nodes (see below) so copy and paste this so your other worker nodes join the 'swarm' (Docker's name for a cluster).</p>
+<pre><code class="language-sh">docker swarm join --token SWMTKN-1-0b8xy6wvz5vs1ep0j1bkedrhfkncqumeqc57s3bvftbx053ecx-5vkjneteyuy26luxxj9fdh9vz 192.168.56.111:2377
+</code></pre>
+<h4>Visualize the Cluster</h4>
+<p>You've just created a cluster! To begin to appreciate what you have just done we are going to download and install a tool to help us monitor and manager our cluster. There is an open source project called <a href="https://www.portainer.io/">Portainer</a> that can help us with this. On the <strong>manager node</strong> run the following command to download the 'stack' file.</p>
+<pre><code class="language-sh">curl -L https://downloads.portainer.io/portainer-agent-stack.yml -o portainer-agent-stack.yml
+</code></pre>
+<p>If you <code>cat portainer-agent-stack.yml</code> you will recognise this is a docker compose file. However there are some extensions that make this a 'stack' file. Can you see the section labeled <code>deploy:</code> because we are going to run this docker compose file in a swarm (cluster) we have some extra config, like how many replicas of this service we will run, can the service be deployed on any node or must it be a particular type of node, etc.</p>
+<p>When you are ready deploy this stack into your cluster.</p>
+<pre><code class="language-sh">docker stack deploy -c portainer-agent-stack.yml portainer
+</code></pre>
+<p>If you are using <a href="https://labs.play-with-docker.com/">https://labs.play-with-docker.com/</a> you'll see some ports will open at the top of your screen, click on the <strong>9443</strong> port - you might need to add <code>https://</code> to the beginning of the URL to get it to load, its doing some fancy things with ssh tunnels and SSL is not going to work so ignore the warnings - your good - you know you are doing something a little funky.</p>
+<p>If you have a cluster of VMs visit <code>https://NODE1_IP_ADDRESS:9000</code> where <code>NODE1_IP_ADDRESS</code> is the ip address of your manager node.</p>
+<ul>
+<li>Make the admin account</li>
+<li>Navigate to Swarm visualise the cluster</li>
+</ul>
 <h2>Networking</h2>
 <ul>
 <li>load balancers</li>
 <li>Ingres</li>
 <li>declarative</li>
 <li>self-healing</li>
-</ul>
-<h2>Assignment</h2>
-<p>You will need:</p>
-<ul>
-<li>VirtualBox or 3-4 raspberry pi</li>
-<li>Raspberry pi image burned onto 4 SDcards</li>
-<li>4 nodes with docker installed on each node</li>
 </ul>
 <h3>Setup</h3>
 <ul>
@@ -83,7 +182,7 @@
 <li>find ip addresses of your raspberry pies n your network (Lanscan)</li>
 <li>update hostnames on each pi (sudo nano /etc/hosts &amp; sudo nano /etc/hostname)</li>
 <li><code>sudo apt-get update &amp;&amp; sudo apt-get upgrade</code></li>
-<li>install docker on each node <code>curl -sSL https://get.docker.com | sh</code></li>
+<li>install docker on each node <code>sudo curl -sSL https://get.docker.com | sh</code></li>
 <li>install docker on VirtualBox pi <code>curl -fsSL https://get.docker.com -o get-docker.sh</code> || <code>sudo apt-get install docker.io</code></li>
 <li>(you may need this step) <code>sudo apt-get update --allow-releaseinfo-change</code></li>
 <li>modify the user by adding pi to the docker group <code>sudo usermod -aG docker pi</code></li>
@@ -108,67 +207,133 @@
 </ul>
 <h3>Compute in the cluster</h3>
 <ul>
-<li>network overlay <code>docker network create --driver overlay main_network</code></li>
+<li>network overlay <code>docker network create --driver overlay ghost_network</code></li>
 <li><code>docker network ls</code></li>
 <li><code>docker service logs service_name</code></li>
 </ul>
-<pre><code class="language-yaml"><span class="hljs-attr">version:</span> <span class="hljs-string">&quot;3.7&quot;</span>
+<pre><code class="language-yaml"><span class="hljs-attr">version:</span> <span class="hljs-string">&#x27;3.7&#x27;</span>
 
 <span class="hljs-attr">services:</span>
-  <span class="hljs-attr">cms:</span>
-    <span class="hljs-attr">image:</span> <span class="hljs-string">drupal</span>
-    <span class="hljs-attr">networks:</span>
-      <span class="hljs-bullet">-</span> <span class="hljs-string">main_network</span>
-    <span class="hljs-attr">ports:</span>
-      <span class="hljs-bullet">-</span> <span class="hljs-number">80</span><span class="hljs-string">:80</span>
-  <span class="hljs-attr">db:</span>
-    <span class="hljs-attr">image:</span> <span class="hljs-string">postgres:13</span>
-    <span class="hljs-attr">ports:</span>
-      <span class="hljs-bullet">-</span> <span class="hljs-number">5432</span><span class="hljs-string">:5432</span>
-    <span class="hljs-attr">volumes:</span>
-      <span class="hljs-bullet">-</span> <span class="hljs-string">db:/var/lib/postgresql/data</span>
+  <span class="hljs-attr">blog:</span>
+    <span class="hljs-attr">image:</span> <span class="hljs-string">ghost:4-alpine</span>
+    <span class="hljs-attr">depends_on:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">db</span>
+    <span class="hljs-attr">ports:</span> 
+        <span class="hljs-bullet">-</span> <span class="hljs-string">&quot;2368:2368&quot;</span>
     <span class="hljs-attr">environment:</span>
-      <span class="hljs-bullet">-</span> <span class="hljs-string">POSTGRES_USER=pi</span>
-      <span class="hljs-bullet">-</span> <span class="hljs-string">POSTGRES_PASSWORD=password</span>
-      <span class="hljs-bullet">-</span> <span class="hljs-string">POSTGRES_DATABASE=drupal</span>
+      <span class="hljs-attr">database__client:</span> <span class="hljs-string">mysql</span>
+      <span class="hljs-attr">database__connection__host:</span> <span class="hljs-string">db</span>
+      <span class="hljs-attr">database__connection__user:</span> <span class="hljs-string">ghostusr</span>
+      <span class="hljs-attr">database__connection__password:</span> <span class="hljs-string">ghostme</span>
+      <span class="hljs-attr">database__connection__database:</span> <span class="hljs-string">ghostdata</span>
     <span class="hljs-attr">deploy:</span>
+      <span class="hljs-attr">replicas:</span> <span class="hljs-number">3</span>
+    <span class="hljs-attr">networks:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">ghost_network</span>
+    <span class="hljs-attr">volumes:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">&quot;/mnt/content:/var/lib/ghost/content&quot;</span>
+  <span class="hljs-attr">db:</span>
+    <span class="hljs-attr">image:</span> <span class="hljs-string">mysql:5.7</span>
+    <span class="hljs-attr">ports:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">&quot;3306:3306&quot;</span>
+    <span class="hljs-attr">environment:</span>
+      <span class="hljs-attr">MYSQL_ROOT_PASSWORD:</span> <span class="hljs-string">example</span>
+      <span class="hljs-attr">MYSQL_USER:</span> <span class="hljs-string">ghostusr</span>
+      <span class="hljs-attr">MYSQL_PASSWORD:</span> <span class="hljs-string">ghostme</span>
+      <span class="hljs-attr">MYSQL_DATABASE:</span> <span class="hljs-string">ghostdata</span>
+    <span class="hljs-attr">deploy:</span>
+      <span class="hljs-attr">replicas:</span> <span class="hljs-number">1</span>
       <span class="hljs-attr">placement:</span>
         <span class="hljs-attr">constraints:</span>
-          <span class="hljs-bullet">-</span> <span class="hljs-string">node.role</span> <span class="hljs-string">==</span> <span class="hljs-string">manager</span>
+          <span class="hljs-bullet">-</span> <span class="hljs-string">&quot;node.role==manager&quot;</span>
     <span class="hljs-attr">networks:</span>
-      <span class="hljs-bullet">-</span> <span class="hljs-string">main_network</span>
-
-<span class="hljs-attr">volumes:</span>
-  <span class="hljs-attr">db:</span>
-
-<span class="hljs-attr">networks:</span>
-  <span class="hljs-attr">main_network:</span>
-    <span class="hljs-attr">external:</span> <span class="hljs-literal">true</span>
-</code></pre>
-<p>Database setup use database address <code>db</code>.</p>
-<ul>
-<li>any cluster ip address will resolve to drupal's port number</li>
-<li>which node is it actually running on</li>
-<li>Ingress Routing Mesh</li>
-<li>Replicas</li>
-<li>12 factor app <a href="https://madewithlove.com/blog/software-engineering/12-factors-in-the-era-of-containers/">read</a> <a href="https://medium.com/notbinary/the-twelve-factor-container-8d1edc2a49d4">simpler-read</a></li>
-</ul>
-<pre><code class="language-yaml"><span class="hljs-attr">version:</span> <span class="hljs-string">&#x27;3&#x27;</span>
-
-<span class="hljs-attr">services:</span>
-    <span class="hljs-attr">app:</span>
-        <span class="hljs-attr">image:</span> <span class="hljs-string">ghost:latest</span>
-        <span class="hljs-attr">ports:</span> 
-            <span class="hljs-bullet">-</span> <span class="hljs-string">&quot;2368:2368&quot;</span>
-        <span class="hljs-attr">restart:</span> <span class="hljs-string">always</span>
-        <span class="hljs-attr">deploy:</span>
-          <span class="hljs-attr">replicas:</span> <span class="hljs-number">3</span>
-        <span class="hljs-attr">networks:</span>
-          <span class="hljs-bullet">-</span> <span class="hljs-string">ghost_network</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">ghost_network</span>
+    <span class="hljs-attr">volumes:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">&quot;/mnt/mysql:/var/lib/mysql&quot;</span>
 <span class="hljs-attr">networks:</span>
     <span class="hljs-attr">ghost_network:</span>
-        <span class="hljs-attr">external:</span>
+        <span class="hljs-attr">external:</span> <span class="hljs-literal">true</span>
 </code></pre>
+<h3>Vagrant</h3>
+<ul>
+<li><code>vagrant up</code></li>
+<li><code>vagrant status</code></li>
+</ul>
+<pre><code class="language-sh">172.20.20.11 manager01
+172.20.20.12 manager02
+172.20.20.101 worker01
+172.20.20.102 worker02
+</code></pre>
+<ul>
+<li><code>vagrant ssh manager01</code> init swarm <code>docker swarm init --listen-addr 172.20.20.11:2377 --advertise-addr 172.20.20.11:2377</code></li>
+<li><code>vagrant ssh worker01</code> join workers</li>
+<li><code>docker swarm join-token manager</code></li>
+<li><code>curl -L https://downloads.portainer.io/portainer-agent-stack.yml -o portainer-agent-stack.yml</code></li>
+<li><code>docker stack deploy --compose-file=portainer-agent-stack.yml portainer</code></li>
+<li><a href="http://localhost:9000">localhost:9000</a></li>
+<li>wait for containers to be pulled <code>docker service ls</code></li>
+</ul>
+<h3>GlusterFS</h3>
+<h4>Install Setup</h4>
+<ul>
+<li><a href="https://thenewstack.io/tutorial-create-a-docker-swarm-with-persistent-storage-using-glusterfs/">instructions</a></li>
+<li>[each node] <code>sudo add-apt-repository ppa:gluster/glusterfs-3.10 &amp;&amp; sudo apt-get update</code></li>
+<li>[each node] <code>sudo apt-get install glusterfs-server -y</code></li>
+<li>[each node] <code>sudo systemctl start glusterfs-server &amp;&amp; sudo systemctl enable glusterfs-server</code></li>
+</ul>
+<h4>Create the disk spaces (optional)</h4>
+<ul>
+<li><code>sudo fdisk /dev/sdb</code> n p 1 w</li>
+<li><code>sudo mkfs.ext4 /dev/sdb1</code></li>
+<li><code>sudo mkdir /glusterfs</code></li>
+<li><code>sudo mount /dev/sdb1 /glusterfs</code></li>
+<li>add <code>/dev/sdb1 /glusterfs ext4 defaults 0 0</code> to <code>/etc/fstab</code></li>
+</ul>
+<h4>Create the volumes</h4>
+<ul>
+<li><code>sudo gluster peer probe [manager01, manager02, worker01, worker02]</code></li>
+<li><code>mkdir ~/vols/content</code> <code>mkdir ~/vols/mysql</code></li>
+<li><code>sudo gluster volume create vols replica 4 manager01:/home/vagrant/vols manager02:/home/vagrant/vols worker01:/home/vagrant/vols worker02:/home/vagrant/vols force</code></li>
+<li><code>sudo gluster volume start vols</code> <code>sudo gluster volume start vols</code></li>
+<li><code>sudo mount.glusterfs localhost:/vols /mnt</code></li>
+<li>add <code>localhost:/vols /mnt glusterfs defaults,_netdev,backupvolfile-server=localhost 0 0</code> to <code>/etc/fstab</code></li>
+</ul>
+<h4>Expose to Docker</h4>
+<ul>
+<li><code>docker plugin install --alias glusterfs trajano/glusterfs-volume-plugin --grant-all-permissions --disable</code></li>
+<li><code>docker plugin set glusterfs SERVERS=172.20.20.11,172.20.20.12,172.20.20.101,172.20.20.102</code></li>
+<li><code>docker plugin enable glusterfs</code></li>
+</ul>
+<p>Create a folder named /brick on gluster1.example.com<br>
+Create a folder named /brick on gluster2.example.com<br>
+Now create your gluster volume named testvol using gluster1.example.com:/brick and gluster2.example.com/brick<br>
+you will need to start the volume too.<br>
+next you need to mount your new testvol in your filesystem on gluster1.example.com and gluster2.example.com. Execute something like:</p>
+<pre><code class="language-sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">USER</span> <span class="hljs-string">&#x27;ghostusr&#x27;</span>@<span class="hljs-string">&#x27;%&#x27;</span> IDENTIFIED <span class="hljs-keyword">BY</span> <span class="hljs-string">&#x27;ghostme&#x27;</span>;
+<span class="hljs-keyword">GRANT</span> <span class="hljs-keyword">ALL</span> PRIVILEGES <span class="hljs-keyword">ON</span> ghostdata.<span class="hljs-operator">*</span> <span class="hljs-keyword">TO</span> <span class="hljs-string">&#x27;ghostusr&#x27;</span>@<span class="hljs-string">&#x27;%&#x27;</span>;
+</code></pre>
+<h2>The problems of clustering</h2>
+<p>Now we have created our own cloud environment. We can deploy and scale our applications across multiple nodes! Sadly it is not that straight forward. We can't just replicate multiple instances of a service across nodes and have it just work. Any app that writes or reads from disc might not scale well. For example, wordpress writes your configuration into the file system, and also a database. You'll see the glitchy behavior in the ghost blog example, you can't create an account. This is because the underlying file system is on separate computers. I might write some config to the file system on one computer, but my next request for another page in the cluster bounces me to a different computer - and I've lost my state.</p>
+<h3>Abstracting the file system into 'volumes'</h3>
+<p>For our cluster to work and for us to be able to scale apps we need to also abstract the file system we are using and have it replicated on each node. For this we'll use <a href="https://www.gluster.org/">GlusterFS</a>. What we are going to do on each node is create the same folder i.e. <code>/home/vagrant/vols</code>. Next we are going to install GlusterFS and create a 'volume' which will represent this folder in an abstraction. We can treat the 'volume' as if it were a single folder on a single computer. That way we can just include it in our docker stack file as a mounted volume.</p>
+<h2>12 Factor apps</h2>
+<p>The point of introducing you to cloud computing like this is so you get to see some of the powers and problems of cloud computing. Developers targeting deployment in clustered environments like this have developed a set of guidelines to make the elastic scaling of apps easier to manage. We think you should know about these <a href="https://12factor.net/">12 factors</a> as they might influence your design choices and the way you structure your features and solutions.</p>
+<ol>
+<li><strong>Codebase</strong> One codebase tracked in revision control, many deploys</li>
+<li><strong>Dependencies</strong> Explicitly declare and isolate dependencies</li>
+<li><strong>Config</strong> Store config in the environment</li>
+<li><strong>Backing services</strong> Treat backing services as attached resources</li>
+<li><strong>Build, release, run</strong> Strictly separate build and run stages</li>
+<li><strong>Processes</strong> Execute the app as one or more stateless processes</li>
+<li><strong>Port binding</strong> Export services via port binding</li>
+<li><strong>Concurrency</strong> Scale out via the process model</li>
+<li><strong>Disposability</strong> Maximize robustness with fast startup and graceful shutdown</li>
+<li><strong>Dev/prod parity</strong> Keep development, staging, and production as similar as possible</li>
+<li><strong>Logs</strong> Treat logs as event streams</li>
+<li><strong>Admin processes</strong> Run admin/management tasks as one-off processes</li>
+</ol>
+<h2>Assignment</h2>
+<p>What do these 12 factors mean to you? We'd like you to contrast the 12 factors with what you do in your workplace.</p>
 
     <nav id="footer-nav"></nav>
     <script src="/curriculum/js/tabbed-code-blocks.js"></script>
