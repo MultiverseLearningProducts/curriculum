@@ -92,7 +92,7 @@
         function footerNav() {
             const links = document.getElementsByClassName('nav-link')
             const hrefs = Array.from(links).map(a => a.getAttribute('href'))
-            const [current] = window.location.href.match(/[0-9\.]+[a-zA-Z0-9_\\-]+\.html/)
+            const [current] = window.location.href.match(/[0-9\.]+[a-zA-Z0-9_\\-]+\.html/) || [0]
             const index = hrefs.findIndex(href => {
                 const page = href.split(/\\|\//).pop()
                 return page === current
