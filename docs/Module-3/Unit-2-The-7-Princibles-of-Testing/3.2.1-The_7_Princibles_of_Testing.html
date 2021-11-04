@@ -32,32 +32,34 @@
 </ul>
 <h2>Why Test?</h2>
 <p>The purpose of testing software is to remove</p>
-<h3>Errors</h3>
-<h3>Defects</h3>
-<h3>Failures</h3>
-<p>Errors caused by code that is incorrectly implemented. Defects caused by code that works, but does not work in the way it is intended too. Failures cause your software to stop working all together. Testing should be removing these three things from your software.</p>
+<ol>
+<li>Errors</li>
+<li>Defects</li>
+<li>Failures</li>
+</ol>
+<p>Errors caused by code that is incorrectly implemented. Defects caused by code that works, but does not work in the way it is intended too. Failures cause your software to stop working all together. Testing tries to ensure these three things have been removed from your software.</p>
 <h2>The 7 Principles of Software Testing</h2>
 <p><figure><img src="https://user-images.githubusercontent.com/4499581/79204022-ce6e7a00-7e33-11ea-81cb-d6b3498ca10f.png" alt="testing systems"><figcaption></figcaption></figure></p>
 <p>In the diagram above you can see the <strong>International Software Testing Qualifications Board’s</strong> 7 principles of testing.</p>
 <p>To exhaustively test is not practical or possible. For example 15 fields in a form that can each take one of 5 possible values would required 30,517,578,125 unit tests to prove each combination. Please don’t do that. What we need are testing strategies.</p>
 <h1>👩‍💻🧑‍💻</h1>
-<p>In pairs discuss the following scenario. I have a file in folder A and want to move it to folder B. What are all the different things that could go wrong?</p>
+<p>In pairs discuss the following scenario. I have a file in folder A and want to move it to folder B. List all the things that could go wrong and prevent this file moving successfully?</p>
 <p><iframe src="https://www.youtube.com/embed/rFaWOw8bIMM" width="100%" height="444px" allowfullscreen frameborder=0></iframe></p>
 <h2>4 Different types of testing</h2>
 <ol>
 <li>Unit</li>
 <li>Integration</li>
-<li>System</li>
+<li>End-to-end (System)</li>
 <li>Acceptance</li>
 </ol>
 <h3>Unit Testing</h3>
 <p>Unit Tests isolate a section of code and verify its correctness. A unit may be an individual function, method, procedure, module, or object. Unit tests are static tests (see below).</p>
 <h3>Integration Testing</h3>
 <p>Integration tests determine if independently developed units of software work correctly when they are connected to each other. These tests often assert behaviours, and can be static or dynamic. For example calling this endpoint;</p>
-<pre><code>/users/x023/photos
+<pre><code class="language-ruby">/users/x023/photos
 </code></pre>
 <p>should return a JSON string with an array of urls. This is testing that the server correctly interacts with the database and returns the correct values.</p>
-<h3>System Testing</h3>
+<h3>System Testing or End-to-end Testing</h3>
 <p>The whole system is run. This is a dynamic test. Examples of system testing are end-to-end tests; automated, codified interactions (see <a href="https://www.cypress.io/">cypress.io</a>) with assertions of state or outputs. Other examples of system testing include;</p>
 <ul>
 <li>load testing</li>
@@ -78,7 +80,7 @@
 </thead>
 <tbody>
 <tr><td style="text-align:left"><img src="https://cdn.motor1.com/images/mgl/EqyMv/s1/volkswagen-id-buzz-concept-detroit-2017.jpg" alt="static van"/></td><td style="text-align:left"><img src="https://www.inchcape.co.uk/-/media/ba79d1fea496499b8ec94a3dbe692b96.jpeg?la=en-gb&amp;hash=193E23BD23DFD2666426DB2E5C8FFE92" alt="moving van"/></td></tr>
-<tr><td style="text-align:left">Static tests do not require your app to be running. You can test things on a static vehicle; for example do the lights work? can you move the seats?</td><td style="text-align:left">Dynamic tests require your app to be running. To really test the breaks of a vehicle, you need to get up some speed.</td></tr>
+<tr><td style="text-align:left">Static tests do not require your app to be running. You can test things on a static vehicle; for example do the lights work? can you move the seats?</td><td style="text-align:left">Dynamic tests require your app to be running. To really test the breaks of a vehicle, you need to drive it.</td></tr>
 </tbody>
 </table>
 <table>
@@ -87,7 +89,7 @@
 </thead>
 <tbody>
 <tr><td style="text-align:left"><img src="https://user-images.githubusercontent.com/4499581/79354719-afa3dc80-7f34-11ea-9379-802c2f0bf121.jpg" alt="black box testing"/></td><td style="text-align:left"><img src="https://user-images.githubusercontent.com/4499581/79354705-aa469200-7f34-11ea-81e2-6dca80025096.jpg" alt="white box testing"></td></tr>
-<tr><td style="text-align:left">Black box testing asks WHAT the system does. WHAT inputs produce WHAT outputs.</td><td style="text-align:left">White box testing tests HOW things work? HOW does your logic work? Does the structure of the code deal with all the possible states?</td></tr>
+<tr><td style="text-align:left">Black box testing asks WHAT the system does. WHAT inputs produce WHAT outputs.</td><td style="text-align:left">White box testing tests HOW things work? HOW does your branching logic work? Does the structure of the code deal with all the possible states?</td></tr>
 </tbody>
 </table>
 <table>
@@ -103,6 +105,43 @@
 <h2>Equivalence classes and Use Cases</h2>
 <p>We looked at equivalence classes in <a href="https://multiverselearningproducts.github.io/curriculum/Module-1/Unit-5-End_to_end_testing/1.5.4-Test_cases_and_equivalence_testing.html">Module 1 Unit 5</a> they should also be considered as we design our testing strategies.</p>
 <p>In your all your projects, but in particular your final workplace project you need to consider how are you going to test your code. We've looked at lots of different aspects of testing, use this to help you develop your testing strategies.</p>
+<h2>Assignment</h2>
+<ol>
+<li><a href="https://github.com/bmordan/tmp-kanban/archive/refs/tags/v3.0.0.zip">Download this codebase</a></li>
+<li>Can you implement the testing pyramid by adding at least one of each type of test</li>
+</ol>
+<table>
+<thead>
+<tr><th style="text-align:left">Unit Tests</th><th style="text-align:left"><em>tips</em></th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left"><figure><img src="https://user-images.githubusercontent.com/44523714/128893711-19d3b1cb-cf83-4504-b8e5-8ec206473e39.png" alt="Testing pyramid: unit tests make up the base of the pyramid; integration tests in the middle; end-to-end tests at the top"><figcaption></figcaption></figure></td><td style="text-align:left"><em>tip</em> get your unit tests to run separately from E2E cypress tests. In the root level of your <code>package.json</code> add <pre>&quot;jest&quot;: {<br/>  &quot;testPathIgnorePatterns&quot;: [&quot;spec&quot;]<br/>}</pre>Now name your unit test files <code>filename.test.js</code> and your cypress test files <code>filename.spec.js</code>. Add a npm script <code>npm run test:unit</code> that runs only the unit tests in the unit folder with a script like <code>PORT=3001 jest --testPathPattern=/tests/unit</code>.</td></tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr><th style="text-align:left">Integration Tests</th><th style="text-align:left"><em>tips</em></th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">For integration tests you can use a library like <a href="https://www.npmjs.com/package/axios">axios</a> to make http requests to the running test instance of your server.</td><td style="text-align:left">I have been using a node module called <a href="https://www.npmjs.com/package/start-server-and-test">start-server-and-test</a> to start a test instance of the app, then wait for <code>http://localhost:3001</code> to be ready before running the tests, the module will then tearing everything down for you. You'll appreciate a script that exits cleanly when we come to automate these tests later. Read the instructions about how to use <code>start-server-and-test</code> you will need a few npm scripts to use it.</td></tr>
+</tbody>
+</table>
+<pre><code class="language-json">{
+    <span class="hljs-attr">&quot;scripts&quot;</span>: {
+        <span class="hljs-attr">&quot;test:serve&quot;</span>: <span class="hljs-string">&quot;NODE_ENV=test PORT=3001 node server.js&quot;</span>,
+        <span class="hljs-attr">&quot;test:integration_tests&quot;</span>: <span class="hljs-string">&quot;NODE_ENV=test PORT=3001 jest --testPathPattern=/tests/integration&quot;</span>,
+        <span class="hljs-attr">&quot;test:integration&quot;</span>: <span class="hljs-string">&quot;start-server-and-test test:serve http://localhost:3001 test:integration_tests&quot;</span>,
+    }
+}
+</code></pre>
+<table>
+<thead>
+<tr><th style="text-align:left">End-2-end Tests</th><th style="text-align:left"><em>tips</em></th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">This project has Cypress set up with a sample test, can you add to these system tests?</td><td style="text-align:left">Use <a href="https://www.npmjs.com/package/start-server-and-test">start-server-and-test</a> for your end to end tests as well</td></tr>
+</tbody>
+</table>
 
     <nav id="footer-nav"></nav>
     <script src="/curriculum/js/tabbed-code-blocks.js"></script>
