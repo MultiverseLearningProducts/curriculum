@@ -44,15 +44,15 @@
 <li>When it comes to select the GRUB loader choose <code>/dev/sda (ata-VBOX_HARDDISK...)</code></li>
 <li>Finally you'll see you now can run a little computer inside your big computer!</li>
 </ul>
-<p>This VM will behave like a distinct computer, for example it has it's own ip address on your network, you can install software on it.</p>
+<p>This VM will behave like a distinct computer, for example it has it's own ip address on your network and you can install and run additional software on it.</p>
 <h3>Bare Metal Hypervisors</h3>
-<p>If we take the trick of VirtualBox and apply it in a more extreme way we might wonder why we need a base operating system at all? A 'Bare Metal' hypervisor is installed in the place of an operating system i.e. Windows or Linux. The hypervisor is a thin layer of software that is installed on disc and exposes the motherboard's components to the abstraction of virtualization. All you get when you turn the computer on and plug in a monitor to a server with a bare metal hypervisor installed is an ip address. You have to use another computer to connect to the hypervisor, and then you can start to make virtual machines on the 'bare metal' using a client (like <a href="https://techzone.vmware.com/manually-creating-optimized-windows-images-vmware-horizon-vms#_306465">VMware's vSphere</a> client).</p>
-<blockquote>
-<p>That means you pay for 1 server, but you can run 4 virtual machines on that 1 server.</p>
-</blockquote>
+<p>If we take the trick of VirtualBox and apply it in a more extreme way we might wonder why we need a base operating system at all? A 'Bare Metal' hypervisor is installed in the place of an operating system i.e. Windows or Linux. The hypervisor is a thin layer of software that is installed on disc and exposes the motherboard's components to the abstraction of virtualization. All you get when you turn the computer on and plug in a monitor is an ip address on the screen. You have to use another computer to connect to the running hypervisor, and then you can start to make virtual machines on the 'bare metal' using a configuration client (like <a href="https://techzone.vmware.com/manually-creating-optimized-windows-images-vmware-horizon-vms#_306465">VMware's vSphere</a> client).</p>
 <p><figure><img src="https://user-images.githubusercontent.com/4499581/138301496-481c708c-2314-48e9-b86b-2acf3d65b1b1.jpg" alt="4 VMs"><figcaption></figcaption></figure></p>
 <p>Before virtualization you usually had one server dedicated to one service i.e. one server would run the company email. You would install something like Windows Server or a Linux distro and then install all the software for the email server. If you needed to update the server, or reboot, then the email service would go down for a period. With virtualization you can do much more with your hardware. You can run multiple operating systems and services on one piece of hardware, turn off or reboot one virtual machine without effecting the others.</p>
-<p>This moment of separating the operating system from the hardware is a fundamental building block of cloud computing. Why do you think that might be?</p>
+<blockquote>
+<p>That means you own 1 physical server, but you can run 4 virtual machines on that 1 piece of hardware.</p>
+</blockquote>
+<p>The moment of separating the operating system from the hardware is a fundamental building block of cloud computing. Why do you think that might be?</p>
 <h2>Clustering</h2>
 <p>If we want to group a number of computers together and get them to work as a team we need to start clustering them. In clusters computers are usually referred to as nodes. You can expect to find 2 different types of nodes in a cluster:</p>
 <ul>
@@ -61,6 +61,7 @@
 </ul>
 <p>The manager nodes do the work of managing the cluster, labeling and keeping track of worker nodes and services. There might be a number of manager nodes so one can be swapped out if need be and everything will keep running. Same with worker nodes. In a cluster you want to be able to power down any node without impacting the services, and be able to then provision and join a replacement node into the cluster if you want to.</p>
 <p>If you can replace nodes why can't you add them too? You can. This is called horizontal scaling. You start with a cluster of 3 nodes and as demand for your services increases you can match that demand by adding more nodes. For example in the autumn/fall Walmart has a spike in website traffic around '<a href="https://en.wikipedia.org/wiki/Black_Friday_(shopping)">black friday</a>' so they anticipate the extra demand by scaling horizontally adding extra nodes to absorb the spike in traffic. After the holiday season Walmart don't need all those extra nodes as demand reduces, so to save the costs of keeping all that availability they can scale back and remove the extra nodes. You often here infrastructure set up like this described as 'elastic' or horizontally scalable.</p>
+<p>We did something like this when we added agents to our GOCD server. We added agents (nodes) to leverage the computing power of all our devices collected together.</p>
 <h3>Load Balancing</h3>
 <p>Clustered nodes can be virtual machines, or physical computers connected together. They are usually geographically co-located, but they don't have to be. The main performance benefit that a cluster provides is high availability. High availability is achieved through 'load balancing'.<br>
 <figure><img src="https://avinetworks.com/wp-content/uploads/2018/10/multi-cloud-application-services-load-balancing-simple-diagram.svg" alt="load balancing"><figcaption></figcaption></figure><br>
@@ -70,10 +71,10 @@ The entry point into the cluster's network will know how busy each node is in th
 <h2>Set up your own cluster</h2>
 <p>Below are 4 options for setting up your own cluster.</p>
 <ol>
-<li>In the Cloud</li>
-<li>In Docker Labs</li>
-<li>In VirtualBox</li>
-<li>In a Raspberry Pi Cluster</li>
+<li>In the Cloud (expensive)</li>
+<li>In Docker Labs (easy but limited)</li>
+<li>In VirtualBox (best option)</li>
+<li>On a Raspberry Pi Cluster (most awesome option)</li>
 </ol>
 <h4>1. In the Cloud</h4>
 <p>There are different ways you can create a cluster for yourself. You can pay for VMs on <a href="https://aws.amazon.com/">AWS</a>, <a href="https://www.digitalocean.com/">DigitalOcean</a>, <a href="https://azure.microsoft.com/en-gb/free/">Azure</a> or <a href="https://www.scaleway.com/en/">Scaleway</a> (Scaleway for ARM based servers). Whatever service you use you'll need to<br>
@@ -174,14 +175,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) <span class="hljs-keyword">do</span> 
 <li>join the second manager node with this token <code>docker swarm join-token manager</code></li>
 <li><em>TIP</em> I had to increase the RAM for manager01 from 512MB to 1024MB</li>
 </ul>
-<h4>4. In a Raspberry Pi Cluster</h4>
+<h4>4. On a Raspberry Pi Cluster</h4>
 <p><figure><img src="https://blog.hypriot.com/images/picocluster-kits/picocluster-3node-pi-tower.jpg" alt="Raspberry pi cluster"><figcaption></figcaption></figure></p>
 <ul>
 <li>Order 3 Raspberry Pi, 3 ethernet cables, 3 power cables, a 4port switch</li>
 <li>create images on the SD cards (use Rasberry Pi Imager software)</li>
 <li>enable ssh by creating an empty ssh file (<code>touch ssh</code> in <code>/boot</code> folder on SD card)</li>
 <li>Assemble pies, power, networking and plug into your home router</li>
-<li>find ip addresses of your raspberry pies n your network (Lanscan)</li>
+<li>find ip addresses of your raspberry pies on your network (<a href="https://apps.apple.com/us/app/lanscan/id472226235?mt=12">Lanscan</a>)</li>
 <li>ssh into each pi and create hostnames like <code>pinode01</code> (<code>sudo nano /etc/hosts</code> &amp; <code>sudo nano /etc/hostname</code>)</li>
 <li>sudo apt-get update &amp;&amp; sudo apt-get upgrade</li>
 <li>install docker on each node <code>sudo curl -sSL https://get.docker.com | sh</code></li>
@@ -190,7 +191,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) <span class="hljs-keyword">do</span> 
 </ul>
 <h2>Initialise the Cluster</h2>
 <p>Once you have your set of nodes ready select a 'manager' node and run the following docker command to initialise that node as the manager.</p>
-<pre><code class="language-sh">`sudo docker swarm init --advertise-addr NODE1_IP_ADDRESS`
+<pre><code class="language-sh">sudo docker swarm init --advertise-addr NODE1_IP_ADDRESS
 </code></pre>
 <p>Swap <code>NODE1_IP_ADDRESS</code> with the ip address of your manager node. You'll get a command to then run on your worker nodes (see below) so copy and paste this so your other worker nodes join the 'swarm' (Docker's name for a cluster). Your join token will look something like the one below.</p>
 <pre><code class="language-sh">docker swarm join --token SWMTKN-1-0b8xy6w_____SOME_TOKEN_HASH_____eyuy26luxxj9fdh9vz x.x.x.x:2377

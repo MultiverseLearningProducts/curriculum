@@ -76,15 +76,16 @@ drwxr-xr-x   12 root     root          4096 Aug 27 11:05 var
 <p>As in most operating systems Unix has users. You create users in the Alpine distribution (based on the Busybox flavor of Unix) with the following command.</p>
 <pre><code class="language-sh">adduser some_username some_group
 </code></pre>
-<p>As with lots of Unix shell programes there are options you can pass to <code>adduser</code> to see them just use the <code>--help</code> flag. You can see all the users by reading the passwd file</p>
-<pre><code class="language-sh">`cat /etc/passwd`.
+<p>As with lots of Unix shell programes there are options you can pass to <code>adduser</code> to see them just use the <code>--help</code> flag. You can see all the users in a list by using the <code>cat</code> program to output the contents of passwd file</p>
+<pre><code class="language-sh">cat /etc/passwd
 </code></pre>
+<p>Not that elegant but it works.</p>
 <h2>Summary</h2>
-<p>Understanding these aspects of Unix is a pre-requisite for starting to work with docker containers, and begin to containerise your own apps. Try the assignment below and lets start to use docker to explore the Unix Alpine base image.</p>
+<p>Understanding these 3 aspects of Unix is a pre-requisite for starting to work with docker containers, and begin to containerise your own apps. Try the assignment below and lets start to use docker to explore the Unix Alpine base image.</p>
 <h2>Assignment</h2>
 <ul>
 <li>Install Docker on your computer</li>
-<li>Run Unix in a container <sup>*</sup><code>docker run -it alpine /bin/sh</code></li>
+<li><sup>*</sup>Run Unix in a container <code>docker run -it alpine /bin/sh</code></li>
 <li>Create a user (with your choice of username)</li>
 <li>Create a group called 'apprentices'</li>
 <li><code>login</code> as your new user</li>
@@ -107,7 +108,7 @@ to this:<br>
 <li>Try to execute it <code>./api-example.yaml</code> try to write to it <code>echo &quot;my edit&quot; &gt;&gt; api-example.yaml</code></li>
 </ul>
 <p>You can log out a user by just typing <code>exit</code> you will then be the <code>root</code> user again.</p>
-<p>* <em>this command invokes <code>docker</code>, to <code>run</code> an <code>-it</code> interactive container called <code>alpine</code> and when the container starts execute the program <code>/bin/sh</code> which is the <code>sh</code> (shell program) located in the <code>/bin</code> binary folder at the root of the file system. This will give you a Unix environment to play in!</em></p>
+<p>* <em>this command invokes <code>docker</code>, to <code>run</code> an <code>-it</code> interactive container called <code>alpine</code> and when the container starts, execute the program <code>/bin/sh</code> which is the <code>sh</code> (shell program) located in the <code>/bin</code> binary folder at the root of the file system. This will give you a Unix environment to play in!</em></p>
 
     <nav id="footer-nav"></nav>
     <script src="/curriculum/js/tabbed-code-blocks.js"></script>
