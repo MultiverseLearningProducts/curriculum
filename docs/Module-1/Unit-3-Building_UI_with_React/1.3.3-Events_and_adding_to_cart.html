@@ -89,7 +89,7 @@
 <li>pass the <code>addToCart</code> function down into the <code>Product</code> component</li>
 </ol>
 <p>Now we can call this within the <code>Product</code> component like this. You can remove the <code>Product</code> component's version of <code>addToCart</code>, we are calling the <code>addToCart</code> function passed down to us from the <code>App</code> parent component with our instance of a product.</p>
-<pre><code class="language-javascript">&lt;button onClick={props.addToCart(props.product)}&gt;Add to cart&lt;/button&gt;
+<pre><code class="language-javascript">&lt;button onClick={<span class="hljs-function">()=&gt;</span>props.addToCart(props.product)}&gt;Add to cart&lt;/button&gt;
 </code></pre>
 <h2>Assignment - Coding challenge</h2>
 <p>Does it work?</p>
