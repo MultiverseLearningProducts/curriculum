@@ -54,7 +54,43 @@
 <li><code>npm install</code></li>
 <li><code>npm run test:unit</code></li>
 </ol>
-<p>Once this is created you should be able to trigger the pipeline.</p>
+<p>Once this is created you should be able to trigger the pipeline when you push to the master branch on GitHub. Can you add parallel jobs for the integration and end-2-end tests?</p>
+<h4>Adding a Stage</h4>
+<p>With all our tests passing we are ready to deploy. We will use a stage to do this, and leverage the environmental variables to keep our secrets secure. We will use Heroku as a deployment destination.</p>
+<p>Can we take a moment to consider what is going on with our pipeline.</p>
+<p><figure><img src="https://user-images.githubusercontent.com/4499581/143427549-a1adea94-b977-4d80-9fa2-cbe9e00b248e.png" alt="GOCD pipeline"><figcaption></figcaption></figure></p>
+<p>In the diagram above you can see yourself pushing code to GitHub. GOCD is listening to your GitHub repo, when the HEAD moves forward (when you push or merge to master branch) the pipeline is triggered. GOCD server selects an available agent to run your stages on. The agent clones your repo, then runs each <em>Stage</em> which contains the <em>Jobs</em> which are made up of <em>Tasks</em> or commands to run. <em>Jobs</em> run in parallel which is why we have to start each job with <code>npm install</code> - there are ways to cache this step, but for now just be simple.</p>
+<p>Usually when we deploy to Heroku it is from our computer. Now we have a pipeline we need to deploy from a remote computer. This is part of the knowledge and skill of building and maintaining pipelines. You need remote computers to do things for you. In this instance we need a remote computer, our GOCD agent, that will be Ephemeral, to push our new changes to Heroku.</p>
+<pre><code class="language-sh">sh -c git push --force https://heroku:<span class="hljs-variable">$HEROKU_API_KEY</span>@git.heroku.com/multiverse-kanban.git HEAD:master
+</code></pre>
+<p>This command from our agent will push our latest repo to Heroku.</p>
+<ol>
+<li><code>sh</code> invokes the Unix shell interpreter</li>
+<li><code>-c</code> this flag indicates that the following command should be executed</li>
+<li><code>git push</code> this is executing the push command within git (git needs to be installed on the agent)</li>
+<li><code>--force</code> we have to use this because the local git working directory will be clean as all we have done is clone the repo, we've not made any changes but want to push to a remote anyway</li>
+<li>The address of the remote repository is our app on Heroku.</li>
+<li>In the address we need to include our <code>$HEROKU_API_KEY</code></li>
+</ol>
+<h4>Heroku API key</h4>
+<p>You can generate a HEROKU_API_KEY on Heroku. Goto your <strong>Account Settings</strong> scroll down and generate or copy your API Key. Keep this safe. Goto your stage, job and task in GOCD and select the <strong>ENVIRONMENT VARIABLES</strong> tab, add a <strong>Secure Variable</strong> paste in your API key and SAVE the task.</p>
+<p><figure><img src="https://user-images.githubusercontent.com/4499581/143431081-fae08785-67bd-4f82-8f08-8ce91af680a1.png" alt="GOCD adding an environmental variable"><figcaption></figcaption></figure></p>
+<h4>Test your pipeline</h4>
+<p>You should now have a Continuous deployment pipeline set up and working. There might be some issues, please work through these with your coach. As all of us will be using agents it would be good to spread the work out amongst all of us. You can run an agent on your computer, and together we should have bandwidth to support everyone's pipelines.</p>
+<h5>Run your agent</h5>
+<pre><code class="language-sh">docker run -d -e AGENT_AUTO_REGISTER_KEY=<span class="hljs-variable">$AGENT_AUTO_REGISTER_KEY</span> -e GO_SERVER_URL=https://gocd.multiverse-coaches.io/go bmordan/gocd-agent
+</code></pre>
+<p>Your coach will share with you the <code>$AGENT_AUTO_REGISTER_KEY</code> you need to register your agent. When your agent is running have a look at the docker container id <em>i.e. a2aac941631f</em></p>
+<pre><code><span class="hljs-attribute">CONTAINER</span> ID   NAMES             CREATED ago         STATUS
+<span class="hljs-attribute">a2aac941631f</span>   reverent_banach   <span class="hljs-number">4</span> minutes ago ago   Up <span class="hljs-number">4</span> minutes
+</code></pre>
+<p>Then find your agent on <a href="https://gocd.multiverse-coaches.io/go/agents">https://gocd.multiverse-coaches.io/go/agents</a> and enable it.</p>
+<p><figure><img src="https://user-images.githubusercontent.com/4499581/143434239-b8aaf01e-3a18-4c5b-b835-45e85ebe4f85.png" alt="list of agents"><figcaption></figcaption></figure></p>
+<h2>Assignment</h2>
+<p>How does your team deploy the projects that you work on? Which CI/CD platform do they use. You might want to look into setting up a simple pipeline using the platform your team uses. Being familiar with the pipelines in your workplace might influence your design choices and the way you structure your features and solutions in your final workplace project.</p>
+<ul>
+<li>Can you take one of you GitHub projects and create your own Continuous deployment pipeline?</li>
+</ul>
 
     <nav id="footer-nav"></nav>
     <script src="/curriculum/js/tabbed-code-blocks.js"></script>

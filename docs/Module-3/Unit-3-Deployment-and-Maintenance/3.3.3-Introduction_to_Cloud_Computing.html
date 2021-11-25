@@ -316,7 +316,7 @@ FLUSH PRIVILEGES;
       <span class="hljs-bullet">-</span> <span class="hljs-string">&quot;/mnt/mysql:/var/lib/mysql&quot;</span>
 </code></pre>
 <h4>Mysql Logs!</h4>
-<p>Problems mysql wants to write logs. From the file system point of view it looks like 2 different mysql processes are trying to write to the same file. When process 1 writes to the log file it 'locks' the file. When process 2 tries to write to the log file, it can't it is locked out. For now scale back the database to 1 replica. If you are interested and want to scale your mysql instances you need to ready about <a href="https://dev.mysql.com/doc/refman/5.7/en/replication.html">replication</a> in the docs. We need to think about logging too!</p>
+<p>Problems mysql wants to write logs. From the file system point of view it looks like 2 different mysql processes are trying to write to the same file 🤦‍♀️. When process 1 writes to the log file it 'locks' the file. When process 2 tries to write to the log file, it can't it is locked out 🤬. For now scale back the database to 1 replica. If you are interested and want to scale your mysql instances you need to ready about <a href="https://dev.mysql.com/doc/refman/5.7/en/replication.html">replication</a> in the docs. We need to think about logging too!</p>
 <p>Below is a final <code>ghost.yaml</code> file that you should be able to deploy and use in your swarm.</p>
 <pre><code class="language-yaml"><span class="hljs-attr">version:</span> <span class="hljs-string">&#x27;3.7&#x27;</span>
 
