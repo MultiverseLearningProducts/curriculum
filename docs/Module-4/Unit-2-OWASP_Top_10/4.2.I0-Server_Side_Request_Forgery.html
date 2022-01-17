@@ -30,7 +30,7 @@
 <h2>Server-Side Request Forgery</h2>
 <p>Often, web-connected applications are made up of multiple cooperating servers. When a client makes a network request, the request is routed to the main server (which is connected to the internet). However, that server may be part of a local, private network of servers, and the client's request may require the main server to make requests to the other servers in order to satisfy it.</p>
 <p><figure><img src="https://user-images.githubusercontent.com/44523714/148966730-91ab4ad6-da0a-49cf-bad8-1dfca581e5d0.png" alt="client connecting to server which, in turn, connects to servers on its local network"><figcaption></figcaption></figure></p>
-<p>Only the main server can be accessed directly, however, a hacker might be able to trick it into making a request of their behalf to one of the servers on the local network.</p>
+<p>Only the main server can be accessed directly, however, a hacker might be able to trick it into making a request on their behalf to one of the servers on the local network. The architects of these systems often assume these secondary servers will only receive requests from trusted clients (since they're behind a firewall) so their request validation may be minimal or non-existent.</p>
 <h2>Preventing Server-Side Request Forgery</h2>
 <ul>
 <li><p>Sanitize and validate all client-supplied input data</p></li>

@@ -36,7 +36,7 @@
 |<span class="hljs-string"> 3  </span>|<span class="hljs-string"> anonymous98483 </span>|<span class="hljs-string"> $2a$10$jEk07B/EQ63luT3WdOoFcOPhD2x2E4VRz4SR64dASLFO0rnQBr09q </span>|
 </code></pre>
 <p>Even if encryption is incorporated, cryptographic failures can still occur. For example, a website storing passwords as hashes would still be cryptographically unsound if they were using the MD5 algorithm to hash passwords, since this algorithm is deemed unfit for cryptography.</p>
-<p>An application might also be using a sound cryptographic algorithm but be mismanaging its keys. For example, the encryption key might be stored directly in the source code or might lack the complexity required to be secure.</p>
+<p>An application might also be using a sound cryptographic algorithm but be mismanaging its keys. For example, an encryption key used to sign tokens might be stored directly in the source code or might lack the complexity required to be secure.</p>
 <pre><code class="language-javascript"><span class="hljs-comment">// INCORRECT: encryption key is too simple and stored in src code</span>
 jwt.sign({
   data
