@@ -33,18 +33,18 @@
 <ul>
 <li><p>Systems that allow brute force attacks (e.g. guessing passwords from common-password list).</p></li>
 <li><p>Systems that allow weak passwords such as &quot;password1&quot;.</p></li>
-<li><p>Systems with poorly-implemented credential-recovery systems (e.g. using knowledge-base security questions to recover password).</p></li>
-<li><p>Systems which do not hash passwords, or do not hash passwords with a secure algorithm (like Bcrypt).</p></li>
+<li><p>Systems with poorly-implemented credential-recovery systems (e.g. using knowledge-based security questions to recover password).</p></li>
+<li><p>Systems which do not hash passwords, or do not hash passwords with a secure algorithm (such as Bcrypt).</p></li>
 <li><p>Systems which do not use (or do not properly use) multi-factor authentication.</p></li>
 <li><p>Systems which put session identifiers in the URL.</p></li>
-<li><p>Systems which reuse session identifier after successful login.</p></li>
+<li><p>Systems which reuse session identifiers after a successful login.</p></li>
 <li><p>Systems which don't properly invalidate session tokens during logout or a period of inactivity.</p></li>
 </ul>
 <h2>Preventing Authentication Failures</h2>
 <ul>
 <li><p>Implement multi-factor authentication where possible</p></li>
 <li><p>Prevent users using weak passwords (e.g. short passwords or those present in databases of common passwords)</p></li>
-<li><p>Limit information provided in failed login attempts (e.g. &quot;your username or password is incorrect&quot;) to prevent malicious users accumulating information</p></li>
+<li><p>Limit information provided in failed login attempts (e.g. &quot;your username <strong>or</strong> password is incorrect&quot;) to prevent malicious users accumulating information</p></li>
 <li><p>Rate-limit login attempts (with increasing delay) to prevent brute forcing</p></li>
 <li><p>Log failed login attempts and alert administrators when attempted hacks are suspected</p></li>
 <li><p>Use a secure server-side session manager</p></li>

@@ -47,6 +47,7 @@ jwt.sign({
   data
 }, process.env.JWT_PASSWORD, { <span class="hljs-attr">expiresIn</span>: <span class="hljs-string">&#x27;1h&#x27;</span> });
 </code></pre>
+<p>Cryptographic failures can come in a variety of forms. For example, password generators rely on random-number-generators. If these random-number-generators are not cryptographically sound, the passwords themselves will be vulnerable. <a href="https://portswigger.net/daily-swig/kaspersky-password-manager-nbsp-lambasted-for-multiple-cryptographic-flaws">This article</a> describes a recent example from Kaspersky's password generator.</p>
 <h2>Preventing Cyrptographic Failures</h2>
 <ul>
 <li>Classify data depending on whether it is sensisitive or not</li>
@@ -56,6 +57,15 @@ jwt.sign({
 <li>Handle secrets appropriately (e.g. store keys in memory as byte-arrays)</li>
 </ul>
 <h2>Assignment</h2>
+<p>One of the many reasons the MD5 algorithm is not suitable for password hashing is that it is too fast. Algorithms like Bcrypt and Argon2 are made deliberately slow and memory-intensive to prevent brute forcing.</p>
+<p>To illustrate this, you are going to code a password cracker.</p>
+<p>Find the 4-letter string of lowercase letters (i.e. a-z) which produces the md5 digest <code>eb78e94ff0630770c399893bdb94b454</code> You can use:</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">const</span> crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;crypto&quot;</span>);
+<span class="hljs-keyword">const</span> guess = <span class="hljs-string">&quot;frog&quot;</span>;
+<span class="hljs-keyword">var</span> hash = crypto.createHash(<span class="hljs-string">&quot;md5&quot;</span>).update(guess).digest(<span class="hljs-string">&quot;hex&quot;</span>);
+</code></pre>
+<p>to generate an md5 hash in Node.js</p>
+<p>As an extension, make your solution generic (if you haven't already) such that it works given any password length and any character set. Create your own MD5 hashes using different length inputs and character sets and test how long it takes your algorithm to crack them.</p>
 <h2>Additional Resources</h2>
 <p><a href="https://owasp.org/Top10/A02_2021-Cryptographic_Failures/">OWASP Cryptographic Failure</a></p>
 <p><iframe src="https://www.youtube.com/embed/7U-RbOKanYs" width="100%" height="444px" allowfullscreen frameborder=0></iframe></p>
