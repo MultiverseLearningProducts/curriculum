@@ -48,6 +48,14 @@ jwt.sign({
 }, process.env.JWT_PASSWORD, { <span class="hljs-attr">expiresIn</span>: <span class="hljs-string">&#x27;1h&#x27;</span> });
 </code></pre>
 <p>Cryptographic failures can come in a variety of forms. For example, password generators rely on random-number-generators. If these random-number-generators are not cryptographically sound, the passwords themselves will be vulnerable. <a href="https://portswigger.net/daily-swig/kaspersky-password-manager-nbsp-lambasted-for-multiple-cryptographic-flaws">This article</a> describes a recent example from Kaspersky's password generator.</p>
+<h2>Security Through Obscurity</h2>
+<p>An important side-note here is that you should always use modern, battle-tested software for cryptography. For example, you should use a library like npm's Bcrypt to hash passwords rather than try and design or implement your own solution. It can be tempting to think that your application will be more secure if you invent your own cryptographic solutions - since hackers will be unfamiliar with it - however this is widely considered to be false.</p>
+<p>The idea dates back to the 19th century with Dutch cryptographer Auguste Kerckhoffs</p>
+<blockquote>
+<p>The principle holds that a cryptosystem should be secure, even if everything about the system, except the key, is public knowledge.</p>
+</blockquote>
+<p>Essentially, you shouldn't rely on the fact that hackers aren't familiar with how your security works; it's better to use a robust and ubiquitous algorithm than a designed-in-house flawed one. This is why open-source software can still be secure.</p>
+<p>That being said, in practical terms, it's still better to minimise the amount of information hackers are privy to. If they have to first workout which framework, RDBMS, cryptography library etc. that you're using before they can design their attacks, that makes their job all the more difficult.</p>
 <h2>Preventing Cyrptographic Failures</h2>
 <ul>
 <li>Classify data depending on whether it is sensisitive or not</li>
