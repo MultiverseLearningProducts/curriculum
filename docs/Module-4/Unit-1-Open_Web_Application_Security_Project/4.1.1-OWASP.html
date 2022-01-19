@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>
-         Open Web Application Security Project
+         Open Web Application Security Project
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="shortcut icon" type="image/x-icon" href="/curriculum/favicon.ico" />
@@ -46,7 +46,6 @@
 <li>Security Logging and Monitoring Failures</li>
 <li>Server-Side Request Forgery</li>
 </ol>
-<<<<<<< HEAD
 <h2>Assignment</h2>
 <p>Once you've studied the entire top 10, come back and do <a href="https://applied.multiverse.io/mod/quiz/view.php?id=13127">this quiz on Applied</a></p>
 
@@ -91,48 +90,4 @@
     </script>
 </body>
 
-=======
-
-    <nav id="footer-nav"></nav>
-    <script src="/curriculum/js/tabbed-code-blocks.js"></script>
-    <script>
-        function toggleNav() {
-            const button = document.getElementById('navigation-toggle')
-            const isAriaExp = button.getAttribute('aria-expanded')
-            const newAriaExp = (isAriaExp == "false") ? "true" : "false"
-            button.setAttribute('aria-expanded', newAriaExp)
-            const nav = document.getElementById('navigation')
-            nav.style.display = nav.offsetParent ? 'none' : 'block'
-        }
-        function footerNav() {
-            const links = document.getElementsByClassName('nav-link')
-            const hrefs = Array.from(links).map(a => a.getAttribute('href'))
-            const [current] = window.location.href.match(/[0-9\.]+[a-zA-Z0-9_\\-]+\.html/) || [0]
-            const index = hrefs.findIndex(href => {
-                const page = href.split(/\\|\//).pop()
-                return page === current
-            })
-            const prevIndex = index - 1
-            const nextIndex = index + 1
-            if (prevIndex > -1) {
-                const prev = document.createElement('a') 
-                prev.appendChild(document.createTextNode("◀︎ Prev"))
-                prev.title = "Previous session notes"
-                prev.href = hrefs[prevIndex]
-                document.getElementById('footer-nav').prepend(prev)
-            }
-            if (nextIndex < hrefs.length) {
-                const next = document.createElement('a') 
-                next.appendChild(document.createTextNode("Next ►"))
-                next.title = "Next session notes"
-                next.href = hrefs[nextIndex]
-                document.getElementById('footer-nav').append(next)
-            }
-            window.removeEventListener('DOMContentLoaded', footerNav)
-        }
-        window.addEventListener('DOMContentLoaded', footerNav)
-    </script>
-</body>
-
->>>>>>> 875934ba8d5d83e7959ad87e52720388bced11a4
 </html>
