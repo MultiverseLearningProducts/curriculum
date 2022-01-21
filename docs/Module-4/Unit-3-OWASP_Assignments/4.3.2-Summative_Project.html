@@ -29,6 +29,7 @@
 <h2>Assignment</h2>
 <p>You've been commissioned to create a prototype of a note sharing app. The app should allow users to save notes they've written. They should also be able to share notes with specific users.</p>
 <p>The stakeholders would like the prototype to be deployed online using a hosting service such as Heroku. The company they represent has been involved in a major security scandal recently involving broken access control; as such, they are extremely concerned about security and have asked that, alongside the software, you create a short report explaining how you've ensured your application is protected against the OWASP Top 10 security vulnerabilities.</p>
+<p>It's likely you will offload some of the work to a library or framework. For example, you might not deal with SQL directly but instead use an ORM such as Sequelize or Entity-Framework. In this case, you should research how these components protect against the relevant security threats (e.g. SQL injection for an ORM, XSS for a front-end framework etc.).</p>
 <h3>Functional Requirements</h3>
 <table>
 <thead>
@@ -50,7 +51,9 @@
 <tr><td>NF2</td><td>Must</td><td>The steps taken to protect against the OWASP Top 10 must be included in a separate document</td></tr>
 <tr><td>NF3</td><td>Must</td><td>The application must be accessible online (i.e. be deployed)</td></tr>
 <tr><td>NF4</td><td>Must</td><td>The application must meet modern accessability standards</td></tr>
-<tr><td>NF5</td><td>Should</td><td>The application should include a set of unit and integration tests (including testing for security)</td></tr>
+<tr><td>NF5</td><td>Must</td><td>The application's UI must be constructed using a component-based approach</td></tr>
+<tr><td>NF6</td><td>Should</td><td>The application should include a set of unit and integration tests (including testing for security)</td></tr>
+<tr><td>NF7</td><td>Should</td><td>The application should be responsive (e.g. to different screen sizes)</td></tr>
 </tbody>
 </table>
 <h2>Extension Assignment</h2>
