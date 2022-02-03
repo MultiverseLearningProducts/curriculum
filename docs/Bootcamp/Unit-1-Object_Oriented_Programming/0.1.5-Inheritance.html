@@ -61,16 +61,17 @@
     }
 }
 </code></pre>
-<pre><code class="language-javascript">public <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Passenger</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Person</span> </span>{
+<pre><code class="language-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Passenger</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Person</span> </span>{
 
-    private <span class="hljs-built_in">String</span> seatNumber;
+    <span class="hljs-keyword">private</span> String seatNumber;
 
-    public <span class="hljs-function"><span class="hljs-title">Passenger</span>(<span class="hljs-params"><span class="hljs-built_in">String</span> name, <span class="hljs-built_in">String</span> passportNumber, <span class="hljs-built_in">String</span> seatNumber</span>)</span> {
-        <span class="hljs-built_in">super</span>(name, passportNumber);
-        <span class="hljs-built_in">this</span>.seatNumber = seatNumber;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Passenger</span><span class="hljs-params">(String name, String passportNumber, String seatNumber)</span> </span>{
+        <span class="hljs-keyword">super</span>(name, passportNumber);
+        <span class="hljs-keyword">this</span>.seatNumber = seatNumber;
     }
 }
 </code></pre>
+<p>|Javascript|Typescript|Java|</p>
 <p>Our passengers might want behaviour specific to them like <code>callAttendant()</code>. In this case, we add the function/method to the <code>Passenger</code> subclass.</p>
 <pre><code class="language-javascript"><span class="hljs-keyword">const</span> Traveller = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./Traveller&#x27;</span>)
 
@@ -82,7 +83,7 @@
 </code></pre>
 <h3>Determining the type of a class</h3>
 <p>In your code you'll want to know what type an object is. For example, you might want to know, is this a <code>Passenger</code> or a <code>Crew Member</code> I am dealing with? You can use <code>instanceof</code> keyword to tell you.</p>
-<pre><code class="language-javascript">test(<span class="hljs-string">&#x27;is an instance of a Passenger&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+<section class="tabbed-code-block"><nav><a href="#javascript" onclick="selectCodeBlock('javascript')">Javascript</a><a href="#java" onclick="selectCodeBlock('java')">Java</a></nav><article><pre><code class="language-javascript">test(<span class="hljs-string">&#x27;is an instance of a Passenger&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
     <span class="hljs-keyword">const</span> betty = <span class="hljs-keyword">new</span> Passenger(<span class="hljs-string">&#x27;Betty&#x27;</span>, <span class="hljs-string">&#x27;ABC123&#x27;</span>, <span class="hljs-string">&#x27;1A&#x27;</span>)
     expect(betty <span class="hljs-keyword">instanceof</span> Passenger).toBeTruthy()
 })
@@ -93,7 +94,7 @@
     assertTrue(betty <span class="hljs-keyword">instanceof</span> Passenger);
 }
 </code></pre>
-<h2>Assignment</h2>
+</article></section><h2>Assignment</h2>
 <ul>
 <li>Change your code to make <code>CrewMember</code> and <code>Passenger</code> inherit from a <code>Traveller</code> class. Add properties and methods relevant to the super class and sub classes.</li>
 <li>Refactor the <code>Plane</code> class to board both Passengers and Crew</li>

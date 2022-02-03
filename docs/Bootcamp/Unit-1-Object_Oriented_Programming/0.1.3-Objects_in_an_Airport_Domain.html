@@ -73,6 +73,7 @@
 }
 
 </code></pre>
+<p>|Javascript|Typescript|Java|</p>
 <p>Each class has a special method known as a <code>constructor</code> which initialises the object with the values passed in as arguments.</p>
 <p>The <code>this</code> keyword refers to the current instance of the class.</p>
 <p>Note how in TypeScript and Java we have made the properties of the class private. This stops the properties being accessed directly by other classes, instead they have to be accessed via a public method. This allows us to change the internal implementation of a class (e.g. represent a bag weight in grams rather than kilograms) without affecting any calling classes. This is a key feature of OO languages known as <em>encapsulation</em>. Note that JavaScript does not support the <code>private</code> keyword.</p>
@@ -119,6 +120,7 @@
     }
 }
 </code></pre>
+<p>|Javascript|Typescript|Java|</p>
 <p>We then use a <code>try()/catch()</code> block in the calling code to check whether an error has occurred, for example:</p>
 <p>|Javascript|Typescript|Java|</p>
 <pre><code class="language-javascript"><span class="hljs-keyword">try</span> {
@@ -142,6 +144,7 @@
     <span class="hljs-comment">// handle error</span>
 }
 </code></pre>
+<p>|Javascript|Typescript|Java|</p>
 <h3>Bags belonging to a Passenger</h3>
 <p>Let's now focus on the Passenger class.</p>
 <p>People often fly with a more than one bag. Our passengers should be able to carry multiple bags. What data structure would be appropriate for holding a list of bags?</p>

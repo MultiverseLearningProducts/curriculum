@@ -34,12 +34,14 @@
 <pre><code class="language-javascript"><span class="hljs-built_in">Math</span>.max(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>);
 </code></pre>
 <p>Static properties belong to the class as a whole rather than one specific instance. We often use static properites to hold constant values, for example, the value of PI.</p>
+<p>|Javascript|Typescript|Java|</p>
 <pre><code class="language-javascript"><span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> PI = <span class="hljs-number">3.14</span>
 </code></pre>
 <pre><code class="language-typescript"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> PI:<span class="hljs-built_in">number</span> = <span class="hljs-number">3.14</span>
 </code></pre>
 <pre><code class="language-java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">double</span> PI = <span class="hljs-number">3.14</span>;
 </code></pre>
+<p>|Javascript|Typescript|Java|</p>
 <h3>Static functions in the Airport domain</h3>
 <p>Imagine we have an air traffic control system to keep track of all the planes using 2 runways. We have a rule that only a certain number of planes can be on either of the 2 runways at a time, otherwise our air traffic controllers will get overloaded!</p>
 <p>We'll create 2 instance of a <code>Runway</code> class - one for the landing planes and one for departing planes. We'll add a static property to hold a constant representing the maximum number of planes allowed on the runway plus a static property holding a list of all the planes currently on either of the runways (note this code is not thread safe, it is shown for example purposes only). We'll then add a static function/method to add a plane to the runway.</p>
@@ -84,6 +86,7 @@
     }
 }
 </code></pre>
+<p>|Javascript|Typescript|Java|</p>
 <h2>Assignment</h2>
 <ul>
 <li>Modify your Bag class to add a static property to hold the maximum weight of a bag (23kg). Write code to throw an exception if a bag is constructed with a weight greater than this maximum. Add tests to validate your logic.</li>
