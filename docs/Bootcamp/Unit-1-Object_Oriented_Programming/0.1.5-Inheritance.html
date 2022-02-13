@@ -42,7 +42,7 @@
 </code></pre>
 <p>Now when we create a new Passenger we will be able to call <code>addBag()</code> as this functionality has been inherited from the <code>Traveller</code> class.</p>
 <p>Note that we need to take care when defining our constructor as we need to pass up to the super class, the properties which belong there. We do this using the <code>super</code> keyword.</p>
-<p>|Javascript|Typescript|Java|</p>
+<p>|Javascript|TypeScript|Java|</p>
 <pre><code class="language-javascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Passenger</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Person</span> </span>{
 
     <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">name, passportNumber, seatNumber</span>)</span> {
@@ -71,7 +71,7 @@
     }
 }
 </code></pre>
-<p>|Javascript|Typescript|Java|</p>
+<p>|Javascript|TypeScript|Java|</p>
 <p>Our passengers might want behaviour specific to them like <code>callAttendant()</code>. In this case, we add the function/method to the <code>Passenger</code> subclass.</p>
 <pre><code class="language-javascript"><span class="hljs-keyword">const</span> Traveller = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./Traveller&#x27;</span>)
 
