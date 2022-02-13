@@ -42,7 +42,8 @@
 </code></pre>
 <p>Now when we create a new Passenger we will be able to call <code>addBag()</code> as this functionality has been inherited from the <code>Traveller</code> class.</p>
 <p>Note that we need to take care when defining our constructor as we need to pass up to the super class, the properties which belong there. We do this using the <code>super</code> keyword.</p>
-<section class="tabbed-code-block"><nav><a href="#javascript" onclick="selectCodeBlock('javascript')">Javascript</a><a href="#java" onclick="selectCodeBlock('java')">Java</a></nav><article><pre><code class="language-javascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Passenger</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Person</span> </span>{
+<p>|Javascript|TypeScript|</p>
+<pre><code class="language-javascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Passenger</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Person</span> </span>{
 
     <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">name, passportNumber, seatNumber</span>)</span> {
         <span class="hljs-built_in">super</span>(name, passportNumber);
@@ -50,6 +51,17 @@
     }
 }
 </code></pre>
+<pre><code class="language-typescript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Passenger</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Person</span> </span>{
+
+    <span class="hljs-keyword">private</span> seatNumber:<span class="hljs-built_in">string</span>
+
+    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">name:<span class="hljs-built_in">string</span>, passportNumber:<span class="hljs-built_in">string</span>, seatNumber:<span class="hljs-built_in">string</span></span>)</span> {
+        <span class="hljs-built_in">super</span>(name, passportNumber);
+        <span class="hljs-built_in">this</span>.seatNumber = seatNumber;
+    }
+}
+</code></pre>
+<p>|Javascript|TypeScript|</p>
 <pre><code class="language-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Passenger</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Person</span> </span>{
 
     <span class="hljs-keyword">private</span> String seatNumber;
@@ -57,16 +69,6 @@
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Passenger</span><span class="hljs-params">(String name, String passportNumber, String seatNumber)</span> </span>{
         <span class="hljs-keyword">super</span>(name, passportNumber);
         <span class="hljs-keyword">this</span>.seatNumber = seatNumber;
-    }
-}
-</code></pre>
-</article></section><pre><code class="language-bash">class Passenger extends Person {
-
-    private seatNumber:string
-
-    constructor(name:string, passportNumber:string, seatNumber:string) {
-        super(name, passportNumber);
-        this.seatNumber = seatNumber;
     }
 }
 </code></pre>
