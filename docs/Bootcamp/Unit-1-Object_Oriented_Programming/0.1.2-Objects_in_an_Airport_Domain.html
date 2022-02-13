@@ -35,8 +35,7 @@
 <p>Our Airport system has following classes in it:</p>
 <p><img width="641" alt="detailed class diagram showing relationships between classes in the Airport domain" src="https://user-images.githubusercontent.com/1316724/129224047-eabfd2b2-0556-4568-83bc-9eee1821362a.PNG"></p>
 <p>Here is how we create a Bag class and instantiate a new instance of the class (an object):-</p>
-<p>|Javascript|Typescript|Java|</p>
-<pre><code class="language-javascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Bag</span> </span>{
+<section class="tabbed-code-block"><nav><a href="#javascript" onclick="selectCodeBlock('javascript')">Javascript</a><a href="#typescript" onclick="selectCodeBlock('typescript')">TypeScript</a><a href="#java" onclick="selectCodeBlock('java')">Java</a></nav><article><pre><code class="language-javascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Bag</span> </span>{
     
     <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">weight</span>)</span> {
         <span class="hljs-built_in">this</span>.weight = weight
@@ -73,15 +72,13 @@
 }
 
 </code></pre>
-<p>|Javascript|Typescript|Java|</p>
-<p>Each class has a special method known as a <code>constructor</code> which initialises the object with the values passed in as arguments.</p>
+</article></section><p>Each class has a special method known as a <code>constructor</code> which initialises the object with the values passed in as arguments.</p>
 <p>The <code>this</code> keyword refers to the current instance of the class.</p>
 <p>Note how in TypeScript and Java we have made the properties of the class private. This stops the properties being accessed directly by other classes, instead they have to be accessed via a public method. This allows us to change the internal implementation of a class (e.g. represent a bag weight in grams rather than kilograms) without affecting any calling classes. This is a key feature of OO languages known as <em>encapsulation</em>. Note that JavaScript does not support the <code>private</code> keyword.</p>
 <h4>Exception handling</h4>
 <p>Sometimes we need to inform the caller of a constructor that they must pass in a valid argument. In this case, we use the exception handling mechanism of our OO language to throw an exception if the argument is missing or invalid.</p>
 <p>Let's imagine we want to ensure we only create bags with a valid weight - this protects other parts of our program trying to do calculations on an undefined or zero weight. The code below shows how we could use exception handling to avoid the construction of invalid bags.</p>
-<p>|Javascript|Typescript|Java|</p>
-<pre><code class="language-javascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Bag</span> </span>{
+<section class="tabbed-code-block"><nav><a href="#javascript" onclick="selectCodeBlock('javascript')">Javascript</a><a href="#typescript" onclick="selectCodeBlock('typescript')">TypeScript</a><a href="#java" onclick="selectCodeBlock('java')">Java</a></nav><article><pre><code class="language-javascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Bag</span> </span>{
     
     <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">weight</span>)</span> {
         <span class="hljs-keyword">if</span> (!weight) {
@@ -120,10 +117,8 @@
     }
 }
 </code></pre>
-<p>|Javascript|Typescript|Java|</p>
-<p>We then use a <code>try()/catch()</code> block in the calling code to check whether an error has occurred, for example:</p>
-<p>|Javascript|Typescript|Java|</p>
-<pre><code class="language-javascript"><span class="hljs-keyword">try</span> {
+</article></section><p>We then use a <code>try()/catch()</code> block in the calling code to check whether an error has occurred, for example:</p>
+<section class="tabbed-code-block"><nav><a href="#javascript" onclick="selectCodeBlock('javascript')">Javascript</a><a href="#typescript" onclick="selectCodeBlock('typescript')">TypeScript</a><a href="#java" onclick="selectCodeBlock('java')">Java</a></nav><article><pre><code class="language-javascript"><span class="hljs-keyword">try</span> {
     <span class="hljs-keyword">const</span> bag = <span class="hljs-keyword">new</span> Bag(<span class="hljs-number">16</span>);
     <span class="hljs-comment">// no error if we made it this far</span>
 } <span class="hljs-keyword">catch</span> (<span class="hljs-built_in">Error</span> e) {
@@ -144,8 +139,7 @@
     <span class="hljs-comment">// handle error</span>
 }
 </code></pre>
-<p>|Javascript|Typescript|Java|</p>
-<h3>Bags belonging to a Passenger</h3>
+</article></section><h3>Bags belonging to a Passenger</h3>
 <p>Let's now focus on the Passenger class.</p>
 <p>People often fly with a more than one bag. Our passengers should be able to carry multiple bags. What data structure would be appropriate for holding a list of bags?</p>
 <p>To add a bag to a passenger we call a function/method on the relevant Passenger object. Here is an example where we add 2 bags to passenger 'bob':</p>

@@ -43,8 +43,7 @@
 <p>Failures are when our programme 'crashes' i.e. stops running and errors in a way that cannot be recovered from.</p>
 <h3>Unit test frameworks</h3>
 <p>Let's look at how we create a test for the Bag class we created in the previous lesson.</p>
-<p>|Javascript|Typescript|Java|</p>
-<pre><code class="language-javascript">describe(<span class="hljs-string">&#x27;Bag&#x27;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+<section class="tabbed-code-block"><nav><a href="#javascript" onclick="selectCodeBlock('javascript')">Javascript</a><a href="#typescript" onclick="selectCodeBlock('typescript')">TypeScript</a><a href="#java" onclick="selectCodeBlock('java')">Java</a></nav><article><pre><code class="language-javascript">describe(<span class="hljs-string">&#x27;Bag&#x27;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
     test(<span class="hljs-string">&#x27;has a weight&#x27;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
         <span class="hljs-keyword">const</span> bag = <span class="hljs-keyword">new</span> Bag(<span class="hljs-number">13</span>);
         expect(bag.weight).toBe(<span class="hljs-number">13</span>);
@@ -81,8 +80,7 @@
     }
 }
 </code></pre>
-<p>|Javascript|Typescript|Java|</p>
-<h3>Test coverage</h3>
+</article></section><h3>Test coverage</h3>
 <p>It's really important to test all the possible branches through your code. Your company will have coding standards which specify what % of code coverage is required.</p>
 <p>Research how to generate a coverage report for your language's test framework. Here is an example using JavaScript Jest:</p>
 <p>Add the following line to your package.json</p>
