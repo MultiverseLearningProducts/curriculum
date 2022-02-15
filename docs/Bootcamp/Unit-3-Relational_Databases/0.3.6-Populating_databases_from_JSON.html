@@ -30,7 +30,7 @@
 </ul>
 <h2>Lesson</h2>
 <p>The restaurant data you downloaded is called &quot;seed&quot; data. The data is in a <a href="https://www.w3schools.com/js/js_json_intro.asp">JSON</a> format.</p>
-<p>Here is a representation of a a Restaurant object from the JSON data:</p>
+<p>Here is a representation of a Restaurant object from the JSON data:</p>
 <pre><code class="language-json">    {
         <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;Bayroot&quot;</span>,
         <span class="hljs-attr">&quot;image&quot;</span>: <span class="hljs-string">&quot;https://www.telegraph.co.uk/content/dam/Travel/Destinations/Europe/England/Brighton/brighton-restaurants-hotel-du-vin-bistro.jpg&quot;</span>,
@@ -89,13 +89,15 @@
 <p>To insert the data into database tables, we need to firstly asychronously load the file, then iterate over the data and insert it using Prepared Statements. Before we do this, let's use the best practice of Test Driven Development (TDD) and write a unit test.</p>
 <h3>Write a failing test</h3>
 <p>Best practice is that unit tests should not make any network or database connections, these should be &quot;mocked&quot; or &quot;stubbed&quot;. One of the reasons for this is that unit tests are often run as part of an automated build pipeline which needs to complete quickly to confirm there are no issues. Integration tests do however &quot;integrate&quot; different parts of a software system so will connect to a database.</p>
-<p>Think about how you could create an integration test using Jest which asserts that the database has been populated successfully from the JSON seed file.</p>
-<p>Remember that a test should be self-contained, it should not rely on other tests/code. Jest provides us with a <code>beforeAll</code> method which runs before any of tests are run, we can use this to intialise an in-memory database with the database schema.</p>
+<p>Think about how you could create an integration test which asserts that the database has been populated successfully from the JSON seed file.</p>
+<p>Remember that a test should be self-contained, it should not rely on other tests/code. Unit test frameworks typically provide the ability to execute code prior to each/all tests running, for example, Jest provides us with a <code>beforeAll</code> method which runs before any of tests are run, we can use this to intialise an in-memory database with the database schema.</p>
 <p>Our test can run a SQL SELECT query to ensure the data was loaded successfully by counting the number of rows inserted.</p>
-<h3>Reading JSON data from a file using Node.js</h3>
-<p>Reading from a file may take a long time hence it is performed asynchronously.</p>
-<p>Here is one version of a <code>load()</code> method which makes use of <code>async</code>/<code>await</code> to load the data into a JavaScript array, you can also write this using Promises or Callbacks.</p>
-<pre><code class="language-js"><span class="hljs-keyword">const</span> fsp = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;fs&#x27;</span>).promises; <span class="hljs-comment">// Node.js file system module with promises</span>
+<h3>Reading JSON data from a file</h3>
+<section class="tabbed-code-block"><nav><a href="#javascript" onclick="selectCodeBlock('javascript')">Javascript</a><a href="#java" onclick="selectCodeBlock('java')">Java</a></nav><article><pre><code class="language-javascript"><span class="hljs-comment">/* Reading from a file may take a long time hence it is performed asynchronously. 
+
+Here is a version of a `load()` method which makes use of `async`/`await` to load the data into a JavaScript array, you can also write this using Promises or Callbacks.
+*/</span>
+<span class="hljs-keyword">const</span> fsp = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;fs&#x27;</span>).promises; <span class="hljs-comment">// Node.js file system module with promises</span>
 
 <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">load</span>(<span class="hljs-params"></span>) </span>{
     <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;calling load&#x27;</span>);
@@ -105,11 +107,13 @@
     <span class="hljs-keyword">return</span> restaurants;
 }
 </code></pre>
+<pre><code class="language-java">TODO
+</code></pre>
 <h2>Assignment</h2>
 <ol>
 <li><p>Download this <a href="https://raw.githubusercontent.com/MultiverseLearningProducts/restaurant-data/master/restaurants.json">restaurant data file</a> to the directory where you completed the previous lesson.</p></li>
 <li><p>Write a unit test to verify your seed data has loaded into the database ok. This will fail initially but should pass once you complete the rest of the assignment.</p></li>
-<li><p>Modify the <code>populateDB.js</code> file you created in the previous lesson to include code to load the restaurant JSON data and recursively insert each Restaurant, Menu &amp; MenuItem into the database. You will be looping through a <a href="https://www.geeksforgeeks.org/multidimensional-array-in-javascript/">multi-dimensional array</a>. Remember to use <code>try/catch/finally</code> blocks to handle errors and close both the statements and database.</p></li>
+<li><p>Modify the <code>PopulateDB</code> file/class you created in the previous lesson to include code to load the restaurant JSON data and recursively insert each Restaurant, Menu &amp; MenuItem into the database. You will be looping through a <a href="https://www.geeksforgeeks.org/multidimensional-array-in-javascript/">multi-dimensional array</a>. Remember to use <code>try/catch/finally</code> blocks to handle errors and ensure you close database resources.</p></li>
 <li><p>Commit your code into Github and share the link with your coach for review.</p></li>
 </ol>
 <h3>Assignment extension tasks</h3>
@@ -121,7 +125,7 @@
 <ul>
 <li><a href="https://www.youtube.com/watch?v=iiADhChRriM">Learn JSON in 10 Minutes</a></li>
 </ul>
-
+</article></section>
     <nav id="footer-nav"></nav>
     <script src="/curriculum/js/tabbed-code-blocks.js"></script>
     <script>
