@@ -44,23 +44,23 @@
 <section class="tabbed-code-block"><nav><a href="#javascript" onclick="selectCodeBlock('javascript')">Javascript</a><a href="#java" onclick="selectCodeBlock('java')">Java</a></nav><article><pre><code class="language-javascript">npm install sqlite3
 # If you get errors, try `npm install sqlite3@5.0.0` instead.
 </code></pre>
-<pre><code class="language-typescript">In your pom.xml add:
+<pre><code class="language-java">In your pom.xml add:
 
         &lt;!-- JDBI database connectivity --&gt;
-        &lt;!-- JDBI is build on top <span class="hljs-keyword">of</span> JDBC
-        and provides a simpler <span class="hljs-keyword">interface</span> --&gt;
-        &lt;dependency&gt;
-            &lt;groupId&gt;org.jdbi&lt;/groupId&gt;
-            &lt;artifactId&gt;jdbi3-core&lt;/artifactId&gt;
-            &lt;version&gt;3.1.0&lt;/version&gt;
-        &lt;/dependency&gt;
-        &lt;!-- SQLite database --&gt;
-        &lt;dependency&gt;
-            &lt;groupId&gt;org.xerial&lt;/groupId&gt;
-            &lt;artifactId&gt;sqlite-jdbc&lt;/artifactId&gt;
-            &lt;version&gt;3.36.0.3&lt;/version&gt;
-        &lt;/dependency&gt;
-</code></pre>
+        &lt;!-- JDBI is build on top of JDBC
+        and provides a simpler <span class="hljs-class"><span class="hljs-keyword">interface</span> --&gt;
+        &lt;<span class="hljs-title">dependency</span>&gt;
+            &lt;<span class="hljs-title">groupId</span>&gt;<span class="hljs-title">org</span>.<span class="hljs-title">jdbi</span>&lt;/<span class="hljs-title">groupId</span>&gt;
+            &lt;<span class="hljs-title">artifactId</span>&gt;<span class="hljs-title">jdbi3</span>-<span class="hljs-title">core</span>&lt;/<span class="hljs-title">artifactId</span>&gt;
+            &lt;<span class="hljs-title">version</span>&gt;3.1.0&lt;/<span class="hljs-title">version</span>&gt;
+        &lt;/<span class="hljs-title">dependency</span>&gt;
+        &lt;!-- <span class="hljs-title">SQLite</span> <span class="hljs-title">database</span> --&gt;
+        &lt;<span class="hljs-title">dependency</span>&gt;
+            &lt;<span class="hljs-title">groupId</span>&gt;<span class="hljs-title">org</span>.<span class="hljs-title">xerial</span>&lt;/<span class="hljs-title">groupId</span>&gt;
+            &lt;<span class="hljs-title">artifactId</span>&gt;<span class="hljs-title">sqlite</span>-<span class="hljs-title">jdbc</span>&lt;/<span class="hljs-title">artifactId</span>&gt;
+            &lt;<span class="hljs-title">version</span>&gt;3.36.0.3&lt;/<span class="hljs-title">version</span>&gt;
+        &lt;/<span class="hljs-title">dependency</span>&gt;
+</span></code></pre>
 </article></section><h3>Checking database setup</h3>
 <p>Confirm you can connect to a in-memory SQLite database using the following code:</p>
 <section class="tabbed-code-block"><nav><a href="#javascript" onclick="selectCodeBlock('javascript')">Javascript</a><a href="#java" onclick="selectCodeBlock('java')">Java</a></nav><article><pre><code class="language-javascript">    <span class="hljs-keyword">const</span> sqlite3 = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;sqlite3&#x27;</span>).verbose();
