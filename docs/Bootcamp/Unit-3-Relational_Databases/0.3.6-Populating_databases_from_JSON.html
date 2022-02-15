@@ -107,7 +107,27 @@ Here is a version of a `load()` method which makes use of `async`/`await` to loa
     <span class="hljs-keyword">return</span> restaurants;
 }
 </code></pre>
-<pre><code class="language-java">TODO
+<pre><code class="language-java">Add the following dependency to pom.xml
+
+    &lt;dependency&gt;
+        &lt;groupId&gt;com.googlecode.json-simple&lt;/groupId&gt;
+        &lt;artifactId&gt;json-simple&lt;/artifactId&gt;
+        &lt;version&gt;1.1.1&lt;/version&gt;
+    &lt;/dependency&gt;
+
+/*
+ Code snippet which reads from a restaurants.json file located in the src/main/resources directory
+ */
+        InputStreamReader fileReader = new InputStreamReader(JSONReader.class.getResourceAsStream(&quot;/restaurants.json&quot;));
+
+        try {
+            JSONArray restaurants = (JSONArray) new JSONParser().parse(fileReader);
+        } finally {
+            // close the file resource
+            if (fileReader!=null) {
+                fileReader.close();
+            }
+        }
 </code></pre>
 <h2>Assignment</h2>
 <ol>
