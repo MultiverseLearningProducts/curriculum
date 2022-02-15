@@ -61,9 +61,9 @@
             <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>3.36.0.3<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
 </code></pre>
-<section class="tabbed-code-block"><nav><a href="#javascript" onclick="selectCodeBlock('javascript')">Javascript</a><a href="#java" onclick="selectCodeBlock('java')">Java</a></nav><article><h3>Checking database setup</h3>
+</article></section><h3>Checking database setup</h3>
 <p>Confirm you can connect to a in-memory SQLite database using the following code:</p>
-</article></section><pre><code class="language-javascript">    <span class="hljs-keyword">const</span> sqlite3 = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;sqlite3&#x27;</span>).verbose();
+<section class="tabbed-code-block"><nav><a href="#javascript" onclick="selectCodeBlock('javascript')">Javascript</a><a href="#java" onclick="selectCodeBlock('java')">Java</a></nav><article><pre><code class="language-javascript">    <span class="hljs-keyword">const</span> sqlite3 = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;sqlite3&#x27;</span>).verbose();
 
     <span class="hljs-comment">// create an in-memory database</span>
     <span class="hljs-keyword">const</span> db = <span class="hljs-keyword">new</span> sqlite3.Database(<span class="hljs-string">&#x27;:memory:&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> {
@@ -85,9 +85,9 @@
 System.out.println(<span class="hljs-string">&#x27;Connected to the in-memory SQlite database.&#x27;</span>);
 <span class="hljs-comment">// note that JDBI automatically takes care of releasing any connections after use</span>
 </code></pre>
-<section class="tabbed-code-block"><nav><a href="#javascript" onclick="selectCodeBlock('javascript')">Javascript</a><a href="#java" onclick="selectCodeBlock('java')">Java</a></nav><article><h3>Inserting data</h3>
+</article></section><h3>Inserting data</h3>
 <p>Now let's look at how we create a RESTAURANT table and insert rows into the table. Instead of storing the data in memory, we'll persist the database in a file named 'restaurants.sqlite'.</p>
-</article></section><pre><code class="language-javascript"><span class="hljs-keyword">const</span> sqlite3 = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;sqlite3&#x27;</span>).verbose();
+<section class="tabbed-code-block"><nav><a href="#javascript" onclick="selectCodeBlock('javascript')">Javascript</a><a href="#java" onclick="selectCodeBlock('java')">Java</a></nav><article><pre><code class="language-javascript"><span class="hljs-keyword">const</span> sqlite3 = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;sqlite3&#x27;</span>).verbose();
 
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">initialise</span>(<span class="hljs-params"></span>) </span>{
     <span class="hljs-comment">// if the specified database exists, connect to it else create the database</span>
@@ -137,7 +137,7 @@ System.out.println(<span class="hljs-string">&#x27;Connected to the in-memory SQ
         System.out.println(restaurants);
     }
 </code></pre>
-<section class="tabbed-code-block"><nav><a href="#javascript" onclick="selectCodeBlock('javascript')">Javascript</a><a href="#java" onclick="selectCodeBlock('java')">Java</a></nav><article><p>The code makes use of <a href="https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html">Prepared Statements/bind variables</a> which are key for ensure your database applications are not vulnerable to <a href="https://portswigger.net/web-security/sql-injection">SQL injection attacks</a>. Watch this video to find out more about this kind of attack</p>
+</article></section><p>The code makes use of <a href="https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html">Prepared Statements/bind variables</a> which are key for ensure your database applications are not vulnerable to <a href="https://portswigger.net/web-security/sql-injection">SQL injection attacks</a>. Watch this video to find out more about this kind of attack</p>
 <p><iframe src="https://www.youtube.com/embed/wX6tszfgYp4" width="100%" height="444px" allowfullscreen frameborder=0></iframe></p>
 <h2>Assignment</h2>
 <ol>
@@ -151,7 +151,7 @@ System.out.println(<span class="hljs-string">&#x27;Connected to the in-memory SQ
 <li>Research SQL injection attacks which made the news</li>
 </ul>
 <h2>Additional resources</h2>
-</article></section></article></section>
+
     <nav id="footer-nav"></nav>
     <script src="/curriculum/js/tabbed-code-blocks.js"></script>
     <script>
