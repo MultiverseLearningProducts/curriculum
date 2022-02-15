@@ -44,22 +44,22 @@
 <section class="tabbed-code-block"><nav><a href="#javascript" onclick="selectCodeBlock('javascript')">Javascript</a><a href="#java" onclick="selectCodeBlock('java')">Java</a></nav><article><pre><code class="language-javascript">npm install sqlite3
 # If you get errors, try `npm install sqlite3@5.0.0` instead.
 </code></pre>
-<pre><code class="language-xml">In your pom.xml add:
+<pre><code class="language-typescript">In your pom.xml add:
 
-        <span class="hljs-comment">&lt;!-- JDBI database connectivity --&gt;</span>
-        <span class="hljs-comment">&lt;!-- JDBI is build on top of JDBC
-        and provides a simpler interface --&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.jdbi<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>jdbi3-core<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>3.1.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
-        <span class="hljs-comment">&lt;!-- SQLite database --&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.xerial<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>sqlite-jdbc<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>3.36.0.3<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+        &lt;!-- JDBI database connectivity --&gt;
+        &lt;!-- JDBI is build on top <span class="hljs-keyword">of</span> JDBC
+        and provides a simpler <span class="hljs-keyword">interface</span> --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.jdbi&lt;/groupId&gt;
+            &lt;artifactId&gt;jdbi3-core&lt;/artifactId&gt;
+            &lt;version&gt;3.1.0&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;!-- SQLite database --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.xerial&lt;/groupId&gt;
+            &lt;artifactId&gt;sqlite-jdbc&lt;/artifactId&gt;
+            &lt;version&gt;3.36.0.3&lt;/version&gt;
+        &lt;/dependency&gt;
 </code></pre>
 </article></section><h3>Checking database setup</h3>
 <p>Confirm you can connect to a in-memory SQLite database using the following code:</p>
