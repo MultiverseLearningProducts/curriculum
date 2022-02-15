@@ -44,7 +44,9 @@
 <section class="tabbed-code-block"><nav><a href="#javascript" onclick="selectCodeBlock('javascript')">Javascript</a><a href="#java" onclick="selectCodeBlock('java')">Java</a></nav><article><pre><code class="language-bash">npm install sqlite3
 <span class="hljs-comment"># If you get errors, try `npm install sqlite3@5.0.0` instead.</span>
 </code></pre>
-<pre><code class="language-xml">        <span class="hljs-comment">&lt;!-- JDBI database connectivity --&gt;</span>
+<pre><code class="language-xml">In your pom.xml add:
+
+        <span class="hljs-comment">&lt;!-- JDBI database connectivity --&gt;</span>
         <span class="hljs-comment">&lt;!-- JDBI is build on top of JDBC
         and provides a simpler interface --&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
@@ -61,7 +63,7 @@
 </code></pre>
 </article></section><h3>Checking database setup</h3>
 <p>Confirm you can connect to a in-memory SQLite database using the following code:</p>
-<section class="tabbed-code-block"><nav><a href="#javascript" onclick="selectCodeBlock('javascript')">Javascript</a><a href="#java" onclick="selectCodeBlock('java')">Java</a></nav><article><pre><code class="language-js">    <span class="hljs-keyword">const</span> sqlite3 = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;sqlite3&#x27;</span>).verbose();
+<section class="tabbed-code-block"><nav><a href="#javascript" onclick="selectCodeBlock('javascript')">Javascript</a><a href="#java" onclick="selectCodeBlock('java')">Java</a></nav><article><pre><code class="language-javascript">    <span class="hljs-keyword">const</span> sqlite3 = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;sqlite3&#x27;</span>).verbose();
 
     <span class="hljs-comment">// create an in-memory database</span>
     <span class="hljs-keyword">const</span> db = <span class="hljs-keyword">new</span> sqlite3.Database(<span class="hljs-string">&#x27;:memory:&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> {
@@ -85,7 +87,7 @@ System.out.println(<span class="hljs-string">&#x27;Connected to the in-memory SQ
 </code></pre>
 </article></section><h3>Inserting data</h3>
 <p>Now let's look at how we create a RESTAURANT table and insert rows into the table. Instead of storing the data in memory, we'll persist the database in a file named 'restaurants.sqlite'.</p>
-<section class="tabbed-code-block"><nav><a href="#javascript" onclick="selectCodeBlock('javascript')">Javascript</a><a href="#java" onclick="selectCodeBlock('java')">Java</a></nav><article><pre><code class="language-js"><span class="hljs-keyword">const</span> sqlite3 = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;sqlite3&#x27;</span>).verbose();
+<section class="tabbed-code-block"><nav><a href="#javascript" onclick="selectCodeBlock('javascript')">Javascript</a><a href="#java" onclick="selectCodeBlock('java')">Java</a></nav><article><pre><code class="language-javascript"><span class="hljs-keyword">const</span> sqlite3 = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;sqlite3&#x27;</span>).verbose();
 
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">initialise</span>(<span class="hljs-params"></span>) </span>{
     <span class="hljs-comment">// if the specified database exists, connect to it else create the database</span>
