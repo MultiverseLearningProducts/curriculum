@@ -4,7 +4,8 @@
 <head>
     <meta charset="utf-8">
     <title>
-         Introducing routing to our app
+         Introducing routing to our app
+
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="shortcut icon" type="image/x-icon" href="/curriculum/favicon.ico" />
@@ -73,7 +74,7 @@
 <h2>Re-imagining our app</h2>
 <p>Now lets create some navigation and have that navigation render different views in our app. Update <code>App.js</code> to now include some navigation links and some components for other pages.</p>
 <pre><code class="language-javascript"><span class="hljs-keyword">import</span> Home <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./Home&#x27;</span>
-<span class="hljs-keyword">import</span> { BrowserRouter <span class="hljs-keyword">as</span> Router, Link, Switch, Route } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;react-router-dom&#x27;</span>
+<span class="hljs-keyword">import</span> { BrowserRouter <span class="hljs-keyword">as</span> Router, Link, Routes, Route } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;react-router-dom&#x27;</span>
 
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">App</span>(<span class="hljs-params"></span>) </span>{
   <span class="hljs-keyword">return</span> (
@@ -85,11 +86,11 @@
           <span class="hljs-tag">&lt;<span class="hljs-name">Link</span> <span class="hljs-attr">to</span>=<span class="hljs-string">&quot;/contact&quot;</span>&gt;</span>Contact<span class="hljs-tag">&lt;/<span class="hljs-name">Link</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
       <span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">Switch</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">Routes</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">Route</span> <span class="hljs-attr">path</span>=<span class="hljs-string">&quot;/&quot;</span>&gt;</span>
           <span class="hljs-tag">&lt;<span class="hljs-name">Home</span> /&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">Route</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">Switch</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">Routes</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">Router</span>&gt;</span></span>
   );
 }
