@@ -31,21 +31,24 @@
 <p>There is an important dimension missing from our 'home grown' ORM implementation - relationships. As we see from the class diagram below, our Restaurants have Menus and our Menus have Menu Items.<br>
 <figure><img src="https://user-images.githubusercontent.com/1316724/105141638-5d11d500-5af1-11eb-98ee-d177df9c5894.png" alt="UML Class Diagram showing relationships between Restaurant, Menu and MenuItem classes"><figcaption></figcaption></figure></p>
 <p>We want to be able to access our Menus like this:</p>
-<pre><code class="language-javascript">restaurant.menus <span class="hljs-comment">// [Menu, Menu]</span>
+<section class="tabbed-code-block"><nav><a href="#javascript" onclick="selectCodeBlock('javascript')">Javascript</a><a href="#java" onclick="selectCodeBlock('java')">Java</a></nav><article><pre><code class="language-javascript">restaurant.menus <span class="hljs-comment">// [Menu, Menu]</span>
 </code></pre>
-<p>and from each Menu we want to be able to access the list of items on the Menu:</p>
-<pre><code class="language-javascript">menu.items <span class="hljs-comment">// [Item, Item]</span>
+<pre><code class="language-java">TODO
 </code></pre>
-<p>We therefore need to expand our Restaurant class to include a function that will create and add a Menu instance to the Restaurant.</p>
+</article></section><p>and from each Menu we want to be able to access information about each item on the Menu, for example:<br>
+|Javascript|Java|</p>
+<pre><code class="language-javascript">restaurant.menus[<span class="hljs-number">0</span>].items[<span class="hljs-number">0</span>].price <span class="hljs-comment">// 12.50</span>
+</code></pre>
+<pre><code class="language-java">TODO
+</code></pre>
+<section class="tabbed-code-block"><nav><a href="#javascript" onclick="selectCodeBlock('javascript')">Javascript</a><a href="#java" onclick="selectCodeBlock('java')">Java</a></nav><article><p>We therefore need to expand our Restaurant class to include a function that will create and add a Menu instance to the Restaurant.</p>
 <pre><code class="language-javascript"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-title">addMenu</span>(<span class="hljs-params">title</span>)</span> {
     <span class="hljs-keyword">const</span> menu = <span class="hljs-keyword">new</span> Menu({title, <span class="hljs-attr">restaurant_id</span>: <span class="hljs-built_in">this</span>.id})
     <span class="hljs-keyword">await</span> menu.save();
     <span class="hljs-built_in">this</span>.menus.push(menu)
 }
 </code></pre>
-<p>Then we need to get the Menu Items for a Menu, and the Menus for a Restaurant. So when we instantiate a Restaurant with a row from the database (the Restaurant is stored with an id), we will also need to retrieve all the Menus. That way a new instance of a Restaurant has all it's Menus in place, and each of those Menus have their Menu Items in place. We expect to be able to drill down through all our connected data like this:</p>
-<pre><code class="language-javascript">restaurant.menus[<span class="hljs-number">0</span>].items[<span class="hljs-number">0</span>].price <span class="hljs-comment">// 12.50</span>
-</code></pre>
+<p>We also need our Restaurant <code>find()</code> methods to return the Menus and MenuItems alongside the Restaurant data.</p>
 <h2>Assignment</h2>
 <ul>
 <li>Enhance the solution from the <a href="https://multiverselearningproducts.github.io/curriculum/Bootcamp/Unit-3-Relational_Databases/0.3.7-Object_Relational_Mapping_part_1.html">Object Relational Mapping - Part 1</a> lesson to include the relationships between your Restaurant and Menu classes and the Menu and Menu Item classes as described above.</li>
@@ -53,11 +56,8 @@
 <li>Commit your code into Github and share the link with your coach for review.</li>
 </ul>
 <h3>Assignment extension tasks</h3>
-<ul>
-<li></li>
-</ul>
 <h2>Additional resources</h2>
-
+</article></section>
     <nav id="footer-nav"></nav>
     <script src="/curriculum/js/tabbed-code-blocks.js"></script>
     <script>
