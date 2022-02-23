@@ -31,17 +31,16 @@
 <p>There is an important dimension missing from our 'home grown' ORM implementation - relationships. As we see from the class diagram below, our Restaurants have Menus and our Menus have Menu Items.<br>
 <figure><img src="https://user-images.githubusercontent.com/1316724/105141638-5d11d500-5af1-11eb-98ee-d177df9c5894.png" alt="UML Class Diagram showing relationships between Restaurant, Menu and MenuItem classes"><figcaption></figcaption></figure></p>
 <p>We want to be able to access our Menus like this:</p>
-<section class="tabbed-code-block"><nav><a href="#javascript" onclick="selectCodeBlock('javascript')">Javascript</a><a href="#java" onclick="selectCodeBlock('java')">Java</a></nav><article><pre><code class="language-javascript">restaurant.menus <span class="hljs-comment">// [Menu, Menu]</span>
+<section class="tabbed-code-block"><nav><a href="#javascript" onclick="selectCodeBlock('javascript')">Javascript</a><a href="#java" onclick="selectCodeBlock('java')">Java</a></nav><article><pre><code class="language-javascript">restaurant.menus 
+</code></pre>
+<pre><code class="language-java">restaurant.getMenus();
+</code></pre>
+</article></section><p>and from each Menu we want to be able to access information about each item on the Menu, for example:</p>
+<section class="tabbed-code-block"><nav><a href="#javascript" onclick="selectCodeBlock('javascript')">Javascript</a><a href="#java" onclick="selectCodeBlock('java')">Java</a></nav><article><pre><code class="language-javascript">restaurant.menus[<span class="hljs-number">0</span>].items[<span class="hljs-number">0</span>].price <span class="hljs-comment">// 12.50</span>
 </code></pre>
 <pre><code class="language-java">TODO
 </code></pre>
-</article></section><p>and from each Menu we want to be able to access information about each item on the Menu, for example:<br>
-|Javascript|Java|</p>
-<pre><code class="language-javascript">restaurant.menus[<span class="hljs-number">0</span>].items[<span class="hljs-number">0</span>].price <span class="hljs-comment">// 12.50</span>
-</code></pre>
-<pre><code class="language-java">TODO
-</code></pre>
-<section class="tabbed-code-block"><nav><a href="#javascript" onclick="selectCodeBlock('javascript')">Javascript</a><a href="#java" onclick="selectCodeBlock('java')">Java</a></nav><article><p>We therefore need to expand our Restaurant class to include a function that will create and add a Menu instance to the Restaurant.</p>
+</article></section><p>We therefore need to expand our Restaurant class to include a function that will create and add a Menu instance to the Restaurant.</p>
 <pre><code class="language-javascript"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-title">addMenu</span>(<span class="hljs-params">title</span>)</span> {
     <span class="hljs-keyword">const</span> menu = <span class="hljs-keyword">new</span> Menu({title, <span class="hljs-attr">restaurant_id</span>: <span class="hljs-built_in">this</span>.id})
     <span class="hljs-keyword">await</span> menu.save();
@@ -57,7 +56,7 @@
 </ul>
 <h3>Assignment extension tasks</h3>
 <h2>Additional resources</h2>
-</article></section>
+
     <nav id="footer-nav"></nav>
     <script src="/curriculum/js/tabbed-code-blocks.js"></script>
     <script>
