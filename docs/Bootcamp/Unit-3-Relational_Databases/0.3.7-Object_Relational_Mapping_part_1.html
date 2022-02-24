@@ -49,6 +49,7 @@ describe(<span class="hljs-string">&#x27;Restaurants&#x27;</span>, <span class="
             done();
         })
 
+        <span class="hljs-comment">// pass in the database that should be used</span>
         Restaurant.setDatabase(db);
 
     })
@@ -103,7 +104,135 @@ describe(<span class="hljs-string">&#x27;Restaurants&#x27;</span>, <span class="
     <span class="hljs-comment">// TODO - add more tests</span>
 })
 </code></pre>
-<pre><code class="language-java">TODO
+<pre><code class="language-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RestaurantTest</span> </span>{
+
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> Jdbi jdbi = Jdbi.create(<span class="hljs-string">&quot;jdbc:sqlite:restaurants.sqlite&quot;</span>);
+
+    <span class="hljs-meta">@BeforeClass</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setup</span><span class="hljs-params">()</span> </span>{
+        jdbi.useHandle(handle -&gt; {
+            handle.execute(<span class="hljs-string">&quot;CREATE TABLE IF NOT EXISTS RESTAURANTS (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, imagelink TEXT)&quot;</span>);
+        });
+    }
+
+    <span class="hljs-meta">@Test</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">save</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// given</span>
+        Restaurant restaurant = <span class="hljs-keyword">new</span> Restaurant(<span class="hljs-string">&quot;Boo Jangles&quot;</span>, <span class="hljs-string">&quot;https://some.image.url&quot;</span>);
+
+        <span class="hljs-comment">// when</span>
+        Restaurant savedRestaurant = restaurant.save();
+
+        <span class="hljs-comment">// then</span>
+        Restaurant foundRestaurant = Restaurant.findById(savedRestaurant.getId());
+        assertTrue(foundRestaurant.getId() &gt; <span class="hljs-number">0</span>);
+    }
+
+    <span class="hljs-meta">@Test</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">findById</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// given</span>
+        Restaurant restaurant = <span class="hljs-keyword">new</span> Restaurant(<span class="hljs-string">&quot;Boo Jangles&quot;</span>, <span class="hljs-string">&quot;https://some.image.url&quot;</span>);
+        Restaurant savedRestaurant = restaurant.save();
+
+        <span class="hljs-comment">// when</span>
+        Restaurant foundRestaurant = Restaurant.findById(savedRestaurant.getId());
+
+        <span class="hljs-comment">// then</span>
+        assertTrue(foundRestaurant.getId() &gt; <span class="hljs-number">0</span>);
+    }
+
+    <span class="hljs-meta">@Test</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">findAll</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// given</span>
+        Restaurant.deleteAll();
+
+        Restaurant restaurant = <span class="hljs-keyword">new</span> Restaurant(<span class="hljs-string">&quot;Boo Jangles&quot;</span>, <span class="hljs-string">&quot;https://some.image.url&quot;</span>);
+        Restaurant savedRestaurant = restaurant.save();
+        restaurant = <span class="hljs-keyword">new</span> Restaurant(<span class="hljs-string">&quot;Nandos&quot;</span>, <span class="hljs-string">&quot;https://some.otherimage.url&quot;</span>);
+        savedRestaurant = restaurant.save();
+
+        <span class="hljs-comment">// when</span>
+        List&lt;Restaurant&gt; foundRestaurants = Restaurant.findAll();
+
+        <span class="hljs-comment">// then</span>
+        assertTrue(foundRestaurants.size() == <span class="hljs-number">2</span>);
+
+    }
+}
+</code></pre>
+</article></section><p>The <code>save()</code> method is shown as an example below:</p>
+<section class="tabbed-code-block"><nav><a href="#javascript" onclick="selectCodeBlock('javascript')">Javascript</a><a href="#java" onclick="selectCodeBlock('java')">Java</a></nav><article><pre><code class="language-javascript"><span class="hljs-keyword">const</span> { Database } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;sqlite3&#x27;</span>)
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Restaurant</span> </span>{
+    id;
+    name;
+    image;
+    <span class="hljs-keyword">static</span> db;
+
+    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">name, image</span>)</span> {
+        <span class="hljs-built_in">this</span>.name = name;
+        <span class="hljs-built_in">this</span>.image = image;
+    }
+
+    <span class="hljs-comment">/**
+     * Set the database to use
+     */</span>
+    <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-title">setDatabase</span>(<span class="hljs-params">db</span>)</span> {
+        Restaurant.db = db;
+    }
+
+    <span class="hljs-function"><span class="hljs-title">save</span>(<span class="hljs-params"></span>)</span> {
+
+        <span class="hljs-keyword">const</span> self = <span class="hljs-built_in">this</span>; <span class="hljs-comment">// required as &#x27;this&#x27; is not visible within the run function</span>
+
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">resolve</span>) </span>{
+                Restaurant.db.run(<span class="hljs-string">`INSERT INTO RESTAURANTS (name, image) VALUES (?, ?)`</span>, [self.name, self.image], <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err</span>) </span>{
+                    <span class="hljs-keyword">if</span> (err) {
+                        <span class="hljs-built_in">console</span>.log(err.message);
+                        <span class="hljs-keyword">throw</span> err;
+                    }
+                    self.id = <span class="hljs-built_in">this</span>.lastID; <span class="hljs-comment">// set the object id to the inserted row id</span>
+
+                    resolve(self);
+                })
+            });
+        } <span class="hljs-keyword">catch</span> (err) {
+            <span class="hljs-built_in">console</span>.log(err)
+        }
+    }
+</code></pre>
+<pre><code class="language-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Restaurant</span> </span>{
+
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> Jdbi jdbi = Jdbi.create(<span class="hljs-string">&quot;jdbc:sqlite:restaurants.sqlite&quot;</span>);
+
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">long</span> id;
+    <span class="hljs-keyword">private</span> String name;
+    <span class="hljs-keyword">private</span> String imageLink;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Restaurant</span><span class="hljs-params">()</span> </span>{
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Restaurant</span><span class="hljs-params">(String name, String imageLink)</span> </span>{
+        <span class="hljs-keyword">this</span>.name = name;
+        <span class="hljs-keyword">this</span>.imageLink = imageLink;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> Restaurant <span class="hljs-title">save</span><span class="hljs-params">()</span> </span>{
+
+        <span class="hljs-comment">// using withHandle will auto close the db connection</span>
+        Long id = jdbi.withHandle(handle -&gt; {
+
+            <span class="hljs-keyword">return</span> handle.createUpdate(<span class="hljs-string">&quot;INSERT INTO RESTAURANTS (name, imagelink) VALUES (?, ?)&quot;</span>)
+                    .bind(<span class="hljs-keyword">this</span>.name, <span class="hljs-keyword">this</span>.imageLink)
+                    .executeAndReturnGeneratedKeys(<span class="hljs-string">&quot;id&quot;</span>)
+                    .mapTo(Long.class).findOnly();
+        });
+
+        <span class="hljs-keyword">this</span>.id = id;
+
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>;
+    }
 </code></pre>
 </article></section><h2>Assignment</h2>
 <ol>
