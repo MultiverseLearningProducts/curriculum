@@ -36,19 +36,72 @@
 <pre><code class="language-java">restaurant.getMenus();
 </code></pre>
 </article></section><p>and from each Menu we want to be able to access information about each item on the Menu, for example:</p>
-<section class="tabbed-code-block"><nav><a href="#javascript" onclick="selectCodeBlock('javascript')">Javascript</a><a href="#java" onclick="selectCodeBlock('java')">Java</a></nav><article><pre><code class="language-javascript">restaurant.menus[<span class="hljs-number">0</span>].items[<span class="hljs-number">0</span>].price <span class="hljs-comment">// 12.50</span>
+<section class="tabbed-code-block"><nav><a href="#javascript" onclick="selectCodeBlock('javascript')">Javascript</a><a href="#java" onclick="selectCodeBlock('java')">Java</a></nav><article><pre><code class="language-javascript">restaurant.menus[<span class="hljs-number">0</span>].title 
 </code></pre>
-<pre><code class="language-java">TODO
+<pre><code class="language-java">restaurant.getMenus().get(<span class="hljs-number">0</span>).getTitle()
 </code></pre>
-</article></section><p>We therefore need to expand our Restaurant class to include a function that will create and add a Menu instance to the Restaurant.</p>
-<pre><code class="language-javascript"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-title">addMenu</span>(<span class="hljs-params">title</span>)</span> {
-    <span class="hljs-keyword">const</span> menu = <span class="hljs-keyword">new</span> Menu({title, <span class="hljs-attr">restaurant_id</span>: <span class="hljs-built_in">this</span>.id})
-    <span class="hljs-keyword">await</span> menu.save();
-    <span class="hljs-built_in">this</span>.menus.push(menu)
+</article></section><p>We therefore need to expand our Restaurant class to include a function that will add a Menu instance to the Restaurant:</p>
+<section class="tabbed-code-block"><nav><a href="#javascript" onclick="selectCodeBlock('javascript')">Javascript</a><a href="#java" onclick="selectCodeBlock('java')">Java</a></nav><article><pre><code class="language-javascript"><span class="hljs-function"><span class="hljs-title">addMenu</span>(<span class="hljs-params">menu</span>)</span> {
+    <span class="hljs-built_in">this</span>.menus.push(menu);
 }
 </code></pre>
-<p>We also need our Restaurant <code>find()</code> methods to return the Menus and MenuItems alongside the Restaurant data.</p>
-<h2>Assignment</h2>
+<pre><code class="language-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">addMenu</span><span class="hljs-params">(Menu menu)</span> </span>{
+    <span class="hljs-keyword">this</span>.menus.add(menu);
+}
+</code></pre>
+</article></section><p>We can then extend our <code>save()</code> method to save Restaurant Menus.</p>
+<section class="tabbed-code-block"><nav><a href="#javascript" onclick="selectCodeBlock('javascript')">Javascript</a><a href="#java" onclick="selectCodeBlock('java')">Java</a></nav><article><pre><code class="language-javascript">    <span class="hljs-function"><span class="hljs-title">save</span>(<span class="hljs-params"></span>)</span> {
+
+        <span class="hljs-keyword">const</span> self = <span class="hljs-built_in">this</span>;
+
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">resolve</span>) </span>{
+                Restaurant.db.run(<span class="hljs-string">`INSERT INTO RESTAURANTS (name, image) VALUES (?, ?)`</span>, [self.name, self.image], <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err</span>) </span>{
+                    <span class="hljs-keyword">if</span> (err) {
+                        <span class="hljs-built_in">console</span>.log(err.message);
+                        <span class="hljs-keyword">throw</span> err;
+                    }
+                    self.id = <span class="hljs-built_in">this</span>.lastID; <span class="hljs-comment">// set the object id to the inserted row id</span>
+
+                    <span class="hljs-keyword">if</span> (self.menus) {
+                        self.menus.forEach(<span class="hljs-keyword">async</span> (menu) =&gt; {
+                            <span class="hljs-comment">// save each menu</span>
+                            <span class="hljs-keyword">await</span> menu.save(self.id);
+                        })
+
+                    }
+
+                    resolve(self);
+                })
+            });
+        } <span class="hljs-keyword">catch</span> (err) {
+            <span class="hljs-built_in">console</span>.log(err)
+        }
+    }
+</code></pre>
+<pre><code class="language-java">    <span class="hljs-function"><span class="hljs-keyword">public</span> Restaurant <span class="hljs-title">save</span><span class="hljs-params">()</span> </span>{
+
+        <span class="hljs-comment">// using withHandle will auto close the db connection</span>
+        Long id = jdbi.withHandle(handle -&gt; {
+          <span class="hljs-comment">//  handle.execute(&quot;CREATE TABLE RESTAURANTS (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, imagelink TEXT)&quot;);</span>
+
+            <span class="hljs-keyword">return</span> handle.createUpdate(<span class="hljs-string">&quot;INSERT INTO RESTAURANTS (name, imagelink) VALUES (?, ?)&quot;</span>)
+                    .bind(<span class="hljs-keyword">this</span>.name, <span class="hljs-keyword">this</span>.imageLink)
+                    .executeAndReturnGeneratedKeys(<span class="hljs-string">&quot;id&quot;</span>)
+                    .mapTo(Long.class).findOnly();
+        });
+
+        <span class="hljs-comment">// Part 2</span>
+        <span class="hljs-keyword">for</span>(Menu menu:menus) {
+            menu.save(id);
+        }
+
+        <span class="hljs-keyword">this</span>.id = id;
+
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>;
+    }
+</code></pre>
+</article></section><h2>Assignment</h2>
 <ul>
 <li>Enhance the solution from the <a href="https://multiverselearningproducts.github.io/curriculum/Bootcamp/Unit-3-Relational_Databases/0.3.7-Object_Relational_Mapping_part_1.html">Object Relational Mapping - Part 1</a> lesson to include the relationships between your Restaurant and Menu classes and the Menu and Menu Item classes as described above.</li>
 <li>Ensure you have unit tests that cover the new functionality.</li>

@@ -96,7 +96,6 @@ describe(<span class="hljs-string">&#x27;Restaurants&#x27;</span>, <span class="
         <span class="hljs-keyword">let</span> foundRestaurants = <span class="hljs-keyword">await</span> Restaurant.findAll();
 
         <span class="hljs-comment">// then</span>
-        <span class="hljs-built_in">console</span>.log(foundRestaurants)
         expect(foundRestaurants.length).toBe(<span class="hljs-number">2</span>)
         done()
     })
@@ -124,8 +123,7 @@ describe(<span class="hljs-string">&#x27;Restaurants&#x27;</span>, <span class="
         Restaurant savedRestaurant = restaurant.save();
 
         <span class="hljs-comment">// then</span>
-        Restaurant foundRestaurant = Restaurant.findById(savedRestaurant.getId());
-        assertTrue(foundRestaurant.getId() &gt; <span class="hljs-number">0</span>);
+        assertTrue(savedRestaurant.getId() &gt; <span class="hljs-number">0</span>);
     }
 
     <span class="hljs-meta">@Test</span>
