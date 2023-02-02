@@ -46,12 +46,6 @@ S14: follow company, team or client approaches to continuous integration, versio
 <li>On the EC2 instance add a <code>docker-compose.yaml</code> file with the environmental variables ports etc</li>
 <li>Pull and run the updated container via <code>docker compose up -d</code></li>
 </ul>
-<p>To install docker on EC2 use the commands below:</p>
-<pre><code class="language-sh">sudo yum update -y
-sudo yum install docker -y
-sudo service docker start
-sudo usermod -a -G docker ec2-user
-</code></pre>
 <p>The environmental variables the app needs to be tested, built or run are:</p>
 <pre><code><span class="hljs-attr">MOD2_AUTH0_CLIENT_ID</span>=•••••••••••••••••
 <span class="hljs-attr">MOD2_AUTH0_CLIENT_SECRET</span>=•••••••••••••••••••••••••••••••••••••••••••••••••••
@@ -220,7 +214,33 @@ Save your changes. I called my install <strong>Gradle 8</strong>.</p>
 <pre><code class="language-sh">sh <span class="hljs-string">&#x27;ls -l build/libs/*.jar&#x27;</span>
 </code></pre>
 <h2>Provision AWS</h2>
-<p>...</p>
+<p>You will need an AWS account. Log into the developer console and follow the steps to create a new instance. Make sure you know where the <code>.pem</code> file is once it is downloaded. Make a note of the public ip address.</p>
+<ol>
+<li>install docker onto the instance</li>
+<li>open port 8080</li>
+<li>create a docker-compose to run the container with secrets</li>
+</ol>
+<p>To install docker on EC2 use the commands below once you have ssh into the machine. I find you usually have to restart the instance to get docker working ok.</p>
+<pre><code class="language-sh">sudo amazon-linux-extras install docker
+sudo service docker start
+sudo usermod -a -G docker ec2-user
+sudo chkconfig docker on
+sudo curl -L https://github.com/docker/compose/releases/download/1.22.0/docker-compose-$(uname -s)-$(uname -m) -o /usr/<span class="hljs-built_in">local</span>/bin/docker-compose
+sudo chmod +x /usr/<span class="hljs-built_in">local</span>/bin/docker-compose
+sudo reboot
+</code></pre>
+<pre><code class="language-yaml"><span class="hljs-attr">version:</span> <span class="hljs-string">&quot;3&quot;</span>
+<span class="hljs-attr">services:</span>
+  <span class="hljs-attr">moodtracker:</span>
+    <span class="hljs-attr">container_name:</span> <span class="hljs-string">moodtracker</span>
+    <span class="hljs-attr">image:</span> <span class="hljs-string">bmordan/moodtracker</span>
+    <span class="hljs-attr">ports:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-number">8080</span><span class="hljs-string">:8080</span>
+    <span class="hljs-attr">environment:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">MOD2_AUTH0_CLIENT_ID=•••••••••••••••••</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">MOD2_AUTH0_CLIENT_SECRET=•••••••••••••••••</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">MOD2_AUTH0_ISSUER=•••••••••••••••••</span>
+</code></pre>
 
     <nav id="footer-nav"></nav>
     <script src="/curriculum/js/tabbed-code-blocks.js"></script>
