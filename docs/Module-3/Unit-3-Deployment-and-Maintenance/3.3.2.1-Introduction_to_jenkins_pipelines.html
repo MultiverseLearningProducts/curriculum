@@ -145,6 +145,82 @@ sudo usermod -a -G docker ec2-user
 }
 </code></pre>
 <p>Can you check out a branch? What happens if you try to run the tests with <code>gradle test</code>?</p>
+<h2>Agents with tools in them</h2>
+<p>It's likely your pipeline now FAILS with gradle: not found. We need the gradle tool to test and build our app. There are 2 ways to approach this:</p>
+<ol>
+<li>Configure the global tools on the Jenkins server</li>
+<li>Use a docker image with gradle installed within it as our agent</li>
+</ol>
+<p>To configure the global gradle.</p>
+<ol>
+<li>Install the gradle plugin</li>
+<li>Goto Dashboard -&gt; Manage Jenkins -&gt; Global Tool Configuration -&gt; Gradle installations...</li>
+</ol>
+<p>Add gradle give it a name/label and select the version you want to have installed. You can have different versions installed a select then via there name or label.<br>
+Save your changes. I called my install <strong>Gradle 8</strong>.</p>
+<p>Now in your pipeline script you can declare at the pipeline or stage level that you want the gradle tool available. Like this</p>
+<pre><code class="language-groovy">pipeline {
+    agent any
+    tools {
+        gradle <span class="hljs-string">&#x27;Gradle 8&#x27;</span>
+    }
+    environment {
+        MOD2_AUTH0_CLIENT_ID = credentials(<span class="hljs-string">&quot;MOD2_AUTH0_CLIENT_ID&quot;</span>)
+        MOD2_AUTH0_CLIENT_SECRET = credentials(<span class="hljs-string">&quot;MOD2_AUTH0_CLIENT_SECRET&quot;</span>)
+        MOD2_AUTH0_ISSUER = credentials(<span class="hljs-string">&quot;MOD2_AUTH0_ISSUER&quot;</span>)
+    }
+    stages {
+        stage(<span class="hljs-string">&quot;hello-github&quot;</span>) {
+            steps {
+                git <span class="hljs-attr">credentialsId:</span> <span class="hljs-string">&#x27;github&#x27;</span>, <span class="hljs-attr">url:</span> <span class="hljs-string">&#x27;https://github.com/MultiverseLearningProducts/java-moodtracker-app&#x27;</span>
+                sh <span class="hljs-string">&#x27;java --version&#x27;</span>
+                sh <span class="hljs-string">&#x27;gradle --version&#x27;</span>
+            }
+        }
+        stage(<span class="hljs-string">&quot;Test&quot;</span>) {
+            steps {
+                sh <span class="hljs-string">&#x27;gradle clean test&#x27;</span>
+            }
+        }
+    }
+}
+</code></pre>
+<p>Can you see I am using environmental variables in the set up for the pipeline. The application needs these to run integration tests and to build the app. You can add these in Dashboard -&gt; Manage Jenkins -&gt; Manage Credentials -&gt; System -&gt; Global credentials (unrestricted) -&gt; + Add Credentials -&gt; Secret text the ID would be something like <strong>MOD2_AUTH0_ISSUER</strong> as above. Once these are created you can access them in your pipelines as we are doing so above.</p>
+<p>That might not work...</p>
+<p>This project needs java 17, the jenkins server only has java 11 installed on it. We can install java 17 as well, but there is lots of futizing to get JAVA_HOME defined and it is easier to now try the other way of working with agents.</p>
+<p>The second way to work with agents is to define a docker image you would like the pipeline or stage to run in. We want something with both gradle and java 17. Let's update our script to use a docker container:</p>
+<pre><code class="language-groovy">pipeline {
+    agent {
+        docker {
+            image <span class="hljs-string">&#x27;gradle:7.6.0-jdk17&#x27;</span>
+        }
+    }
+    environment {
+        MOD2_AUTH0_CLIENT_ID = credentials(<span class="hljs-string">&quot;MOD2_AUTH0_CLIENT_ID&quot;</span>)
+        MOD2_AUTH0_CLIENT_SECRET = credentials(<span class="hljs-string">&quot;MOD2_AUTH0_CLIENT_SECRET&quot;</span>)
+        MOD2_AUTH0_ISSUER = credentials(<span class="hljs-string">&quot;MOD2_AUTH0_ISSUER&quot;</span>)
+    }
+    stages {
+        stage(<span class="hljs-string">&quot;hello-github&quot;</span>) {
+            steps {
+                git <span class="hljs-attr">credentialsId:</span> <span class="hljs-string">&#x27;github&#x27;</span>, <span class="hljs-attr">url:</span> <span class="hljs-string">&#x27;https://github.com/MultiverseLearningProducts/java-moodtracker-app&#x27;</span>
+                sh <span class="hljs-string">&#x27;java --version&#x27;</span>
+                sh <span class="hljs-string">&#x27;gradle --version&#x27;</span>
+            }
+        }
+        stage(<span class="hljs-string">&quot;Test&quot;</span>) {
+            steps {
+                sh <span class="hljs-string">&#x27;gradle clean test&#x27;</span>
+            }
+        }
+    }
+}
+</code></pre>
+<p>This is quite a moment. What a powerful tool we now have to automate workflows. Can you now build out the pipeline to clone, test and build the project? We want to end up with access to the .jar file for the project. Try ending your pipeline with this command:</p>
+<pre><code class="language-sh">sh <span class="hljs-string">&#x27;ls -l build/libs/*.jar&#x27;</span>
+</code></pre>
+<h2>Provision AWS</h2>
+<p>...</p>
 
     <nav id="footer-nav"></nav>
     <script src="/curriculum/js/tabbed-code-blocks.js"></script>
