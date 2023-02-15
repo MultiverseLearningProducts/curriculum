@@ -72,7 +72,7 @@ S14: follow company, team or client approaches to continuous integration, versio
 <span class="hljs-attr">networks:</span>
   <span class="hljs-attr">jenkins:</span>
 </code></pre>
-<p>Start the service with <code>docker compoe up -d</code> visit <code>http://localhost:8080</code>. You will need the admin password which is in the container. You can access the password with the following docker command:</p>
+<p>Start the service with <code>docker compose up -d</code> visit <code>http://localhost:8080</code>. You will need the admin password which is in the container. You can access the password with the following docker command:</p>
 <pre><code>docker exec jenkins cat <span class="hljs-regexp">/var/</span>jenkins_home<span class="hljs-regexp">/secrets/i</span>nitialAdminPassword
 </code></pre>
 <p>You can create an admin user and log in. Skip installing plugins (we will come back to that). What we are now looking at is an instance of Jenkins. We can use this to program automations of all kinds. It is a versatile and powerful platform with a plugin architecture. So if Jenkins doesn't yet do what you need it to, you can extend it by writing your own plugin.</p>
@@ -183,6 +183,16 @@ Save your changes. I called my install <strong>Gradle 8</strong>.</p>
 <p>That might not work...</p>
 <p>This project needs java 17, the jenkins server only has java 11 installed on it. We can install java 17 as well, but there is lots of futizing to get JAVA_HOME defined and it is easier to now try the other way of working with agents.</p>
 <p>The second way to work with agents is to define a docker image you would like the pipeline or stage to run in. We want something with both gradle and java 17. Let's update our script to use a docker container:</p>
+<p><em>Make sure you have the following plugins installed</em></p>
+<ol>
+<li>Pipeline: Declarative</li>
+<li>Docker Pipeline</li>
+<li>Docker API Plugin</li>
+<li>Docker Commons Plugin</li>
+<li>Docker Pipeline</li>
+<li>Docker Plugin</li>
+<li>docker-build-step</li>
+</ol>
 <pre><code class="language-groovy">pipeline {
     agent {
         docker {
@@ -205,6 +215,7 @@ Save your changes. I called my install <strong>Gradle 8</strong>.</p>
         stage(<span class="hljs-string">&quot;Test&quot;</span>) {
             steps {
                 sh <span class="hljs-string">&#x27;gradle clean test&#x27;</span>
+                sh <span class="hljs-string">&#x27;gradle bootJar&#x27;</span>
             }
         }
     }
@@ -217,7 +228,7 @@ Save your changes. I called my install <strong>Gradle 8</strong>.</p>
 <p>You will need an AWS account. Log into the developer console and follow the steps to create a new instance. Make sure you know where the <code>.pem</code> file is once it is downloaded. Make a note of the public ip address.</p>
 <ol>
 <li>install docker onto the instance</li>
-<li>open port 8080</li>
+<li>open port 8080 in the security section</li>
 <li>create a docker-compose to run the container with secrets</li>
 </ol>
 <p>To install docker on EC2 use the commands below once you have ssh into the machine. I find you usually have to restart the instance to get docker working ok.</p>
@@ -241,6 +252,156 @@ sudo reboot
       <span class="hljs-bullet">-</span> <span class="hljs-string">MOD2_AUTH0_CLIENT_SECRET=•••••••••••••••••</span>
       <span class="hljs-bullet">-</span> <span class="hljs-string">MOD2_AUTH0_ISSUER=•••••••••••••••••</span>
 </code></pre>
+<p>Change <code>bmordan/moodtracker</code> to the name of your docker container. Try and run moodtracker on your EC2 instance. You don't have to use docker compose file you can use the docker run command based on the following example.</p>
+<pre><code><span class="hljs-attribute">docker</span> run -e MOD<span class="hljs-number">2</span>_AUTH<span class="hljs-number">0</span>_CLIENT_ID=$MOD<span class="hljs-number">2</span>_AUTH<span class="hljs-number">0</span>_CLIENT_ID -e MOD<span class="hljs-number">2</span>_AUTH<span class="hljs-number">0</span>_CLIENT_SECRET=$MOD<span class="hljs-number">2</span>_AUTH<span class="hljs-number">0</span>_CLIENT_SECRET -e MOD<span class="hljs-number">2</span>_AUTH<span class="hljs-number">0</span>_ISSUER=$MOD<span class="hljs-number">2</span>_AUTH<span class="hljs-number">0</span>_ISSUER --name=moodtracker -p <span class="hljs-number">8080</span>:<span class="hljs-number">8080</span> -d bmordan/moodtracker
+</code></pre>
+<p>Now if you visit <code>http://your-ec2-addr.amazon.com</code> you should see the login button. We'll not be able to login without updating the allowed redirect_uri in our Auth0 applications settings page on Auth0 site.</p>
+<h2>Dockerize the app</h2>
+<p>So far on Jenkins we can test and build the moodtracker app. Now we want to take that jar file, wrap it in a docker container that has jdk17 and have the launch command set so when the container starts our app starts on port 8080.</p>
+<p>Can you have a go at making the Dockerfile?</p>
+<p>Push your image to docker hub. Now we want to automate that stage of deployment. We will have to review the pipeline. The first part of the pipeline needs gradle and java 17 but not docker, the second part of the pipeline needs docker, but not gradle and java 17. We can split the pipeline up and use different agents for the different sections.</p>
+<p><figure><img src="https://user-images.githubusercontent.com/4499581/219146495-52dec7f1-d968-4373-9192-2431074a7671.png" alt="visualisation of the different agents in a pipeline"><figcaption></figcaption></figure></p>
+<p>Update your pipeline to not declare a global agent. Now you have to declare the kind of agent you want to run each stage.</p>
+<pre><code class="language-groovy">pipeline {
+    agent none
+    environment {
+        MOD2_AUTH0_CLIENT_ID = credentials(<span class="hljs-string">&quot;MOD2_AUTH0_CLIENT_ID&quot;</span>)
+        MOD2_AUTH0_CLIENT_SECRET = credentials(<span class="hljs-string">&quot;MOD2_AUTH0_CLIENT_SECRET&quot;</span>)
+        MOD2_AUTH0_ISSUER = credentials(<span class="hljs-string">&quot;MOD2_AUTH0_ISSUER&quot;</span>)
+        DOCKER = credentials(<span class="hljs-string">&quot;DOCKER_CREDENTIALS&quot;</span>)
+    }
+    stages {
+        stage(<span class="hljs-string">&quot;Test&quot;</span>) {
+            agent {
+                docker {
+                    image <span class="hljs-string">&#x27;gradle:7.6.0-jdk17&#x27;</span>
+                }
+            }
+            steps {
+                sh <span class="hljs-string">&#x27;gradle clean test&#x27;</span>
+                sh <span class="hljs-string">&#x27;gradle bootJar&#x27;</span>
+            }
+        }
+        stage(<span class="hljs-string">&quot;Dockerize&quot;</span>) {
+            agent {
+                docker {
+                    image <span class="hljs-string">&#x27;docker:dind&#x27;</span>
+                }
+            }
+            steps {
+                script {
+                    image = docker.build(<span class="hljs-string">&#x27;bmordan/moodtracker&#x27;</span>)
+                    sh <span class="hljs-string">&#x27;echo $DOCKER_PSW | docker login -u $DOCKER_USR --password-stdin&#x27;</span>
+                    sh <span class="hljs-string">&#x27;docker push bmordan/moodtracker&#x27;</span>
+                    sh <span class="hljs-string">&#x27;docker logout&#x27;</span>
+                }
+            }
+        }
+    }
+}
+</code></pre>
+<p>You will have to add your docker credentials to your Jenkins instance. You can obtain a docker access token in place of using your docker hub password (profile -&gt; Account Settings -&gt; Security -&gt; Access Tokens). In the Dockerize stage we are using the &quot;Docker in Docker&quot; or <code>docker:dind</code> image to run docker commands to build the image for our jar file and then push it to docker hub.</p>
+<h2>ssh and final steps</h2>
+<p>Now we are ready to connect to our AWS machine and pull the image. You will need to add your <code>?.pem</code> file to Jenkins. Goto the manage credientials section and add the contents of your <code>.pem</code> file to <strong>SSH Username with private key</strong>. Add your key's text, the username will be <strong>ec2-user</strong>, give this credential an ID like <strong>AWS_PEM_KEY</strong>. Now you are ready to implement the final step.</p>
+<pre><code class="language-groovy">stage(<span class="hljs-string">&quot;Deploy&quot;</span>) {
+    agent any
+    steps {
+        sshagent(<span class="hljs-attr">credentials:</span> [<span class="hljs-string">&quot;AWS_PEM_KEY&quot;</span>]) {
+            sh <span class="hljs-string">&quot;ssh -o StrictHostKeyChecking=no ec2-user@your-ec2-instance-ip &#x27;docker pull bmordan/moodtracker&#x27;&quot;</span>
+            sh <span class="hljs-string">&quot;ssh -o StrictHostKeyChecking=no ec2-user@your-ec2-instance-ip &#x27;docker stop moodtracker || true &amp;&amp; docker rm moodtracker || true&#x27;&quot;</span>
+            sh <span class="hljs-string">&quot;ssh -o StrictHostKeyChecking=no ec2-user@your-ec2-instance-ip &#x27;docker run -e MOD2_AUTH0_CLIENT_ID=$MOD2_AUTH0_CLIENT_ID -e MOD2_AUTH0_CLIENT_SECRET=$MOD2_AUTH0_CLIENT_SECRET -e MOD2_AUTH0_ISSUER=$MOD2_AUTH0_ISSUER --name=moodtracker -p 8080:8080 -d bmordan/moodtracker&#x27;&quot;</span>
+        }
+    }
+}
+</code></pre>
+<p>Now when you make changes and push to version control your pipeline can test, build, containerize and deploy your moodtracker app.</p>
+<p>This final section is useful introduction to setting up https so you have a secure encrypted site. Without https data in requests are in plain text and anyone can intercept your http request and read it. So passing passwords or other data over http is not secure.</p>
+<h2>HTTPS</h2>
+<p>This will feel fiddly because it is. We are going to do the following.</p>
+<ol>
+<li>We will need to set up a domain name that uses DNS records</li>
+<li>Install a web server on our ec2 instance</li>
+<li>Install a cert bot to deal with fetching a valid SSL certificate</li>
+<li>We need to provision our ec2 instance to forward external web traffic from port 80 to port 8080 which is called setting up a proxy</li>
+</ol>
+<h3>Set up a domain</h3>
+<p>If you look at a service like https://www.godaddy.com/en-uk or https://www.gandi.net/en-GB you should be able to purchase a domain name for a few pounds. For example, I bought bernardmordan.dev for £2.95 - you don't need to spend more than the price of a coffee, see what you can get, it can be anything i.e. rhubarb-bikini.shop is £0.96.</p>
+<p>In your DNS management console you need to find your <strong>A record</strong> and point this domain at your ec2 using your ec2 ip address. My <strong>A record</strong> looks like this.</p>
+<p><figure><img src="https://user-images.githubusercontent.com/4499581/219157070-05d57c4c-0a67-49e3-80d9-3a4742156e47.png" alt="DNS A records"><figcaption></figcaption></figure></p>
+<p>The TTL is the time it takes to update and have your new setting working. It can take many hours. You can see the ip address <code>13.42.55.28</code> that is from my ec2 instance.</p>
+<h3>Install Apache</h3>
+<p>This is a web server there are other options like Nginx which work in a very similar way. Run the following commands one at a time</p>
+<pre><code>sudo yum install -y httpd
+sudo systemctl <span class="hljs-keyword">start</span> httpd
+sudo systemctl <span class="hljs-keyword">enable</span> httpd
+</code></pre>
+<p>To check all is set up visit <code>http://my.ip.addr.here</code> you should see the Apache test page. Notice the <code>http://</code> nothing will show if you request via <code>https://</code> that is what we are working on now.</p>
+<p><figure><img src="https://docs.aws.amazon.com/images/AWSEC2/latest/UserGuide/images/apache_test_page_al2_2.4.png" alt="Apache web server test page"><figcaption></figcaption></figure></p>
+<p>You can now put static assets into <code>/var/www/html/</code> folder and they will be served at your host address <code>http://my.ip.addr.here</code>. Add your ec2 user to the apache group.</p>
+<pre><code class="language-sh">sudo usermod -a -G apache ec2-user
+</code></pre>
+<p>Log out and log back in again to pick up the group <code>exit</code> -&gt; reconnect with your ssh command. Change the group ownership of <code>/var/www</code> and its contents and future contents to the apache group.</p>
+<pre><code>sudo chown -R ec2-user:apache <span class="hljs-regexp">/var/</span>www
+sudo chmod <span class="hljs-number">2775</span> <span class="hljs-regexp">/var/</span>www &amp;&amp; <span class="hljs-keyword">find</span> <span class="hljs-regexp">/var/</span>www -type d -exec sudo chmod <span class="hljs-number">2775</span> {} \;
+<span class="hljs-keyword">find</span> <span class="hljs-regexp">/var/</span>www -type f -exec sudo chmod <span class="hljs-number">0664</span> {} \;
+</code></pre>
+<h3>Certbot</h3>
+<p>Goto your ec2 security tab and open up port 443. You can close port 8080.</p>
+<pre><code>sudo amazon-linux-<span class="hljs-keyword">extras </span><span class="hljs-keyword">install </span>epel -y
+sudo yum <span class="hljs-keyword">install </span>-y certbot python2-certbot-apache
+sudo certbot
+</code></pre>
+<p>Follow the prompts - get your certs installed. Open <code>/etc/crontab</code> and add the cron job (twice daily cert checking):</p>
+<pre><code><span class="hljs-symbol">39 </span>     <span class="hljs-number">1</span>,<span class="hljs-number">13</span>    *       *       *       root    certbot renew --no-self-upgrade
+</code></pre>
+<p>Then restart the cron daemon <code>sudo systemctl restart crond</code>. Cron is a task schedule tool to set a script to run on a regular basis. Its like setting a daily alarm clock to wake you up every day at 07:10. Or in our case check our certs are not out of date every day at 13:13.</p>
+<p>Certbot is a small python script that automates the dance of requesting a certificate from the <a href="https://letsencrypt.org/">letsencrypt</a> service. It saves the certs on the ec2 instance and updates some of your Apache config. When traffic now enters and leaves your web server it <em>can</em> be encrypted using these keys and certificates.</p>
+<h3>Proxy requests from port 80 to 8080</h3>
+<p>This is going to pass https traffic from port 80 (which has apache running on it) to port 8080 which has our moodtracker app running on it.</p>
+<p>There are 3 files we need to edit. You can edit files on your ec2 instance using the <code>nano</code> command line editor.</p>
+<ol>
+<li><code>/etc/httpd/conf/httpd.conf</code></li>
+<li><code>/etc/httpd/conf/httpd-le-ssl.conf</code></li>
+<li><code>/etc/httpd/conf.d/ssl.conf</code></li>
+</ol>
+<p>In <code>/etc/httpd/conf/httpd.conf</code> update the VirtualHost definition to this</p>
+<pre><code><span class="hljs-attribute"><span class="hljs-nomarkup">Listen</span></span> <span class="hljs-number">80</span>
+<span class="hljs-section">&lt;VirtualHost *<span class="hljs-number">:80</span>&gt;</span>
+    <span class="hljs-attribute">ProxyPreserveHost</span> <span class="hljs-literal">On</span>
+    <span class="hljs-attribute">ProxyRequests</span> <span class="hljs-literal">Off</span>
+    <span class="hljs-attribute"><span class="hljs-nomarkup">DocumentRoot</span></span> <span class="hljs-string">&quot;/var/www/html&quot;</span>
+    <span class="hljs-attribute"><span class="hljs-nomarkup">ServerName</span></span> <span class="hljs-string">&quot;example.com&quot;</span>
+    <span class="hljs-attribute">ServerAlias</span> <span class="hljs-string">&quot;www.example.com&quot;</span>
+    <span class="hljs-attribute">ProxyPass</span> / http://<span class="hljs-number">127.0.0.1:8080</span>/
+    <span class="hljs-attribute">ProxyPassReverse</span> / https://<span class="hljs-number">127.0.0.1:8080</span>/
+    <span class="hljs-attribute"><span class="hljs-nomarkup">RewriteEngine</span></span> <span class="hljs-literal">on</span>
+    <span class="hljs-attribute"><span class="hljs-nomarkup">RewriteCond</span></span> <span class="hljs-variable">%{SERVER_NAME}</span> =www.example.com<span class="hljs-meta"> [OR]</span>
+    <span class="hljs-attribute"><span class="hljs-nomarkup">RewriteCond</span></span> <span class="hljs-variable">%{SERVER_NAME}</span> =example.com
+    <span class="hljs-attribute"><span class="hljs-nomarkup">RewriteRule</span></span> ^ https://<span class="hljs-variable">%{SERVER_NAME}</span><span class="hljs-variable">%{REQUEST_URI}</span><span class="hljs-meta"> [END,NE,R=permanent]</span>
+<span class="hljs-section">&lt;/VirtualHost&gt;</span>
+</code></pre>
+<p>In <code>/etc/httpd/conf/httpd-le-ssl.conf</code> add similar config - notice this is for port <code>:443</code> which is the port dealing with encrypted https requests.</p>
+<pre><code>&lt;VirtualHost *:<span class="hljs-number">443</span>&gt;
+    DocumentRoot <span class="hljs-string">&quot;/var/www/html&quot;</span>
+    ServerName <span class="hljs-string">&quot;example.com&quot;</span>
+    ServerAlias <span class="hljs-string">&quot;www.example.com&quot;</span>
+    SSLProxyEngine on
+    ProxyPreserveHost On
+    ProxyPass <span class="hljs-regexp">/ http:/</span><span class="hljs-regexp">/127.0.0.1:8080/</span>
+    ProxyPassReverse <span class="hljs-regexp">/ https:/</span><span class="hljs-regexp">/127.0.0.1:8080/</span>
+    <span class="hljs-keyword">Include</span> <span class="hljs-regexp">/etc/</span>letsencrypt/<span class="hljs-keyword">options</span>-ssl-apache.conf
+    SSLCertificateFile <span class="hljs-regexp">/etc/</span>letsencrypt<span class="hljs-regexp">/live/</span>bernardmordan.dev/fullchain.pem
+    SSLCertificateKeyFile <span class="hljs-regexp">/etc/</span>letsencrypt<span class="hljs-regexp">/live/</span>bernardmordan.dev/privkey.pem
+&lt;/VirtualHost&gt;
+</code></pre>
+<p>In <code>/etc/httpd/conf.d/ssl.conf</code> just add <code>SSLProxyEngine on</code> the line below <code>SSLEngine on</code>.</p>
+<p>Now you can update the redirect URLs on Auth0 and your moodtracking app should be provisioned and served over https.</p>
+<h2>Next steps</h2>
+<p>You have been introduced to Jenkins. You know about AWS. Can you take on this challenge?</p>
+<p>Here are the files for a static site.<br>
+https://github.com/bmordan/audio-grid-apprun (github repo)<br>
+https://github.com/bmordan/audio-grid-apprun/archive/refs/tags/1.0.0.zip</p>
+<p>Can you build a pipeline that deploys this site to an AWS S3 bucket? Setting up a S3 bucket as a static web host is quite straight forward, can you figure out how to clone the repo, then copy the files to the AWS bucket? Be really nice if this happened when you push to the repo (you will need to fork the repo to push code changes).</p>
 
     <nav id="footer-nav"></nav>
     <script src="/curriculum/js/tabbed-code-blocks.js"></script>
