@@ -331,9 +331,9 @@ sudo reboot
 <p>The TTL is the time it takes to update and have your new setting working. It can take many hours. You can see the ip address <code>13.42.55.28</code> that is from my ec2 instance.</p>
 <h3>Install Apache</h3>
 <p>This is a web server there are other options like Nginx which work in a very similar way. Run the following commands one at a time</p>
-<pre><code>sudo yum install -y httpd
-sudo systemctl <span class="hljs-keyword">start</span> httpd
-sudo systemctl <span class="hljs-keyword">enable</span> httpd
+<pre><code class="language-sh">sudo yum install -y httpd
+sudo systemctl start httpd
+sudo systemctl <span class="hljs-built_in">enable</span> httpd
 </code></pre>
 <p>To check all is set up visit <code>http://my.ip.addr.here</code> you should see the Apache test page. Notice the <code>http://</code> nothing will show if you request via <code>https://</code> that is what we are working on now.</p>
 <p><figure><img src="https://docs.aws.amazon.com/images/AWSEC2/latest/UserGuide/images/apache_test_page_al2_2.4.png" alt="Apache web server test page"><figcaption></figcaption></figure></p>
@@ -341,9 +341,9 @@ sudo systemctl <span class="hljs-keyword">enable</span> httpd
 <pre><code class="language-sh">sudo usermod -a -G apache ec2-user
 </code></pre>
 <p>Log out and log back in again to pick up the group <code>exit</code> -&gt; reconnect with your ssh command. Change the group ownership of <code>/var/www</code> and its contents and future contents to the apache group.</p>
-<pre><code>sudo chown -R ec2-user:apache <span class="hljs-regexp">/var/</span>www
-sudo chmod <span class="hljs-number">2775</span> <span class="hljs-regexp">/var/</span>www &amp;&amp; <span class="hljs-keyword">find</span> <span class="hljs-regexp">/var/</span>www -type d -exec sudo chmod <span class="hljs-number">2775</span> {} \;
-<span class="hljs-keyword">find</span> <span class="hljs-regexp">/var/</span>www -type f -exec sudo chmod <span class="hljs-number">0664</span> {} \;
+<pre><code class="language-sh">sudo chown -R ec2-user:apache /var/www
+sudo chmod 2775 /var/www &amp;&amp; find /var/www -<span class="hljs-built_in">type</span> d -<span class="hljs-built_in">exec</span> sudo chmod 2775 {} \;
+find /var/www -<span class="hljs-built_in">type</span> f -<span class="hljs-built_in">exec</span> sudo chmod 0664 {} \;
 </code></pre>
 <h3>Certbot</h3>
 <p>Goto your ec2 security tab and open up port 443. You can close port 8080.</p>
@@ -352,12 +352,13 @@ sudo yum <span class="hljs-keyword">install </span>-y certbot python2-certbot-ap
 sudo certbot
 </code></pre>
 <p>Follow the prompts - get your certs installed. Open <code>/etc/crontab</code> and add the cron job (twice daily cert checking):</p>
-<pre><code><span class="hljs-symbol">39 </span>     <span class="hljs-number">1</span>,<span class="hljs-number">13</span>    *       *       *       root    certbot renew --no-self-upgrade
+<pre><code class="language-cron"><span class="hljs-symbol">39 </span>     <span class="hljs-number">1</span>,<span class="hljs-number">13</span>    *       *       *       root    certbot renew --no-self-upgrade
 </code></pre>
 <p>Then restart the cron daemon <code>sudo systemctl restart crond</code>. Cron is a task schedule tool to set a script to run on a regular basis. Its like setting a daily alarm clock to wake you up every day at 07:10. Or in our case check our certs are not out of date every day at 13:13.</p>
 <p>Certbot is a small python script that automates the dance of requesting a certificate from the <a href="https://letsencrypt.org/">letsencrypt</a> service. It saves the certs on the ec2 instance and updates some of your Apache config. When traffic now enters and leaves your web server it <em>can</em> be encrypted using these keys and certificates.</p>
 <h3>Proxy requests from port 80 to 8080</h3>
 <p>This is going to pass https traffic from port 80 (which has apache running on it) to port 8080 which has our moodtracker app running on it.</p>
+<p><figure><img src="https://user-images.githubusercontent.com/4499581/219148050-f87e9fad-a1a1-4746-b4c1-6ade8274971c.png" alt="Apache Proxy Diagram"><figcaption></figcaption></figure></p>
 <p>There are 3 files we need to edit. You can edit files on your ec2 instance using the <code>nano</code> command line editor.</p>
 <ol>
 <li><code>/etc/httpd/conf/httpd.conf</code></li>
@@ -365,33 +366,33 @@ sudo certbot
 <li><code>/etc/httpd/conf.d/ssl.conf</code></li>
 </ol>
 <p>In <code>/etc/httpd/conf/httpd.conf</code> update the VirtualHost definition to this</p>
-<pre><code><span class="hljs-attribute"><span class="hljs-nomarkup">Listen</span></span> <span class="hljs-number">80</span>
-<span class="hljs-section">&lt;VirtualHost *<span class="hljs-number">:80</span>&gt;</span>
-    <span class="hljs-attribute">ProxyPreserveHost</span> <span class="hljs-literal">On</span>
-    <span class="hljs-attribute">ProxyRequests</span> <span class="hljs-literal">Off</span>
-    <span class="hljs-attribute"><span class="hljs-nomarkup">DocumentRoot</span></span> <span class="hljs-string">&quot;/var/www/html&quot;</span>
-    <span class="hljs-attribute"><span class="hljs-nomarkup">ServerName</span></span> <span class="hljs-string">&quot;example.com&quot;</span>
-    <span class="hljs-attribute">ServerAlias</span> <span class="hljs-string">&quot;www.example.com&quot;</span>
-    <span class="hljs-attribute">ProxyPass</span> / http://<span class="hljs-number">127.0.0.1:8080</span>/
-    <span class="hljs-attribute">ProxyPassReverse</span> / https://<span class="hljs-number">127.0.0.1:8080</span>/
-    <span class="hljs-attribute"><span class="hljs-nomarkup">RewriteEngine</span></span> <span class="hljs-literal">on</span>
-    <span class="hljs-attribute"><span class="hljs-nomarkup">RewriteCond</span></span> <span class="hljs-variable">%{SERVER_NAME}</span> =www.example.com<span class="hljs-meta"> [OR]</span>
-    <span class="hljs-attribute"><span class="hljs-nomarkup">RewriteCond</span></span> <span class="hljs-variable">%{SERVER_NAME}</span> =example.com
-    <span class="hljs-attribute"><span class="hljs-nomarkup">RewriteRule</span></span> ^ https://<span class="hljs-variable">%{SERVER_NAME}</span><span class="hljs-variable">%{REQUEST_URI}</span><span class="hljs-meta"> [END,NE,R=permanent]</span>
-<span class="hljs-section">&lt;/VirtualHost&gt;</span>
+<pre><code class="language-sh">Listen 80
+&lt;VirtualHost *:80&gt;
+    ProxyPreserveHost On
+    ProxyRequests Off
+    DocumentRoot <span class="hljs-string">&quot;/var/www/html&quot;</span>
+    ServerName <span class="hljs-string">&quot;example.com&quot;</span>
+    ServerAlias <span class="hljs-string">&quot;www.example.com&quot;</span>
+    ProxyPass / http://127.0.0.1:8080/
+    ProxyPassReverse / https://127.0.0.1:8080/
+    RewriteEngine on
+    RewriteCond %{SERVER_NAME} =www.example.com [OR]
+    RewriteCond %{SERVER_NAME} =example.com
+    RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent]
+&lt;/VirtualHost&gt;
 </code></pre>
 <p>In <code>/etc/httpd/conf/httpd-le-ssl.conf</code> add similar config - notice this is for port <code>:443</code> which is the port dealing with encrypted https requests.</p>
-<pre><code>&lt;VirtualHost *:<span class="hljs-number">443</span>&gt;
+<pre><code class="language-sh">&lt;VirtualHost *:443&gt;
     DocumentRoot <span class="hljs-string">&quot;/var/www/html&quot;</span>
     ServerName <span class="hljs-string">&quot;example.com&quot;</span>
     ServerAlias <span class="hljs-string">&quot;www.example.com&quot;</span>
     SSLProxyEngine on
     ProxyPreserveHost On
-    ProxyPass <span class="hljs-regexp">/ http:/</span><span class="hljs-regexp">/127.0.0.1:8080/</span>
-    ProxyPassReverse <span class="hljs-regexp">/ https:/</span><span class="hljs-regexp">/127.0.0.1:8080/</span>
-    <span class="hljs-keyword">Include</span> <span class="hljs-regexp">/etc/</span>letsencrypt/<span class="hljs-keyword">options</span>-ssl-apache.conf
-    SSLCertificateFile <span class="hljs-regexp">/etc/</span>letsencrypt<span class="hljs-regexp">/live/</span>bernardmordan.dev/fullchain.pem
-    SSLCertificateKeyFile <span class="hljs-regexp">/etc/</span>letsencrypt<span class="hljs-regexp">/live/</span>bernardmordan.dev/privkey.pem
+    ProxyPass / http://127.0.0.1:8080/
+    ProxyPassReverse / https://127.0.0.1:8080/
+    Include /etc/letsencrypt/options-ssl-apache.conf
+    SSLCertificateFile /etc/letsencrypt/live/bernardmordan.dev/fullchain.pem
+    SSLCertificateKeyFile /etc/letsencrypt/live/bernardmordan.dev/privkey.pem
 &lt;/VirtualHost&gt;
 </code></pre>
 <p>In <code>/etc/httpd/conf.d/ssl.conf</code> just add <code>SSLProxyEngine on</code> the line below <code>SSLEngine on</code>.</p>
